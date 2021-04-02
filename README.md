@@ -1,10 +1,11 @@
-This is the starter template for CS312 projects based on Next.js](https://nextjs.org/). _You should replace this portion with a description of your project._
+## Sprint 0
 
-The project was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), and includes a number of additional libraries, including the Rest Testing Library, Jest, and ESLint, among others. It also includes the basic configuration for using Travis CI.
+[![Build Status](https://travis-ci.com/csci312-s21/project-blackberry-binturong.svg?branch=main)](https://travis-ci.com/csci312-s21/project-blackberry-binturong)
 
-To ensure consistent style, this template is also set up with [Prettier](https://github.com/prettier/prettier), with the configuration to automatically reformat code during a commit. That is whenever you commit your code, Prettier will automatically reformat your code during the commit process (as a "hook"). The hook is specified in the `package.json` file.
+This application is the WRMC 91.1 FM Middlebury College Radio website. It will be a hub for listeners, DJs, and board members to view the schedule, listen to live shows, and engage with the radio community.
 
-**Note: I've provided the processes for interacting with this project if you have a local installation. Running on Replit simplifies many of these steps (but not all of them, so please do read through).**
+Here is a link to our [app on Heroku](https://wrmc-website.herokuapp.com/)
+
 
 
 ## Getting Started
