@@ -1,3 +1,8 @@
+/*
+
+Tests for LoginButton.js
+
+*/
 import { render, screen, fireEvent } from "@testing-library/react";
 import LoginButton from "./LoginButton";
 
@@ -44,6 +49,5 @@ describe("LoginButton tests", () => {
     expect(handler).toHaveBeenCalled();
     expect(handler).toHaveBeenCalledWith(false);
   });
-  
 
 });
