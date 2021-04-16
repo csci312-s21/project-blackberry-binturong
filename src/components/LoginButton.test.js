@@ -9,40 +9,40 @@ describe("LoginButton tests", () => {
   });
 
   test("Clicking login button switches between login and logout", () => {
-    render(<LoginButton handleClick={handler}/>);
+    render(<LoginButton loggedIn={false} handleClick={handler}/>);
 
-    let login = screen.queryByRole("button", { name: "login" });
+    let login = screen.queryByRole("button", { name: "Log In" });
     expect(login).toBeInTheDocument();
 
     fireEvent.click(login);
+    login = screen.queryByRole("button", { name: "Log In" });
     expect(login).not.toBeInTheDocument();
-    let logout = screen.queryByRole("button", { name: "logout" });
+    let logout = screen.queryByRole("button", { name: "Log Out" });
     expect(logout).toBeInTheDocument();
 
     fireEvent.click(logout);
-    login = screen.queryByRole("button", { name: "login" });
+    login = screen.queryByRole("button", { name: "Log In" });
     expect(login).toBeInTheDocument();
-    logout = screen.queryByRole("button", { name: "logout" });
+    logout = screen.queryByRole("button", { name: "Log Out" });
     expect(logout).not.toBeInTheDocument();
   });
 
   test("login button returns correct action", () => {
-    render(<LoginButton, handleClick={handler}/>);
+    render(<LoginButton loggedIn={false} handleClick={handler}/>);
 
-    fireEvent.click(screen.queryByRole("button", { name: "login" }));
+    fireEvent.click(screen.queryByRole("button", { name: "Log In" }));
 
     expect(handler).toHaveBeenCalled();
-    expect(handler).toHaveBeenCalledWith("login");
+    expect(handler).toHaveBeenCalledWith(true);
   });
 
   test("logout button returns correct action", () => {
-    render(<LoginButton, handleClick={handler}/>);
+    render(<LoginButton loggedIn={true} handleClick={handler}/>);
 
-    fireEvent.click(screen.queryByRole("button", { name: "login" }));
-    fireEvent.click(screen.queryByRole("button", { name: "logout" }));
+    fireEvent.click(screen.queryByRole("button", { name: "Log Out" }));
 
     expect(handler).toHaveBeenCalled();
-    expect(handler).toHaveBeenCalledWith("logout");
+    expect(handler).toHaveBeenCalledWith(false);
   });
   
 
