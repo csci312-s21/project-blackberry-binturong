@@ -1,3 +1,11 @@
+/*
+  NextThreeShows.js
+
+  This component displays a preview of the next three shows, not including the current show.
+
+  props:
+    shows - an array of show objects
+*/
 import PropTypes from "prop-types";
 import { dayToInt, compareTwoShows } from "../lib/globals.js";
 import moment from "moment";
@@ -14,7 +22,7 @@ export default function NextThreeShows({ shows }){
 
   const nextThree = upcomingShows.slice(0, 3).map((show) => 
     <li key={show.id}>
-      <ShowSnippet title={show.title} djs={show.DJs} hour={show.time.hour} duration={show.time.duration}/>
+      <ShowSnippet show={show}/>
     </li>
   );
 

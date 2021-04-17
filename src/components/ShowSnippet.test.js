@@ -17,19 +17,19 @@ const sampleShow = {
 describe("ShowSnippet tests", () => {
 
   test("snippet displays title", () => {
-    render(<ShowSnippet title={sampleShow.title} djs={sampleShow.DJs} hour={sampleShow.time.hour} duration={sampleShow.time.duration}/>);
+    render(<ShowSnippet show={sampleShow}/>);
 
     expect(screen.queryByText("Sample Show")).toBeInTheDocument();
   });
 
   test("snippet displays time", () => {
-    render(<ShowSnippet title={sampleShow.title} djs={sampleShow.DJs} hour={sampleShow.time.hour} duration={sampleShow.time.duration}/>);
+    render(<ShowSnippet show={sampleShow}/>);
 
     expect(screen.queryByText("8:00 - 9:00 am")).toBeInTheDocument();
   });
 
   test("snippet displays DJs", () => {
-    render(<ShowSnippet title={sampleShow.title} djs={sampleShow.DJs} hour={sampleShow.time.hour} duration={sampleShow.time.duration}/>);
+    render(<ShowSnippet show={sampleShow}/>);
 
     expect(screen.queryByText("Joe Schmo, ABC")).toBeInTheDocument();
   });
