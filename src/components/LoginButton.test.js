@@ -13,25 +13,6 @@ describe("LoginButton tests", () => {
     handler.mockReset();
   });
 
-  test("Clicking login button switches between login and logout", async () => {
-    render(<LoginButton loggedIn={false} handleClick={handler}/>);
-
-    let login = screen.queryByRole("button", { name: "In" });
-    expect(login).toBeInTheDocument();
-
-    fireEvent.click(login);
-    login = screen.queryByRole("button", { name: "In" });
-    expect(login).not.toBeInTheDocument();
-    let logout = screen.queryByRole("button", { name: "Out" });
-    expect(logout).toBeInTheDocument();
-
-    fireEvent.click(logout);
-    login = screen.queryByRole("button", { name: "In" });
-    expect(login).toBeInTheDocument();
-    logout = screen.queryByRole("button", { name: "Out" });
-    expect(logout).not.toBeInTheDocument();
-  });
-
   test("login button returns correct action", () => {
     render(<LoginButton loggedIn={false} handleClick={handler}/>);
 
@@ -42,7 +23,7 @@ describe("LoginButton tests", () => {
   });
 
   test("logout button returns correct action", () => {
-    render(<LoginButton loggedIn={true} handleClick={handler}/>);
+    render(<LoginButton loggedIn handleClick={handler}/>);
 
     fireEvent.click(screen.queryByRole("button", { name: "Out" }));
 

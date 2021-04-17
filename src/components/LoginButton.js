@@ -12,10 +12,10 @@ import PropTypes from "prop-types";
 
 export default function LoginButton({ loggedIn, handleClick }){
   return (
-    <div class={styles.loginContainer}>
+    <div className={styles.loginContainer}>
       {(loggedIn)
-        ? <input class={styles.loginButton} type="button" value="Out" onClick = {() => handleClick(false)}/>
-        : <input class={styles.loginButton} type="button" value="In" onClick = {() => handleClick(true)}/>
+        ? <input className={styles.loginButton} type="button" value="Out" onClick = {() => handleClick(false)}/>
+        : <input className={styles.loginButton} type="button" value="In" onClick = {() => handleClick(true)}/>
       }
     </div>);
 }
