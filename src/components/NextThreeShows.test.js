@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import NextThreeShows from "../components/NextThreeShows.js";
+import NextThreeShows from "./NextThreeShows.js";
 
 const sampleShows = [
   {
@@ -38,6 +38,18 @@ const sampleShows = [
     "genres": ["Folk","Indie","Talk"],
     "id": "57"
   },
+  {
+    "title": "Sample Show 4",
+    "DJs": ["Emma Tzotschew","Andrew Grossman"],
+    "description": "sample description 4",
+    "time": {
+      "day": "F",
+      "hour": 700,
+      "duration": 1
+    },
+    "genres": ["Folk","Indie","Talk"],
+    "id": "58"
+  }
 ]
 
 describe("NextThreeShows tests", () => {
@@ -59,6 +71,7 @@ describe("NextThreeShows tests", () => {
     expect(screen.queryByText("Sample Show 1")).toBeInTheDocument();
     expect(screen.queryByText("Sample Show 2")).toBeInTheDocument();
     expect(screen.queryByText("Sample Show 3")).toBeInTheDocument();
+    expect(screen.queryByText("That's all for today!")).toBeInTheDocument();
   });
 
   test("two shows are displayed", () => {
@@ -69,6 +82,7 @@ describe("NextThreeShows tests", () => {
     expect(screen.queryByText("Sample Show 1")).not.toBeInTheDocument();
     expect(screen.queryByText("Sample Show 2")).toBeInTheDocument();
     expect(screen.queryByText("Sample Show 3")).toBeInTheDocument();
+    expect(screen.queryByText("That's all for today!")).toBeInTheDocument();
   });
 
   test("one show is displayed", () => {
@@ -79,6 +93,7 @@ describe("NextThreeShows tests", () => {
     expect(screen.queryByText("Sample Show 1")).not.toBeInTheDocument();
     expect(screen.queryByText("Sample Show 2")).not.toBeInTheDocument();
     expect(screen.queryByText("Sample Show 3")).toBeInTheDocument();
+    expect(screen.queryByText("That's all for today!")).toBeInTheDocument();
   });
 
   test("zero shows are displayed", () => {
@@ -89,12 +104,6 @@ describe("NextThreeShows tests", () => {
     expect(screen.queryByText("Sample Show 1")).not.toBeInTheDocument();
     expect(screen.queryByText("Sample Show 2")).not.toBeInTheDocument();
     expect(screen.queryByText("Sample Show 3")).not.toBeInTheDocument();
-  });
-
-  test("no shows message displayed", () => {
-    Date.now = jest.fn(() => new Date(2021, 3, 16, 10));
-    render(<NextThreeShows shows={sampleShows}/>);
-
     expect(screen.queryByText("That's all for today!")).toBeInTheDocument();
   });
 
@@ -103,6 +112,18 @@ describe("NextThreeShows tests", () => {
     render(<NextThreeShows shows={sampleShows}/>);
 
     expect(screen.queryByText("Sample Show 3")).not.toBeInTheDocument();
+  });
+
+  test("4 upcoming shows shows correct info", () => {
+    Date.now = jest.fn(() => new Date(2021, 3, 16, 6));
+    render(<NextThreeShows shows={sampleShows}/>);
+
+    expect(screen.queryAllByRole("listitem")).toHaveLength(3);
+    expect(screen.queryByText("Sample Show 4")).toBeInTheDocument();
+    expect(screen.queryByText("Sample Show 1")).toBeInTheDocument();
+    expect(screen.queryByText("Sample Show 2")).toBeInTheDocument();
+    expect(screen.queryByText("Sample Show 3")).not.toBeInTheDocument();
+    expect(screen.queryByText("That's all for today!")).not.toBeInTheDocument();
   });
 
 });

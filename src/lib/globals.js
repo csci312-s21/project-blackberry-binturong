@@ -19,15 +19,37 @@ export const dayToInt = {
 
 // this function returns the earlier of two shows, useful for sorting an array of shows
 export const compareTwoShows = (a, b) => {
-  if (dayToInt[a.time.day] > dayToInt[b.time.day]){
-    return a
-  } else if (dayToInt[a.time.day] < dayToInt[b.time.day]){
-    return b
+  if (dayToInt[a.time.day] < dayToInt[b.time.day]){
+    return -1
+  } else if (dayToInt[a.time.day] > dayToInt[b.time.day]){
+    return 1
   } else {
-    if (a.time.hour >= b.time.hour){
-      return a
+    if (a.time.hour <= b.time.hour){
+      return -1
     } else {
-      return b
+      return 1
     }
   }
+}
+
+// this function takes a show and return a string of the time in a pretty format, e.g. "9:00 - 10:00 am"
+export const prettyTimeFormat = (start, duration) => {
+  const splitTime = (time) => {
+    return {
+      hour: time.toString().substring(0, time.toString().length - 2),
+      minute: time.toString().substring(2),
+    }
+  }
+
+  const startTime = splitTime(start);
+  const end = start + (duration * 100);
+  const endTime = splitTime(end);
+  const period = ((endTime.hour >= 12) && (endTime.hour < 24)) ? "pm" : "am";
+
+  const twelveHourTime = (time) => {
+    const converted = time % 12;
+    return (converted === 0) ? 12 : converted;
+  }
+
+  return `${twelveHourTime(startTime.hour)}:${startTime.minute} - ${twelveHourTime(endTime.hour)}:${endTime.minute} ${period}`
 }
