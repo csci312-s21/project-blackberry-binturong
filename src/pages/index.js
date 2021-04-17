@@ -5,7 +5,7 @@ import { useState } from "react";
 import NextThreeShows from "../components/NextThreeShows.js";
 
 export default function Home() {
-  const [shows, setShows] = useState(temp_data);
+  const [shows] = useState(temp_data);
 
   return (
     <div className={styles.container}>

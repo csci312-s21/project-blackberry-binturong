@@ -12,13 +12,17 @@ export default function NextThreeShows({ shows }){
 
   upcomingShows.sort((a, b) => compareTwoShows(a, b));
 
-  const nextThree = upcomingShows.slice(0, 3).map((show) => <li key={show.id}><ShowSnippet show={show}/></li>);
+  const nextThree = upcomingShows.slice(0, 3).map((show) => 
+    <li key={show.id}>
+      <ShowSnippet title={show.title} djs={show.DJs} hour={show.time.hour} duration={show.time.duration}/>
+    </li>
+  );
 
   return (
     <div className={styles.nextThreeShows}>
-      <div className={styles.header}>Today's next three shows:</div>
+      <div className={styles.header}>Today&apos;s next three shows:</div>
       <ul className={styles.showList}>{nextThree}</ul>
-      {(upcomingShows.length <= 3) && <div className={styles.message}>That's all for today!</div>}
+      {(upcomingShows.length <= 3) && <div className={styles.message}>That&apos;s all for today!</div>}
     </div>
   );
 }

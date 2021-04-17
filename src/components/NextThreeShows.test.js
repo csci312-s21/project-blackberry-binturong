@@ -60,7 +60,7 @@ describe("NextThreeShows tests", () => {
   });
 
   afterAll(() => {
-    Date = _Date; // Reset Date
+    Date = _Date; // eslint-disable-line
   });
 
   test("three shows are displayed", () => {
