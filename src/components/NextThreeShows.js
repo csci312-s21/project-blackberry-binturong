@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { dayToInt, compareTwoShows } from "../lib/globals.js";
 import moment from "moment";
 import ShowSnippet from "./ShowSnippet.js";
+import styles from "../styles/NextThreeShows.module.css";
 
 export default function NextThreeShows({ shows }){
   const now = moment();
@@ -14,10 +15,10 @@ export default function NextThreeShows({ shows }){
   const nextThree = upcomingShows.slice(0, 3).map((show) => <li key={show.id}><ShowSnippet show={show}/></li>);
 
   return (
-    <div>
-      Today's next three shows:
-      <ul>{nextThree}</ul>
-      {(upcomingShows.length <= 3) && <div>That's all for today!</div>}
+    <div className={styles.nextThreeShows}>
+      <div className={styles.header}>Today's next three shows:</div>
+      <ul className={styles.showList}>{nextThree}</ul>
+      {(upcomingShows.length <= 3) && <div className={styles.message}>That's all for today!</div>}
     </div>
   );
 }

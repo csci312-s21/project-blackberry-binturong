@@ -37,7 +37,7 @@ export const prettyTimeFormat = (start, duration) => {
   const splitTime = (time) => {
     return {
       hour: time.toString().substring(0, time.toString().length - 2),
-      minute: time.toString().substring(2),
+      minute: time.toString().substring(time.toString().length - 2),
     }
   }
 
