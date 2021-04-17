@@ -31,7 +31,7 @@ describe("ShowSnippet tests", () => {
   test("snippet displays DJs", () => {
     render(<ShowSnippet show={sampleShow}/>);
 
-    expect(screen.queryByText("(Joe Schmo, ABC)")).toBeInTheDocument();
+    expect(screen.queryByText("Joe Schmo, ABC")).toBeInTheDocument();
   });
 
 });
