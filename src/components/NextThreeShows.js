@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import { dayToInt, compareTwoShows } from "../lib/globals.js";
+import moment from "moment";
 
 export default function NextThreeShows({ shows }){
-  const date = new Date();
+  const now = moment();
 
   const upcomingShows = shows.filter(
-    (show) => (dayToInt[show.time.day] === date.getDay()) && (show.time.hour > (date.getHours() * 100)));
+    (show) => (dayToInt[show.time.day] === now.day()) && (show.time.hour > (now.hour() * 100)));
 
   upcomingShows.sort((a, b) => compareTwoShows(a, b));
 
