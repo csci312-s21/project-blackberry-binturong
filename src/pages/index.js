@@ -1,10 +1,10 @@
-
-
+import LoginButton from "../components/LoginButton.js";
 import Head from "next/head";
-
 import styles from "../styles/Home.module.css";
+import { useState } from "react";
 
 export default function Home() {
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -14,9 +14,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">Final Project</h1>
-        <p>Hooray, you got the project deployed!</p>
-        <p>Now go and give it some content...</p>
+        <LoginButton loggedIn={loggedIn} handleClick={setLoggedIn}/>
       </main>
 
       <footer>A CS 312 Project</footer>
