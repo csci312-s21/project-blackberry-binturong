@@ -10,13 +10,9 @@
   border-radius: 10px;
   margin: 20;
   padding: 10px;
-  
 }
 
-.header {
+.header, .message {
   text-align: center;
-}
-
-.message {
-  text-align: center;
+  margin: 5px;
 }

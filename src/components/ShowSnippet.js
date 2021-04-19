@@ -17,7 +17,7 @@ export default function ShowSnippet({ show }){
     <div>
       <div className={styles.time}>{time}</div>
       <div className={styles.title}>{show.title}</div>
-      <div className={styles.djs}>{show.DJs}</div>
+      <div className={styles.djs}>{show.DJs.join(", ")}</div>
     </div>
   );
 }

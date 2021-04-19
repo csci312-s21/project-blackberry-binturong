@@ -1,25 +1,13 @@
-.time{
-  font-weight: bold;
+.time, .title, .djs {
   display: inline-block;
-  border: 1px solid;
-  border-right: none;
   padding: 5px;
   margin: 0;
 }
 
-.title{
+.title {
   font-weight: bold;
-  display: inline-block;
-  border: 1px solid;
-  padding: 5px;
-  margin: 0;
 }
 
-.djs{
+.djs {
   font-style: italic;
-  display: inline-block;
-  border: 1px solid;
-  border-left: none;
-  padding: 5px;
-  margin: 0;
 }
