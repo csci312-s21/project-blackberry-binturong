@@ -11,7 +11,7 @@ const listenNow = "http://boombox.middlebury.edu:8000/"
 
 export default function PlayButton(){
   function click() {
-    window.open(listenNow);
+    global.open(listenNow);
   }
   return (
     <div className={styles.playContainer}>
