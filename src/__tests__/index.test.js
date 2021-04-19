@@ -1,7 +1,14 @@
-import { render } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import  fetchMock  from "fetch-mock-jest";
 import { act } from "react-dom/test-utils";
 import Home from "../pages/index";
+
+const selectPage = async (page) => {
+  const section = screen.getByText(page);
+  fireEvent.click(section);
+
+  //await screen.findByText();
+};
 
 describe("Top level integration tests", () => {
   test("Smoke test", async () => {
@@ -11,3 +18,13 @@ describe("Top level integration tests", () => {
     });
   });
 });
+
+describe("NavBar tests", () => {
+  test("NavBar highlights current page", () => {
+    
+  });
+
+  test("Current page is the same one as state", () => {
+
+  });
+})

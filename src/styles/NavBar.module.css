@@ -1,0 +1,12 @@
+.navBar ul {
+  list-style: none;
+}
+
+.navBar li {
+  display: inline;
+  padding: 5px;
+}
+
+.navBar_highlight {
+  font-weight: bold;
+}
