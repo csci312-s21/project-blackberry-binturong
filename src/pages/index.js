@@ -1,11 +1,13 @@
 import Head from "next/head";
-import temp_data from "../../data/temp_data.json";
+import shows from "../../data/shows.json";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
 import NextThreeShows from "../components/NextThreeShows.js";
+import LoginButton from "../components/LoginButton.js";
 
 export default function Home() {
-  const [shows] = useState(temp_data);
+  const [allShows] = useState(shows);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -15,7 +17,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <NextThreeShows shows={shows}/>
+        <LoginButton loggedIn={loggedIn} handleClick={setLoggedIn}/>
+        <NextThreeShows shows={allShows}/>
       </main>
 
       <footer>A CS 312 Project</footer>
