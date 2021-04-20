@@ -1,4 +1,4 @@
-## Sprint 0
+## Sprint 1
 
 [![Build Status](https://travis-ci.com/csci312-s21/project-blackberry-binturong.svg?branch=main)](https://travis-ci.com/csci312-s21/project-blackberry-binturong)
 
