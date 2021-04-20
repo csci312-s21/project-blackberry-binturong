@@ -53,3 +53,14 @@ export const prettyTimeFormat = (start, duration) => {
 
   return `${twelveHourTime(startTime.hour)}:${startTime.minute} - ${twelveHourTime(endTime.hour)}:${endTime.minute} ${period}`
 }
+
+//Takes the char from show.time.day and returns string of the day (e.g. "M" ==> "Monday"). Right now, I'm only using it for showOTW, but I'd imagine it might come in handy later. 
+export const getDayString = (d) => {
+  if (d==="M"){return "Monday"}
+  else if (d==="T"){return "Tuesday"}
+  else if (d==="W"){return "Wednesday"}
+  else if (d==="Th"){return "Thursday"}
+  else if (d==="F"){return "Friday"}
+  else if (d==="S"){return "Saturday"}
+  else if (d==="Su"){return "Sunday"}
+}
