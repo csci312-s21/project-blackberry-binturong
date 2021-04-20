@@ -1,3 +1,5 @@
+import PlayButton from "../components/PlayButton.js";
+
 import Head from "next/head";
 import shows from "../../data/shows.json";
 import styles from "../styles/Home.module.css";
@@ -18,6 +20,7 @@ export default function Home() {
 
       <main>
         <LoginButton loggedIn={loggedIn} handleClick={setLoggedIn}/>
+        <PlayButton/>
         <NextThreeShows shows={allShows}/>
       </main>
 
