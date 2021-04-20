@@ -1,9 +1,9 @@
 import Head from "next/head";
-
 import NavBar from "../components/NavBar.js";
+
 import styles from "../styles/Home.module.css";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Home() {
 
@@ -18,7 +18,7 @@ export default function Home() {
     "About":<h2>This is the about page</h2>
   };
 
-  let current = placeholderPages[page];
+  const current = placeholderPages[page];
 
   return (
     <div className={styles.container}>

@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import styles from "../styles/NavBar.module.css";
 
 import PropTypes from "prop-types";
@@ -18,8 +16,6 @@ export default function NavBar({ pageList, currentPage, setCurrentPage }) {
     >{p}</li>)
   });
 
-  console.log(pages);
-
   return (
     <div className={styles.navBar}>
       <h1>WRMC 91.1 FM</h1>
@@ -28,8 +24,8 @@ export default function NavBar({ pageList, currentPage, setCurrentPage }) {
       </ul>
     </div>);
   
-};
+}
 
 NavBar.propTypes = {
   pageList:PropTypes.arrayOf(PropTypes.string).isRequired,
-};t 
+};
