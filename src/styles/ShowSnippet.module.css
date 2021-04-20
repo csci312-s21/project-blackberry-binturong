@@ -1,0 +1,13 @@
+.time, .title, .djs {
+  display: inline-block;
+  padding: 5px;
+  margin: 0;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.djs {
+  font-style: italic;
+}

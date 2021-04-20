@@ -1,17 +1,24 @@
-import Head from "next/head";
+import PlayButton from "../components/PlayButton.js";
 import NavBar from "../components/NavBar.js";
+import NextThreeShows from "../components/NextThreeShows.js";
+import LoginButton from "../components/LoginButton.js";
 
+import Head from "next/head";
+
+import shows from "../../data/shows.json";
 import styles from "../styles/Home.module.css";
 
 import { useState } from "react";
 
 export default function Home() {
+  const [allShows] = useState(shows);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const [page, setCurrentPage] = useState("Home");
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
   const placeholderPages = {
-    "Home":<h2>This is the homepage</h2>,
+    "Home":<NextThreeShows shows={allShows}/>,
     "Blog":<h2>This is the blog</h2>,
     "Schedule":<h2>This is the schedule</h2>,
     "Community":<h2>This is the community page</h2>,
@@ -28,7 +35,8 @@ export default function Home() {
       </Head>
 
       <main>
-        
+        <LoginButton loggedIn={loggedIn} handleClick={setLoggedIn}/>
+        <PlayButton/>
         <NavBar 
           pageList={pageList}
           currentPage={page}
