@@ -27,5 +27,7 @@ export default function NavBar({ pageList, currentPage, setCurrentPage }) {
 }
 
 NavBar.propTypes = {
-  pageList:PropTypes.arrayOf(PropTypes.string).isRequired,
+  pageList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentPage: PropTypes.string.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
 };
