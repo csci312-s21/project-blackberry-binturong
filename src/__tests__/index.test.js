@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
 import  fetchMock  from "fetch-mock-jest";
+import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import Home from "../pages/index";
 

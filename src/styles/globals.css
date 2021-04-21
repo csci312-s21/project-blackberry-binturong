@@ -22,6 +22,7 @@ main {
   flex-direction: column;
   justify-content: top;
   align-items: center;
+  width: 75%;
 }
 
 footer {
