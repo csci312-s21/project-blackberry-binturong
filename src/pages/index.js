@@ -2,6 +2,7 @@ import PlayButton from "../components/PlayButton.js";
 import NavBar from "../components/NavBar.js";
 import NextThreeShows from "../components/NextThreeShows.js";
 import LoginButton from "../components/LoginButton.js";
+import ShowOTW from "../components/ShowOTW.js";
 
 import Head from "next/head";
 
@@ -13,12 +14,13 @@ import { useState } from "react";
 export default function Home() {
   const [allShows] = useState(shows);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [sotw] = useState(allShows[5]); //placeholder, eventually we will want a callback: "setSotw"
 
   const [page, setCurrentPage] = useState("Home");
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
   const placeholderPages = {
-    "Home":<NextThreeShows shows={allShows}/>,
+    "Home":<div> <ShowOTW show={sotw}/> <p>{""}</p> <NextThreeShows shows={allShows}/>  </div>,
     "Blog":<h2>This is the blog</h2>,
     "Schedule":<h2>This is the schedule</h2>,
     "Community":<h2>This is the community page</h2>,

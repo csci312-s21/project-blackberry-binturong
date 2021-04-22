@@ -4,8 +4,11 @@ import { act } from "react-dom/test-utils";
 import Home from "../pages/index";
 
 describe("Top level integration tests", () => {
-  test("Smoke test", async () => {
+  beforeEach(() => {
     render(<Home />);
+  });
+
+  test("Smoke test", async () => {
     await act(async () => {
       await fetchMock.flush(true);
     });
