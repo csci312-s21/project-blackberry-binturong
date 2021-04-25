@@ -6,10 +6,14 @@ Tests for SongInput.js
 import { render, screen, fireEvent } from "@testing-library/react";
 import SongInput from "./SongInput";
 
+const sampleTitle = "Sample Title";
+const sampleArtist = "Sample Artist";
+const sampleAlbum = "Sample Album";
+
 const populateTextInputs = (container) => {
-  const titleInput = container.querySelector("input[type=text]", {name: "Title"});
-  const artistInput = container.querySelector("input[type=text]", {name: "Artist"});
-  const albumInput = container.querySelector("input[type=text]", {name: "Album"});
+  const titleInput = container.querySelector("input[name=Title]");
+  const artistInput = container.querySelector("input[name=Artist]");
+  const albumInput = container.querySelector("input[name=Album]");
 
   fireEvent.change(titleInput, { target: { value: sampleTitle } });
   fireEvent.change(artistInput, { target: { value: sampleArtist } });
@@ -17,11 +21,6 @@ const populateTextInputs = (container) => {
 }
 
 describe("SongInput tests", () => {
-
-  const sampleTitle = "Sample Title";
-  const sampleArtist = "Sample Artist";
-  const sampleAlbum = "Sample Album";
-
   const handler = jest.fn();
 
   beforeEach(() => {
@@ -31,13 +30,7 @@ describe("SongInput tests", () => {
   test.skip("Entering a new song will render all of that text on the page", () => {
     const { container } = render(<SongInput complete={handler}/>);
 
-    const titleInput = container.querySelector("input[type=text]", {name: "Title"});
-    const artistInput = container.querySelector("input[type=text]", {name: "Artist"});
-    const albumInput = container.querySelector("input[type=text]", {name: "Album"});
-    
-    fireEvent.change(titleInput, { target: { value: sampleTitle } });
-    fireEvent.change(artistInput, { target: { value: sampleArtist } });
-    fireEvent.change(albumInput, { target: { value: sampleAlbum } });
+    populateTextInputs(container);
 
     fireEvent.click(screen.queryByRole("button", {name: "Enter"}));
 
@@ -48,13 +41,9 @@ describe("SongInput tests", () => {
   test("Enter button is disabled without title", () => {
     const { container } = render(<SongInput complete={handler}/>);
 
-    let titleInput = container.querySelector("input[type=text]", {name: "Title"});
-    const artistInput = container.querySelector("input[type=text]", {name: "Artist"});
-    const albumInput = container.querySelector("input[type=text]", {name: "Album"});
-
     populateTextInputs(container);
 
-    titleInput = container.querySelector("input[type=text]", {name: "Title"});
+    const titleInput = container.querySelector("input[name=Title]");
     fireEvent.change(titleInput, { target: { value: "" } });
 
     const enterButton = screen.getByRole("button", { name: "Enter" });
@@ -66,7 +55,7 @@ describe("SongInput tests", () => {
 
     populateTextInputs(container);
 
-    const artistInput = container.querySelector("input[type=text]", {name: "Artist"});
+    const artistInput = container.querySelector("input[name=Artist]");;
     fireEvent.change(artistInput, { target: { value: "" } });
 
     const enterButton = screen.getByRole("button", { name: "Enter" });
@@ -77,23 +66,23 @@ describe("SongInput tests", () => {
     const { container } = render(<SongInput complete={handler}/>);
     populateTextInputs(container);
 
-    const albumInput = container.querySelector("input[type=text]", {name: "Album"});
+    const albumInput = container.querySelector("input[name=Album]");
     fireEvent.change(albumInput, { target: { value: "" } });
 
     const enterButton = screen.getByRole("button", { name: "Enter" });
     expect(enterButton).toBeDisabled();
   });
 
-  test.only("Enter button is enabled when all inputs have contents", () => {
+  test("Enter button is enabled when all inputs have contents", () => {
     const { container } = render(<SongInput complete={handler}/>);
     
-    const titleInput = container.querySelector("input[type=text]", {name: "Title"});
+    const titleInput = container.querySelector("input[name=Title]");
     expect(titleInput).toHaveValue("");
     
-    const artistInput = container.querySelector("input[type=text]", {name: "Artist"});
+    const artistInput = container.querySelector("input[name=Artist]");
     expect(artistInput).toHaveValue("");
 
-    const albumInput = container.querySelector("input[type=text]", {name: "Album"});
+    const albumInput = container.querySelector("input[name=Album]");
     expect(albumInput).toHaveValue("");
 
     const enterButton = screen.getByRole("button", { name: "Enter" });

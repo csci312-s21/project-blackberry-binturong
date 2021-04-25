@@ -17,17 +17,20 @@ export default function SongInput({ complete }) {
     <div>
       <input 
         type="text" 
-        placeholder="Enter song title" 
+        placeholder="Enter song title"
+        name="Title"
         defaultValue={title}
         onChange={(event) => setTitle(event.target.value)}/>
       <input 
         type="text" 
         placeholder="Enter artist" 
+        name="Artist"
         defaultValue={artist}
         onChange={(event) => setArtist(event.target.value)}/>
       <input 
         type="text" 
-        placeholder="Enter album" 
+        placeholder="Enter album"
+        name="Album"
         defaultValue={album}
         onChange={(event) => setAlbum(event.target.value)}/>
       <input 
