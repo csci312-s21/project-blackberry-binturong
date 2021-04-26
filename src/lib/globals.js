@@ -64,3 +64,15 @@ export const getDayString = (d) => {
   else if (d==="S"){return "Saturday"}
   else if (d==="Su"){return "Sunday"}
 }
+
+
+//Takes the char form show.day and returns a number M-Su ===1-7
+export const getDayInt = (d) => {
+  if (d==="M"){return 0}
+  else if (d==="T"){return 1}
+  else if (d==="W"){return 2}
+  else if (d==="Th"){return 3}
+  else if (d==="F"){return 4}
+  else if (d==="S"){return 5}
+  else if (d==="Su"){return 6}
+}

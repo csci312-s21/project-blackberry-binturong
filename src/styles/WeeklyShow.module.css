@@ -1,0 +1,11 @@
+.WeeklyShow {
+  width: 125px;
+  height: 125px;
+  background-color: rgb(200, 200, 200);
+  font-size: 14px;
+  text-align: center;
+}
+
+.ShowTitle {
+  font-size: 18px;
+}
