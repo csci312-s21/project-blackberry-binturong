@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar.js";
 import NextThreeShows from "../components/NextThreeShows.js";
 import LoginButton from "../components/LoginButton.js";
 import ShowOTW from "../components/ShowOTW.js";
+import ShowPage from "../components/ShowPage.js";
 
 import Head from "next/head";
 
@@ -45,6 +46,7 @@ export default function Home() {
           setCurrentPage={setCurrentPage}
         />
         {current}
+        <ShowPage show={sotw}/>
       </main>
 
       <footer>A CS 312 Project</footer>

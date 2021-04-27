@@ -8,10 +8,10 @@
 */
 import PropTypes from "prop-types";
 import styles from "../styles/ShowOTW.module.css";
-import { prettyTimeFormat, getDayString } from "../lib/globals.js";
+import { getTimeString, getDayString } from "../lib/globals.js";
 
 export default function ShowOTW({ show }){
-  const time = prettyTimeFormat(show.time.hour, show.time.duration);
+  const time = getTimeString(show.time.hour, show.time.duration);
   const day = getDayString(show.time.day);
   return (<div className={styles.showOTW}>
       <div className={styles.header}>Show Of The Week</div>
