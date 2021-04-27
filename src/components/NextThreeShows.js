@@ -7,7 +7,7 @@
     shows - an array of show objects
 */
 import PropTypes from "prop-types";
-import { dayToInt, compareTwoShows } from "../lib/globals.js";
+import { dayToInt, compareTwoShows } from "../lib/component-utils.js";
 import moment from "moment";
 import ShowSnippet from "./ShowSnippet.js";
 import styles from "../styles/NextThreeShows.module.css";

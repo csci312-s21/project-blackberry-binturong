@@ -7,7 +7,7 @@
     show - a show objects with title, list of DJs, hour, and duration attributes at minimum
 */
 import PropTypes from "prop-types";
-import { prettyTimeFormat } from "../lib/globals.js";
+import { prettyTimeFormat } from "../lib/component-utils.js";
 import styles from "../styles/ShowSnippet.module.css";
 
 export default function ShowSnippet({ show }){
