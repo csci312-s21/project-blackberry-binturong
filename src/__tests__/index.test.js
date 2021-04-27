@@ -4,7 +4,19 @@ import { act } from "react-dom/test-utils";
 import WRMCWebsite from "../pages/index";
 
 describe("Top level integration tests", () => {
+  let _Date;
+
+  beforeAll(() => {
+    _Date = Date;
+  });
+
+  afterAll(() => {
+    Date = _Date; // eslint-disable-line
+  });
+
   beforeEach(() => {
+    // mock date.now function for deterministic testing of NextThreeShows
+    Date.now = jest.fn(() => new Date(2021, 3, 27, 17));
     render(<WRMCWebsite />);
   });
 
