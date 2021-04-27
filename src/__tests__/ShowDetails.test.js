@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ShowPage from "../components/ShowPage.js";
+import ShowDetails from "../components/ShowDetails.js";
 
 const sampleShow = {
   "title": "Sample Show 1",
@@ -14,35 +14,33 @@ const sampleShow = {
   "id": 55
 };
 
-describe("ShowPage tests", () => {
+describe("ShowDetails tests", () => {
 
-  test("ShowPage displays title", () => {
-    render(<ShowPage show={sampleShow} />);
+  beforeEach(() => {
+    render(<ShowDetails show={sampleShow} />);
+  });
+
+  test("ShowDetails displays title", () => {
     expect(screen.getByText("Sample Show 1")).toBeInTheDocument();
   });
 
-  test("ShowPage displays DJs", () => {
-    render(<ShowPage show={sampleShow} />);
+  test("ShowDetails displays DJs", () => {
     expect(screen.getByText("Kyle Hooker")).toBeInTheDocument();
   });
 
-  test("ShowPage displays description", () => {
-    render(<ShowPage show={sampleShow} />);
+  test("ShowDetails displays description", () => {
     expect(screen.getByText("sample description 1")).toBeInTheDocument();
   });
 
-  test("ShowPage displays time", () => {
-    render(<ShowPage show={sampleShow} />);
+  test("ShowDetails displays time", () => {
     expect(screen.getByText("Friday, 8:00 - 9:00 am")).toBeInTheDocument();
   });
 
-  test("ShowPage displays genres", () => {
-    render(<ShowPage show={sampleShow} />);
+  test("ShowDetails displays genres", () => {
     expect(screen.getByText("Rock")).toBeInTheDocument();
   });
 
-  test.skip("ShowPage displays playlists", () => {
-    render(<ShowPage show={sampleShow} />);
+  test.skip("ShowDetails displays playlists", () => {
     // TODO: update this test when we have playlist data
   });
 

@@ -12,6 +12,11 @@
   padding: 10px;
 }
 
+.showListItem {
+  cursor: pointer;
+  width: fit-content;
+}
+
 .header, .message {
   text-align: center;
   margin: 5px;

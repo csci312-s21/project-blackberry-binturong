@@ -6,6 +6,7 @@
     border: none;
     padding-left: 60px;
     float: right;
+    cursor: pointer;
 }
 
 .loginContainer {
