@@ -11,7 +11,7 @@ const sampleShow = {
       "duration": 1
     },
     "genres": ["Rock"],
-    "id": "55"
+    "id": 55
   };
 
 describe("ShowOTW tests", () => {

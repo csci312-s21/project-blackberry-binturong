@@ -12,7 +12,7 @@ const sampleShows = [
       "duration": 1
     },
     "genres": ["Rock"],
-    "id": "55"
+    "id": 55
   },
   {
     "title": "Sample Show 2",
@@ -24,7 +24,7 @@ const sampleShows = [
       "duration": 1
     },
     "genres": ["News"],
-    "id": "56"
+    "id": 56
   },
   {
     "title": "Sample Show 3",
@@ -36,7 +36,7 @@ const sampleShows = [
       "duration": 1
     },
     "genres": ["Folk","Indie","Talk"],
-    "id": "57"
+    "id": 57
   },
   {
     "title": "Sample Show 4",
@@ -48,7 +48,7 @@ const sampleShows = [
       "duration": 1
     },
     "genres": ["Folk","Indie","Talk"],
-    "id": "58"
+    "id": 58
   }
 ]
 
