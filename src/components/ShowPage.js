@@ -10,6 +10,7 @@
 */
 import PropTypes from "prop-types";
 import { getTimeString, getDayString } from "../lib/globals.js";
+import styles from "../styles/ShowPage.module.css";
 
 export default function ShowPage({ show }) {
   const time = getTimeString(show.time.hour, show.time.duration);
@@ -17,12 +18,12 @@ export default function ShowPage({ show }) {
 
   return (
     <div>
-      <div>{show.title}</div>
-      <div><span>Hosted By:</span> {show.DJs.join(" ")}</div>
-      <div><span>Genre(s):</span> {show.genres.join(" ")}</div>
-      <div><span>Time:</span> {day}, {time}</div>
-      <div><span>Description:</span> {show.description}</div>
-      <div><span>Playlists:</span> TODO</div>
+      <h1 className={styles.showTitle}>{show.title}</h1><br/>
+      <div><span className={styles.category}>Hosted By:</span> {show.DJs.join(" ")}</div><br/>
+      <div><span className={styles.category}>Genre(s):</span> {show.genres.join(" ")}</div><br/>
+      <div><span className={styles.category}>Time:</span> {day}, {time}</div><br/>
+      <div><span className={styles.category}>Description:</span> {show.description}</div><br/>
+      <div><span className={styles.category}>Playlists:</span> TODO</div>
     </div>
     );
 }
