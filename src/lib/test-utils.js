@@ -1,3 +1,9 @@
+/*
+
+This file is for helper functions/constants for our tests
+
+*/
+
 export const sampleShows = [
   {
     "title": "Sample Show 1",
