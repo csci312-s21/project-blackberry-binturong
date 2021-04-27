@@ -47,7 +47,7 @@ NextThreeShows.propTypes = {
         duration: PropTypes.number.isRequired,
       }).isRequired,
       genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }).isRequired
   ).isRequired
 };

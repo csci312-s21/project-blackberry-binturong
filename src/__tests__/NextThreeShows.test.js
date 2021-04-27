@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import NextThreeShows from "./NextThreeShows.js";
+import NextThreeShows from "../components/NextThreeShows.js";
 
 const sampleShows = [
   {

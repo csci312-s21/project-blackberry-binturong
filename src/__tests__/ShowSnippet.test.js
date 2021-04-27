@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ShowSnippet from "./ShowSnippet.js";
+import ShowSnippet from "../components/ShowSnippet.js";
 
 const sampleShow = {
   "title": "Sample Show",

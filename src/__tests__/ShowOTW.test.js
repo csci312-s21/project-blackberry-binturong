@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ShowOTW from "./ShowOTW.js"; 
+import ShowOTW from "../components/ShowOTW.js"; 
 
 const sampleShow = {
     "title": "Sample Show 1",
