@@ -19,11 +19,11 @@ export default function ShowDetails({ show }) {
   return (
     <div data-testid="show details page">
       <h1 className={styles.showTitle}>{show.title}</h1><br/>
-      <div><span className={styles.category}>Hosted By:</span> {show.DJs.join(" ")}</div><br/>
-      <div><span className={styles.category}>Genre(s):</span> {show.genres.join(" ")}</div><br/>
-      <div><span className={styles.category}>Time:</span> {day}, {time}</div><br/>
-      <div><span className={styles.category}>Description:</span> {show.description}</div><br/>
-      <div><span className={styles.category}>Playlists:</span> TODO</div>
+      <div><span className={styles.showAttr}>Hosted By:</span> {show.DJs.join(" ")}</div><br/>
+      <div><span className={styles.showAttr}>Genre(s):</span> {show.genres.join(" ")}</div><br/>
+      <div><span className={styles.showAttr}>Time:</span> {day}, {time}</div><br/>
+      <div><span className={styles.showAttr}>Description:</span> {show.description}</div><br/>
+      <div><span className={styles.showAttr}>Playlists:</span> TODO</div>
     </div>
     );
 }

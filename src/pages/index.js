@@ -20,17 +20,21 @@ export default function WRMCWebsite() {
   const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
+  // callback function to select page in NavBar
   const selectPage = (newPage) => {
     setCurrentPage(newPage);
     setSelectedShow();
   }
 
+  // callback function to display ShowDetails page
   const clickShow = (show) => {
     setSelectedShow(show);
-    setCurrentPage("");
+    setCurrentPage("Show Details");
   }
 
   const placeholderPages = {
+    // TODO: we should create a container component for the Home page
+    // (and any other pages that end up having multiple components)
     "Home" : <div>
               <ShowOTW show={sotw} handleClick={clickShow}/> <p>{""}</p>
               <NextThreeShows shows={allShows} handleClick={clickShow}/>
@@ -38,7 +42,8 @@ export default function WRMCWebsite() {
     "Blog" : <h2>This is the blog</h2>,
     "Schedule" : <h2>This is the schedule</h2>,
     "Community" : <h2>This is the community page</h2>,
-    "About" : <h2>This is the about page</h2>
+    "About" : <h2>This is the about page</h2>,
+    "Show Details" : <ShowDetails show={selectedShow}/>
   };
 
   const current = placeholderPages[page];
@@ -58,7 +63,7 @@ export default function WRMCWebsite() {
           currentPage={page}
           setCurrentPage={selectPage}
         />
-        {selectedShow ? <ShowDetails show={selectedShow}/> : current}
+        {current}
       </main>
 
       <footer>A CS 312 Project</footer>
