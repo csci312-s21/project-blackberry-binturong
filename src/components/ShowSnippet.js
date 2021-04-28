@@ -7,7 +7,7 @@
     show - a show objects with title, list of DJs, hour, and duration attributes at minimum
 */
 import PropTypes from "prop-types";
-import { getTimeString } from "../lib/globals.js";
+import { getTimeString } from "../lib/component-utils.js";
 import styles from "../styles/ShowSnippet.module.css";
 
 export default function ShowSnippet({ show }){
@@ -33,6 +33,6 @@ ShowSnippet.propTypes = {
       duration: PropTypes.number.isRequired,
     }).isRequired,
     genres: PropTypes.arrayOf(PropTypes.string.isRequired),
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired
 }

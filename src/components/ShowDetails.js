@@ -9,7 +9,7 @@
     show - a show object
 */
 import PropTypes from "prop-types";
-import { getTimeString, getDayString } from "../lib/globals.js";
+import { getTimeString, getDayString } from "../lib/component-utils.js";
 import styles from "../styles/ShowDetails.module.css";
 
 export default function ShowDetails({ show }) {
@@ -19,8 +19,8 @@ export default function ShowDetails({ show }) {
   return (
     <div data-testid="show details page">
       <h1 className={styles.showTitle}>{show.title}</h1><br/>
-      <div><span className={styles.showAttr}>Hosted By:</span> {show.DJs.join(" ")}</div><br/>
-      <div><span className={styles.showAttr}>Genre(s):</span> {show.genres.join(" ")}</div><br/>
+      <div><span className={styles.showAttr}>Hosted By:</span> {show.DJs.join(", ")}</div><br/>
+      <div><span className={styles.showAttr}>Genre(s):</span> {show.genres.join(", ")}</div><br/>
       <div><span className={styles.showAttr}>Time:</span> {day}, {time}</div><br/>
       <div><span className={styles.showAttr}>Description:</span> {show.description}</div><br/>
       <div><span className={styles.showAttr}>Playlists:</span> TODO</div>
@@ -40,5 +40,5 @@ ShowDetails.propTypes = {
     }).isRequired,
     genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     id: PropTypes.number.isRequired,
-  }).isRequired
+  })
 };

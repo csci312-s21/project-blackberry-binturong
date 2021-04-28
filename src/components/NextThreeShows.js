@@ -7,7 +7,7 @@
     shows - an array of show objects
 */
 import PropTypes from "prop-types";
-import { dayToInt, compareTwoShows } from "../lib/globals.js";
+import { dayToInt, compareTwoShows } from "../lib/component-utils.js";
 import moment from "moment";
 import ShowSnippet from "./ShowSnippet.js";
 import styles from "../styles/NextThreeShows.module.css";
@@ -47,7 +47,7 @@ NextThreeShows.propTypes = {
         duration: PropTypes.number.isRequired,
       }).isRequired,
       genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }).isRequired
   ).isRequired,
   handleClick: PropTypes.func.isRequired

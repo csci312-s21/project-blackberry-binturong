@@ -4,7 +4,7 @@ Tests for PlayButton.js
 
 */
 import { render, screen, fireEvent } from "@testing-library/react";
-import PlayButton from "./PlayButton";
+import PlayButton from "../components/PlayButton";
 
 describe("PlayButton tests", () => {
   

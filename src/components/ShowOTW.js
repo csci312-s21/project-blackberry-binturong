@@ -8,7 +8,7 @@
 */
 import PropTypes from "prop-types";
 import styles from "../styles/ShowOTW.module.css";
-import { getTimeString, getDayString } from "../lib/globals.js";
+import { getTimeString, getDayString } from "../lib/component-utils.js";
 
 export default function ShowOTW({ show, handleClick }){
   const time = getTimeString(show.time.hour, show.time.duration);
@@ -33,7 +33,7 @@ ShowOTW.propTypes = {
       duration: PropTypes.number.isRequired,
     }).isRequired,
     genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
   handleClick: PropTypes.func.isRequired
 };
