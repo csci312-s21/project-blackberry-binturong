@@ -1,18 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import ShowDetails from "../components/ShowDetails.js";
-
-const sampleShow = {
-  "title": "Sample Show 1",
-  "DJs": ["Kyle Hooker"],
-  "description": "sample description 1",
-  "time": {
-    "day": "F",
-    "hour": 800,
-    "duration": 1
-  },
-  "genres": ["Rock"],
-  "id": 55
-};
+import { sampleShow } from "../lib/test-utils.js";
 
 describe("ShowDetails tests", () => {
 
