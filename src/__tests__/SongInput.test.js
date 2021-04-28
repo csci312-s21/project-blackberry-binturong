@@ -4,16 +4,16 @@ Tests for SongInput.js
 
 */
 import { render, screen, fireEvent } from "@testing-library/react";
-import SongInput from "./SongInput";
+import SongInput from "../components/SongInput";
 
 const sampleTitle = "Sample Title";
 const sampleArtist = "Sample Artist";
 const sampleAlbum = "Sample Album";
 
-const populateTextInputs = (container) => {
-  const titleInput = container.querySelector("input[name=Title]");
-  const artistInput = container.querySelector("input[name=Artist]");
-  const albumInput = container.querySelector("input[name=Album]");
+const populateTextInputs = () => {
+  const titleInput = screen.getByRole("textbox", {name: "Title"});
+  const artistInput = screen.getByRole("textbox", {name: "Artist"});
+  const albumInput = screen.getByRole("textbox", {name: "Album"});
 
   fireEvent.change(titleInput, { target: { value: sampleTitle } });
   fireEvent.change(artistInput, { target: { value: sampleArtist } });
@@ -25,25 +25,14 @@ describe("SongInput tests", () => {
 
   beforeEach(() => {
     handler.mockReset();
-  });
-
-  test.skip("Entering a new song will render all of that text on the page", () => {
-    const { container } = render(<SongInput complete={handler}/>);
-
-    populateTextInputs(container);
-
-    fireEvent.click(screen.queryByRole("button", {name: "Enter"}));
-
-    expect(handler).toHaveBeenCalled();
-    // not complete
+    render(<SongInput complete={handler}/>);
   });
 
   test("Enter button is disabled without title", () => {
-    const { container } = render(<SongInput complete={handler}/>);
 
-    populateTextInputs(container);
+    populateTextInputs();
 
-    const titleInput = container.querySelector("input[name=Title]");
+    const titleInput = screen.getByRole("textbox", {name: "Title"});
     fireEvent.change(titleInput, { target: { value: "" } });
 
     const enterButton = screen.getByRole("button", { name: "Enter" });
@@ -51,11 +40,10 @@ describe("SongInput tests", () => {
   });
 
   test("Enter button is disabled without artist", () => {
-    const { container } = render(<SongInput complete={handler}/>);
 
-    populateTextInputs(container);
+    populateTextInputs();
 
-    const artistInput = container.querySelector("input[name=Artist]");;
+    const artistInput = screen.getByRole("textbox", {name: "Artist"});
     fireEvent.change(artistInput, { target: { value: "" } });
 
     const enterButton = screen.getByRole("button", { name: "Enter" });
@@ -63,10 +51,10 @@ describe("SongInput tests", () => {
   });
 
   test("Enter button is disabled without album", () => {
-    const { container } = render(<SongInput complete={handler}/>);
-    populateTextInputs(container);
 
-    const albumInput = container.querySelector("input[name=Album]");
+    populateTextInputs();
+
+    const albumInput = screen.getByRole("textbox", {name: "Album"});
     fireEvent.change(albumInput, { target: { value: "" } });
 
     const enterButton = screen.getByRole("button", { name: "Enter" });
@@ -74,15 +62,14 @@ describe("SongInput tests", () => {
   });
 
   test("Enter button is enabled when all inputs have contents", () => {
-    const { container } = render(<SongInput complete={handler}/>);
     
-    const titleInput = container.querySelector("input[name=Title]");
+    const titleInput = screen.getByRole("textbox", {name: "Title"});
     expect(titleInput).toHaveValue("");
     
-    const artistInput = container.querySelector("input[name=Artist]");
+    const artistInput = screen.getByRole("textbox", {name: "Artist"});
     expect(artistInput).toHaveValue("");
 
-    const albumInput = container.querySelector("input[name=Album]");
+    const albumInput = screen.getByRole("textbox", {name: "Album"});
     expect(albumInput).toHaveValue("");
 
     const enterButton = screen.getByRole("button", { name: "Enter" });
@@ -97,6 +84,21 @@ describe("SongInput tests", () => {
     expect(albumInput).toHaveValue(sampleAlbum);
     
     expect(enterButton).toBeEnabled();
+
+  });
+
+  test("When a song is entered, the text on the enter button changes to update", () => {
+    
+    populateTextInputs();
+
+    let enterButton = screen.getByRole("button", { name: "Enter" });
+    fireEvent.click(enterButton);
+
+    const updateButton = screen.getByRole("button", { name: "Update" });
+    expect(updateButton).toBeInTheDocument();
+
+    enterButton = screen.queryByRole("button", { name: "Enter" });
+    expect(enterButton).not.toBeInTheDocument();
 
   });
 

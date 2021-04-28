@@ -3,17 +3,19 @@ import NavBar from "../components/NavBar.js";
 import NextThreeShows from "../components/NextThreeShows.js";
 import LoginButton from "../components/LoginButton.js";
 import ShowOTW from "../components/ShowOTW.js";
-import SongInput from "../components/SongInput.js";
+import PlaylistLogger from "../components/PlaylistLogger.js";
 
 import Head from "next/head";
 
 import shows from "../../data/shows.json";
+import playlists from "../../data/playlists.json";
 import styles from "../styles/Home.module.css";
 
 import { useState } from "react";
 
 export default function Home() {
   const [allShows] = useState(shows);
+  const [allPlaylists] = useState(playlists);
   const [loggedIn, setLoggedIn] = useState(false);
   const [sotw] = useState(allShows[5]); //placeholder, eventually we will want a callback: "setSotw"
 
@@ -46,7 +48,7 @@ export default function Home() {
           setCurrentPage={setCurrentPage}
         />
         {current}
-        <SongInput complete={undefined} />
+        <PlaylistLogger complete={undefined} showID={55} playlists={playlists}/>
       </main>
 
       <footer>A CS 312 Project</footer>

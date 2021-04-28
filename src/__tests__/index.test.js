@@ -14,3 +14,21 @@ describe("Top level integration tests", () => {
     });
   });
 });
+
+describe("Create playlists tests", () => {
+  beforeEach(() => {
+    render(<Home />);
+  });
+
+  test("Entering song adds to playlist", () => {
+    
+  });
+
+  test("Updating song attribute updates song", () => {
+    
+  });
+
+  test("Deleting entered song removes it from playlist", () => {
+    
+  });
+});

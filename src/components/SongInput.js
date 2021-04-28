@@ -8,39 +8,40 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import moment from "moment";
 
-export default function SongInput({ complete }) {
-  const [title, setTitle] = useState("");
-  const [artist, setArtist] = useState("");
-  const [album, setAlbum] = useState("");
+export default function SongInput({ complete, song }) {
+  const [title, setTitle] = useState(song ? song.title : "");
+  const [artist, setArtist] = useState(song ? song.artist : "");
+  const [album, setAlbum] = useState(song ? song.album : "");
 
   return (
     <div>
       <input 
         type="text" 
         placeholder="Enter song title"
-        name="Title"
+        aria-label="Title"
         defaultValue={title}
         onChange={(event) => setTitle(event.target.value)}/>
       <input 
         type="text" 
         placeholder="Enter artist" 
-        name="Artist"
+        aria-label="Artist"
         defaultValue={artist}
         onChange={(event) => setArtist(event.target.value)}/>
       <input 
         type="text" 
         placeholder="Enter album"
-        name="Album"
+        aria-label="Album"
         defaultValue={album}
         onChange={(event) => setAlbum(event.target.value)}/>
       <input 
         type="button"
         value="Enter"
         disabled={(title === "") || (artist === "") || (album === "")}
-        onClick={() => complete({title: title, artist: artist, album: album, timeAdded: moment().toISOString()})}/>
+        onClick={
+          () => complete({...song, title: title, artist: artist, album: album, timeAdded: moment().toISOString()})}/>
       <input
-        type="button" 
-        value="Delete" 
+        type="button"
+        value="Delete"
         onClick={() => complete()}/>
     </div>
   );
@@ -49,4 +50,11 @@ export default function SongInput({ complete }) {
 
 SongInput.propTypes = {
   complete: PropTypes.func.isRequired,
+  song: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    artist: PropTypes.string.isRequired,
+    album: PropTypes.string.isRequired,
+    timeAdded: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  })
 }
