@@ -4,7 +4,7 @@ Tests for PlaylistLogger.js
 
 */
 import { render, screen, fireEvent } from "@testing-library/react";
-import PlayListLogger from "../components/PlayListLogger";
+import PlaylistLogger from "../components/PlaylistLogger.js";
 
 const sampleShow = {
   "title": "Sample Show 1",
@@ -21,11 +21,17 @@ const sampleShow = {
 
 const samplePlaylists = [
   {
-    "songs": [],
+    "songs": [
+      {
+      "title": "title",
+      "artist": "artist",
+      "album": "album"
+      }
+    ],
     "time": "",
     "id": 0,
     "showID": 55,
-    "isCurrent": false
+    "isCurrent": true
   }
 ];
 
@@ -37,7 +43,7 @@ describe("PlaylistLogger tests", () => {
     render(<PlaylistLogger complete={handler} showID={sampleShow.id} playlists={samplePlaylists}/>);
   });
 
-  test("Add button adds new row", () => {
+  test.only("Add button adds new row", () => {
     const songInputs = screen.queryAllByRole("listitem");
     const addButton = screen.getByRole("button", { name: "Add Row" });
     expect(addButton).toBeInTheDocument();

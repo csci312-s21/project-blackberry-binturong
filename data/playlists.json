@@ -3,7 +3,8 @@
     "songs": [{
       "title": "title",
       "artist": "artist",
-      "album": "album"
+      "album": "album",
+      "id": 0
     }],
     "time": "",
     "id": 0,
