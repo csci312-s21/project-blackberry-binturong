@@ -43,7 +43,7 @@ describe("PlaylistLogger tests", () => {
     render(<PlaylistLogger complete={handler} showID={sampleShow.id} playlists={samplePlaylists}/>);
   });
 
-  test.only("Add button adds new row", () => {
+  test("Add button adds new row", () => {
     const songInputs = screen.queryAllByRole("listitem");
     const addButton = screen.getByRole("button", { name: "Add Row" });
     expect(addButton).toBeInTheDocument();

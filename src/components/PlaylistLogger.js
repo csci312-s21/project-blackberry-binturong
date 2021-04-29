@@ -7,22 +7,20 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import SongInput from "./SongInput.js";
+import { getRandomIntID } from "../lib/globals.js";
 
 export default function PlaylistLogger({ complete, showID, playlists }) {
-  const [numEmptyRows, setNumEmptyRows] = useState(0);
+  const [emptyRows, setEmptyRows] = useState([]);
 
-  const clickButton = (action) => {
-    complete();
-    (action === "Delete") && setNumEmptyRows(numEmptyRows - 1);
+  const addRow = () => {
+    const emptySong = {title: "", artist: "", album: "", id: getRandomIntID()}
+    const newEmptyRows = emptyRows.concat([emptySong]);
+    setEmptyRows(newEmptyRows);
   }
-
-  const currentPlaylist = playlists.find((playlist) => playlist.showID === showID && playlist.isCurrent);
-  const rows = currentPlaylist.songs.map(
-    (song) => <li key={song.id}><SongInput complete={complete} song={song}/></li>);
   
-  for (let i = 0; i < numEmptyRows; i++) {
-    rows.push(<li key={i}><SongInput complete={complete}/></li>)
-  }
+  const currentPlaylist = playlists.find((playlist) => playlist.showID === showID && playlist.isCurrent);
+  const rows = currentPlaylist.songs.concat(emptyRows).map(
+    (song) => <li key={song.id.toString()}><SongInput complete={complete} song={song}/></li>);
 
   return (
     <div>
@@ -30,7 +28,7 @@ export default function PlaylistLogger({ complete, showID, playlists }) {
       <input
         type="button"
         value="Add Row"
-        onClick={() => setNumEmptyRows(numEmptyRows + 1)}
+        onClick={() => addRow()}
       />
     </div>
   );

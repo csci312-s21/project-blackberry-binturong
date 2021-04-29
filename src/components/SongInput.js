@@ -54,7 +54,7 @@ SongInput.propTypes = {
     title: PropTypes.string.isRequired,
     artist: PropTypes.string.isRequired,
     album: PropTypes.string.isRequired,
-    timeAdded: PropTypes.string.isRequired,
+    timeAdded: PropTypes.string,
     id: PropTypes.number.isRequired,
   })
 }
