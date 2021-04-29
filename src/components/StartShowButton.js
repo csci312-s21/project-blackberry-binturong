@@ -12,17 +12,17 @@ export default function StartShowButton({ userShows, startShow }) {
   const [selectedShow, setSelectedShow] = useState();
 
   const options = userShows.map((show) => <option value={show.id}>{show.title}</option>);
-  console.log("options", options);
 
   return (
     <div>
       <select onChange={() => setSelectedShow(event.target.value)}>
-        <option disabled>Select show below:</option>
+        <option disabled selected>Select a show:</option>
         {options}
       </select>
       <input
         type="button"
         value="Start Show!"
+        disabled={!selectedShow}
         onClick={() => startShow(selectedShow)}/>
     </div>
   );
