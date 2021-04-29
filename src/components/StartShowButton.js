@@ -11,9 +11,7 @@ import { useState } from "react";
 export default function StartShowButton({ userShows, startShow }) {
   const [selectedShow, setSelectedShow] = useState();
 
-  const options = userShows.map((show) => {
-    <option value={show.id}>{show.title}</option>
-  });
+  const options = userShows.map((show) => <option value={show.id}>{show.title}</option>);
   console.log("options", options);
 
   return (
