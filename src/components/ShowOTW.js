@@ -6,7 +6,7 @@
   props:
     show - a show object
 */
-import PropTypes from "prop-types";
+import { showType } from "../lib/types.js";
 import styles from "../styles/ShowOTW.module.css";
 import { prettyTimeFormat, getDayString } from "../lib/component-utils.js";
 
@@ -23,16 +23,5 @@ export default function ShowOTW({ show }){
 }
 
 ShowOTW.propTypes = {
-  show: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    DJs: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    description: PropTypes.string.isRequired,
-    time: PropTypes.shape({
-      day: PropTypes.string.isRequired,
-      hour: PropTypes.number.isRequired,
-      duration: PropTypes.number.isRequired,
-    }).isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    id: PropTypes.number.isRequired,
-  }).isRequired
+  show: showType.isRequired
 };

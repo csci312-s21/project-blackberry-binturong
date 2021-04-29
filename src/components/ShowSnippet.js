@@ -6,7 +6,7 @@
   props:
     show - a show objects with title, list of DJs, hour, and duration attributes at minimum
 */
-import PropTypes from "prop-types";
+import { showType } from "../lib/types.js";
 import { prettyTimeFormat } from "../lib/component-utils.js";
 import styles from "../styles/ShowSnippet.module.css";
 
@@ -23,16 +23,5 @@ export default function ShowSnippet({ show }){
 }
 
 ShowSnippet.propTypes = {
-  show: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    DJs: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    description: PropTypes.string,
-    time: PropTypes.shape({
-      day: PropTypes.string,
-      hour: PropTypes.number.isRequired,
-      duration: PropTypes.number.isRequired,
-    }).isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string.isRequired),
-    id: PropTypes.number.isRequired,
-  }).isRequired
+  show: showType.isRequired
 }
