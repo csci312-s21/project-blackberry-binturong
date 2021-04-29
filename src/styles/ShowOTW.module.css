@@ -1,4 +1,6 @@
 .showOTW {
+  float: right;
+  width: 55%;
   border: solid black;
   background-color: hsl(184, 100%, 90%);
   border-radius: 10px;

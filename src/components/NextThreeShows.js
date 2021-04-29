@@ -1,8 +1,6 @@
 /*
   NextThreeShows.js
-
   This component displays a preview of the next three shows, not including the current show.
-
   props:
     shows - an array of show objects
 */

@@ -1,19 +1,24 @@
 .nextThreeShows {
+  width: 40%;
   border: solid black;
   background-color: rgb(255, 205, 213);
   border-radius: 10px;
   padding: 5px;
-  text-align: center;
 }
 
 .showList {
   list-style-type: none;
   border-radius: 10px;
-  margin: 20;
+  margin: 0;
   padding: 10px;
+  text-align: center;
 }
 
 .header, .message {
   text-align: center;
-  margin: 5px;
+  margin: 1px;
+  font-size: 150%;
+  font-style: italic;
+  font-family: Courier New;
+  font-weight: bold;
 }

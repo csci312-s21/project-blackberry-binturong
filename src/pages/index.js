@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar.js";
 import NextThreeShows from "../components/NextThreeShows.js";
 import LoginButton from "../components/LoginButton.js";
 import ShowOTW from "../components/ShowOTW.js";
+import DisplayCurrentShow from "../components/DisplayCurrentShow";
 
 import Head from "next/head";
 
@@ -20,7 +21,7 @@ export default function Home() {
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
   const placeholderPages = {
-    "Home":<div> <ShowOTW show={sotw}/> <p>{""}</p> <NextThreeShows shows={allShows}/>  </div>,
+    "Home":<div> <ShowOTW show={sotw}/> <p>{""}</p> <DisplayCurrentShow shows = {allShows}/> <p>{""}</p> <NextThreeShows shows={allShows}/></div>,
     "Blog":<h2>This is the blog</h2>,
     "Schedule":<h2>This is the schedule</h2>,
     "Community":<h2>This is the community page</h2>,
