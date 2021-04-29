@@ -12,14 +12,15 @@ import { getRandomIntID } from "../lib/globals.js";
 export default function PlaylistLogger({ complete, showID, playlists }) {
   const [emptyRows, setEmptyRows] = useState([]);
 
+  const currentPlaylist = playlists.find((playlist) => playlist.showID === showID && playlist.isCurrent);
+
   const addRow = () => {
-    const emptySong = {title: "", artist: "", album: "", id: getRandomIntID()}
+    const emptySong = {title: "", artist: "", album: "", id: getRandomIntID(), playlistID: currentPlaylist.id}
     const newEmptyRows = emptyRows.concat([emptySong]);
     setEmptyRows(newEmptyRows);
   }
   
-  const currentPlaylist = playlists.find((playlist) => playlist.showID === showID && playlist.isCurrent);
-  const rows = currentPlaylist.songs.concat(emptyRows).map(
+  const rows = (currentPlaylist.songs.concat(emptyRows)).map(
     (song) => <li key={song.id.toString()}><SongInput complete={complete} song={song}/></li>);
 
   return (
@@ -32,7 +33,7 @@ export default function PlaylistLogger({ complete, showID, playlists }) {
       />
     </div>
   );
-};
+}
 
 PlaylistLogger.propTypes = {
   complete: PropTypes.func.isRequired,

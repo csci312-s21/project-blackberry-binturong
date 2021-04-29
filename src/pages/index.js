@@ -48,7 +48,7 @@ export default function Home() {
           setCurrentPage={setCurrentPage}
         />
         {current}
-        <PlaylistLogger complete={undefined} showID={55} playlists={playlists}/>
+        <PlaylistLogger complete={undefined} showID={55} playlists={allPlaylists}/>
       </main>
 
       <footer>A CS 312 Project</footer>

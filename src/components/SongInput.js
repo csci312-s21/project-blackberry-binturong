@@ -46,7 +46,7 @@ export default function SongInput({ complete, song }) {
     </div>
   );
 
-};
+}
 
 SongInput.propTypes = {
   complete: PropTypes.func.isRequired,
