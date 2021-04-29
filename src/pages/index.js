@@ -31,7 +31,7 @@ export default function Home() {
     "Schedule":<h2>This is the schedule</h2>,
     "Community":<h2>This is the community page</h2>,
     "About":<h2>This is the about page</h2>,
-    "Log Playlist":<PlaylistLogger complete={undefined} showID={55} currentPlaylist={currentPlaylist}/>
+    "Log Playlist":<PlaylistLogger complete={undefined} currentPlaylist={currentPlaylist}/>
   };
 
   const startShow = (showID) => {

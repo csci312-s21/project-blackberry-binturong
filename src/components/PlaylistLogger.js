@@ -10,7 +10,7 @@ import { useState } from "react";
 import SongInput from "./SongInput.js";
 import { getRandomIntID } from "../lib/component-utils.js";
 
-export default function PlaylistLogger({ complete, showID, currentPlaylist }) {
+export default function PlaylistLogger({ complete, currentPlaylist }) {
   const [emptyRows, setEmptyRows] = useState([]);
 
   const addRow = () => {
@@ -44,6 +44,5 @@ export default function PlaylistLogger({ complete, showID, currentPlaylist }) {
 
 PlaylistLogger.propTypes = {
   complete: PropTypes.func.isRequired,
-  showID: PropTypes.number.isRequired,
   currentPlaylist: playlistType.isRequired,
 };
