@@ -5,36 +5,14 @@ Tests for PlaylistLogger.js
 */
 import { render, screen, fireEvent } from "@testing-library/react";
 import PlaylistLogger from "../components/PlaylistLogger.js";
-
-const sampleShow = {
-  "title": "Sample Show 1",
-  "DJs": ["Kyle Hooker"],
-  "description": "sample description 1",
-  "time": {
-    "day": "F",
-    "hour": 800,
-    "duration": 1
-  },
-  "genres": ["Rock"],
-  "id": 55
-};
-
-const samplePlaylists = [
-  {
-    "songs": [],
-    "time": "",
-    "id": 12,
-    "showID": 55,
-    "isCurrent": true
-  }
-];
+import { sampleShow, samplePlaylist } from "../lib/test-utils.js";
 
 describe("PlaylistLogger tests", () => {
   const handler = jest.fn();
 
   beforeEach(() => {
     handler.mockReset();
-    render(<PlaylistLogger complete={handler} showID={sampleShow.id} playlists={samplePlaylists}/>);
+    render(<PlaylistLogger complete={handler} showID={sampleShow.id} currentPlaylist={samplePlaylist}/>);
   });
 
   test("Add button adds new row", () => {

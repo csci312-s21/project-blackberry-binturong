@@ -5,14 +5,13 @@
 
 */
 import PropTypes from "prop-types";
+import { playlistType } from "../lib/types.js";
 import { useState } from "react";
 import SongInput from "./SongInput.js";
-import { getRandomIntID } from "../lib/globals.js";
+import { getRandomIntID } from "../lib/component-utils.js";
 
-export default function PlaylistLogger({ complete, showID, playlists }) {
+export default function PlaylistLogger({ complete, showID, currentPlaylist }) {
   const [emptyRows, setEmptyRows] = useState([]);
-
-  const currentPlaylist = playlists.find((playlist) => playlist.showID === showID && playlist.isCurrent);
 
   const addRow = () => {
     const emptySong = {title: "", artist: "", album: "", id: getRandomIntID(), playlistID: currentPlaylist.id}
@@ -46,5 +45,5 @@ export default function PlaylistLogger({ complete, showID, playlists }) {
 PlaylistLogger.propTypes = {
   complete: PropTypes.func.isRequired,
   showID: PropTypes.number.isRequired,
-  playlists: PropTypes.array.isRequired,
+  currentPlaylist: playlistType.isRequired,
 };

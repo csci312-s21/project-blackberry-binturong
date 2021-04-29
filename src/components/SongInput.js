@@ -5,6 +5,7 @@
 
 */
 import PropTypes from "prop-types";
+import { songType } from "../lib/types.js";
 import { useState } from "react";
 import moment from "moment";
 
@@ -12,6 +13,13 @@ export default function SongInput({ complete, song }) {
   const [title, setTitle] = useState(song ? song.title : "");
   const [artist, setArtist] = useState(song ? song.artist : "");
   const [album, setAlbum] = useState(song ? song.album : "");
+  const [saved, setSaved] = useState(false);
+
+  const saveSong = (show) => {
+    setSaved(true);
+    const action = saved ? "update" : "enter";
+    complete(action, show);
+  }
 
   return (
     <div>
@@ -35,10 +43,10 @@ export default function SongInput({ complete, song }) {
         onChange={(event) => setAlbum(event.target.value)}/>
       <input 
         type="button"
-        value="Enter"
+        value={saved ? "Update" : "Enter"}
         disabled={(title === "") || (artist === "") || (album === "")}
         onClick={
-          () => complete("enter", {...song, title: title, artist: artist, album: album, timeAdded: moment().toISOString()})}/>
+          () => saveSong({...song, title: title, artist: artist, album: album, timeAdded: moment().toISOString()})}/>
       <input
         type="button"
         value="Delete"
@@ -50,11 +58,5 @@ export default function SongInput({ complete, song }) {
 
 SongInput.propTypes = {
   complete: PropTypes.func.isRequired,
-  song: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    artist: PropTypes.string.isRequired,
-    album: PropTypes.string.isRequired,
-    timeAdded: PropTypes.string,
-    id: PropTypes.number.isRequired,
-  })
+  song: songType.isRequired
 }

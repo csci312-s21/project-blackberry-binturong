@@ -4,6 +4,7 @@ import NextThreeShows from "../components/NextThreeShows.js";
 import LoginButton from "../components/LoginButton.js";
 import ShowOTW from "../components/ShowOTW.js";
 import PlaylistLogger from "../components/PlaylistLogger.js";
+import StartShowButton from "../components/StartShowButton.js";
 
 import Head from "next/head";
 
@@ -13,13 +14,15 @@ import styles from "../styles/Home.module.css";
 
 import { useState } from "react";
 
+import { sampleShows } from "../lib/test-utils.js";
+
 export default function Home() {
   const [allShows] = useState(shows);
-  const [allPlaylists] = useState(playlists);
   const [loggedIn, setLoggedIn] = useState(false);
   const [sotw] = useState(allShows[5]); //placeholder, eventually we will want a callback: "setSotw"
-
   const [page, setCurrentPage] = useState("Home");
+  const [currentPlaylist, setCurrentPlaylist] = useState();
+
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
   const placeholderPages = {
@@ -27,10 +30,15 @@ export default function Home() {
     "Blog":<h2>This is the blog</h2>,
     "Schedule":<h2>This is the schedule</h2>,
     "Community":<h2>This is the community page</h2>,
-    "About":<h2>This is the about page</h2>
+    "About":<h2>This is the about page</h2>,
+    "Log Playlist":<PlaylistLogger complete={undefined} showID={55} currentPlaylist={currentPlaylist}/>
   };
 
-  const current = placeholderPages[page];
+  const startShow = (showID) => {
+    setCurrentPage("Log Playlist");
+    const newPlaylist = {songs: [], time: "", showID: showID};
+    setCurrentPlaylist(newPlaylist);
+  }
 
   return (
     <div className={styles.container}>
@@ -41,14 +49,15 @@ export default function Home() {
 
       <main>
         <LoginButton loggedIn={loggedIn} handleClick={setLoggedIn}/>
+        {loggedIn && <StartShowButton userShows={sampleShows} startShow={startShow}/>}
         <PlayButton/>
         <NavBar 
           pageList={pageList}
           currentPage={page}
           setCurrentPage={setCurrentPage}
         />
-        {current}
-        <PlaylistLogger complete={undefined} showID={55} playlists={allPlaylists}/>
+        {placeholderPages[page]}
+        
       </main>
 
       <footer>A CS 312 Project</footer>
