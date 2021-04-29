@@ -19,9 +19,17 @@ export default function PlaylistLogger({ complete, showID, playlists }) {
     const newEmptyRows = emptyRows.concat([emptySong]);
     setEmptyRows(newEmptyRows);
   }
+
+  const handleClick = (action, song) => {
+    if(action === "delete" && ((song.title === "") || (song.artist === "") || (song.album === ""))) {
+      const newRows = emptyRows.filter((row) => row.id !== song.id);
+      setEmptyRows(newRows);
+    }
+    // complete(action, song);
+  }
   
   const rows = (currentPlaylist.songs.concat(emptyRows)).map(
-    (song) => <li key={song.id.toString()}><SongInput complete={complete} song={song}/></li>);
+    (song) => <li key={song.id.toString()}><SongInput complete={handleClick} song={song}/></li>);
 
   return (
     <div>

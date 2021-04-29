@@ -1,13 +1,14 @@
 [
   {
     "songs": [{
-      "title": "title",
-      "artist": "artist",
-      "album": "album",
-      "id": 0
+      "title": "Test Title",
+      "artist": "Test Artist",
+      "album": "Test Album",
+      "id": 42,
+      "playlistID": 12
     }],
     "time": "",
-    "id": 0,
+    "id": 12,
     "showID": 55,
     "isCurrent": true
   }

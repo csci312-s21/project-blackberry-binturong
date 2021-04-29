@@ -21,15 +21,9 @@ const sampleShow = {
 
 const samplePlaylists = [
   {
-    "songs": [
-      {
-      "title": "title",
-      "artist": "artist",
-      "album": "album"
-      }
-    ],
+    "songs": [],
     "time": "",
-    "id": 0,
+    "id": 12,
     "showID": 55,
     "isCurrent": true
   }
@@ -51,7 +45,7 @@ describe("PlaylistLogger tests", () => {
     expect(screen.queryAllByRole("listitem")).toHaveLength(songInputs.length + 1);
   });
 
-  test("Delete button deletes current row", () => {
+  test("Delete button on empty row deletes row", () => {
     const addButton = screen.getByRole("button", { name: "Add Row" });
     fireEvent.click(addButton);
 

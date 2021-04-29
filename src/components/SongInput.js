@@ -38,11 +38,11 @@ export default function SongInput({ complete, song }) {
         value="Enter"
         disabled={(title === "") || (artist === "") || (album === "")}
         onClick={
-          () => complete({...song, title: title, artist: artist, album: album, timeAdded: moment().toISOString()})}/>
+          () => complete("enter", {...song, title: title, artist: artist, album: album, timeAdded: moment().toISOString()})}/>
       <input
         type="button"
         value="Delete"
-        onClick={() => complete()}/>
+        onClick={() => complete("delete", {...song})}/>
     </div>
   );
 
