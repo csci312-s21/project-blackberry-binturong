@@ -51,10 +51,29 @@ describe("Start show button integration tests", () => {
     expect(screen.getByRole("button", { name: "Start Show!" })).toBeInTheDocument();
     const options = screen.queryAllByTestId("show-option");
     const selector = screen.getByRole("combobox");
-    fireEvent.change(selector, { target: { value: options[0].key }});
-    const startShowButton = screen.getByRole("button", { name: "Start Show!" })
+    fireEvent.change(selector, { target: { value: options[0].value }});
+    const startShowButton = screen.getByRole("button", { name: "Start Show!" });
     expect(startShowButton).toBeEnabled();
     fireEvent.click(startShowButton);
     expect(screen.getByRole("button", { name: "Add Song" })).toBeInTheDocument();
+  });
+});
+
+describe("PlaylistLogger integration tests", () => {
+  beforeEach(() => {
+    render(<Home />);
+  });
+  
+  test("PlaylistLogger not visible when logged out", () => {
+    fireEvent.click(screen.queryByRole("button", { name: "In" }));
+    const options = screen.queryAllByTestId("show-option");
+    const selector = screen.getByRole("combobox");
+    fireEvent.change(selector, { target: { value: options[0].value }});
+    const startShowButton = screen.getByRole("button", { name: "Start Show!" })
+    fireEvent.click(startShowButton);
+    expect(screen.getByRole("button", { name: "Add Song" })).toBeInTheDocument();
+    fireEvent.click(screen.queryByRole("button", { name: "Out" }));
+    expect(screen.queryByRole("button", { name: "Add Song" })).not.toBeInTheDocument();
+    expect(screen.getByText("Show Of The Week")).toBeInTheDocument();
   });
 });

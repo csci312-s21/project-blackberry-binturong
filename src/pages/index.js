@@ -46,11 +46,11 @@ export default function Home() {
     }
   };
 
-  const startShow = (showID) => {
+  const startShow = (showId) => {
     setCurrentPage("Log Playlist");
-    const newPlaylist = {date: moment().format("L"), showID: showID, id: getRandomIntID()};
+    const newPlaylist = {date: moment().format("L"), showID: showId, id: getRandomIntID()};
     setCurrentPlaylist(newPlaylist);
-    setAllPlaylists([...allPlaylists, currentPlaylist]);
+    setAllPlaylists([...allPlaylists, newPlaylist]);
   }
 
   const endShow = () => {
@@ -78,7 +78,7 @@ export default function Home() {
         {loggedIn && 
           (currentPlaylist 
           ? <input type="button" value="Go to Current Playlist" onClick={() => setCurrentPage("Log Playlist")}/>
-          : <StartShowButton userShows={allShows.slice(0, 4)} startShow={startShow}/>
+          : <StartShowButton userShows={allShows.slice(0, 4) /* this slice is temporary */} startShow={startShow}/>
           )}
         <h1>WRMC 91.1 FM</h1>
         <PlayButton/>
