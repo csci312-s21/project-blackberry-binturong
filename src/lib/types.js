@@ -31,7 +31,7 @@ export const songType = PropTypes.shape({
 
 // PropTypes of playlist object
 export const playlistType = PropTypes.shape({
-  date: PropTypes.string.isRequired,
+  date: PropTypes.string,
   id: PropTypes.number.isRequired,
   showID: PropTypes.number.isRequired,
 });
