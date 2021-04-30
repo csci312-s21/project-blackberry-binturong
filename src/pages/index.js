@@ -12,11 +12,15 @@ import shows from "../../data/shows.json";
 import styles from "../styles/Home.module.css";
 
 import { useState } from "react";
+import moment from "moment";
 
+import { getRandomIntID } from "../lib/component-utils.js";
 import { sampleShows } from "../lib/test-utils.js";
 
 export default function Home() {
   const [allShows] = useState(shows);
+  const [allPlaylists, setAllPlaylists] = useState([]);
+  const [allSongs, setAllSongs] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [sotw] = useState(allShows[5]); //placeholder, eventually we will want a callback: "setSotw"
   const [page, setCurrentPage] = useState("Home");
@@ -24,20 +28,37 @@ export default function Home() {
 
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
+  const updateSongCollection = (action, newSong) => {
+    if (action === "enter") {
+      setAllSongs([...allSongs, newSong]);
+    } else if (action === "update") {
+      const newSongs = allSongs.map((song) => ((song.id === newSong.id) ? newSong : song));
+      setAllSongs(newSongs);
+    } else if (action === "delete") {
+      const newSongs = allSongs.filter((song) => song.id !== newSong.id);
+      setAllSongs(newSongs);
+    }
+  };
+
+  const startShow = (showID) => {
+    setCurrentPage("Log Playlist");
+    const newPlaylist = {date: moment().format("L"), showID: showID, id: getRandomIntID()};
+    setCurrentPlaylist(newPlaylist);
+    setAllPlaylists([...allPlaylists, currentPlaylist]);
+  }
+
+  const endShow = () => {
+    setCurrentPage("Home");
+    setCurrentPlaylist();
+  }
+
   const placeholderPages = {
     "Home":<div> <ShowOTW show={sotw}/> <p>{""}</p> <NextThreeShows shows={allShows}/>  </div>,
     "Blog":<h2>This is the blog</h2>,
     "Schedule":<h2>This is the schedule</h2>,
     "Community":<h2>This is the community page</h2>,
     "About":<h2>This is the about page</h2>,
-    "Log Playlist":<PlaylistLogger complete={undefined} currentPlaylist={currentPlaylist}/>
   };
-
-  const startShow = (showID) => {
-    setCurrentPage("Log Playlist");
-    const newPlaylist = {songs: [], time: "", showID: showID};
-    setCurrentPlaylist(newPlaylist);
-  }
 
   return (
     <div className={styles.container}>
@@ -48,14 +69,20 @@ export default function Home() {
 
       <main>
         <LoginButton loggedIn={loggedIn} handleClick={setLoggedIn}/>
-        {loggedIn && <StartShowButton userShows={sampleShows} startShow={startShow}/>}
+        {loggedIn && 
+          (currentPlaylist 
+          ? <input type="button" value="Go to Current Playlist" onClick={() => setCurrentPage("Log Playlist")}/>
+          : <StartShowButton userShows={allShows.slice(0, 4)} startShow={startShow}/>
+          )}
         <PlayButton/>
         <NavBar 
           pageList={pageList}
           currentPage={page}
           setCurrentPage={setCurrentPage}
         />
-        {placeholderPages[page]}
+        {(page === "Log Playlist")
+        ? <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
+        : placeholderPages[page]}
         
       </main>
 

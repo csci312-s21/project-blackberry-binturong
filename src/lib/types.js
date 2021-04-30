@@ -31,8 +31,7 @@ export const songType = PropTypes.shape({
 
 // PropTypes of playlist object
 export const playlistType = PropTypes.shape({
-  songs: PropTypes.arrayOf(songType).isRequired,
-  time: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   showID: PropTypes.number.isRequired,
 });

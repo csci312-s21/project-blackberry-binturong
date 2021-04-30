@@ -15,23 +15,23 @@ describe("Top level integration tests", () => {
   });
 });
 
-describe("Create playlists tests", () => {
-  beforeEach(() => {
-    render(<Home />);
-  });
+// describe("Create playlists tests", () => {
+//   beforeEach(() => {
+//     render(<Home />);
+//   });
 
-  test("Entering song adds to playlist", () => {
+//   test("Entering song adds to playlist", () => {
     
-  });
+//   });
 
-  test("Updating song attribute updates song", () => {
+//   test("Updating song attribute updates song", () => {
     
-  });
+//   });
 
-  test("Deleting entered song removes it from playlist", () => {
+//   test("Deleting entered song removes it from playlist", () => {
     
-  });
-});
+//   });
+// });
 
 describe("Start show button integration tests", () => {
   beforeEach(() => {
@@ -55,6 +55,6 @@ describe("Start show button integration tests", () => {
     const startShowButton = screen.getByRole("button", { name: "Start Show!" })
     expect(startShowButton).toBeEnabled();
     fireEvent.click(startShowButton);
-    expect(screen.getByRole("button", { name: "Add Row" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Add Song" })).toBeInTheDocument();
   });
 });
