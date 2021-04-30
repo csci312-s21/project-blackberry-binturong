@@ -9,24 +9,25 @@ import { showType } from "../lib/types.js";
 import { useState } from "react";
 
 export default function StartShowButton({ userShows, startShow }) {
-  const [selectedShow, setSelectedShow] = useState();
+  const [selectedShowID, setSelectedShowID] = useState();
 
-  const options = userShows.map((show) => <option value={show.id} key={show.id}>{show.title}</option>);
+  const options = userShows.map(
+    (show) => <option data-testid="show-option" value={show.id} key={show.id}>{show.title}</option>);
 
   return (
     <div>
-      <select onChange={() => setSelectedShow(event.target.value)}>
-        <option disabled selected>Select a show:</option>
+      <select defaultValue="Select a show:" onChange={() => setSelectedShowID(event.target.value)}>
+        <option disabled>Select a show:</option>
         {options}
       </select>
       <input
         type="button"
         value="Start Show!"
-        disabled={!selectedShow}
-        onClick={() => startShow(selectedShow)}/>
+        disabled={!selectedShowID}
+        onClick={() => startShow(+selectedShowID)}/>
     </div>
   );
-};
+}
 
 StartShowButton.propTypes = {
   userShows: PropTypes.arrayOf(showType).isRequired,

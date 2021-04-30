@@ -9,7 +9,6 @@ import StartShowButton from "../components/StartShowButton.js";
 import Head from "next/head";
 
 import shows from "../../data/shows.json";
-import playlists from "../../data/playlists.json";
 import styles from "../styles/Home.module.css";
 
 import { useState } from "react";

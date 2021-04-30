@@ -43,6 +43,6 @@ export default function PlaylistLogger({ complete, currentPlaylist }) {
 }
 
 PlaylistLogger.propTypes = {
-  complete: PropTypes.func.isRequired,
-  currentPlaylist: playlistType.isRequired,
+  complete: PropTypes.func,
+  currentPlaylist: playlistType
 };
