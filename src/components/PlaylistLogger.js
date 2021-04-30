@@ -9,6 +9,7 @@ import { playlistType, showType, songType } from "../lib/types.js";
 import { useState } from "react";
 import SongInput from "./SongInput.js";
 import { getRandomIntID } from "../lib/component-utils.js";
+import styles from "../styles/PlaylistLogger.module.css";
 
 export default function PlaylistLogger({ complete, currentPlaylist, endShow, shows, songs }) {
   const [emptyRows, setEmptyRows] = useState([]);
@@ -41,8 +42,8 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
 
   return (
     <div>
-      <h1>Playlist for {currentShow.title}</h1>
-      <ul>{rows}</ul>
+      <h1 className={styles.title}>Playlist for {currentShow.title}</h1>
+      <ul className={styles.rows}>{rows}</ul>
       <input
         type="button"
         value="Add Song"

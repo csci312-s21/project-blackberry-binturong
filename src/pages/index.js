@@ -28,6 +28,11 @@ export default function Home() {
 
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
+  const endShow = () => {
+    setCurrentPage("Home");
+    setCurrentPlaylist();
+  }
+
   useEffect(() => {
     if(!loggedIn) {
       endShow();
@@ -51,11 +56,6 @@ export default function Home() {
     const newPlaylist = {date: moment().format("L"), showID: showId, id: getRandomIntID()};
     setCurrentPlaylist(newPlaylist);
     setAllPlaylists([...allPlaylists, newPlaylist]);
-  }
-
-  const endShow = () => {
-    setCurrentPage("Home");
-    setCurrentPlaylist();
   }
 
   const placeholderPages = {

@@ -1,11 +1,11 @@
 .loginButton {
-    width: 100px;
-    height: 30px;
-    background: url(../images/log.png) transparent no-repeat top left;
-    outline: none;
-    border: none;
-    padding-left: 60px;
-    float: right;
+  width: 100px;
+  height: 30px;
+  background: url(../images/log.png) transparent no-repeat top left;
+  outline: none;
+  border: none;
+  padding-left: 60px;
+  float: right;
 }
 
 .loginContainer {

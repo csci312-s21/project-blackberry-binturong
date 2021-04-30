@@ -7,20 +7,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import PlaylistLogger from "../components/PlaylistLogger.js";
 import { sampleShow, samplePlaylist, sampleSong } from "../lib/test-utils.js";
 
-const sampleTitle = "Sample Title";
-const sampleArtist = "Sample Artist";
-const sampleAlbum = "Sample Album";
-
-const populateTextInputs = () => {
-  const titleInput = screen.getByRole("textbox", {name: "Title"});
-  const artistInput = screen.getByRole("textbox", {name: "Artist"});
-  const albumInput = screen.getByRole("textbox", {name: "Album"});
-
-  fireEvent.change(titleInput, { target: { value: sampleTitle } });
-  fireEvent.change(artistInput, { target: { value: sampleArtist } });
-  fireEvent.change(albumInput, { target: { value: sampleAlbum } });
-}
-
 describe("PlaylistLogger tests", () => {
   const handler = jest.fn();
 
