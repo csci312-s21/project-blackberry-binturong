@@ -71,7 +71,6 @@ export const sampleShow = {
 
 
 export const samplePlaylist = {
-  "songs": [],
   "time": "",
   "id": 12,
   "showID": 55
