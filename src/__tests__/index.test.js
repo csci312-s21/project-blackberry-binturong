@@ -68,7 +68,7 @@ describe("Top level integration tests", () => {
 
 describe("Start show button integration tests", () => {
   beforeEach(() => {
-    render(<Home />);
+    render(<WRMCWebsite />);
   });
 
   test("Start show button only visible when logged in", () => {
@@ -94,7 +94,7 @@ describe("Start show button integration tests", () => {
 
 describe("PlaylistLogger integration tests", () => {
   beforeEach(() => {
-    render(<Home />);
+    render(<WRMCWebsite />);
   });
   
   test("PlaylistLogger not visible when logged out", () => {
