@@ -1,5 +1,6 @@
 /*
   types.js
+
   holds PropTypes for common data structures (show, playlist, song)
 */
 import PropTypes from "prop-types";
