@@ -5,12 +5,13 @@
     shows - an array of show objects
 */
 import PropTypes from "prop-types";
+import { showType } from "../lib/types.js";
 import { dayToInt, compareTwoShows } from "../lib/component-utils.js";
 import moment from "moment";
 import ShowSnippet from "./ShowSnippet.js";
 import styles from "../styles/NextThreeShows.module.css";
 
-export default function NextThreeShows({ shows }){
+export default function NextThreeShows({ shows, handleClick }){
   const now = moment();
 
   const upcomingShows = shows.filter(
@@ -19,7 +20,7 @@ export default function NextThreeShows({ shows }){
   upcomingShows.sort((a, b) => compareTwoShows(a, b));
 
   const nextThree = upcomingShows.slice(0, 3).map((show) => 
-    <li key={show.id}>
+    <li className={styles.showListItem} key={show.id} onClick={() => handleClick(show)} data-testid="show snippet">
       <ShowSnippet show={show}/>
     </li>
   );
@@ -34,18 +35,5 @@ export default function NextThreeShows({ shows }){
 }
 
 NextThreeShows.propTypes = {
-  shows: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      DJs: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      description: PropTypes.string.isRequired,
-      time: PropTypes.shape({
-        day: PropTypes.string.isRequired,
-        hour: PropTypes.number.isRequired,
-        duration: PropTypes.number.isRequired,
-      }).isRequired,
-      genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      id: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired
+  shows: PropTypes.arrayOf(showType).isRequired
 };
