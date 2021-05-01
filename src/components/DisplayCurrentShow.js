@@ -18,16 +18,15 @@ export default function DisplayCurrentShow({ shows }){
   const upcomingShows = shows.filter(
     (show) => (dayToInt[show.time.day] === now.day()) && (show.time.hour === (now.hour() * 100)));
 
-  const nextThree = upcomingShows.slice(0, 3).map((show) => 
-    <li key={show.id}>
-      <ShowSnippet show={show}/>
-    </li>
-  );
+  let showExists = (typeof upcomingShows[0] !== 'undefined')
 
   return (
     <div className={styles.nextThreeShows}>
       <div className={styles.header}>ON AIR</div>
-      <ul className={styles.showList}>{nextThree}</ul>
+      {!showExists && <div className={styles.show}> "No current show :((" </div>}
+      {showExists && <div className={styles.show}>{upcomingShows[0].title}</div>}
+      {showExists && <div className={styles.show}>{upcomingShows[0].DJs.join(', ')}</div>}
+
       {(upcomingShows.length <= 3) && <div className={styles.message}>TUNE IN!</div>}
     </div>
   );
