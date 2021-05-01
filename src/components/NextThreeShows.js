@@ -13,7 +13,7 @@ import moment from "moment";
 import ShowSnippet from "./ShowSnippet.js";
 import styles from "../styles/NextThreeShows.module.css";
 
-export default function NextThreeShows({ shows }){
+export default function NextThreeShows({ shows, handleClick }){
   const now = moment();
 
   const upcomingShows = shows.filter(
@@ -22,7 +22,7 @@ export default function NextThreeShows({ shows }){
   upcomingShows.sort((a, b) => compareTwoShows(a, b));
 
   const nextThree = upcomingShows.slice(0, 3).map((show) => 
-    <li key={show.id}>
+    <li className={styles.showListItem} key={show.id} onClick={() => handleClick(show)} data-testid="show snippet">
       <ShowSnippet show={show}/>
     </li>
   );
