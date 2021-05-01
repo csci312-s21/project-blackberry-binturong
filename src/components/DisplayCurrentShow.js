@@ -23,10 +23,10 @@ export default function DisplayCurrentShow({ shows }){
   return (
     <div className={styles.nextThreeShows}>
       <div className={styles.header}>ON AIR</div>
-      {!showExists && <div className={styles.show}> "No current show :((" </div>}
-      {showExists && <div className={styles.show}>{upcomingShows[0].title}</div>}
-      {showExists && <div className={styles.show}>{upcomingShows[0].DJs.join(', ')}</div>}
-
+      {!showExists && <div className={styles.show}> No current show :(( </div>}
+      {showExists && <div className={styles.show}>Current Show: <strong>{upcomingShows[0].title}</strong></div>}
+      {showExists && <div className={styles.show}><em>DJs: {upcomingShows[0].DJs.join(', ')}</em></div>}
+      {showExists && <div className={styles.show}> Call the DJ: 802 443 6423 </div>}
       {(upcomingShows.length <= 3) && <div className={styles.message}>TUNE IN!</div>}
     </div>
   );
