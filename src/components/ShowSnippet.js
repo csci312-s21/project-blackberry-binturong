@@ -7,7 +7,6 @@
     show - a show objects with title, list of DJs, hour, and duration attributes at minimum
 */
 import { showType } from "../lib/types.js";
-import PropTypes from "prop-types";
 import { getTimeString } from "../lib/component-utils.js";
 import styles from "../styles/ShowSnippet.module.css";
 
