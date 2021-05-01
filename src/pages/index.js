@@ -5,6 +5,7 @@ import LoginButton from "../components/LoginButton.js";
 import ShowOTW from "../components/ShowOTW.js";
 import PlaylistLogger from "../components/PlaylistLogger.js";
 import StartShowButton from "../components/StartShowButton.js";
+import ShowDetails from "../components/ShowDetails.js";
 
 import Head from "next/head";
 
@@ -17,7 +18,7 @@ import moment from "moment";
 
 import { getRandomIntID } from "../lib/component-utils.js";
 
-export default function Home() {
+export default function WRMCWebsite() {
   const [allShows] = useState(shows);
   const [allPlaylists, setAllPlaylists] = useState(playlists);
   const [allSongs, setAllSongs] = useState([]);
@@ -25,7 +26,7 @@ export default function Home() {
   const [sotw] = useState(allShows[5]); //placeholder, eventually we will want a callback: "setSotw"
   const [page, setCurrentPage] = useState("Home");
   const [currentPlaylist, setCurrentPlaylist] = useState();
-
+  const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
   const endShow = () => {
@@ -58,18 +59,36 @@ export default function Home() {
     setAllPlaylists([...allPlaylists, newPlaylist]);
   }
 
+  // callback function to select page in NavBar
+  const selectPage = (newPage) => {
+    setCurrentPage(newPage);
+    setSelectedShow();
+  }
+
+  // callback function to display ShowDetails page
+  const clickShow = (show) => {
+    setSelectedShow(show);
+    setCurrentPage("Show Details");
+  }
+
   const placeholderPages = {
-    "Home":<div> <ShowOTW show={sotw}/> <p>{""}</p> <NextThreeShows shows={allShows}/>  </div>,
-    "Blog":<h2>This is the blog</h2>,
-    "Schedule":<h2>This is the schedule</h2>,
-    "Community":<h2>This is the community page</h2>,
-    "About":<h2>This is the about page</h2>,
+    // TODO: we should create a container component for the Home page
+    // (and any other pages that end up having multiple components)
+    "Home" : <div>
+              <ShowOTW show={sotw} handleClick={clickShow}/> <p>{""}</p>
+              <NextThreeShows shows={allShows} handleClick={clickShow}/>
+             </div>,
+    "Blog" : <h2>This is the blog</h2>,
+    "Schedule" : <h2>This is the schedule</h2>,
+    "Community" : <h2>This is the community page</h2>,
+    "About" : <h2>This is the about page</h2>,
+    "Show Details" : <ShowDetails show={selectedShow}/>
   };
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Final Project</title>
+        <title>WRMC 91.1 FM Middlebury College Radio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -85,7 +104,7 @@ export default function Home() {
         <NavBar 
           pageList={pageList}
           currentPage={page}
-          setCurrentPage={setCurrentPage}
+          setCurrentPage={selectPage}
         />
         {(page === "Log Playlist" && loggedIn)
         ? <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>

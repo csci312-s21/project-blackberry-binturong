@@ -34,7 +34,7 @@ export const compareTwoShows = (a, b) => {
 }
 
 // this function takes a show and return a string of the time in a pretty format, e.g. "9:00 - 10:00 am"
-export const prettyTimeFormat = (start, duration) => {
+export const getTimeString = (start, duration) => {
   const splitTime = (time) => {
     return {
       hour: time.toString().substring(0, time.toString().length - 2),
