@@ -3,6 +3,7 @@
 This file is for various functions or constants that might be useful in multiple components
 
 */
+import { customAlphabet } from "nanoid";
 
 
 // the day of week for out show data is represented as a string, so this object 
@@ -63,4 +64,11 @@ export const getDayString = (d) => {
   else if (d==="F"){return "Friday"}
   else if (d==="S"){return "Saturday"}
   else if (d==="Su"){return "Sunday"}
+}
+
+// this function will generate a random 17-digit integer
+// according to the nano id collision calculator, "~256 years needed, in order to have a 1% probability of at least one collision."
+export const getRandomIntID = () => {
+  const nanoid = customAlphabet("1234567890", 17);
+  return +nanoid();
 }

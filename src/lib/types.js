@@ -20,7 +20,19 @@ export const showType = PropTypes.shape({
   id: PropTypes.number.isRequired,
 });
 
+// PropTypes of song object
+export const songType = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  artist: PropTypes.string.isRequired,
+  album: PropTypes.string.isRequired,
+  timeAdded: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  playlistID: PropTypes.number.isRequired,
+});
 
-export const playlistType = PropTypes.shape({}); // fill this out as needed!
-
-export const songType = PropTypes.shape({}); // fill this out as needed!
+// PropTypes of playlist object
+export const playlistType = PropTypes.shape({
+  date: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  showID: PropTypes.number.isRequired,
+});
