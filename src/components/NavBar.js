@@ -18,7 +18,6 @@ export default function NavBar({ pageList, currentPage, setCurrentPage }) {
 
   return (
     <div className={styles.navBar}>
-      <h1>WRMC 91.1 FM</h1>
       <ul>
         {pages}
       </ul>
