@@ -1,0 +1,6 @@
+/*
+
+  This Component will display the current playlists.
+
+  props
+*/
