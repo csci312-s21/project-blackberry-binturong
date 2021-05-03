@@ -11,7 +11,6 @@ describe("NextThreeShows tests", () => {
     expect(screen.queryByText("Sample Show 4")).toBeInTheDocument();
     expect(screen.queryByText("Sample Show 1")).toBeInTheDocument();
     expect(screen.queryByText("Sample Show 2")).toBeInTheDocument();
-    expect(screen.queryByText("That's all for today!")).toBeInTheDocument();
   });
 
   test("two shows are displayed", () => {
