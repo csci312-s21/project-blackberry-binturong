@@ -15,7 +15,7 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
   const [emptyRows, setEmptyRows] = useState([]);
 
   const addRow = () => {
-    const emptySong = {title: "", artist: "", album: "", playlistID: currentPlaylist.id, id: getRandomIntID()}
+    const emptySong = {title: "", artist: "", album: "", albumArt: "https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png", playlistID: currentPlaylist.id, id: getRandomIntID()}
     const newEmptyRows = [...emptyRows, {...emptySong}];
     setEmptyRows(newEmptyRows);
   }

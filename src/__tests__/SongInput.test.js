@@ -3,7 +3,7 @@
 Tests for SongInput.js
 
 */
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import SongInput from "../components/SongInput";
 
 const sampleTitle = "Sample Title";
@@ -25,8 +25,9 @@ describe("SongInput tests", () => {
 
   beforeEach(() => {
     handler.mockReset();
-    const sampleSong = {title: "", artist: "", album: "", id: 0, playlistID: 0};
+    const sampleSong = {title: "", artist: "", album: "", albumArt:"https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png", id: 0, playlistID: 0};
     render(<SongInput complete={handler} song={sampleSong}/>);
+
   });
 
   test("Enter button is disabled without title", () => {
@@ -101,6 +102,46 @@ describe("SongInput tests", () => {
     enterButton = screen.queryByRole("button", { name: "Enter" });
     expect(enterButton).not.toBeInTheDocument();
 
+  });
+
+  test("Image appears when component is first rendered", () => {
+    let image = screen.getByRole("img");
+    expect(image).toBeInTheDocument();
+  });
+
+  test("Correct image appears when a valid album is entered", async () => {
+    const titleInput = screen.getByRole("textbox", {name: "Title"});
+    const artistInput = screen.getByRole("textbox", {name: "Artist"});
+    const albumInput = screen.getByRole("textbox", {name: "Album"});
+
+    fireEvent.change(titleInput, { target: { value: "Strong Enough" } });
+    fireEvent.change(artistInput, { target: { value: "Cher" } });
+    fireEvent.change(albumInput, { target: { value: "Believe" } });
+
+    let enterButton = screen.getByRole("button", { name: "Enter" });
+    fireEvent.click(enterButton);
+
+    await waitFor(() => {
+      expect(screen.getByRole("img").src).toEqual("https://lastfm.freetls.fastly.net/i/u/34s/3b54885952161aaea4ce2965b2db1638.png");
+    });
+    
+  });
+
+  test("Placeholder image appears when an invalid album is entered", async () => {
+    const titleInput = screen.getByRole("textbox", {name: "Title"});
+    const artistInput = screen.getByRole("textbox", {name: "Artist"});
+    const albumInput = screen.getByRole("textbox", {name: "Album"});
+
+    fireEvent.change(titleInput, { target: { value: "Strong Enough" } });
+    fireEvent.change(artistInput, { target: { value: "Cher" } });
+    fireEvent.change(albumInput, { target: { value: "Believe" } });
+
+    let enterButton = screen.getByRole("button", { name: "Enter" });
+    fireEvent.click(enterButton);
+
+    await waitFor(() => {
+      expect(screen.getByRole("img").src).toEqual("https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png");
+    });
   });
 
 });
