@@ -6,7 +6,6 @@ This file is for various functions or constants that might be useful in multiple
 import { customAlphabet } from "nanoid";
 import moment from "moment";
 
-
 // the day of week for out show data is represented as a string, so this object 
 // could be used to convert to an integer for comparison purposes
 export const dayToInt = {
@@ -51,6 +50,15 @@ export const getRandomIntID = () => {
   return +nanoid();
 }
 
+
+//This function returns the array of upcomingShows
+//This array should start at the current show and include all of the remaining shows for the day. In Index it is used to pass the current show to DisplayCurrentShow and the next three shows to NextThreeShows
+export const upcomingShowsArray = (shows, now) => {
+  const upcomingShows = shows.filter((show) => (dayToInt[show.time.day] === now.day()) && (show.time.hour >= (now.hour() * 100)));
+
+  upcomingShows.sort((a, b) => compareTwoShows(a, b));
+  return upcomingShows;
+}
 
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoPlaylists = (a, b) => {

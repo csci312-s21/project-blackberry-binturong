@@ -1,5 +1,17 @@
 [
   {
+    "title": "We are playing awesome music",
+    "DJs" : ["WRMC Radio"],
+    "description" : "Theres not always a show going on, but there's always something to listen to. This only appears when no show is currently going on and lasts until the next show begins.",
+    "time": {
+      "day": "X",
+      "hour": 0,
+      "duration": 1
+    },
+    "genres": ["music"],
+    "id": 12345
+  },
+  {
     "title": "Insta-Gram",
     "DJs": ["Lucy Rinzler-Day","Sophie Clark"],
     "description": "Love grandmas? So do we! Each week, we celebrate America’s unsung heroes: grandmas from our families, friends, towns and beyond!",
