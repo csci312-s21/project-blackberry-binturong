@@ -71,9 +71,7 @@ export default function SongInput({ complete, song }) {
         value="Enter"
         disabled={(title === "") || (artist === "") || (album === "")}
         onClick={
-          () => {
-            saveSong({...song, title: title, artist: artist, album: album, albumArt: albumArt, timeAdded: moment().toISOString()});
-          }}/>
+          () => saveSong({...song, title: title, artist: artist, album: album, albumArt: albumArt, timeAdded: moment().toISOString()})}/>
       <input
         type="button"
         className={styles.buttoninput}

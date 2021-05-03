@@ -4,8 +4,10 @@ Tests for SongInput.js
 
 */
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+
 import fetchMock from "fetch-mock-jest";
 import { root, key } from "../lib/api.js";
+
 import SongInput from "../components/SongInput";
 
 const sampleTitle = "Sample Title";
@@ -29,6 +31,7 @@ describe("SongInput tests", () => {
     handler.mockReset();
     const sampleSong = {title: "", artist: "", album: "", albumArt:"https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png", id: 0, playlistID: 0};
     render(<SongInput complete={handler} song={sampleSong}/>);
+
   });
 
   test("Enter button is disabled without title", () => {
