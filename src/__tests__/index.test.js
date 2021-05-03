@@ -93,6 +93,20 @@ describe("Start show button integration tests", () => {
 });
 
 describe("PlaylistLogger integration tests", () => {
+  const sampleTitle = "Sample Title";
+  const sampleArtist = "Sample Artist";
+  const sampleAlbum = "Sample Album";
+
+  const populateTextInputs = () => {
+    const titleInput = screen.getByRole("textbox", {name: "Title"});
+    const artistInput = screen.getByRole("textbox", {name: "Artist"});
+    const albumInput = screen.getByRole("textbox", {name: "Album"});
+
+    fireEvent.change(titleInput, { target: { value: sampleTitle } });
+    fireEvent.change(artistInput, { target: { value: sampleArtist } });
+    fireEvent.change(albumInput, { target: { value: sampleAlbum } });
+  }
+
   beforeEach(() => {
     render(<WRMCWebsite />);
   });
@@ -108,5 +122,27 @@ describe("PlaylistLogger integration tests", () => {
     fireEvent.click(screen.queryByRole("button", { name: "Out" }));
     expect(screen.queryByRole("button", { name: "Add Song" })).not.toBeInTheDocument();
     expect(screen.getByText("Show Of The Week")).toBeInTheDocument();
+  });
+
+  test("saved songs persist when navigating to and from PlaylistLogger", () => {
+    fireEvent.click(screen.queryByRole("button", { name: "In" }));
+    const options = screen.queryAllByTestId("show-option");
+    const selector = screen.getByRole("combobox");
+    fireEvent.change(selector, { target: { value: options[0].value }});
+
+    fireEvent.click(screen.getByRole("button", { name: "Start Show!" }));
+    fireEvent.click(screen.getByRole("button", { name: "Add Song" }));
+
+    populateTextInputs()
+    fireEvent.click(screen.getByRole("button", { name: "Enter" }));
+    expect(screen.getByRole("button", { name: "Update" })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText("Home"));
+    fireEvent.click(screen.getByRole("button", { name: "Go to Current Playlist" }));
+
+    expect(screen.getByRole("textbox", {name: "Title"})).toHaveValue(sampleTitle);
+    expect(screen.getByRole("textbox", {name: "Artist"})).toHaveValue(sampleArtist);
+    expect(screen.getByRole("textbox", {name: "Album"})).toHaveValue(sampleAlbum);
+    expect(screen.getByRole("button", { name: "Update" })).toBeInTheDocument();
   });
 });
