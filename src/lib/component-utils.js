@@ -4,7 +4,6 @@ This file is for various functions or constants that might be useful in multiple
 
 */
 
-
 // the day of week for out show data is represented as a string, so this object 
 // could be used to convert to an integer for comparison purposes
 export const dayToInt = {
