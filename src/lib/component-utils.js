@@ -71,3 +71,10 @@ export const getRandomIntID = () => {
   const nanoid = customAlphabet("1234567890", 17);
   return +nanoid();
 }
+
+export const upcomingShowsArray = (shows, now) => {
+  const upcomingShows = shows.filter((show) => (dayToInt[show.time.day] === now.day()) && (show.time.hour >= (now.hour() * 100)));
+
+  upcomingShows.sort((a, b) => compareTwoShows(a, b));
+  return upcomingShows;
+}

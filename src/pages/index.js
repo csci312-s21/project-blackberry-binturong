@@ -14,7 +14,7 @@ import shows from "../../data/shows.json";
 import playlists from "../../data/playlists.json";
 import styles from "../styles/Home.module.css";
 
-import { dayToInt, compareTwoShows } from "../lib/component-utils.js";
+import { dayToInt, compareTwoShows, upcomingShowsArray } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
 
@@ -76,11 +76,8 @@ export default function WRMCWebsite() {
 
   // determines the current and next three shows
   const now = moment();
+  const upcomingShows = upcomingShowsArray(shows, now);
 
-  const upcomingShows = shows.filter(
-    (show) => (dayToInt[show.time.day] === now.day()) && (show.time.hour >= (now.hour() * 100)));
-
-  upcomingShows.sort((a, b) => compareTwoShows(a, b));
 
   const isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
 
