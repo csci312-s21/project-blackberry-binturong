@@ -14,7 +14,7 @@ import shows from "../../data/shows.json";
 import playlists from "../../data/playlists.json";
 import styles from "../styles/Home.module.css";
 
-import { dayToInt, compareTwoShows, upcomingShowsArray } from "../lib/component-utils.js";
+import { upcomingShowsArray } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
 

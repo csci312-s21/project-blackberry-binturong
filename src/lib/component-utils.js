@@ -72,6 +72,8 @@ export const getRandomIntID = () => {
   return +nanoid();
 }
 
+//This function returns the array of upcomingShows
+//This array should start at the current show and include all of the remaining shows for the day. In Index it is used to pass the current show to DisplayCurrentShow and the next three shows to NextThreeShows
 export const upcomingShowsArray = (shows, now) => {
   const upcomingShows = shows.filter((show) => (dayToInt[show.time.day] === now.day()) && (show.time.hour >= (now.hour() * 100)));
 
