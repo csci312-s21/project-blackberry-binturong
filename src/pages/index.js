@@ -54,7 +54,7 @@ export default function WRMCWebsite() {
 
   const startShow = (showId) => {
     setCurrentPage("Log Playlist");
-    const newPlaylist = {date: moment().format("L"), showID: showId, id: getRandomIntID()};
+    const newPlaylist = {date: moment().format("MM-DD-YYYY"), showID: showId, id: getRandomIntID()};
     setCurrentPlaylist(newPlaylist);
     setAllPlaylists([...allPlaylists, newPlaylist]);
   }
@@ -82,7 +82,7 @@ export default function WRMCWebsite() {
     "Schedule" : <h2>This is the schedule</h2>,
     "Community" : <h2>This is the community page</h2>,
     "About" : <h2>This is the about page</h2>,
-    "Show Details" : <ShowDetails show={selectedShow}/>
+    "Show Details" : <ShowDetails show={selectedShow} playlists={allPlaylists}/>
   };
 
   return (

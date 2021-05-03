@@ -7,3 +7,11 @@
 .showAttr {
   font-weight: bold;
 }
+
+.playlistDates {
+  list-style-type: none;
+}
+
+.playlistDates li {
+  padding: 5px;
+}

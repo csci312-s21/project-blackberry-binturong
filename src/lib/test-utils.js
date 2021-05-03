@@ -71,10 +71,33 @@ export const sampleShow = {
 
 
 export const samplePlaylist = {
-  "time": "",
+  "date": "05-02-2021",
   "id": 12,
   "showID": 55
 }
+
+export const samplePlaylists = [
+  {
+    "date": "05-02-2021",
+    "id": 12,
+    "showID": 55
+  },
+  {
+    "date": "05-01-2021",
+    "id": 13,
+    "showID": 55
+  },
+  {
+    "date": "04-30-2021",
+    "id": 14,
+    "showID": 55
+  },
+  {
+    "date": "04-29-2021",
+    "id": 15,
+    "showID": 56
+  }
+]
 
 export const sampleSong = {
   "title": "sample title",

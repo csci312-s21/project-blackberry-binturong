@@ -72,3 +72,28 @@ export const getRandomIntID = () => {
   const nanoid = customAlphabet("1234567890", 17);
   return +nanoid();
 }
+
+
+// this function returns the earlier of two playlists based on playlist.date
+export const compareTwoPlaylists = (a, b) => {
+  const [monthA, dayA, yearA] = a.date.split("-");
+  const [monthB, dayB, yearB] = b.date.split("-");
+
+  if (yearA < yearB) {
+    return -1
+  } else if (yearB < yearA) {
+    return 1
+  } else {
+    if (monthA < monthB) {
+      return -1
+    } else if (monthB < monthA) {
+      return 1
+    } else {
+      if (dayA < dayB) {
+        return -1
+      } else {
+        return 1
+      }
+    }
+  }
+}
