@@ -15,10 +15,11 @@ const currentSongs = allSongs.filter((song) => song.playlistID === playlist.id);
 const cleanTime = currentSongs.map((song) => 
   song.timeAdded = new Date(song.timeAdded)
 );
+console.log("time added ");
 
 const currentPlaylist = currentSongs.map((song) => 
     <li key={song.id}>
-      {song.timeAdded.toLocaleString("en-US")} Song: {song.title} Artist: {song.artist} Album: {song.album}
+      {song.timeAdded.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} Song: {song.title} Artist: {song.artist} Album: {song.album}
     </li>
   );
 
