@@ -85,12 +85,13 @@ export default function WRMCWebsite() {
   };
 
   // this if statement determines which page to display - add more else ifs as we add more specialized pages
+  let displayPage;
   if (page === "Log Playlist" && loggedIn) {
-    const displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
+    displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
   } else if (page === "Show Details") {
-    const displayPage = <ShowDetails show={selectedShow} playlists={allPlaylists}/>
+    displayPage = <ShowDetails show={selectedShow} playlists={allPlaylists}/>
   } else {
-    const displayPage = placeholderPages[page]
+    displayPage = placeholderPages[page]
   }
 
   return (
