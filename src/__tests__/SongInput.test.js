@@ -26,7 +26,7 @@ describe("SongInput tests", () => {
   beforeEach(() => {
     handler.mockReset();
     const sampleSong = {title: "", artist: "", album: "", id: 0, playlistID: 0};
-    render(<SongInput complete={handler} song={sampleSong}/>);
+    render(<SongInput complete={handler} song={sampleSong} savedInit={false}/>);
   });
 
   test("Enter button is disabled without title", () => {
