@@ -6,10 +6,12 @@ import ShowOTW from "../components/ShowOTW.js";
 import PlaylistLogger from "../components/PlaylistLogger.js";
 import StartShowButton from "../components/StartShowButton.js";
 import ShowDetails from "../components/ShowDetails.js";
+import PlaylistDetails from "../components/PlaylistDetails.js";
 
 import Head from "next/head";
 
 import shows from "../../data/shows.json";
+import {sampleSongs} from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
 import styles from "../styles/Home.module.css";
 
@@ -21,12 +23,13 @@ import { getRandomIntID } from "../lib/component-utils.js";
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);
   const [allPlaylists, setAllPlaylists] = useState(playlists);
-  const [allSongs, setAllSongs] = useState([]);
+  const [allSongs, setAllSongs] = useState(sampleSongs);
   const [loggedIn, setLoggedIn] = useState(false);
   const [sotw] = useState(allShows[5]); //placeholder, eventually we will want a callback: "setSotw"
   const [page, setCurrentPage] = useState("Home");
   const [currentPlaylist, setCurrentPlaylist] = useState();
   const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
+  const [selectedPlaylist, setSelectedPlaylist] = useState();  // state for displaying PlaylistDetails
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
   const endShow = () => {
@@ -54,7 +57,7 @@ export default function WRMCWebsite() {
 
   const startShow = (showId) => {
     setCurrentPage("Log Playlist");
-    const newPlaylist = {date: moment().format("MM-DD-YYYY"), showID: showId, id: getRandomIntID()};
+    const newPlaylist = {date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID()};
     setCurrentPlaylist(newPlaylist);
     setAllPlaylists([...allPlaylists, newPlaylist]);
   }
@@ -69,6 +72,12 @@ export default function WRMCWebsite() {
   const clickShow = (show) => {
     setSelectedShow(show);
     setCurrentPage("Show Details");
+  }
+
+  // callback function to display PlaylistDetails page
+  const clickPlaylist = (playlist) => {
+    setSelectedPlaylist(playlist);
+    setCurrentPage("Playlist Details");
   }
 
   const placeholderPages = {
@@ -89,7 +98,9 @@ export default function WRMCWebsite() {
   if (page === "Log Playlist" && loggedIn) {
     displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
   } else if (page === "Show Details") {
-    displayPage = <ShowDetails show={selectedShow} playlists={allPlaylists}/>
+    displayPage = <ShowDetails show={selectedShow} playlists={allPlaylists} clickPlaylist={clickPlaylist}/>
+  } else if (page === "Playlist Details") {
+    displayPage = <PlaylistDetails playlist={selectedPlaylist} songs={allSongs} shows={allShows} backToShow={clickShow}/>
   } else {
     displayPage = placeholderPages[page]
   }

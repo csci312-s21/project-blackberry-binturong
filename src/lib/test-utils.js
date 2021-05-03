@@ -71,29 +71,29 @@ export const sampleShow = {
 
 
 export const samplePlaylist = {
-  "date": "05-02-2021",
+  "date": "5-02-2021",
   "id": 12,
   "showID": 55
 }
 
 export const samplePlaylists = [
   {
-    "date": "05-02-2021",
+    "date": "5-02-2021",
     "id": 12,
     "showID": 55
   },
   {
-    "date": "05-01-2021",
+    "date": "5-01-2021",
     "id": 13,
     "showID": 55
   },
   {
-    "date": "04-30-2021",
+    "date": "4-30-2021",
     "id": 14,
     "showID": 55
   },
   {
-    "date": "04-29-2021",
+    "date": "4-29-2021",
     "id": 15,
     "showID": 56
   }
@@ -106,3 +106,38 @@ export const sampleSong = {
   "playlistID": 55,
   "id": 42
 }
+
+export const sampleSongs = [
+  {
+    "title": "sample title 1",
+    "artist": "sample artist 1",
+    "album": "sample album 1",
+    "playlistID": 12,
+    "id": 1,
+    "timeAdded": "2021-05-02T20:00:24-04:00"
+  },
+  {
+    "title": "sample title 2",
+    "artist": "sample artist 2",
+    "album": "sample album 2",
+    "playlistID": 12,
+    "id": 2,
+    "timeAdded": "2021-05-02T20:03:24-04:00"
+  },
+  {
+    "title": "sample title 3",
+    "artist": "sample artist 3",
+    "album": "sample album 3",
+    "playlistID": 12,
+    "id": 3,
+    "timeAdded": "2021-05-02T20:22:24-04:00"
+  },
+  {
+    "title": "sample title 4",
+    "artist": "sample artist 4",
+    "album": "sample album 4",
+    "playlistID": 12,
+    "id": 42,
+    "timeAdded": "2021-05-02T20:10:24-04:00"
+  },
+]

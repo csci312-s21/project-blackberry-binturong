@@ -1,9 +1,8 @@
 /*
   ShowDetails.js
 
-  This component displays a comprehensive overview of all relevant information about a show, 
-  including the title, DJ(s), time, description, genres, and past playlists. This page is accessed whenever the user 
-  clicks on a show anywhere on the website.
+  This component displays all relevant information about a show, including the title, DJ(s), time, description, 
+  genres, and past playlists. This page is accessed whenever the user clicks on a show anywhere on the website.
 
   props:
     show - a show object
@@ -13,15 +12,16 @@ import { getTimeString, getDayString, compareTwoPlaylists } from "../lib/compone
 import styles from "../styles/ShowDetails.module.css";
 import { showType, playlistType } from "../lib/types.js";
 
-export default function ShowDetails({ show, playlists }) {
+export default function ShowDetails({ show, playlists, clickPlaylist }) {
   const time = getTimeString(show.time.hour, show.time.duration);
   const day = getDayString(show.time.day);
 
   const playlistsForShow = playlists.filter((playlist) => playlist.showID === show.id);
 
-  playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b));
+  playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b)).reverse();
 
-  const playlistDates = playlistsForShow.map((playlist) => <li key={playlist.id}>{playlist.date}</li>);
+  const playlistDates = playlistsForShow.map(
+    (playlist) => <li key={playlist.id} onClick={() => clickPlaylist(playlist)}>{playlist.date}</li>);
 
   return (
     <div data-testid="show details page">
@@ -42,5 +42,6 @@ export default function ShowDetails({ show, playlists }) {
 
 ShowDetails.propTypes = {
   show: showType.isRequired,
-  playlists: PropTypes.arrayOf(playlistType).isRequired
+  playlists: PropTypes.arrayOf(playlistType).isRequired,
+  clickPlaylist: PropTypes.func.isRequired
 };

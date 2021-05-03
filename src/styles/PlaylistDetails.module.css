@@ -1,0 +1,22 @@
+.songTable {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+.songTable td {
+  padding: 8px;
+  border: 1px solid #6d6d6d;
+}
+
+.songTable tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.header {
+  text-align: center;
+}
+
+.returnButton {
+  margin: 0 auto;
+}
