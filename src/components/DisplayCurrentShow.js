@@ -26,5 +26,5 @@ export default function DisplayCurrentShow({ show, handleClick }){
 }
 
 DisplayCurrentShow.propTypes = {
-  show: showType.isRequired
+  show: showType
 };
