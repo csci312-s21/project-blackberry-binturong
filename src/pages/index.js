@@ -74,6 +74,8 @@ export default function WRMCWebsite() {
     setCurrentPage("Show Details");
   }
 
+  console.log(currentPlaylist);
+
   // determines the current and next three shows
   const now = moment();
 
