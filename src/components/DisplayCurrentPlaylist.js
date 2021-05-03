@@ -2,24 +2,35 @@
 
   This Component will display the current playlists.
 
-  props - current playlist
+  props - current playlist , allSongs
 */
 
-import { showType } from "../lib/types.js";
+import { playlistType, songType } from "../lib/types.js";
+import PropTypes from "prop-types"; 
 
-export default function DisplayCurrentPlaylist({ playlist }){
+export default function DisplayCurrentPlaylist({ playlist, allSongs }){
 
-const playlistExists = (typeof playlist !== "undefined");
-const currentPlaylist = {playlistExists ? playlist : currentPlaylist}
-console.(currentPlaylist);
+const currentSongs = allSongs.filter((song) => song.playlistID === playlist.id);
+
+const cleanTime = currentSongs.map((song) => 
+  song.timeAdded = new Date(song.timeAdded)
+);
+
+const currentPlaylist = currentSongs.map((song) => 
+    <li key={song.id}>
+      {song.timeAdded.toLocaleString("en-US")} Song: {song.title} Artist: {song.artist} Album: {song.album}
+    </li>
+  );
+
   return (
     <div>
-      
+      {currentPlaylist}
     </div>
   );
 }
 
 DisplayCurrentPlaylist.propTypes = {
-  playlist: playlistType.isRequired
+  playlist: playlistType.isRequired,
+  allSongs: PropTypes.arrayOf(songType).isRequired
 };
 

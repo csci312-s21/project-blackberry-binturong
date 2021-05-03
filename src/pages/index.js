@@ -7,6 +7,7 @@ import DisplayCurrentShow from "../components/DisplayCurrentShow";
 import PlaylistLogger from "../components/PlaylistLogger.js";
 import StartShowButton from "../components/StartShowButton.js";
 import ShowDetails from "../components/ShowDetails.js";
+import DisplayCurrentPlaylist from "../components/DisplayCurrentPlaylist.js";
 import Head from "next/head";
 
 import moment from "moment";
@@ -74,8 +75,6 @@ export default function WRMCWebsite() {
     setCurrentPage("Show Details");
   }
 
-  console.log(currentPlaylist);
-
   // determines the current and next three shows
   const now = moment();
 
@@ -90,6 +89,7 @@ export default function WRMCWebsite() {
     // TODO: we should create a container component for the Home page
     // (and any other pages that end up having multiple components)
     "Home" : <div>
+              {currentPlaylist ? <DisplayCurrentPlaylist playlist = {currentPlaylist} allSongs = {allSongs}/> : "No Playlist"}
               <ShowOTW show={sotw} handleClick={clickShow}/> <p>{""}</p>
               {isOnAir ? <DisplayCurrentShow show = {upcomingShows[0]} handleClick={clickShow}/> : <DisplayCurrentShow show = {shows.find(show => show.id === 12345)} handleClick={clickShow}/>}
               <p>{""}</p>
