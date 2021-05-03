@@ -9,11 +9,11 @@ import { songType } from "../lib/types.js";
 import { useState } from "react";
 import moment from "moment";
 
-export default function SongInput({ complete, song }) {
+export default function SongInput({ complete, song, savedInit }) {
   const [title, setTitle] = useState(song ? song.title : "");
   const [artist, setArtist] = useState(song ? song.artist : "");
   const [album, setAlbum] = useState(song ? song.album : "");
-  const [saved, setSaved] = useState(false);
+  const [saved, setSaved] = useState(savedInit);
 
   const saveSong = (show) => {
     setSaved(true);
@@ -46,7 +46,7 @@ export default function SongInput({ complete, song }) {
         value={saved ? "Update" : "Enter"}
         disabled={(title === "") || (artist === "") || (album === "")}
         onClick={
-          () => saveSong({...song, title: title, artist: artist, album: album, timeAdded: moment().toISOString()})}/>
+          () => saveSong({...song, title: title, artist: artist, album: album, timeAdded: moment().format()})}/>
       <input
         type="button"
         value="Delete"
@@ -58,5 +58,6 @@ export default function SongInput({ complete, song }) {
 
 SongInput.propTypes = {
   complete: PropTypes.func.isRequired,
-  song: songType.isRequired
+  song: songType.isRequired,
+  savedInit: PropTypes.bool.isRequired
 }

@@ -8,14 +8,16 @@ import PlaylistLogger from "../components/PlaylistLogger.js";
 import StartShowButton from "../components/StartShowButton.js";
 import ShowDetails from "../components/ShowDetails.js";
 import DisplayCurrentPlaylist from "../components/DisplayCurrentPlaylist.js";
+import PlaylistDetails from "../components/PlaylistDetails.js";
 import Head from "next/head";
 
 import moment from "moment";
 import shows from "../../data/shows.json";
+import {sampleSongs} from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
 import styles from "../styles/Home.module.css";
 
-import { dayToInt, compareTwoShows } from "../lib/component-utils.js";
+import { upcomingShowsArray } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
 
@@ -25,12 +27,13 @@ import { getRandomIntID } from "../lib/component-utils.js";
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);
   const [allPlaylists, setAllPlaylists] = useState(playlists);
-  const [allSongs, setAllSongs] = useState([]);
+  const [allSongs, setAllSongs] = useState(sampleSongs);
   const [loggedIn, setLoggedIn] = useState(false);
   const [sotw] = useState(allShows[6]); //placeholder, eventually we will want a callback: "setSotw"
   const [page, setCurrentPage] = useState("Home");
   const [currentPlaylist, setCurrentPlaylist] = useState();
   const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
+  const [selectedPlaylist, setSelectedPlaylist] = useState();  // state for displaying PlaylistDetails
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
   const endShow = () => {
@@ -58,7 +61,7 @@ export default function WRMCWebsite() {
 
   const startShow = (showId) => {
     setCurrentPage("Log Playlist");
-    const newPlaylist = {date: moment().format("L"), showID: showId, id: getRandomIntID()};
+    const newPlaylist = {date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID()};
     setCurrentPlaylist(newPlaylist);
     setAllPlaylists([...allPlaylists, newPlaylist]);
   }
@@ -75,32 +78,53 @@ export default function WRMCWebsite() {
     setCurrentPage("Show Details");
   }
 
+
   // determines the current and next three shows
   const now = moment();
+  const upcomingShows = upcomingShowsArray(shows, now);
 
-  const upcomingShows = shows.filter(
-    (show) => (dayToInt[show.time.day] === now.day()) && (show.time.hour >= (now.hour() * 100)));
-
-  upcomingShows.sort((a, b) => compareTwoShows(a, b));
 
   const isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
+
+  // callback function to display PlaylistDetails page
+  const clickPlaylist = (playlist) => {
+    setSelectedPlaylist(playlist);
+    setCurrentPage("Playlist Details");
+  }
 
   const placeholderPages = {
     // TODO: we should create a container component for the Home page
     // (and any other pages that end up having multiple components)
     "Home" : <div>
+<<<<<<< HEAD
               <ShowOTW show={sotw} handleClick={clickShow}/> <p>{""}</p>
               {isOnAir ? <DisplayCurrentShow show = {upcomingShows[0]} handleClick={clickShow}/> : <DisplayCurrentShow show = {shows.find(show => show.id === 12345)} handleClick={clickShow}/>}
               {currentPlaylist ? <DisplayCurrentPlaylist playlist = {currentPlaylist} allSongs = {allSongs}/> : "No Playlist"}
+=======
+              <ShowOTW show={sotw} handleClick={clickShow}/> 
+>>>>>>> 1f13e57b5ae508234e2ead87832827fe66c46fbe
               <p>{""}</p>
-              {isOnAir ? <NextThreeShows shows={upcomingShows.slice(1,4)} handleClick={clickShow}/> : <NextThreeShows shows={upcomingShows.slice(0,3)} handleClick={clickShow}/>} 
+              <DisplayCurrentShow show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} handleClick={clickShow}/>
+              <p>{""}</p>
+              <NextThreeShows shows={isOnAir ? upcomingShows.slice(1,4) : upcomingShows.slice(0,3)} handleClick = {clickShow}/>
              </div>,
     "Blog" : <h2>This is the blog</h2>,
     "Schedule" : <h2>This is the schedule</h2>,
     "Community" : <h2>This is the community page</h2>,
     "About" : <h2>This is the about page</h2>,
-    "Show Details" : <ShowDetails show={selectedShow}/>
   };
+
+  // this if statement determines which page to display - add more else ifs as we add more specialized pages
+  let displayPage;
+  if (page === "Log Playlist" && loggedIn) {
+    displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
+  } else if (page === "Show Details") {
+    displayPage = <ShowDetails show={selectedShow} playlists={allPlaylists} clickPlaylist={clickPlaylist}/>
+  } else if (page === "Playlist Details") {
+    displayPage = <PlaylistDetails playlist={selectedPlaylist} songs={allSongs} shows={allShows} backToShow={clickShow}/>
+  } else {
+    displayPage = placeholderPages[page]
+  }
 
   return (
     <div className={styles.container}>
@@ -123,9 +147,7 @@ export default function WRMCWebsite() {
           currentPage={page}
           setCurrentPage={selectPage}
         />
-        {(page === "Log Playlist" && loggedIn)
-        ? <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
-        : placeholderPages[page]}
+        {displayPage}
         
       </main>
 
