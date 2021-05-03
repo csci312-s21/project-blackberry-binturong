@@ -1,9 +1,10 @@
 .nextThreeShows {
-  width: 40%;
+  width: 35%;
   border: solid black;
   background-color: rgb(255, 205, 213);
   border-radius: 10px;
   padding: 5px;
+  margin: 10px;
 }
 
 .show {
