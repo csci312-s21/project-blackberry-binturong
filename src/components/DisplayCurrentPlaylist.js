@@ -8,9 +8,13 @@
 import { showType } from "../lib/types.js";
 
 export default function DisplayCurrentPlaylist({ playlist }){
+
+const playlistExists = (typeof playlist !== "undefined");
+const currentPlaylist = {playlistExists ? playlist : currentPlaylist}
+console.(currentPlaylist);
   return (
     <div>
-
+      
     </div>
   );
 }
@@ -18,3 +22,4 @@ export default function DisplayCurrentPlaylist({ playlist }){
 DisplayCurrentPlaylist.propTypes = {
   playlist: playlistType.isRequired
 };
+

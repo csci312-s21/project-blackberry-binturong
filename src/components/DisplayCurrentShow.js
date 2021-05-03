@@ -11,7 +11,7 @@ import styles from "../styles/DisplayCurrentShow.module.css";
 
 export default function DisplayCurrentShow({ show, handleClick }){
 
-  const showExists = (typeof show !== "undefined")
+  const showExists = (typeof show !== "undefined");
 
   return (
     <div className={styles.nextThreeShows}>
