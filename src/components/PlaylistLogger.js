@@ -15,7 +15,7 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
   const [emptyRows, setEmptyRows] = useState([]);
 
   const addRow = () => {
-    const emptySong = {title: "", artist: "", album: "", playlistID: currentPlaylist.id, id: getRandomIntID()}
+    const emptySong = {title: "", artist: "", album: "", albumArt: "https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png", playlistID: currentPlaylist.id, id: getRandomIntID()}
     const newEmptyRows = [...emptyRows, {...emptySong}];
     setEmptyRows(newEmptyRows);
   }
@@ -24,10 +24,6 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
     if (action === "delete" && ((song.title === "") || (song.artist === "") || (song.album === ""))) {
       const newRows = emptyRows.filter((row) => row.id !== song.id);
       setEmptyRows(newRows);
-    } else if (action === "enter") {
-      const newRows = emptyRows.filter((row) => row.id !== song.id);
-      setEmptyRows(newRows);
-      complete(action, song);
     } else {
       complete(action, song);
     }
@@ -41,19 +37,21 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
   const currentShow = shows.find((show) => show.id === currentPlaylist.showID);
 
   return (
-    <div>
+    <div className={styles.playlist}>
       <h1 className={styles.title}>Playlist for {currentShow.title}</h1>
       <ul className={styles.rows}>{rows}</ul>
-      <input
-        type="button"
-        value="Add Song"
-        onClick={() => addRow()}
-      />
-      <input
-        type="button"
-        value="End Show"
-        onClick={() => endShow()}
-      />
+      <div>
+        <input
+          type="button"
+          value="Add Song"
+          onClick={() => addRow()}
+        />
+        <input
+          type="button"
+          value="End Show"
+          onClick={() => endShow()}
+        />
+      </div>
     </div>
   );
 }

@@ -42,8 +42,6 @@ export default function WRMCWebsite() {
 
   const updateSongCollection = (action, newSong) => {
     if (action === "enter") {
-      setAllSongs([...allSongs, newSong]);
-    } else if (action === "update") {
       const newSongs = allSongs.map((song) => ((song.id === newSong.id) ? newSong : song));
       setAllSongs(newSongs);
     } else if (action === "delete") {

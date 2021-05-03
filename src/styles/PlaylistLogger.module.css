@@ -1,7 +1,21 @@
+.playlist {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color:hsl(183, 100%, 96%);
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  border: solid black;
+  border-radius: 10px;
+}
+
 .rows {
   list-style-type: none;
 }
 
 .title {
+  font-family: Courier New;
+  font-weight: bold;
   text-align: center;
 }
