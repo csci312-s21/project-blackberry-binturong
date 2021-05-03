@@ -96,15 +96,11 @@ export default function WRMCWebsite() {
     // TODO: we should create a container component for the Home page
     // (and any other pages that end up having multiple components)
     "Home" : <div>
-<<<<<<< HEAD
-              <ShowOTW show={sotw} handleClick={clickShow}/> <p>{""}</p>
-              {isOnAir ? <DisplayCurrentShow show = {upcomingShows[0]} handleClick={clickShow}/> : <DisplayCurrentShow show = {shows.find(show => show.id === 12345)} handleClick={clickShow}/>}
-              {currentPlaylist ? <DisplayCurrentPlaylist playlist = {currentPlaylist} allSongs = {allSongs}/> : "No Playlist"}
-=======
-              <ShowOTW show={sotw} handleClick={clickShow}/> 
->>>>>>> 1f13e57b5ae508234e2ead87832827fe66c46fbe
+              <ShowOTW show={sotw} handleClick={clickShow}/>
               <p>{""}</p>
               <DisplayCurrentShow show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} handleClick={clickShow}/>
+              <p>{""}</p>
+              {currentPlaylist ? <DisplayCurrentPlaylist playlist = {currentPlaylist} allSongs = {allSongs}/> : "No Playlist"}
               <p>{""}</p>
               <NextThreeShows shows={isOnAir ? upcomingShows.slice(1,4) : upcomingShows.slice(0,3)} handleClick = {clickShow}/>
              </div>,
