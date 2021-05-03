@@ -17,17 +17,19 @@ export default function PlaylistDetails({ playlist, songs, shows, backToShow }) 
 
   const songInfo = playlistSongs.map((song) => 
     <tr key={song.id}>
-      <td>{moment(song.timeAdded).format("h:mm a")}</td>
+      <td>{moment(song.timeAdded, "YYYY-MM-DDTHH:mm:ssZ").format("h:mm a")}</td>
       <td>{song.title}</td>
       <td>{song.artist}</td>
       <td>{song.album}</td>
     </tr>
   );
 
+  const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd MMMM Do YYYY");
+
   return (
     <div>
       <h2 className={styles.header}>
-        {`Playlist for ${currShow.title} ${moment(playlist.date).format("dddd MMMM Do YYYY")}`}
+        {`Playlist for ${currShow.title} ${dateString}`}
       </h2>
       <table className={styles.songTable}>
         <tbody>

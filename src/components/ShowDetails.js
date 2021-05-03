@@ -21,7 +21,7 @@ export default function ShowDetails({ show, playlists, clickPlaylist }) {
   playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b)).reverse();
 
   const playlistDates = playlistsForShow.map(
-    (playlist) => <li key={playlist.id} onClick={() => clickPlaylist(playlist)}>{playlist.date}</li>);
+    (playlist) => <li key={playlist.id} data-testid="playlist-date" onClick={() => clickPlaylist(playlist)}>{playlist.date}</li>);
 
   return (
     <div data-testid="show details page">

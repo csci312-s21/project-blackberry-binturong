@@ -25,18 +25,6 @@ export const compareTwoShows = (a, b) => {
   const bTime = moment(`${dayToInt[b.time.day]} ${b.time.hour}`, "d Hmm");
 
   return moment(aTime).isBefore(bTime) ? -1 : 1;
-
-  // if (dayToInt[a.time.day] < dayToInt[b.time.day]){
-  //   return -1
-  // } else if (dayToInt[a.time.day] > dayToInt[b.time.day]){
-  //   return 1
-  // } else {
-  //   if (a.time.hour <= b.time.hour){
-  //     return -1
-  //   } else {
-  //     return 1
-  //   }
-  // }
 }
 
 // this function takes a show and return a string of the time in a pretty format, e.g. "9:00 - 10:00 am"
@@ -66,10 +54,10 @@ export const getRandomIntID = () => {
 
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoPlaylists = (a, b) => {
-  return moment(a.date).isBefore(b.date) ? -1 : 1;
+  return moment(a.date, "M-DD-YYYY").isBefore(b.date, "M-DD-YYYY") ? -1 : 1;
 }
 
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoSongs = (a, b) => {
-  return moment(a.timeAdded).isBefore(b.timeAdded) ? -1 : 1;
+  return moment(a.timeAdded, "YYYY-MM-DDTHH:mm:ssZ").isBefore(b.timeAdded, "YYYY-MM-DDTHH:mm:ssZ") ? -1 : 1;
 }
