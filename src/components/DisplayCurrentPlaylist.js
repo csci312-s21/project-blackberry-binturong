@@ -1,12 +1,12 @@
 /*
 
-  This Component will display the current playlists.
+  This Component displays the current playlists.
 
   props - current playlist , allSongs
 */
 
 import { playlistType, songType } from "../lib/types.js";
-import PropTypes from "prop-types"; 
+import PropTypes from "prop-types";
 
 export default function DisplayCurrentPlaylist({ playlist, allSongs }){
 
