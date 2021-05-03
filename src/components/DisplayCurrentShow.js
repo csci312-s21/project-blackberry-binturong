@@ -7,6 +7,7 @@
 
 import { showType } from "../lib/types.js";
 import styles from "../styles/DisplayCurrentShow.module.css";
+import PropTypes from "prop-types";
 
 
 export default function DisplayCurrentShow({ show, handleClick }){
@@ -26,5 +27,6 @@ export default function DisplayCurrentShow({ show, handleClick }){
 }
 
 DisplayCurrentShow.propTypes = {
-  show: showType
+  show: showType,
+  handleClick: PropTypes.func.isRequired,
 };
