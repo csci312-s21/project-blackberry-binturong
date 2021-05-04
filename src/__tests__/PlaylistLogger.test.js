@@ -5,14 +5,14 @@ Tests for PlaylistLogger.js
 */
 import { render, screen, fireEvent } from "@testing-library/react";
 import PlaylistLogger from "../components/PlaylistLogger.js";
-import { sampleShow, samplePlaylist, sampleSong } from "../lib/test-utils.js";
+import { sampleShow, samplePlaylist, sampleSong2 } from "../lib/test-utils.js";
 
 describe("PlaylistLogger tests", () => {
   const handler = jest.fn();
 
   beforeEach(() => {
     handler.mockReset();
-    render(<PlaylistLogger complete={handler} showID={sampleShow.id} currentPlaylist={samplePlaylist} shows={[sampleShow]} songs={[sampleSong]}/>);
+    render(<PlaylistLogger complete={handler} showID={sampleShow.id} currentPlaylist={samplePlaylist} shows={[sampleShow]} songs={[sampleSong2]}/>);
   });
 
   test("Add button adds new row", () => {
@@ -31,7 +31,7 @@ describe("PlaylistLogger tests", () => {
 
     const songInputs = screen.queryAllByRole("listitem");
     
-    const deleteButton = screen.getAllByRole("button", { name: "Delete" });
+    const deleteButton = screen.getByRole("button", { name: "Delete" });
     expect(deleteButton).toBeInTheDocument();
 
     fireEvent.click(deleteButton);

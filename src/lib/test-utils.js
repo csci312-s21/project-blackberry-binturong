@@ -107,6 +107,14 @@ export const sampleSong = {
   "id": 42
 }
 
+export const sampleSong2 = {
+  "title": "sample title",
+  "artist": "sample artist",
+  "album": "sample album",
+  "playlistID": 123,
+  "id": 42
+}
+
 export const sampleSongs = [
   {
     "title": "sample title 1",
