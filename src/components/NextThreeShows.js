@@ -20,7 +20,7 @@ export default function NextThreeShows({ shows, handleClick, setCurrentPage }){
   function changePage(e) {
     e.preventDefault();     
     setCurrentPage("Schedule"); 
-  };
+  }
 
   return (
     <div className={styles.nextThreeShows}>
