@@ -25,7 +25,7 @@ const currentPlaylist = currentSongs.map((song) =>
         Current Playlist
       </div>
       <div className = {styles.playlist}>
-        {currentPlaylist}
+        <ul>{currentPlaylist} </ul>
       </div>
     </div>
   );
