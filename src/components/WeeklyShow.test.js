@@ -14,7 +14,7 @@ const sampleShow = {
     "id": "55"
 }
 
-const color = 'rgb(120, 50, 0)';
+const color = "#F50046";
 
 describe("WeeklyShow tests", () => {
 
@@ -24,9 +24,10 @@ describe("WeeklyShow tests", () => {
     expect(screen.queryByText("Kyle Hooker")).toBeInTheDocument();
   });
 
+
   test("Show is correct color", () => {
     const { container } = render(<WeeklyShow show={sampleShow}/>);
-    expect(container.firstChild).toHaveStyle(`background: ${color}`);
+    expect(container.firstChild).toHaveStyle(`background-color: ${color}`);
   });
 
 });

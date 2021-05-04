@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
 import styles from "../styles/WeeklyShow.module.css";
-import { red } from "color-name";
 
 export default function WeeklyShow({ show }){
 
   if (show === {} || show === undefined){
-    return <div className={styles.WeeklyShow}>
-    </div>
+    return <div className={styles.WeeklyShow} />
   }
 
   const colors = {
@@ -49,7 +47,6 @@ export default function WeeklyShow({ show }){
   if (show.genres !== undefined) {
     const g = show.genres[0].toLowerCase();
     genrecolor = colors[g];
-
     if (genrecolor === undefined) {
       genrecolor = "#A8A8A8";
     }
@@ -60,29 +57,24 @@ export default function WeeklyShow({ show }){
   }
   
   return (
-    /*
-    <div className={styles.WeeklyShow} style={{"background-color": genrecolor}}>
+    <div className={styles.WeeklyShow} style={{"backgroundColor": genrecolor}}>
       <p className={styles.ShowTitle}>{show.title}</p>
       <p>{djs}</p>
     </div>
-    */
-    <div className={styles.WeeklyShow} style={{"background-color": genrecolor}}>
-      <span className={styles.ShowTitle}>{show.title}<br/>{djs}</span>
-    </div>
   )
-};
+}
 
 WeeklyShow.propTypes = {
   show: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    DJs: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    description: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    DJs: PropTypes.arrayOf(PropTypes.string.isRequired),
+    description: PropTypes.string,
     time: PropTypes.shape({
-      day: PropTypes.string.isRequired,
-      hour: PropTypes.number.isRequired,
-      duration: PropTypes.number.isRequired,
-    }).isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    id: PropTypes.string.isRequired,
+      day: PropTypes.string,
+      hour: PropTypes.number,
+      duration: PropTypes.number,
+    }),
+    genres: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.string,
   }).isRequired
 };

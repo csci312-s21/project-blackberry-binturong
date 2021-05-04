@@ -5,10 +5,11 @@ import styles from "../styles/WeeklyShow.module.css";
 
 export default function WeeklySchedule({ shows }){
   const showsArr = [];
-  const days = ['','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const days = ["","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-  const firstRow = days.map((d) => {
-    return (<div className={styles.scheduleDay}>
+  const firstRow = days.map((d, i) => {
+    const currKey = `firstrow${  i}`;
+    return (<div key={currKey} className={styles.scheduleDay}>
               {d}
             </div>)
   })
@@ -20,22 +21,24 @@ export default function WeeklySchedule({ shows }){
     showsArr.push([]);
     for (let l = 0; l < 8; l++){
       if (l===0){
-        showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{i+":00"}</div>);
+        showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{`${i}:00`}</div>);
       }
-      //else {showsArr[showsArr.length-1].push(<WeeklyShow show = {{}}/>)};
-      else {showsArr[showsArr.length-1].push(undefined)};
+      else {showsArr[showsArr.length-1].push(undefined)}
     }
   }
   
   shows.forEach((s) => {
-    let day = getDayInt(s.time.day)+1;
-    let time = (s.time.hour / 100)+1;
-    let genre = s.genre;
+    const day = getDayInt(s.time.day)+1;
+    const time = (s.time.hour / 100)+1;
     showsArr[time][day] = <WeeklyShow show = {s}/>
+    if (s.time.duration === 2) {
+      showsArr[time+1][day] = <WeeklyShow show = {s}/>
+    }
   })
 
 
-  const table = showsArr.map((item) => {
+  const table = showsArr.map((item, key1) => {
+    const rowKey = `row${  key1}`;
     let count = 0;
     item.forEach((unit) => {
       if (unit === undefined) {
@@ -45,18 +48,22 @@ export default function WeeklySchedule({ shows }){
     
     if (count < 7) {
       return (
-        <tr>
-          {item.map((i) => {
-            let result = i;
-            if (i === undefined) {
-              result = <WeeklyShow show = {{}}/>
-            }
-
-            return (<td>
-                      {result}
-                    </td>);
-          })}
-        </tr>
+        <tbody>
+          <tr key={rowKey}>
+            {item.map((i, key2) => {
+              let result = i;
+              if (i === undefined) {
+                result = <WeeklyShow show = {{}}/>
+              }
+              
+              let cellKey = key1*1000+key2;
+              cellKey = `cell${  cellKey}`;
+              return (<td key={cellKey}>
+                        {result}
+                      </td>);
+            })}
+          </tr>
+        </tbody>
       );
     }
     
@@ -69,7 +76,7 @@ export default function WeeklySchedule({ shows }){
       </table>
     </div>
   );
-};
+}
 
 
 WeeklySchedule.propTypes = {

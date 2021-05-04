@@ -15,14 +15,14 @@ import { useState } from "react";
 export default function Home() {
   const [allShows] = useState(shows);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [sotw] = useState(allShows[5]); //placeholder, eventually we will want a callback: "setSotw"
+  const [sotw] = useState(allShows[0]); //placeholder, eventually we will want a callback: "setSotw"
 
   const [page, setCurrentPage] = useState("Home");
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
   const placeholderPages = {
     "Home":<div> <ShowOTW show={sotw}/> <p>{""}</p> <NextThreeShows shows={allShows}/>  </div>,
-    "Blog":<h2></h2>,
+    "Blog":<h2 />,
     "Schedule":<h2><WeeklySchedule shows={allShows}/></h2>,
     "Community":<h2>This is the community page</h2>,
     "About":<h2>This is the about page</h2>
