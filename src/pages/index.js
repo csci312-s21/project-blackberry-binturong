@@ -81,9 +81,9 @@ export default function WRMCWebsite() {
   // determines the current and next three shows
   const now = moment();
   const upcomingShows = upcomingShowsArray(shows, now);
-  const isOnAir = false;
-  if (upcomingShows[0] != undefined){
-    const isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
+  let isOnAir = false;
+  if (upcomingShows.length>1){
+    isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
   }
   // callback function to display PlaylistDetails page
   const clickPlaylist = (playlist) => {

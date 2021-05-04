@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import NextThreeShows from "../components/NextThreeShows.js";
 import { sampleShows } from "../lib/test-utils.js";
 
@@ -56,11 +56,5 @@ describe("NextThreeShows tests", () => {
     expect(screen.queryByText("Sample Show 2")).toBeInTheDocument();
     expect(screen.queryByText("Sample Show 3")).not.toBeInTheDocument();
     expect(screen.queryByText("That's all for today!")).not.toBeInTheDocument();
-  });
-
-  test.only("Tests that the see-full-schedule button correctly displays the schedule", () => {
-    render(<NextThreeShows shows={sampleShows.slice(0,3)}/>);
-    fireEvent.click(screen.queryByRole("button", { name: "See Full Schedule" }));
-    expect(screen.queryByText("Today's next three shows:")).toBeInTheDocument();
   });
 });
