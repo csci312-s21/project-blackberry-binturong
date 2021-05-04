@@ -100,7 +100,11 @@ export default function WRMCWebsite() {
               <p>{""}</p>
               <DisplayCurrentShow show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} handleClick={clickShow}/>
               <p>{""}</p>
-              <DisplayCurrentPlaylist playlist = {currentPlaylist ? currentPlaylist : []} allSongs = {allSongs}/>
+              <DisplayCurrentPlaylist playlist = {currentPlaylist ? currentPlaylist : 
+              {"date": "",
+              id: 12345,
+              showID: 12345}}
+              allSongs = {allSongs}/>
               <p>{""}</p>
               <NextThreeShows shows={isOnAir ? upcomingShows.slice(1,4) : upcomingShows.slice(0,3)} handleClick = {clickShow}/>
              </div>,

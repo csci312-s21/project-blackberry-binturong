@@ -13,12 +13,10 @@ export default function DisplayCurrentPlaylist({ playlist, allSongs }){
 
 const currentSongs = allSongs.filter((song) => song.playlistID === playlist.id);
 
-currentSongs.map((song) => song.timeAdded = new Date(song.timeAdded));
-
 const currentPlaylist = currentSongs.map((song) => 
-    <ul key={song.id}>
-      {song.timeAdded.toLocaleTimeString([], {hour: "2-digit", minute:"2-digit"})} <strong>{song.title}</strong> <em>{song.artist}</em>
-    </ul>
+    <li key={song.id}>
+      {song.timeAdded} <strong>{song.title}</strong> <em>{song.artist}</em>
+    </li>
   );
 
   return (
@@ -34,7 +32,7 @@ const currentPlaylist = currentSongs.map((song) =>
 }
 
 DisplayCurrentPlaylist.propTypes = {
-  playlist: playlistType.isRequired,
+  playlist: playlistType,
   allSongs: PropTypes.arrayOf(songType).isRequired
 };
 
