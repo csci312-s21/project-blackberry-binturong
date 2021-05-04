@@ -31,7 +31,7 @@ describe("PlaylistLogger tests", () => {
 
     const songInputs = screen.queryAllByRole("listitem");
     
-    const deleteButton = screen.getByRole("button", { name: "Delete" });
+    const deleteButton = screen.getAllByRole("button", { name: "Delete" });
     expect(deleteButton).toBeInTheDocument();
 
     fireEvent.click(deleteButton);
