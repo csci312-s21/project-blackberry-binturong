@@ -10,7 +10,7 @@ import { samplePlaylist } from "../lib/test-utils.js";
 describe("DisplayCurrentPlaylist tests", () => {
 
   test("current playlist is displayed", () => {
-    render(<DisplayCurrentPlaylist playlist={samplePlaylist}/>);
+    render(<DisplayCurrentPlaylist playlist={samplePlaylist, songs}/>);
 
     expect(screen.queryByText("sample title")).toBeInTheDocument();
   });

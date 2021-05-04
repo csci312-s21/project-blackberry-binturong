@@ -100,7 +100,7 @@ export default function WRMCWebsite() {
               <p>{""}</p>
               <DisplayCurrentShow show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} handleClick={clickShow}/>
               <p>{""}</p>
-              {currentPlaylist ? <DisplayCurrentPlaylist playlist = {currentPlaylist} allSongs = {allSongs}/> : "No Playlist"}
+              <DisplayCurrentPlaylist playlist = {currentPlaylist ? currentPlaylist : []} allSongs = {allSongs}/>
               <p>{""}</p>
               <NextThreeShows shows={isOnAir ? upcomingShows.slice(1,4) : upcomingShows.slice(0,3)} handleClick = {clickShow}/>
              </div>,
@@ -109,7 +109,7 @@ export default function WRMCWebsite() {
     "Community" : <h2>This is the community page</h2>,
     "About" : <h2>This is the about page</h2>,
   };
-
+  
   // this if statement determines which page to display - add more else ifs as we add more specialized pages
   let displayPage;
   if (page === "Log Playlist" && loggedIn) {

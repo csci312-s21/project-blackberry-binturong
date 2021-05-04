@@ -20,7 +20,7 @@ const currentPlaylist = currentSongs.map((song) =>
       {song.timeAdded.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} <strong>{song.title}</strong> <em>{song.artist}</em>
     </ul>
   );
-
+  
   return (
     <div className = {styles.DisplayCurrentPlaylist}>
       <div className={styles.header}>
