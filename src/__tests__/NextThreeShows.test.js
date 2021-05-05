@@ -57,5 +57,4 @@ describe("NextThreeShows tests", () => {
     expect(screen.queryByText("Sample Show 3")).not.toBeInTheDocument();
     expect(screen.queryByText("That's all for today!")).not.toBeInTheDocument();
   });
-
 });

@@ -176,4 +176,10 @@ describe("PlaylistDetails integration tests", () => {
     screen.getAllByTestId("playlist-date").forEach((pl) => expect(pl).toBeInTheDocument());
     expect(screen.queryByRole("button", { name: "<< Back to show information" })).not.toBeInTheDocument();
   });
+
+  test("Tests that the see-full-schedule button correctly displays the schedule", () => {
+    fireEvent.click(screen.queryByRole("button", { name: "See Full Schedule" }));
+    expect(screen.queryByText("This is the schedule")).toBeInTheDocument();
+  });
+
 });
