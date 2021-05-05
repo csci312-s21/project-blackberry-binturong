@@ -3,8 +3,9 @@ import styles from "../styles/WeeklyShow.module.css";
 
 export default function WeeklyShow({ show }){
 
-  if (show === {} || show === undefined){
-    return <div className={styles.WeeklyShow} />
+
+  if (Object.keys(show).length === 0){
+    return <div className={styles.WeeklyShow} style={{"backgroundColor": "#DDDDDD"}} />
   }
 
   const colors = {
@@ -38,23 +39,8 @@ export default function WeeklyShow({ show }){
     "world": "#FFB700"
   }
 
-  let djs = show.DJs;
-  if (show.DJs !== undefined) {
-    djs = show.DJs.join(", ")
-  }
-
-  let genrecolor;
-  if (show.genres !== undefined) {
-    const g = show.genres[0].toLowerCase();
-    genrecolor = colors[g];
-    if (genrecolor === undefined) {
-      genrecolor = "#A8A8A8";
-    }
-  }
-  
-  if (genrecolor === undefined) {
-    genrecolor = "#DDDDDD";
-  }
+  const djs = show.DJs.join(", ")
+  const genrecolor = colors[show.genres[0].toLowerCase()]
   
   return (
     <div className={styles.WeeklyShow} style={{"backgroundColor": genrecolor}}>

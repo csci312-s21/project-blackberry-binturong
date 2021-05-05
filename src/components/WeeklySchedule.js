@@ -13,17 +13,17 @@ export default function WeeklySchedule({ shows }){
               {d}
             </div>)
   })
-
   showsArr.push(firstRow);
 
   // Add useEffect when writing the onHover function
+
   for (let i = 0; i < 24; i++){
     showsArr.push([]);
     for (let l = 0; l < 8; l++){
       if (l===0){
         showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{`${i}:00`}</div>);
       }
-      else {showsArr[showsArr.length-1].push(undefined)}
+      else {showsArr[showsArr.length-1].push(<WeeklyShow show = {{}}/>)}
     }
   }
   
@@ -51,11 +51,7 @@ export default function WeeklySchedule({ shows }){
         <tbody>
           <tr key={rowKey}>
             {item.map((i, key2) => {
-              let result = i;
-              if (i === undefined) {
-                result = <WeeklyShow show = {{}}/>
-              }
-              
+              const result = i;
               let cellKey = key1*1000+key2;
               cellKey = `cell${  cellKey}`;
               return (<td key={cellKey}>
