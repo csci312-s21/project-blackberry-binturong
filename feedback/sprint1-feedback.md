@@ -1,4 +1,4 @@
-# Feedback for alabaster-armadillo
+# Feedback for blackberry-binturong
 
 (X) tagged commit on main for sprint1
 (X) set of closed user stories
