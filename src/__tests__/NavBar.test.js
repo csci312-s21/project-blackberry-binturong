@@ -4,7 +4,7 @@ Tests for NavBar.js
 
 */
 import { render, screen, fireEvent } from "@testing-library/react";
-import NavBar from "./NavBar";
+import NavBar from "../components/NavBar";
 
 describe("NavBar tests", () => {
   const handler = jest.fn();

@@ -1,5 +1,17 @@
 [
   {
+    "title": "We are playing awesome music",
+    "DJs" : ["WRMC Radio"],
+    "description" : "Theres not always a show going on, but there's always something to listen to. This only appears when no show is currently going on and lasts until the next show begins.",
+    "time": {
+      "day": "X",
+      "hour": 0,
+      "duration": 1
+    },
+    "genres": ["music"],
+    "id": 12345
+  },
+  {
     "title": "Insta-Gram",
     "DJs": ["Lucy Rinzler-Day","Sophie Clark"],
     "description": "Love grandmas? So do we! Each week, we celebrate America’s unsung heroes: grandmas from our families, friends, towns and beyond!",
@@ -9,7 +21,7 @@
       "duration": 1
     },
     "genres": ["exec","Talk"],
-    "id": "0"
+    "id": 0
   },
   {
     "title": "What’s a Genre?",
@@ -21,7 +33,7 @@
       "duration": 1
     },
     "genres": ["Fruit"],
-    "id": "1"
+    "id": 1
   },
   {
     "title": "v-talk",
@@ -33,7 +45,7 @@
       "duration": 1
     },
     "genres": ["exec"],
-    "id": "2"
+    "id": 2
   },
   {
     "title": "Chuck and Margs",
@@ -45,7 +57,7 @@
       "duration": 1
     },
     "genres": ["Hip Hop","Pop","Talk"],
-    "id": "3"
+    "id": 3
   },
   {
     "title": "Policy Path",
@@ -57,7 +69,7 @@
       "duration": 1
     },
     "genres": ["News"],
-    "id": "4"
+    "id": 4
   },
   {
     "title": "Democracy Now!",
@@ -69,7 +81,7 @@
       "duration": 1
     },
     "genres": ["News"],
-    "id": "5"
+    "id": 5
   },
   {
     "title": "For a Scooby Snack?",
@@ -81,7 +93,7 @@
       "duration": 1
     },
     "genres": ["Funk","Indie","R&B / Soul"],
-    "id": "6"
+    "id": 6
   },
   {
     "title": "Honey Roast",
@@ -93,7 +105,7 @@
       "duration": 1
     },
     "genres": ["Indie","Pop","Talk"],
-    "id": "7"
+    "id": 7
   },
   {
     "title": "auf’m DACH",
@@ -105,7 +117,7 @@
       "duration": 1
     },
     "genres": ["Indie","Pop","World"],
-    "id": "8"
+    "id": 8
   },
   {
     "title": "Sam Kann Learns Music",
@@ -117,7 +129,7 @@
       "duration": 1
     },
     "genres": ["Eclectic"],
-    "id": "9"
+    "id": 9
   },
   {
     "title": "Sawt Al-Tulaab",
@@ -129,7 +141,7 @@
       "duration": 1
     },
     "genres": ["World"],
-    "id": "10"
+    "id": 10
   },
   {
     "title": "short giraffes",
@@ -141,7 +153,7 @@
       "duration": 1
     },
     "genres": ["Talk"],
-    "id": "11"
+    "id": 11
   },
   {
     "title": "Speechless",
@@ -153,7 +165,7 @@
       "duration": 1
     },
     "genres": ["Eclectic"],
-    "id": "12"
+    "id": 12
   },
   {
     "title": "Tiny Desk by a Sunny Window",
@@ -165,7 +177,7 @@
       "duration": 1
     },
     "genres": ["Folk","Indie","Pop"],
-    "id": "13"
+    "id": 13
   },
   {
     "title": "Poor Boy A Long Way From Home",
@@ -177,7 +189,7 @@
       "duration": 1
     },
     "genres": ["exec"],
-    "id": "14"
+    "id": 14
   },
   {
     "title": "Reality as we perceive it",
@@ -189,7 +201,7 @@
       "duration": 1
     },
     "genres": ["Pop","Talk"],
-    "id": "15"
+    "id": 15
   },
   {
     "title": "wrench’d",
@@ -201,7 +213,7 @@
       "duration": 1
     },
     "genres": ["exec","Jazz","Psychadelia","Talk"],
-    "id": "16"
+    "id": 16
   },
   {
     "title": "Choreo Muses",
@@ -213,7 +225,7 @@
       "duration": 1
     },
     "genres": ["Hip Hop","Pop Punk","R&B / Soul"],
-    "id": "17"
+    "id": 17
   },
   {
     "title": "Retail Rumbles",
@@ -225,7 +237,7 @@
       "duration": 1
     },
     "genres": ["Folk","Indie","Rock"],
-    "id": "18"
+    "id": 18
   },
   {
     "title": "Democracy Now!",
@@ -237,7 +249,7 @@
       "duration": 1
     },
     "genres": ["News"],
-    "id": "19"
+    "id": 19
   },
   {
     "title": "Asa’s Kafkaesque Neo-Brutalist Dub Factory",
@@ -249,7 +261,7 @@
       "duration": 1
     },
     "genres": ["Folk","Reggae","Rock"],
-    "id": "20"
+    "id": 20
   },
   {
     "title": "You Might Hate This",
@@ -261,7 +273,7 @@
       "duration": 1
     },
     "genres": ["Folk","Indie","Pop"],
-    "id": "21"
+    "id": 21
   },
   {
     "title": "Chicken Flicks",
@@ -273,7 +285,7 @@
       "duration": 1
     },
     "genres": ["Talk"],
-    "id": "22"
+    "id": 22
   },
   {
     "title": "Tunes on the Move",
@@ -285,7 +297,7 @@
       "duration": 1
     },
     "genres": ["Indie","Pop","Rock"],
-    "id": "23"
+    "id": 23
   },
   {
     "title": "come chill!",
@@ -297,7 +309,7 @@
       "duration": 1
     },
     "genres": ["Funk","Indie","R&B / Soul"],
-    "id": "24"
+    "id": 24
   },
   {
     "title": "dairy free milk",
@@ -309,7 +321,7 @@
       "duration": 1
     },
     "genres": ["exec","Folk","Hip Hop","Indie"],
-    "id": "25"
+    "id": 25
   },
   {
     "title": "The Battell Bathtub",
@@ -321,7 +333,7 @@
       "duration": 1
     },
     "genres": ["Folk","Talk"],
-    "id": "26"
+    "id": 26
   },
   {
     "title": "PSYC 91.1",
@@ -333,7 +345,7 @@
       "duration": 1
     },
     "genres": ["Pop","Rock","Talk"],
-    "id": "27"
+    "id": 27
   },
   {
     "title": "Vibe of the Times",
@@ -345,7 +357,7 @@
       "duration": 1
     },
     "genres": ["exec"],
-    "id": "28"
+    "id": 28
   },
   {
     "title": "my own personal hell",
@@ -357,7 +369,7 @@
       "duration": 1
     },
     "genres": ["exec"],
-    "id": "29"
+    "id": 29
   },
   {
     "title": "pink nissan march",
@@ -369,7 +381,7 @@
       "duration": 1
     },
     "genres": ["Folk","Fruit","Hip Hop","Pop","R&B / Soul"],
-    "id": "30"
+    "id": 30
   },
   {
     "title": "44 Acre Woods",
@@ -381,7 +393,7 @@
       "duration": 1
     },
     "genres": ["Folk","Indie"],
-    "id": "31"
+    "id": 31
   },
   {
     "title": "Democracy Now!",
@@ -393,7 +405,7 @@
       "duration": 1
     },
     "genres": ["News"],
-    "id": "32"
+    "id": 32
   },
   {
     "title": "Who Wants a Pancake?",
@@ -405,7 +417,7 @@
       "duration": 1
     },
     "genres": ["Indie"],
-    "id": "33"
+    "id": 33
   },
   {
     "title": "Dissociation Station",
@@ -417,7 +429,7 @@
       "duration": 1
     },
     "genres": ["Indie","Rap","Talk"],
-    "id": "34"
+    "id": 34
   },
   {
     "title": "A Safe Shuffle",
@@ -429,7 +441,7 @@
       "duration": 1
     },
     "genres": ["Rock"],
-    "id": "35"
+    "id": 35
   },
   {
     "title": "Hot Rain",
@@ -441,7 +453,7 @@
       "duration": 1
     },
     "genres": ["exec","Indie","Rock"],
-    "id": "36"
+    "id": 36
   },
   {
     "title": "(Untitled)",
@@ -453,7 +465,7 @@
       "duration": 1
     },
     "genres": ["Fruit"],
-    "id": "37"
+    "id": 37
   },
   {
     "title": "Collecting",
@@ -465,7 +477,7 @@
       "duration": 1
     },
     "genres": ["Indie","Talk"],
-    "id": "38"
+    "id": 38
   },
   {
     "title": "Songs I Hate",
@@ -477,7 +489,7 @@
       "duration": 1
     },
     "genres": ["exec","Punk"],
-    "id": "39"
+    "id": 39
   },
   {
     "title": "After Hours",
@@ -489,7 +501,7 @@
       "duration": 1
     },
     "genres": ["Hip Hop","Indie","R&B / Soul"],
-    "id": "40"
+    "id": 40
   },
   {
     "title": "Democracy Now!",
@@ -501,7 +513,7 @@
       "duration": 1
     },
     "genres": ["News"],
-    "id": "41"
+    "id": 41
   },
   {
     "title": "Whatever ‘It’ Is",
@@ -513,7 +525,7 @@
       "duration": 1
     },
     "genres": ["Indie","Pop","Rock"],
-    "id": "42"
+    "id": 42
   },
   {
     "title": "tinkerbell’s playlist",
@@ -525,7 +537,7 @@
       "duration": 1
     },
     "genres": ["exec","Folk","Indie"],
-    "id": "43"
+    "id": 43
   },
   {
     "title": "Perpetual Novelty",
@@ -537,7 +549,7 @@
       "duration": 1
     },
     "genres": ["Indie","Pop","Talk"],
-    "id": "44"
+    "id": 44
   },
   {
     "title": "Hard Switch",
@@ -549,7 +561,7 @@
       "duration": 1
     },
     "genres": ["Folk","Metal","Rock"],
-    "id": "45"
+    "id": 45
   },
   {
     "title": "In Other News…",
@@ -561,7 +573,7 @@
       "duration": 1
     },
     "genres": ["News"],
-    "id": "46"
+    "id": 46
   },
   {
     "title": "Lost",
@@ -573,7 +585,7 @@
       "duration": 1
     },
     "genres": ["Folk","Indie","Pop"],
-    "id": "47"
+    "id": 47
   },
   {
     "title": "friday i’m in love",
@@ -585,7 +597,7 @@
       "duration": 1
     },
     "genres": ["Indie","Pop"],
-    "id": "48"
+    "id": 48
   },
   {
     "title": "Whiplash",
@@ -597,7 +609,7 @@
       "duration": 1
     },
     "genres": ["Folk","Pop","Rock"],
-    "id": "49"
+    "id": 49
   },
   {
     "title": "Underground Network",
@@ -609,7 +621,7 @@
       "duration": 1
     },
     "genres": ["Punk","Rock"],
-    "id": "50"
+    "id": 50
   },
   {
     "title": "Democracy Now!",
@@ -621,7 +633,7 @@
       "duration": 1
     },
     "genres": ["News"],
-    "id": "51"
+    "id": 51
 },
 {
     "title": "Tell Me What to Do!?",
@@ -633,7 +645,7 @@
       "duration": 1
     },
     "genres": ["Talk"],
-    "id": "52"
+    "id": 52
   },
   {
     "title": "what’s the sitch?",
@@ -645,7 +657,7 @@
       "duration": 1
     },
     "genres": ["Indie","Punk","Rock","Talk"],
-    "id": "53"
+    "id": 53
   },
   {
     "title": "In Flux",
@@ -657,7 +669,7 @@
       "duration": 1
     },
     "genres": ["Pop","Talk"],
-    "id": "54"
+    "id": 54
   },
   {
     "title": "Rewind with Kyle",
@@ -669,7 +681,7 @@
       "duration": 1
     },
     "genres": ["Rock"],
-    "id": "55"
+    "id": 55
   },
   {
     "title": "A Misfit’s Guide to Middlebury",
@@ -681,7 +693,7 @@
       "duration": 1
     },
     "genres": ["News"],
-    "id": "56"
+    "id": 56
   },
   {
     "title": "Simps and Subpar Stanzas",
@@ -693,7 +705,7 @@
       "duration": 1
     },
     "genres": ["Folk","Indie","Talk"],
-    "id": "57"
+    "id": 57
   },
   {
     "title": "The Green Banana",
@@ -705,7 +717,7 @@
       "duration": 2
     },
     "genres": ["exec","Fruit"],
-    "id": "58"
+    "id": 58
   },
   {
     "title": "Zoo Without Bars",
@@ -717,7 +729,7 @@
       "duration": 2
     },
     "genres": ["Blues","Rock"],
-    "id": "59"
+    "id": 59
   },
   {
     "title": "Femi-noise",
@@ -729,7 +741,7 @@
       "duration": 1
     },
     "genres": ["Electronic","Indie","Pop"],
-    "id": "60"
+    "id": 60
   },
   {
     "title": "Rayn’s Show",
@@ -741,7 +753,7 @@
       "duration": 1
     },
     "genres": ["exec"],
-    "id": "61"
+    "id": 61
   },
   {
     "title": "Soft Sounds From The Clouds",
@@ -753,7 +765,7 @@
       "duration": 1
     },
     "genres": ["exec","Hip Hop","Pop","Rap"],
-    "id": "62"
+    "id": 62
   },
   {
     "title": "Melt Banana and Other Bands I’m Cool for Liking",
@@ -765,7 +777,7 @@
       "duration": 1
     },
     "genres": ["Experimental","Talk"],
-    "id": "63"
+    "id": 63
   },
   {
     "title": "The Dig",
@@ -777,7 +789,7 @@
       "duration": 1
     },
     "genres": ["Electronic","Hip Hop","Indie"],
-    "id": "64"
+    "id": 64
   },
   {
     "title": "Level Crossing",
@@ -789,7 +801,7 @@
       "duration": 1
     },
     "genres": ["Funk","Hip Hop","Indie","R&B / Soul"],
-    "id": "65"
+    "id": 65
   },
   {
     "title": "MiddNight Break",
@@ -801,7 +813,7 @@
       "duration": 1
     },
     "genres": ["Jazz","Rock","Talk"],
-    "id": "66"
+    "id": 66
   },
   {
     "title": "anything but the kitchen sink",
@@ -813,7 +825,7 @@
       "duration": 1
     },
     "genres": ["Indie","Pop","Rock"],
-    "id": "67"
+    "id": 67
   },
   {
     "title": "SPUNK with Liam and Porter",
@@ -825,7 +837,7 @@
       "duration": 1
     },
     "genres": ["Comedy","Eclectic"],
-    "id": "68"
+    "id": 68
   },
   {
     "title": "When You Wake",
@@ -837,7 +849,7 @@
       "duration": 1
     },
     "genres": ["exec"],
-    "id": "69"
+    "id": 69
   },
   {
     "title": "Fuk-Mak Movies / Cherried away 🍒🍒🍒",
@@ -849,6 +861,6 @@
       "duration": 1
     },
     "genres": ["F","Talk"],
-    "id": "70"
+    "id": 70
   }
 ]

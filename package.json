@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "moment": "^2.29.1",
+    "nanoid": "^3.1.22",
     "next": "10.0.8",
     "prop-types": "^15.7.2",
     "react": "17.0.1",

@@ -1,0 +1,33 @@
+.nextThreeShows {
+  width: 40%;
+  border: solid black;
+  background-color: rgb(255, 205, 213);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.show {
+  list-style-type: none;
+  border-radius: 10px;
+  margin: 0;
+  padding: 3px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.infoText {
+  list-style-type: none;
+  border-radius: 10px;
+  margin: 0;
+  padding: 3px;
+  text-align: center;
+}
+
+.header, .message {
+  text-align: center;
+  margin: 1px;
+  font-size: 150%;
+  font-style: italic;
+  font-family: Courier New;
+  font-weight: bold;
+}

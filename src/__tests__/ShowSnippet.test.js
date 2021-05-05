@@ -1,25 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import ShowSnippet from "./ShowSnippet.js";
-
-const sampleShow = {
-  "title": "Sample Show",
-  "DJs": ["Joe Schmo, ABC"],
-  "description": "sample description",
-  "time": {
-    "day": "F",
-    "hour": 800,
-    "duration": 1
-  },
-  "genres": ["Rock"],
-  "id": "55"
-}
+import ShowSnippet from "../components/ShowSnippet.js";
+import { sampleShow } from "../lib/test-utils.js";
 
 describe("ShowSnippet tests", () => {
 
   test("snippet displays title", () => {
     render(<ShowSnippet show={sampleShow}/>);
 
-    expect(screen.queryByText("Sample Show")).toBeInTheDocument();
+    expect(screen.queryByText("Sample Show 1")).toBeInTheDocument();
   });
 
   test("snippet displays time", () => {
@@ -31,7 +19,7 @@ describe("ShowSnippet tests", () => {
   test("snippet displays DJs", () => {
     render(<ShowSnippet show={sampleShow}/>);
 
-    expect(screen.queryByText("Joe Schmo, ABC")).toBeInTheDocument();
+    expect(screen.queryByText("Kyle Hooker")).toBeInTheDocument();
   });
 
 });
