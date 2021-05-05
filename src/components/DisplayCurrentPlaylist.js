@@ -12,6 +12,8 @@ import styles from "../styles/DisplayCurrentPlaylist.module.css";
 export default function DisplayCurrentPlaylist({ playlist, allSongs }){
 
 let currentPlaylist;
+let noShowMessage = "There's not always a show, but there's always great music!";
+
 if(playlist !== undefined){
   const currentSongs = allSongs.filter((song) => song.playlistID === playlist.id);
 
@@ -27,6 +29,7 @@ if(playlist !== undefined){
       <div className={styles.header}>
         Current Playlist
       </div>
+       {playlist === undefined && <div> {noShowMessage} </div>}
       <div className = {styles.playlist}>
         <ul>
           {currentPlaylist} 
