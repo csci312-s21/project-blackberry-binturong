@@ -17,16 +17,12 @@ export default function NextThreeShows({ shows, handleClick, setCurrentPage }){
     </li>
   );
 
-  function changePage() {
-    setCurrentPage("Schedule"); 
-  }
-
   return (
     <div className={styles.nextThreeShows}>
       <div className={styles.header}>Today&apos;s next three shows:</div>
       <ul className={styles.showList}>{nextThree}</ul>
       {(nextThree.length < 3) && <div className={styles.message}>That&apos;s all for today!</div>}
-      <input className={styles.button} type="button" value="See Full Schedule" onClick={changePage}/>
+      <input className={styles.button} type="button" value="See Full Schedule" onClick={() => setCurrentPage("Schedule")}/>
     </div>
   );
 }
