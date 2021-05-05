@@ -17,8 +17,7 @@ export default function NextThreeShows({ shows, handleClick, setCurrentPage }){
     </li>
   );
 
-  function changePage(e) {
-    e.preventDefault();     
+  function changePage() {
     setCurrentPage("Schedule"); 
   }
 

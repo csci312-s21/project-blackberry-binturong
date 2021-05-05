@@ -82,7 +82,7 @@ export default function WRMCWebsite() {
   const now = moment();
   const upcomingShows = upcomingShowsArray(shows, now);
   let isOnAir = false;
-  if (upcomingShows.length>1){
+  if (upcomingShows.length>=1){
     isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
   }
   // callback function to display PlaylistDetails page
@@ -107,7 +107,7 @@ export default function WRMCWebsite() {
     "About" : <h2>This is the about page</h2>,
   };
 
-  // this if statement determines which page to display - add more else ifs as we add more specialized pages
+  // this if statement determines which page to display - add more else ifs as we add more specialized pages.
   let displayPage;
   if (page === "Log Playlist" && loggedIn) {
     displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
