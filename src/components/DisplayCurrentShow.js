@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 
 export default function DisplayCurrentShow({ show, handleClick }){
 
-  const showExists = (typeof show !== "undefined")
+  const showExists = (typeof show !== "undefined");
 
   return (
     <div className={styles.nextThreeShows}>
