@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import WeeklyShow from "./WeeklyShow";
-import { getDayInt } from "../lib/globals.js";
+import { getDayInt } from "../lib/component-utils.js";
 import styles from "../styles/WeeklyShow.module.css";
 
 export default function WeeklySchedule({ shows }){
@@ -70,7 +70,7 @@ export default function WeeklySchedule({ shows }){
   });
 
   return (
-    <div>
+    <div data-testid="schedule">
       <table>
         {table}
       </table>
@@ -91,7 +91,7 @@ WeeklySchedule.propTypes = {
         duration: PropTypes.number.isRequired,
       }).isRequired,
       genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }).isRequired
   ).isRequired
 };

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import WeeklySchedule from "./WeeklySchedule.js";
+import WeeklySchedule from "../components/WeeklySchedule.js";
 
 
 const sampleShows = [{
@@ -12,7 +12,7 @@ const sampleShows = [{
       "duration": 1
     },
     "genres": ["Rock"],
-    "id": "55"
+    "id": 55
   },
   {
     "title": "Sample Show 2",
@@ -24,7 +24,7 @@ const sampleShows = [{
       "duration": 1
     },
     "genres": ["Rock"],
-    "id": "56"
+    "id": 56
   }];
 
 describe("WeeklySchedule tests", () => {

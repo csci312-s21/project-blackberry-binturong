@@ -3,6 +3,7 @@
   background-color: rgb(255, 205, 213);
   border-radius: 10px;
   padding: 5px;
+  text-align: center;
 }
 
 .showList {
@@ -10,6 +11,19 @@
   border-radius: 10px;
   margin: 20;
   padding: 10px;
+  text-align: left;
+  display: inline-block;
+}
+
+.showListItem {
+  cursor: pointer;
+  width: fit-content;
+}
+
+.button {
+  border: none;
+  background-color: rgb(255, 205, 213);
+  font-size: 15px;
 }
 
 .header, .message {

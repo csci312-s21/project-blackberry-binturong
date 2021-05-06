@@ -4,7 +4,7 @@ Tests for LoginButton.js
 
 */
 import { render, screen, fireEvent } from "@testing-library/react";
-import LoginButton from "./LoginButton";
+import LoginButton from "../components/LoginButton";
 
 describe("LoginButton tests", () => {
   const handler = jest.fn();

@@ -75,6 +75,6 @@ WeeklyShow.propTypes = {
       duration: PropTypes.number,
     }),
     genres: PropTypes.arrayOf(PropTypes.string),
-    id: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired
 };

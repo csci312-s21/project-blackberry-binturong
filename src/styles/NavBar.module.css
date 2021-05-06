@@ -5,6 +5,7 @@
 .navBar li {
   display: inline;
   padding: 5px;
+  cursor: pointer;
 }
 
 .navBar_highlight {
