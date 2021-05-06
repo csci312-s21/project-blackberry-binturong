@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import WeeklyShow from "./WeeklyShow";
 import { getDayInt } from "../lib/component-utils.js";
 import styles from "../styles/WeeklyShow.module.css";
+import { showType } from "../lib/types.js";
 
 export default function WeeklySchedule({ shows }){
   const showsArr = [];
@@ -13,17 +14,17 @@ export default function WeeklySchedule({ shows }){
               {d}
             </div>)
   })
-
   showsArr.push(firstRow);
 
   // Add useEffect when writing the onHover function
+
   for (let i = 0; i < 24; i++){
     showsArr.push([]);
     for (let l = 0; l < 8; l++){
       if (l===0){
         showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{`${i}:00`}</div>);
       }
-      else {showsArr[showsArr.length-1].push(undefined)}
+      else {showsArr[showsArr.length-1].push(<WeeklyShow show = {{}}/>)}
     }
   }
   
@@ -51,11 +52,7 @@ export default function WeeklySchedule({ shows }){
         <tbody>
           <tr key={rowKey}>
             {item.map((i, key2) => {
-              let result = i;
-              if (i === undefined) {
-                result = <WeeklyShow show = {{}}/>
-              }
-              
+              const result = i;
               let cellKey = key1*1000+key2;
               cellKey = `cell${  cellKey}`;
               return (<td key={cellKey}>
@@ -80,18 +77,5 @@ export default function WeeklySchedule({ shows }){
 
 
 WeeklySchedule.propTypes = {
-  shows: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      DJs: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      description: PropTypes.string.isRequired,
-      time: PropTypes.shape({
-        day: PropTypes.string.isRequired,
-        hour: PropTypes.number.isRequired,
-        duration: PropTypes.number.isRequired,
-      }).isRequired,
-      genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      id: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired
+  shows: PropTypes.arrayOf(showType).isRequired
 };
