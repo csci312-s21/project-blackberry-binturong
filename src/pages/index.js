@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar.js";
 import NextThreeShows from "../components/NextThreeShows.js";
 import LoginButton from "../components/LoginButton.js";
 import ShowOTW from "../components/ShowOTW.js";
+import WeeklySchedule from "../components/WeeklySchedule.js";
 import DisplayCurrentShow from "../components/DisplayCurrentShow";
 import PlaylistLogger from "../components/PlaylistLogger.js";
 import StartShowButton from "../components/StartShowButton.js";
@@ -17,12 +18,9 @@ import {sampleSongs} from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
 import styles from "../styles/Home.module.css";
 
-import { upcomingShowsArray } from "../lib/component-utils.js";
+import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
-
-import { getRandomIntID } from "../lib/component-utils.js";
-
 
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);
@@ -106,7 +104,7 @@ export default function WRMCWebsite() {
               <NextThreeShows shows={isOnAir ? upcomingShows.slice(1,4) : upcomingShows.slice(0,3)} handleClick = {clickShow} setCurrentPage = {setCurrentPage}/>
              </div>,
     "Blog" : <h2>This is the blog</h2>,
-    "Schedule" : <h2>This is the schedule</h2>,
+    "Schedule" : <WeeklySchedule shows={allShows}/>,
     "Community" : <h2>This is the community page</h2>,
     "About" : <h2>This is the about page</h2>,
   };

@@ -3,9 +3,11 @@ import ShowDetails from "../components/ShowDetails.js";
 import { sampleShow, samplePlaylists } from "../lib/test-utils.js";
 
 describe("ShowDetails tests", () => {
-
+  const handler = jest.fn();
+  
   beforeEach(() => {
-    render(<ShowDetails show={sampleShow} playlists={samplePlaylists}/>);
+    handler.mockReset();
+    render(<ShowDetails show={sampleShow} playlists={samplePlaylists} clickPlaylist={handler}/>);
   });
 
   test("ShowDetails displays title", () => {

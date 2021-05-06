@@ -179,7 +179,7 @@ describe("PlaylistDetails integration tests", () => {
 
   test("Tests that the see-full-schedule button correctly displays the schedule", () => {
     fireEvent.click(screen.queryByRole("button", { name: "See Full Schedule" }));
-    expect(screen.queryByText("This is the schedule")).toBeInTheDocument();
+    expect(screen.queryByTestId("schedule")).toBeInTheDocument();
   });
 
 });

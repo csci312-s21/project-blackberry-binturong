@@ -3,9 +3,14 @@ import NextThreeShows from "../components/NextThreeShows.js";
 import { sampleShows } from "../lib/test-utils.js";
 
 describe("NextThreeShows tests", () => {
+  const handler = jest.fn();
+  
+  beforeEach(() => {
+    handler.mockReset();
+  });
 
   test("three shows are displayed", () => {
-    render(<NextThreeShows shows={sampleShows.slice(0,3)}/>);
+    render(<NextThreeShows shows={sampleShows.slice(0,3)} setCurrentPage={handler}/>);
 
     expect(screen.queryAllByRole("listitem")).toHaveLength(3);
     expect(screen.queryByText("Sample Show 4")).toBeInTheDocument();
@@ -14,7 +19,7 @@ describe("NextThreeShows tests", () => {
   });
 
   test("two shows are displayed", () => {
-    render(<NextThreeShows shows={sampleShows.slice(1,3)}/>);
+    render(<NextThreeShows shows={sampleShows.slice(1,3)} setCurrentPage={handler}/>);
 
     expect(screen.queryAllByRole("listitem")).toHaveLength(2);
     expect(screen.queryByText("Sample Show 1")).toBeInTheDocument();
@@ -24,9 +29,7 @@ describe("NextThreeShows tests", () => {
   });
 
   test("one show is displayed", () => {
-    const a = new Array();
-    a[0] = sampleShows[2];
-    render(<NextThreeShows shows={a}/>);
+    render(<NextThreeShows shows={[sampleShows[2]]} setCurrentPage={handler}/>);
 
     expect(screen.queryAllByRole("listitem")).toHaveLength(1);
     expect(screen.queryByText("Sample Show 1")).not.toBeInTheDocument();
@@ -37,7 +40,7 @@ describe("NextThreeShows tests", () => {
 
   test("zero shows are displayed", () => {
     const c = new Array();
-    render(<NextThreeShows shows = {c}/>);
+    render(<NextThreeShows shows={c} setCurrentPage={handler}/>);
 
     expect(screen.queryAllByRole("listitem")).toHaveLength(0);
     expect(screen.queryByText("Sample Show 1")).not.toBeInTheDocument();
@@ -48,7 +51,7 @@ describe("NextThreeShows tests", () => {
 
 
   test("Thats all message correctly displayed", () => {
-    render(<NextThreeShows shows={sampleShows.slice(0,3)}/>);
+    render(<NextThreeShows shows={sampleShows.slice(0,3)} setCurrentPage={handler}/>);
 
     expect(screen.queryAllByRole("listitem")).toHaveLength(3);
     expect(screen.queryByText("Sample Show 4")).toBeInTheDocument();
