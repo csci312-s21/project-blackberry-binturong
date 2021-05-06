@@ -26,6 +26,7 @@
   border: none;
   background-color: rgb(255, 205, 213);
   font-size: 15px;
+  cursor: pointer;
 }
 
 .header, .message {
