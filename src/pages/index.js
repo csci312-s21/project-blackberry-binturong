@@ -82,10 +82,10 @@ export default function WRMCWebsite() {
   // determines the current and next three shows
   const now = moment();
   const upcomingShows = upcomingShowsArray(shows, now);
-
-
-  const isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
-
+  let isOnAir = false;
+  if (upcomingShows.length>=1){
+    isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
+  }
   // callback function to display PlaylistDetails page
   const clickPlaylist = (playlist) => {
     setSelectedPlaylist(playlist);
@@ -103,7 +103,7 @@ export default function WRMCWebsite() {
               <DisplayCurrentPlaylist playlist = {currentPlaylist}
               allSongs = {allSongs}/>
               <p>{""}</p>
-              <NextThreeShows shows={isOnAir ? upcomingShows.slice(1,4) : upcomingShows.slice(0,3)} handleClick = {clickShow}/>
+              <NextThreeShows shows={isOnAir ? upcomingShows.slice(1,4) : upcomingShows.slice(0,3)} handleClick = {clickShow} setCurrentPage = {setCurrentPage}/>
              </div>,
     "Blog" : <h2>This is the blog</h2>,
     "Schedule" : <h2>This is the schedule</h2>,
@@ -111,10 +111,21 @@ export default function WRMCWebsite() {
     "About" : <h2>This is the about page</h2>,
   };
 
-  // this if statement determines which page to display - add more else ifs as we add more specialized pages
+  // this if statement determines which page to display - add more else ifs as we add more specialized pages.
   let displayPage;
   if (page === "Log Playlist" && loggedIn) {
-    displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
+    displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }/>
   } else if (page === "Show Details") {
     displayPage = <ShowDetails show={selectedShow} playlists={allPlaylists} clickPlaylist={clickPlaylist}/>
   } else if (page === "Playlist Details") {

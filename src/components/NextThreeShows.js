@@ -9,7 +9,7 @@ import { showType } from "../lib/types.js";
 import styles from "../styles/NextThreeShows.module.css";
 import ShowSnippet from "../components/ShowSnippet.js"
 
-export default function NextThreeShows({ shows, handleClick }){
+export default function NextThreeShows({ shows, handleClick, setCurrentPage }){
 
   const nextThree = shows.map((show) => 
     <li className={styles.showListItem} key={show.id} onClick={() => handleClick(show)} data-testid="show snippet">
@@ -22,10 +22,12 @@ export default function NextThreeShows({ shows, handleClick }){
       <div className={styles.header}>Today&apos;s next three shows:</div>
       <ul className={styles.showList}>{nextThree}</ul>
       {(nextThree.length < 3) && <div className={styles.message}>That&apos;s all for today!</div>}
+      <input className={styles.button} type="button" value="See Full Schedule" onClick={() => setCurrentPage("Schedule")}/>
     </div>
   );
 }
 
 NextThreeShows.propTypes = {
-  shows: PropTypes.arrayOf(showType).isRequired
+  shows: PropTypes.arrayOf(showType).isRequired,
+  setCurrentPage: PropTypes.func.isRequired
 };
