@@ -21,7 +21,6 @@ import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
 
-
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);
   const [allPlaylists, setAllPlaylists] = useState(playlists);
