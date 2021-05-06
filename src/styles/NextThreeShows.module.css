@@ -4,6 +4,8 @@
   border-radius: 10px;
   padding: 5px;
   text-align: center;
+  width: 60%;
+  float: right;
 }
 
 .showList {
@@ -24,6 +26,7 @@
   border: none;
   background-color: rgb(255, 205, 213);
   font-size: 15px;
+  cursor: pointer;
 }
 
 .header, .message {

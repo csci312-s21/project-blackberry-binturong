@@ -103,7 +103,15 @@ export const sampleSong = {
   "title": "sample title",
   "artist": "sample artist",
   "album": "sample album",
-  "playlistID": 55,
+  "playlistID": 12,
+  "id": 42
+}
+
+export const sampleSong2 = {
+  "title": "sample title",
+  "artist": "sample artist",
+  "album": "sample album",
+  "playlistID": 123,
   "id": 42
 }
 

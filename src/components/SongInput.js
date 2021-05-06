@@ -46,7 +46,7 @@ export default function SongInput({ complete, song, savedInit }) {
         value={saved ? "Update" : "Enter"}
         disabled={(title === "") || (artist === "") || (album === "")}
         onClick={
-          () => saveSong({...song, title: title, artist: artist, album: album, timeAdded: moment().format()})}/>
+          () => saveSong({...song, title: title, artist: artist, album: album, timeAdded: moment().format("LT")})}/>
       <input
         type="button"
         value="Delete"
