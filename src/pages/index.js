@@ -21,7 +21,7 @@ import styles from "../styles/Home.module.css";
 import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/client"
+import { useSession } from "next-auth/client";
 
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);

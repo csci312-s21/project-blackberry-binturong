@@ -5,30 +5,37 @@ Tests for LoginButton.js
 */
 import { render, screen, fireEvent } from "@testing-library/react";
 import LoginButton from "../components/LoginButton";
+import { useSession, signIn, signOut } from "next-auth/client";
+
+jest.mock("next-auth/client");
 
 describe("LoginButton tests", () => {
-  const handler = jest.fn();
-  
-  beforeEach(() => {
-    handler.mockReset();
+
+  beforeEach(()=>{
+    useSession.mockClear();
   });
 
   test("login button returns correct action", () => {
-    render(<LoginButton loggedIn={false} handleClick={handler}/>);
+    render(<LoginButton/>);
+    
+    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
+    fireEvent.click(screen.queryByRole("button", { name: "login" }));
 
-    fireEvent.click(screen.queryByRole("button", { name: "In" }));
-
-    expect(handler).toHaveBeenCalled();
-    expect(handler).toHaveBeenCalledWith(true);
+    expect(signIn).toHaveBeenCalled();
+    expect(screen.queryByRole("button", { name: "logout" })).toBeInTheDocument();
   });
 
   test("logout button returns correct action", () => {
-    render(<LoginButton loggedIn handleClick={handler}/>);
+    render(<LoginButton/>);
 
-    fireEvent.click(screen.queryByRole("button", { name: "Out" }));
+    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
+    fireEvent.click(screen.queryByRole("button", { name: "login" }));
 
-    expect(handler).toHaveBeenCalled();
-    expect(handler).toHaveBeenCalledWith(false);
+    useSession.mockReturnValue([undefined, false]);
+    fireEvent.click(screen.queryByRole("button", { name: "logout" }));
+
+    expect(signOut).toHaveBeenCalled();
+    expect(screen.queryByRole("button", { name: "login" })).toBeInTheDocument();
   });
 
 });

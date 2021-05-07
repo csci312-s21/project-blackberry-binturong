@@ -8,7 +8,7 @@
     handleClick - a function that logs the user in or out when the button is clicked
 */
 import styles from "../styles/LoginButton.module.css";
-import { signIn, signOut, useSession } from "next-auth/client"
+import { signIn, signOut, useSession } from "next-auth/client";
 
 export default function LoginButton(){
   const [session] = useSession();
@@ -16,8 +16,20 @@ export default function LoginButton(){
   return (
     <div className={styles.loginContainer}>
       {(session)
-        ? <input className={styles.loginButton} type="button" value="Out" onClick = {() => signOut()}/>
-        : <input className={styles.loginButton} type="button" value="In" onClick = {() => signIn()}/>
+        ? <input 
+            className={styles.loginButton} 
+            type="button" 
+            aria-label="logout" 
+            value="Out" 
+            onClick = {() => signOut()}
+          />
+        : <input 
+            className={styles.loginButton} 
+            type="button" 
+            aria-label="logout"
+            value="In" 
+            onClick = {() => signIn()}
+          />
       }
     </div>);
 }

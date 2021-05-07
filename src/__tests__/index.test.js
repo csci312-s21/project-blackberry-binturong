@@ -2,6 +2,9 @@ import fetchMock from "fetch-mock-jest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import WRMCWebsite from "../pages/index";
+import { useSession } from "next-auth/client";
+
+jest.mock("next-auth/client");
 
 describe("Top level integration tests", () => {
 
@@ -51,39 +54,24 @@ describe("Show details integration tests", () => {
   });
 });
 
-// describe("Create playlists tests", () => {
-//   beforeEach(() => {
-//     render(<Home />);
-//   });
-
-//   test("Entering song adds to playlist", () => {
-    
-//   });
-
-//   test("Updating song attribute updates song", () => {
-    
-//   });
-
-//   test("Deleting entered song removes it from playlist", () => {
-    
-//   });
-// });
-
 describe("Start show button integration tests", () => {
   beforeEach(() => {
     render(<WRMCWebsite />);
   });
 
-  test("Start show button only visible when logged in", () => {
+  test.only("Start show button only visible when logged in", () => {
+    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
     expect(screen.queryByRole("button", { name: "Start Show!" })).not.toBeInTheDocument();
-    fireEvent.click(screen.queryByRole("button", { name: "In" }));
+    fireEvent.click(screen.queryByRole("button", { name: "login" }));
     expect(screen.getByRole("button", { name: "Start Show!" })).toBeInTheDocument();
-    fireEvent.click(screen.queryByRole("button", { name: "Out" }));
+    useSession.mockReturnValue([undefined, false]);
+    fireEvent.click(screen.queryByRole("button", { name: "logout" }));
     expect(screen.queryByRole("button", { name: "Start Show!" })).not.toBeInTheDocument();
   });
 
   test("Start show button takes user to playlist logger", () => {
-    fireEvent.click(screen.queryByRole("button", { name: "In" }));
+    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
+    fireEvent.click(screen.queryByRole("button", { name: "login" }));
     expect(screen.getByRole("button", { name: "Start Show!" })).toBeInTheDocument();
     const options = screen.queryAllByTestId("show-option");
     const selector = screen.getByRole("combobox");
@@ -115,20 +103,22 @@ describe("PlaylistLogger integration tests", () => {
   });
   
   test("PlaylistLogger not visible when logged out", () => {
-    fireEvent.click(screen.queryByRole("button", { name: "In" }));
+    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
+    fireEvent.click(screen.queryByRole("button", { name: "login" }));
     const options = screen.queryAllByTestId("show-option");
     const selector = screen.getByRole("combobox");
     fireEvent.change(selector, { target: { value: options[0].value }});
     const startShowButton = screen.getByRole("button", { name: "Start Show!" })
     fireEvent.click(startShowButton);
     expect(screen.getByRole("button", { name: "Add Song" })).toBeInTheDocument();
-    fireEvent.click(screen.queryByRole("button", { name: "Out" }));
+    fireEvent.click(screen.queryByRole("button", { name: "logout" }));
     expect(screen.queryByRole("button", { name: "Add Song" })).not.toBeInTheDocument();
     expect(screen.getByText("Show Of The Week")).toBeInTheDocument();
   });
 
   test("saved songs persist when navigating to and from PlaylistLogger", () => {
-    fireEvent.click(screen.queryByRole("button", { name: "In" }));
+    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
+    fireEvent.click(screen.queryByRole("button", { name: "login" }));
     const options = screen.queryAllByTestId("show-option");
     const selector = screen.getByRole("combobox");
     fireEvent.change(selector, { target: { value: options[0].value }});
