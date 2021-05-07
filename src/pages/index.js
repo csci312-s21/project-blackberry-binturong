@@ -21,18 +21,19 @@ import styles from "../styles/Home.module.css";
 import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/client"
 
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);
   const [allPlaylists, setAllPlaylists] = useState(playlists);
   const [allSongs, setAllSongs] = useState(sampleSongs);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [sotw] = useState(allShows[6]); //placeholder, eventually we will want a callback: "setSotw"
   const [page, setCurrentPage] = useState("Home");
   const [currentPlaylist, setCurrentPlaylist] = useState();
   const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
   const [selectedPlaylist, setSelectedPlaylist] = useState();  // state for displaying PlaylistDetails
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
+  const [session] = useSession();
 
   const endShow = () => {
     setCurrentPage("Home");
@@ -40,10 +41,10 @@ export default function WRMCWebsite() {
   }
 
   useEffect(() => {
-    if(!loggedIn) {
+    if(!session) {
       endShow();
     }
-  }, [loggedIn]);
+  }, [session]);
 
   const updateSongCollection = (action, newSong) => {
     if (action === "enter") {
@@ -111,7 +112,7 @@ export default function WRMCWebsite() {
 
   // this if statement determines which page to display - add more else ifs as we add more specialized pages.
   let displayPage;
-  if (page === "Log Playlist" && loggedIn) {
+  if (page === "Log Playlist" && session) {
     displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
   } else if (page === "Show Details") {
     displayPage = <ShowDetails show={selectedShow} playlists={allPlaylists} clickPlaylist={clickPlaylist}/>
@@ -129,8 +130,8 @@ export default function WRMCWebsite() {
       </Head>
 
       <main>
-        <LoginButton loggedIn={loggedIn} handleClick={setLoggedIn}/>
-        {loggedIn && 
+        <LoginButton/>
+        {session && 
           (currentPlaylist 
           ? <input type="button" value="Go to Current Playlist" onClick={() => setCurrentPage("Log Playlist")}/>
           : <StartShowButton userShows={allShows.slice(0, 4) /* this slice is temporary */} startShow={startShow}/>

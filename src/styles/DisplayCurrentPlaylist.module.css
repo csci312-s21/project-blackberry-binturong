@@ -21,4 +21,5 @@
 .playlist {
   font-size: 80%;
   text-align: left;
+  list-style-type: none;
 }
