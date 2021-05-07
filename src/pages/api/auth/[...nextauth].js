@@ -9,7 +9,12 @@ const options = {
       domain: process.env.AUTH0_DOMAIN,
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async signIn(user) {
+      return user.email.endsWith("@middlebury.edu");
+    }
+  }
 };
 
 export default (req, res) => NextAuth(req, res, options);
