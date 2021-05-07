@@ -15,10 +15,10 @@ export default function SongInput({ complete, song, savedInit }) {
   const [album, setAlbum] = useState(song ? song.album : "");
   const [saved, setSaved] = useState(savedInit);
 
-  const saveSong = (show) => {
+  const saveSong = (song) => {
     setSaved(true);
     const action = saved ? "update" : "enter";
-    complete(action, show);
+    complete(action, song);
   }
 
   return (
