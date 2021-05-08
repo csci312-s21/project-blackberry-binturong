@@ -16,22 +16,19 @@ describe("LoginButton tests", () => {
   });
 
   test("login button returns correct action", () => {
+    useSession.mockReturnValueOnce([undefined, false]).mockReturnValueOnce([{user: {name: "username"}}, false]);
     render(<LoginButton/>);
-    
-    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
-    fireEvent.click(screen.queryByRole("button", { name: "login" }));
+
+    fireEvent.click(screen.getByRole("button", { name: "login" }));
 
     expect(signIn).toHaveBeenCalled();
-    expect(screen.queryByRole("button", { name: "logout" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "logout" })).toBeInTheDocument();
   });
 
   test("logout button returns correct action", () => {
+    useSession.mockReturnValueOnce([{user: {name: "username"}}, false]).mockReturnValueOnce([undefined, false]);
     render(<LoginButton/>);
 
-    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
-    fireEvent.click(screen.queryByRole("button", { name: "login" }));
-
-    useSession.mockReturnValue([undefined, false]);
     fireEvent.click(screen.queryByRole("button", { name: "logout" }));
 
     expect(signOut).toHaveBeenCalled();

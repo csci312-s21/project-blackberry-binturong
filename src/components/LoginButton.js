@@ -26,7 +26,7 @@ export default function LoginButton(){
         : <input 
             className={styles.loginButton} 
             type="button" 
-            aria-label="logout"
+            aria-label="login"
             value="In" 
             onClick = {() => signIn()}
           />

@@ -13,6 +13,12 @@ describe("Top level integration tests", () => {
       await fetchMock.flush(true);
     });
   });
+
+  test("Tests that the see-full-schedule button correctly displays the schedule", () => {
+    render(<WRMCWebsite />)
+    fireEvent.click(screen.queryByRole("button", { name: "See Full Schedule" }));
+    expect(screen.queryByTestId("schedule")).toBeInTheDocument();
+  });
 });
   
 describe("Show details integration tests", () => {
@@ -56,22 +62,24 @@ describe("Show details integration tests", () => {
 
 describe("Start show button integration tests", () => {
   beforeEach(() => {
-    render(<WRMCWebsite />);
+    useSession.mockClear();
   });
 
-  test.only("Start show button only visible when logged in", () => {
-    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
-    expect(screen.queryByRole("button", { name: "Start Show!" })).not.toBeInTheDocument();
-    fireEvent.click(screen.queryByRole("button", { name: "login" }));
-    expect(screen.getByRole("button", { name: "Start Show!" })).toBeInTheDocument();
+  test("Start show button not visible when logged out", () => {
     useSession.mockReturnValue([undefined, false]);
-    fireEvent.click(screen.queryByRole("button", { name: "logout" }));
+    render(<WRMCWebsite />);
     expect(screen.queryByRole("button", { name: "Start Show!" })).not.toBeInTheDocument();
+  });
+
+  test("Start show button visible when logged in", () => {
+    useSession.mockReturnValue([{user: {name: "username"}}, false]);
+    render(<WRMCWebsite />);
+    expect(screen.getByRole("button", { name: "Start Show!" })).toBeInTheDocument();
   });
 
   test("Start show button takes user to playlist logger", () => {
-    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
-    fireEvent.click(screen.queryByRole("button", { name: "login" }));
+    useSession.mockReturnValue([{user: {name: "username"}}, false]);
+    render(<WRMCWebsite />);
     expect(screen.getByRole("button", { name: "Start Show!" })).toBeInTheDocument();
     const options = screen.queryAllByTestId("show-option");
     const selector = screen.getByRole("combobox");
@@ -83,7 +91,7 @@ describe("Start show button integration tests", () => {
   });
 });
 
-describe("PlaylistLogger integration tests", () => {
+describe.only("PlaylistLogger integration tests", () => {
   const sampleTitle = "Sample Title";
   const sampleArtist = "Sample Artist";
   const sampleAlbum = "Sample Album";
@@ -99,12 +107,12 @@ describe("PlaylistLogger integration tests", () => {
   }
 
   beforeEach(() => {
-    render(<WRMCWebsite />);
+    useSession.mockClear();
   });
   
   test("PlaylistLogger not visible when logged out", () => {
-    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
-    fireEvent.click(screen.queryByRole("button", { name: "login" }));
+    useSession.mockReturnValue([{user: {name: "username"}}, false]);
+    render(<WRMCWebsite />);
     const options = screen.queryAllByTestId("show-option");
     const selector = screen.getByRole("combobox");
     fireEvent.change(selector, { target: { value: options[0].value }});
@@ -116,9 +124,9 @@ describe("PlaylistLogger integration tests", () => {
     expect(screen.getByText("Show Of The Week")).toBeInTheDocument();
   });
 
-  test("saved songs persist when navigating to and from PlaylistLogger", () => {
-    useSession.mockReturnValue([{user: {name:"someone"}}, false]);
-    fireEvent.click(screen.queryByRole("button", { name: "login" }));
+  test("saved songs persist when navigating away from PlaylistLogger", () => {
+    useSession.mockReturnValue([{user: {name: "username"}}, false]);
+    render(<WRMCWebsite />);
     const options = screen.queryAllByTestId("show-option");
     const selector = screen.getByRole("combobox");
     fireEvent.change(selector, { target: { value: options[0].value }});
@@ -165,11 +173,6 @@ describe("PlaylistDetails integration tests", () => {
     fireEvent.click(backButton);
     screen.getAllByTestId("playlist-date").forEach((pl) => expect(pl).toBeInTheDocument());
     expect(screen.queryByRole("button", { name: "<< Back to show information" })).not.toBeInTheDocument();
-  });
-
-  test("Tests that the see-full-schedule button correctly displays the schedule", () => {
-    fireEvent.click(screen.queryByRole("button", { name: "See Full Schedule" }));
-    expect(screen.queryByTestId("schedule")).toBeInTheDocument();
   });
 
 });
