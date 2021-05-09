@@ -1,8 +1,8 @@
-import styles from "../styles/ScheduleNavBar.module.css";
+import styles from "../styles/ScheduleFilter.module.css";
 
 import PropTypes from "prop-types";
 
-export default function ScheduleNavBar({ pageList, currentPage, setCurrentPage }) {
+export default function ScheduleFilter({ pageList, currentPage, setCurrentPage }) {
   const pages = pageList.map(p => {
     return (p === currentPage ?
     <li 
@@ -25,7 +25,7 @@ export default function ScheduleNavBar({ pageList, currentPage, setCurrentPage }
   
 }
 
-ScheduleNavBar.propTypes = {
+ScheduleFilter.propTypes = {
   pageList: PropTypes.arrayOf(PropTypes.string).isRequired,
   currentPage: PropTypes.string.isRequired,
   setCurrentPage: PropTypes.func.isRequired,

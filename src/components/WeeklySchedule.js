@@ -4,13 +4,14 @@ import { getDayInt } from "../lib/component-utils.js";
 import styles from "../styles/WeeklyShow.module.css";
 import { showType } from "../lib/types.js";
 
-export default function WeeklySchedule({ shows }){
+export default function WeeklySchedule({ shows, setFilter}){
   const showsArr = [];
   const days = ["","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   const firstRow = days.map((d, i) => {
     const currKey = `firstrow${  i}`;
-    return (<div key={currKey} className={styles.scheduleDay}>
+    return (<div key={currKey} className={styles.scheduleDay}
+    onClick={() => {setFilter(d)}}>
               {d}
             </div>)
   })
