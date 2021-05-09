@@ -1,0 +1,15 @@
+.navBar ul {
+  list-style: none;
+}
+
+.navBar li {
+  display: inline;
+  color: aqua;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.navBar_highlight {
+  font-weight: bold;
+  color: aqua;
+}

@@ -1,0 +1,26 @@
+.button {
+  border: none;
+  background-color: rgb(255, 205, 213);
+  font-size: 15px;
+  cursor: pointer;
+  margin: 10px;
+  
+}
+.button-highlight {
+  border: none;
+  background-color: rgb(255, 205, 213);
+  font-size: 15px;
+  cursor: pointer;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.filters{
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.body {
+  text-align: center ;
+}
