@@ -3,9 +3,11 @@ exports.up = function (knex, Promise) {
     table.increments('id');
     table.string('title');
     table.string('DJs');
-    table.string('description');
-    table.array('genres');
-    table.string('time.day')
+    table.text('description');
+    table.specificType('genres', 'text ARRAY').notNullable();
+    table.string('day').notNullable();
+    table.decimal('hour').notNullable(); 
+    table.decimal('duration').notNullable();
   });
 };
 
