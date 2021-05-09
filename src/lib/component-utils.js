@@ -20,8 +20,8 @@ export const dayToInt = {
 
 // this function returns the earlier of two shows, useful for sorting an array of shows
 export const compareTwoShows = (a, b) => {
-  const aTime = moment(`${dayToInt[a.time.day]} ${a.time.hour}`, "d Hmm");
-  const bTime = moment(`${dayToInt[b.time.day]} ${b.time.hour}`, "d Hmm");
+  const aTime = moment(`${dayToInt[a.day]} ${a.hour}`, "d Hmm");
+  const bTime = moment(`${dayToInt[b.day]} ${b.hour}`, "d Hmm");
 
   return moment(aTime).isBefore(bTime) ? -1 : 1;
 }
@@ -54,7 +54,7 @@ export const getRandomIntID = () => {
 //This function returns the array of upcomingShows
 //This array should start at the current show and include all of the remaining shows for the day. In Index it is used to pass the current show to DisplayCurrentShow and the next three shows to NextThreeShows
 export const upcomingShowsArray = (shows, now) => {
-  const upcomingShows = shows.filter((show) => (dayToInt[show.time.day] === now.day()) && (show.time.hour >= (now.hour() * 100)));
+  const upcomingShows = shows.filter((show) => (dayToInt[show.day] === now.day()) && (show.hour >= (now.hour() * 100)));
 
   upcomingShows.sort((a, b) => compareTwoShows(a, b));
   return upcomingShows;

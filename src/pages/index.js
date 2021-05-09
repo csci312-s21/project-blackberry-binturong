@@ -82,7 +82,7 @@ export default function WRMCWebsite() {
   const upcomingShows = upcomingShowsArray(shows, now);
   let isOnAir = false;
   if (upcomingShows.length>=1){
-    isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
+    isOnAir = upcomingShows[0].hour === now.hour() * 100;
   }
   // callback function to display PlaylistDetails page
   const clickPlaylist = (playlist) => {

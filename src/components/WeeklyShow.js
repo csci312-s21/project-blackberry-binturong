@@ -55,11 +55,9 @@ WeeklyShow.propTypes = {
     title: PropTypes.string,
     DJs: PropTypes.arrayOf(PropTypes.string.isRequired),
     description: PropTypes.string,
-    time: PropTypes.shape({
-      day: PropTypes.string,
-      hour: PropTypes.number,
-      duration: PropTypes.number,
-    }),
+    day: PropTypes.string,
+    hour: PropTypes.number,
+    duration: PropTypes.number,
     genres: PropTypes.arrayOf(PropTypes.string),
     id: PropTypes.number,
   }).isRequired

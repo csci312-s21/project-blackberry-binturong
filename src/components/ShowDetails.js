@@ -13,8 +13,8 @@ import styles from "../styles/ShowDetails.module.css";
 import { showType, playlistType } from "../lib/types.js";
 
 export default function ShowDetails({ show, playlists, clickPlaylist }) {
-  const time = getTimeString(show.time.hour, show.time.duration);
-  const day = getDayString(show.time.day);
+  const time = getTimeString(show.hour, show.duration);
+  const day = getDayString(show.day);
 
   const playlistsForShow = playlists.filter((playlist) => playlist.showID === show.id);
 

@@ -29,10 +29,10 @@ export default function WeeklySchedule({ shows }){
   }
   
   shows.forEach((s) => {
-    const day = getDayInt(s.time.day)+1;
-    const time = (s.time.hour / 100)+1;
+    const day = getDayInt(s.day)+1;
+    const time = (s.hour / 100)+1;
     showsArr[time][day] = <WeeklyShow show = {s}/>
-    if (s.time.duration === 2) {
+    if (s.duration === 2) {
       showsArr[time+1][day] = <WeeklyShow show = {s}/>
     }
   })

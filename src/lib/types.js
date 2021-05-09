@@ -5,17 +5,14 @@
 */
 import PropTypes from "prop-types";
 
-
 // PropTypes for show object
 export const showType = PropTypes.shape({
   title: PropTypes.string.isRequired,
   DJs: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   description: PropTypes.string.isRequired,
-  time: PropTypes.shape({
-    day: PropTypes.string.isRequired,
-    hour: PropTypes.number.isRequired,
-    duration: PropTypes.number.isRequired,
-  }).isRequired,
+  day: PropTypes.string.isRequired,
+  hour: PropTypes.number.isRequired,
+  duration: PropTypes.number.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   id: PropTypes.number.isRequired,
 });

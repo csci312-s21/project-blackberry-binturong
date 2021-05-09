@@ -19,12 +19,15 @@
   },
   "dependencies": {
     "color-name": "^1.1.4",
+    "knex": "^0.95.4",
     "moment": "^2.29.1",
     "nanoid": "^3.1.22",
     "next": "10.0.8",
+    "pg": "^8.6.0",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
