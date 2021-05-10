@@ -6,10 +6,12 @@ import ShowOTW from "../components/ShowOTW.js";
 import PlaylistLogger from "../components/PlaylistLogger.js";
 import StartShowButton from "../components/StartShowButton.js";
 import ShowDetails from "../components/ShowDetails.js";
+import PlaylistDetails from "../components/PlaylistDetails.js";
 
 import Head from "next/head";
 
 import shows from "../../data/shows.json";
+import {sampleSongs} from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
 import styles from "../styles/Home.module.css";
 
@@ -21,12 +23,13 @@ import { getRandomIntID } from "../lib/component-utils.js";
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);
   const [allPlaylists, setAllPlaylists] = useState(playlists);
-  const [allSongs, setAllSongs] = useState([]);
+  const [allSongs, setAllSongs] = useState(sampleSongs);
   const [loggedIn, setLoggedIn] = useState(false);
   const [sotw] = useState(allShows[5]); //placeholder, eventually we will want a callback: "setSotw"
   const [page, setCurrentPage] = useState("Home");
   const [currentPlaylist, setCurrentPlaylist] = useState();
   const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
+  const [selectedPlaylist, setSelectedPlaylist] = useState();  // state for displaying PlaylistDetails
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
 
   const endShow = () => {
@@ -42,6 +45,8 @@ export default function WRMCWebsite() {
 
   const updateSongCollection = (action, newSong) => {
     if (action === "enter") {
+      setAllSongs([...allSongs, newSong]);
+    } else if (action === "update") {
       const newSongs = allSongs.map((song) => ((song.id === newSong.id) ? newSong : song));
       setAllSongs(newSongs);
     } else if (action === "delete") {
@@ -52,7 +57,7 @@ export default function WRMCWebsite() {
 
   const startShow = (showId) => {
     setCurrentPage("Log Playlist");
-    const newPlaylist = {date: moment().format("L"), showID: showId, id: getRandomIntID()};
+    const newPlaylist = {date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID()};
     setCurrentPlaylist(newPlaylist);
     setAllPlaylists([...allPlaylists, newPlaylist]);
   }
@@ -69,6 +74,12 @@ export default function WRMCWebsite() {
     setCurrentPage("Show Details");
   }
 
+  // callback function to display PlaylistDetails page
+  const clickPlaylist = (playlist) => {
+    setSelectedPlaylist(playlist);
+    setCurrentPage("Playlist Details");
+  }
+
   const placeholderPages = {
     // TODO: we should create a container component for the Home page
     // (and any other pages that end up having multiple components)
@@ -80,8 +91,19 @@ export default function WRMCWebsite() {
     "Schedule" : <h2>This is the schedule</h2>,
     "Community" : <h2>This is the community page</h2>,
     "About" : <h2>This is the about page</h2>,
-    "Show Details" : <ShowDetails show={selectedShow}/>
   };
+
+  // this if statement determines which page to display - add more else ifs as we add more specialized pages
+  let displayPage;
+  if (page === "Log Playlist" && loggedIn) {
+    displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
+  } else if (page === "Show Details") {
+    displayPage = <ShowDetails show={selectedShow} playlists={allPlaylists} clickPlaylist={clickPlaylist}/>
+  } else if (page === "Playlist Details") {
+    displayPage = <PlaylistDetails playlist={selectedPlaylist} songs={allSongs} shows={allShows} backToShow={clickShow}/>
+  } else {
+    displayPage = placeholderPages[page]
+  }
 
   return (
     <div className={styles.container}>
@@ -104,9 +126,7 @@ export default function WRMCWebsite() {
           currentPage={page}
           setCurrentPage={selectPage}
         />
-        {(page === "Log Playlist" && loggedIn)
-        ? <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
-        : placeholderPages[page]}
+        {displayPage}
         
       </main>
 

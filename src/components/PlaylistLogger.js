@@ -24,6 +24,10 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
     if (action === "delete" && ((song.title === "") || (song.artist === "") || (song.album === ""))) {
       const newRows = emptyRows.filter((row) => row.id !== song.id);
       setEmptyRows(newRows);
+    } else if (action === "enter") {
+      const newRows = emptyRows.filter((row) => row.id !== song.id);
+      setEmptyRows(newRows);
+      complete(action, song);
     } else {
       complete(action, song);
     }
@@ -31,27 +35,28 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
   
   const currentSongs = songs.filter((song) => song.playlistID === currentPlaylist.id);
 
-  const rows = [...currentSongs, ...emptyRows].map(
-    (song) => <li key={song.id}><SongInput complete={handleClick} song={song}/></li>);
+  const currentRows = currentSongs.map(
+    (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit/></li>);
+  
+  const currentEmptyRows = emptyRows.map(
+    (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit={false}/></li>);
 
   const currentShow = shows.find((show) => show.id === currentPlaylist.showID);
 
   return (
     <div className={styles.playlist}>
       <h1 className={styles.title}>Playlist for {currentShow.title}</h1>
-      <ul className={styles.rows}>{rows}</ul>
-      <div>
-        <input
-          type="button"
-          value="Add Song"
-          onClick={() => addRow()}
-        />
-        <input
-          type="button"
-          value="End Show"
-          onClick={() => endShow()}
-        />
-      </div>
+      <ul className={styles.rows}>{[...currentRows, ...currentEmptyRows]}</ul>
+      <input
+        type="button"
+        value="Add Song"
+        onClick={() => addRow()}
+      />
+      <input
+        type="button"
+        value="End Show"
+        onClick={() => endShow()}
+      />
     </div>
   );
 }

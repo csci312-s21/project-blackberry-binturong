@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import ShowDetails from "../components/ShowDetails.js";
-import { sampleShow } from "../lib/test-utils.js";
+import { sampleShow, samplePlaylists } from "../lib/test-utils.js";
 
 describe("ShowDetails tests", () => {
 
   beforeEach(() => {
-    render(<ShowDetails show={sampleShow} />);
+    render(<ShowDetails show={sampleShow} playlists={samplePlaylists}/>);
   });
 
   test("ShowDetails displays title", () => {
@@ -28,8 +28,14 @@ describe("ShowDetails tests", () => {
     expect(screen.getByText("Rock")).toBeInTheDocument();
   });
 
-  test.skip("ShowDetails displays playlists", () => {
-    // TODO: update this test when we have playlist data
+  test("ShowDetails displays playlists", () => {
+    samplePlaylists.forEach((playlist) => {
+      if (playlist.showID === sampleShow.id) {
+        expect(screen.getByText(playlist.date)).toBeInTheDocument();
+      } else {
+        expect(screen.queryByText(playlist.date)).not.toBeInTheDocument();
+      }
+    });
   });
 
 });

@@ -30,8 +30,7 @@ describe("SongInput tests", () => {
   beforeEach(() => {
     handler.mockReset();
     const sampleSong = {title: "", artist: "", album: "", albumArt:"https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png", id: 0, playlistID: 0};
-    render(<SongInput complete={handler} song={sampleSong}/>);
-
+    render(<SongInput complete={handler} song={sampleSong} savedInit={false}/>);
   });
 
   test("Enter button is disabled without title", () => {
@@ -93,6 +92,21 @@ describe("SongInput tests", () => {
 
   });
 
+  test("When a song is entered, the text on the enter button changes to update", () => {
+    
+    populateTextInputs();
+
+    let enterButton = screen.getByRole("button", { name: "Enter" });
+    fireEvent.click(enterButton);
+
+    const updateButton = screen.getByRole("button", { name: "Update" });
+    expect(updateButton).toBeInTheDocument();
+
+    enterButton = screen.queryByRole("button", { name: "Enter" });
+    expect(enterButton).not.toBeInTheDocument();
+
+  });
+
 });
 
 describe("Album art tests", () => {
@@ -100,7 +114,7 @@ describe("Album art tests", () => {
   const song = {
     artist: "Cher",
     album: "Believe",
-    title: "Strong Enough"
+    title: "Strong Enough",
   };
 
   const goodResponse = {
@@ -119,12 +133,14 @@ describe("Album art tests", () => {
 
   beforeAll(() => {
     fetchMock.reset();
+    fetchMock.get(`${root}?method=album.getinfo&api_key=${key}&artist=&album=&format=json`, () => badResponse);
+    fetchMock.get(`${root}?method=album.getinfo&api_key=${key}&artist=${song.artist}&album=${song.album}&format=json`, () => goodResponse);
   });
 
   beforeEach(() => {
     handler.mockReset();
     const sampleSong = {title: "", artist: "", album: "", albumArt:"https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png", id: 0, playlistID: 0};
-    render(<SongInput complete={handler} song={sampleSong}/>);
+    render(<SongInput complete={handler} song={sampleSong} savedInit={false}/>);
   });
 
   test("Image appears when component is first rendered", () => {
@@ -134,8 +150,7 @@ describe("Album art tests", () => {
     expect(titleInput).toBeInTheDocument();
   });
 
-  test("Correct image appears when a valid album is entered", async () => {
-    fetchMock.get(`${root}?method=album.getinfo&api_key=${key}&artist=${song.artist}&album=${song.album}&format=json`, () => goodResponse);
+  test.only("Correct image appears when a valid album is entered", async () => {
 
     const titleInput = screen.getByRole("textbox", { name: "Title" });
     const artistInput = screen.getByRole("textbox", { name: "Artist" });
@@ -156,7 +171,6 @@ describe("Album art tests", () => {
   });
 
   test("Placeholder image appears when an invalid album is entered", async () => {
-    fetchMock.get("*", () => badResponse);
 
     const titleInput = screen.getByRole("textbox", { name: "Title" });
     const artistInput = screen.getByRole("textbox", { name: "Artist" });
