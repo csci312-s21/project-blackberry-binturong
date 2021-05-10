@@ -32,7 +32,7 @@ export default function WRMCWebsite() {
   const [currentPlaylist, setCurrentPlaylist] = useState();
   const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
   const [selectedPlaylist, setSelectedPlaylist] = useState();  // state for displaying PlaylistDetails
-  const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
+  const pageList = ["Home", "Schedule", "About"];
 
   const endShow = () => {
     setCurrentPage("Home");
@@ -124,7 +124,7 @@ export default function WRMCWebsite() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>WRMC 91.1 FM Middlebury College Radio</title>
+        <title>WRMC 91.1 FM | WRMC 91.1 FM Middlebury College Radio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
