@@ -1,8 +1,10 @@
 /*
+  DisplayCurrentShow.js
 
   This Component will display the current show title and DJs.
 
-  props - shows, an array of shows
+  props:
+    show - current show
 */
 import Link from "next/link";
 
@@ -27,6 +29,5 @@ export default function DisplayCurrentShow({ show }){
 }
 
 DisplayCurrentShow.propTypes = {
-  show: showType,
-  handleClick: PropTypes.func.isRequired,
+  show: showType
 };

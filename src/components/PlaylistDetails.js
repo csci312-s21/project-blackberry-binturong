@@ -3,7 +3,14 @@
 
   This component displays a list of all songs in a playlist
 
+  props:
+    playlist - the playlist objecy
+    songs - song table
+    currShow - the show that the playlist belongs to
+
 */
+import Link from "next/link";
+
 import { playlistType, songType, showType } from "../lib/types.js";
 import PropTypes from "prop-types";
 import styles from "../styles/PlaylistDetails.module.css";
@@ -51,6 +58,5 @@ export default function PlaylistDetails({ playlist, songs, currShow }) {
 PlaylistDetails.propTypes = {
   playlist: playlistType.isRequired,
   songs: PropTypes.arrayOf(songType).isRequired,
-  shows: PropTypes.arrayOf(showType).isRequired,
-  backToShow: PropTypes.func.isRequired
+  currShow: showType.isRequired
 }

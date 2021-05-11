@@ -6,7 +6,7 @@ import shows from "../../data/shows.json";
 export default function Schedule() {
   const [allShows] = useState(shows);
   return (
-    <Layout title="Schedule | WRMC 91.1 FM Middlebury College Radio">
+    <Layout title="Schedule | WRMC 91.1 FM">
       <WeeklySchedule shows={allShows}/>
     </Layout>
   );

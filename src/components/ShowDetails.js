@@ -6,7 +6,10 @@
 
   props:
     show - a show object
+    playlists - playlist table
 */
+import Link from "next/link";
+
 import PropTypes from "prop-types";
 import { getTimeString, getDayString, compareTwoPlaylists } from "../lib/component-utils.js";
 import styles from "../styles/ShowDetails.module.css";
@@ -42,6 +45,5 @@ export default function ShowDetails({ show, playlists }) {
 
 ShowDetails.propTypes = {
   show: showType.isRequired,
-  playlists: PropTypes.arrayOf(playlistType).isRequired,
-  clickPlaylist: PropTypes.func.isRequired
+  playlists: PropTypes.arrayOf(playlistType).isRequired
 };

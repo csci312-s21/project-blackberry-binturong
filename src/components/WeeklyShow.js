@@ -1,3 +1,12 @@
+/*
+  WeeklyShow.js
+
+  Shows a single show in the schedule
+
+  props:
+    show - the show to display
+*/
+
 import PropTypes from "prop-types";
 import styles from "../styles/WeeklyShow.module.css";
 

@@ -1,6 +1,7 @@
 /*
   NextThreeShows.js
   This component displays a preview of the next three shows, not including the current show.
+  
   props:
     shows - an array of show objects
 */
@@ -32,6 +33,5 @@ export default function NextThreeShows({ shows }){
 }
 
 NextThreeShows.propTypes = {
-  shows: PropTypes.arrayOf(showType).isRequired,
-  setCurrentPage: PropTypes.func.isRequired
+  shows: PropTypes.arrayOf(showType).isRequired
 };

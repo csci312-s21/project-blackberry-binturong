@@ -1,3 +1,12 @@
+/*
+  NavBar.js
+
+  This component holds the links to the other pages on the nav bar
+
+  props:
+    none
+*/
+
 import styles from "../styles/NavBar.module.css";
 
 import PropTypes from "prop-types";

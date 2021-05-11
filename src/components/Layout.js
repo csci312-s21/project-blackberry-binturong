@@ -1,3 +1,13 @@
+/*
+  Layout.js
+
+  This component holds the layout for all of the other pages.
+
+  props:
+    title - the page title
+    children - the page contents
+*/
+
 import Head from "next/head";
 import LoginButton from "../components/LoginButton.js";
 import PlayButton from "../components/PlayButton.js";
@@ -25,4 +35,9 @@ export default function Layout({ title, children }) {
       </div>
     </div>
   );
+};
+
+Layout.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired
 };
