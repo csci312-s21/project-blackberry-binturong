@@ -10,8 +10,7 @@ import styles from "../styles/PlaylistDetails.module.css";
 import moment from "moment";
 import { compareTwoSongs } from "../lib/component-utils.js";
 
-export default function PlaylistDetails({ playlist, songs, shows, backToShow }) {
-  const currShow = shows.find((show) => show.id === playlist.showID);
+export default function PlaylistDetails({ playlist, songs, currShow }) {
   const playlistSongs = songs.filter((song) => song.playlistID === playlist.id);
   playlistSongs.sort((a, b) => compareTwoSongs(a,b));
 
@@ -42,7 +41,9 @@ export default function PlaylistDetails({ playlist, songs, shows, backToShow }) 
           {songInfo}
         </tbody>
       </table>
-      <input className={styles.returnButton} type="button" value="<< Back to show information" onClick={() => backToShow(currShow)}/>
+      <Link href={`/shows/${currShow.id}`}>
+        <input className={styles.returnButton} type="button" value="<< Back to show information"/>
+      </Link>
     </div>
   );
 }
