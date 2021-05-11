@@ -74,7 +74,7 @@ export default function WRMCWebsite() {
   // } 
 
   return (
-    <Layout title="WRMC 91.1 FM Middlebury College Radio | WRMC 91.1 FM ">
+    <Layout title="WRMC 91.1 FM Middlebury College">
       <div>
         <ShowOTW show={sotw}/>
         <p>{""}</p>
