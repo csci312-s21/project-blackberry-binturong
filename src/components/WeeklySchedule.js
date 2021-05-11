@@ -42,7 +42,6 @@ export default function WeeklySchedule({ shows }){
     const rowKey = `row${key1}`;
     let count = 0;
     item.forEach((unit) => {
-      console.log(unit);
       if (unit === undefined) {
         count += 1;
       }

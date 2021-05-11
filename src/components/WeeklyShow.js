@@ -5,7 +5,7 @@ export default function WeeklyShow({ show }){
 
   if (Object.keys(show).length === 0){
     return <div className={styles.WeeklyShow} style={{"backgroundColor": "#DDDDDD"}} />
-  };
+  }
 
   const colors = {
     "blues": "#2994A3",
@@ -43,7 +43,7 @@ export default function WeeklyShow({ show }){
   
   if (genrecolor === undefined) {
     genrecolor = "#444444";
-  };
+  }
 
   return (
     <div className={styles.WeeklyShow} style={{"backgroundColor": genrecolor}}>
