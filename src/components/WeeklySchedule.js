@@ -24,7 +24,7 @@ export default function WeeklySchedule({ shows }){
       if (l===0){
         showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{`${i}:00`}</div>);
       }
-      else {showsArr[showsArr.length-1].push(<WeeklyShow show = {{}}/>)}
+      else {showsArr[showsArr.length-1].push(undefined)}
     }
   }
   
@@ -39,7 +39,7 @@ export default function WeeklySchedule({ shows }){
 
 
   const table = showsArr.map((item, key1) => {
-    const rowKey = `row${  key1}`;
+    const rowKey = `row${key1}`;
     let count = 0;
     item.forEach((unit) => {
       if (unit === undefined) {
@@ -49,18 +49,19 @@ export default function WeeklySchedule({ shows }){
     
     if (count < 7) {
       return (
-        <tbody>
-          <tr key={rowKey}>
-            {item.map((i, key2) => {
-              const result = i;
-              let cellKey = key1*1000+key2;
-              cellKey = `cell${  cellKey}`;
-              return (<td key={cellKey}>
-                        {result}
-                      </td>);
-            })}
+        <tr key={rowKey}>
+          {item.map((i, key2) => {
+            let result = i;
+            if (result === undefined) {
+              result = <WeeklyShow show ={{}} />;
+            }
+            let cellKey = key1*1000+key2;
+            cellKey = `cell${  cellKey}`;
+            return (<td key={cellKey}>
+                      {result}
+                    </td>);
+           })}
           </tr>
-        </tbody>
       );
     }
     
@@ -69,7 +70,9 @@ export default function WeeklySchedule({ shows }){
   return (
     <div data-testid="schedule">
       <table>
-        {table}
+        <tbody>
+          {table}
+        </tbody>
       </table>
     </div>
   );
