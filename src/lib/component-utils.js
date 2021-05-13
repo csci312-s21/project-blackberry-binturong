@@ -62,12 +62,14 @@ export const upcomingShowsArray = (shows, now) => {
 
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoPlaylists = (a, b) => {
-  return moment(a.date, "M-DD-YYYY").isBefore(b.date, "M-DD-YYYY") ? -1 : 1;
+  const aDate = moment(a.date, "M-DD-YYYY");
+  const bDate = moment(b.date, "M-DD-YYYY");
+  return aDate.isBefore(bDate) ? -1 : 1;
 }
 
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoSongs = (a, b) => {
-  return moment(a.timeAdded, "YYYY-MM-DDTHH:mm:ssZ").isBefore(b.timeAdded, "YYYY-MM-DDTHH:mm:ssZ") ? -1 : 1;
+  return moment(a.timeAdded, "h:mm a").isBefore(moment(b.timeAdded, "h:mm a")) ? -1 : 1;
 }
 
 

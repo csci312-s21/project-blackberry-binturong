@@ -19,7 +19,7 @@ describe("DisplayCurrentPlaylist tests", () => {
   });
 
   test("no songs when no playlist input, but shows component", () =>{
-    render(<DisplayCurrentPlaylist playlist={""} allSongs = {sampleSongs}/>);
+    render(<DisplayCurrentPlaylist playlist={undefined} allSongs = {sampleSongs}/>);
 
     expect(screen.queryByText("Current Playlist")).toBeInTheDocument();
     expect(screen.queryByText("sample title 1")).not.toBeInTheDocument();
