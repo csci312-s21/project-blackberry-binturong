@@ -9,10 +9,10 @@ export default function DaySchedule({ shows , day}){
   const showListSorted = showList.sort(function(a, b){return a.time.hour - b.time.hour});
 
   //this is stupid code: but its the only solution I can come up with...
- let showsDisplayedRow1 = []
- let showsDisplayedRow2 = []
- let showsDisplayedRow3 = []
- let showsDisplayedRow4 = []
+  let showsDisplayedRow1 = []
+  let showsDisplayedRow2 = []
+  let showsDisplayedRow3 = []
+  let showsDisplayedRow4 = []
   if (showListSorted.length > 7) {
     showsDisplayedRow1 = showListSorted.map((show, index) => {
       if (index < 7){
