@@ -3,6 +3,8 @@
 }
 
 .navBar li {
+  font-size: 19px;
+  font-weight: 500;
   display: inline;
   padding: 10px;
   cursor: pointer;

@@ -23,12 +23,13 @@ export default function WeeklySchedule({ shows, setFilter}){
     showsArr.push([]);
     for (let l = 0; l < 8; l++){
       if (l===0){
-        showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{`${i}:00`}</div>);
+        showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{`${i<=12?i:i-12}:00${i<=11?" am":" pm"}`}</div>);
       }
       else {showsArr[showsArr.length-1].push(<WeeklyShow show = {{}}/>)}
     }
   }
-  
+  let s = 13;
+
   shows.forEach((s) => {
     const day = getDayInt(s.time.day)+1;
     const time = (s.time.hour / 100)+1;
@@ -38,9 +39,19 @@ export default function WeeklySchedule({ shows, setFilter}){
     }
   })
 
+  let showsArrSorted = []
+  showsArrSorted.push(showsArr[0])
+  for (let i=0; i<18; i++){
+    showsArrSorted.push(showsArr[i+7])
+  }
+  for (let i=0; i<6; i++){
+    showsArrSorted.push(showsArr[i+1])
+  }
+  console.log(showsArrSorted);
 
-  const table = showsArr.map((item, key1) => {
-    const rowKey = `row${  key1}`;
+
+   const table = showsArrSorted.map((item, key1) => {
+    const rowKey = `row${key1}`;
     let count = 0;
     item.forEach((unit) => {
       if (unit === undefined) {
@@ -50,18 +61,19 @@ export default function WeeklySchedule({ shows, setFilter}){
     
     if (count < 7) {
       return (
-        <tbody>
-          <tr key={rowKey}>
-            {item.map((i, key2) => {
-              const result = i;
-              let cellKey = key1*1000+key2;
-              cellKey = `cell${  cellKey}`;
-              return (<td key={cellKey}>
-                        {result}
-                      </td>);
-            })}
+        <tr key={rowKey}>
+          {item.map((i, key2) => {
+            let result = i;
+            if (result === undefined) {
+              result = <WeeklyShow show ={{}} />;
+            }
+            let cellKey = key1*1000+key2;
+            cellKey = `cell${  cellKey}`;
+            return (<td key={cellKey}>
+                      {result}
+                    </td>);
+           })}
           </tr>
-        </tbody>
       );
     }
     
@@ -70,12 +82,13 @@ export default function WeeklySchedule({ shows, setFilter}){
   return (
     <div data-testid="schedule">
       <table>
-        {table}
+        <tbody>
+          {table}
+        </tbody>
       </table>
     </div>
   );
 }
-
 
 WeeklySchedule.propTypes = {
   shows: PropTypes.arrayOf(showType).isRequired
