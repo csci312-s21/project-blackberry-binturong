@@ -28,7 +28,6 @@ export default function WeeklySchedule({ shows, setFilter}){
       else {showsArr[showsArr.length-1].push(<WeeklyShow show = {{}}/>)}
     }
   }
-  let s = 13;
 
   shows.forEach((s) => {
     const day = getDayInt(s.time.day)+1;
@@ -39,6 +38,7 @@ export default function WeeklySchedule({ shows, setFilter}){
     }
   })
 
+/*
   let showsArrSorted = []
   showsArrSorted.push(showsArr[0])
   for (let i=0; i<18; i++){
@@ -48,9 +48,9 @@ export default function WeeklySchedule({ shows, setFilter}){
     showsArrSorted.push(showsArr[i+1])
   }
   console.log(showsArrSorted);
+*/
 
-
-   const table = showsArrSorted.map((item, key1) => {
+   const table = showsArr.map((item, key1) => {
     const rowKey = `row${key1}`;
     let count = 0;
     item.forEach((unit) => {

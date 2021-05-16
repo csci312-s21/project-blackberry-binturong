@@ -11,7 +11,7 @@ export default function WeeklyShow({ show }){
   }
 
   const djs = show.DJs.join(", ")
-  const genrecolor = colors[show.genres[0].toLowerCase()]
+  let genrecolor = colors[show.genres[0].toLowerCase()]
 
   if (genrecolor === undefined) {
     genrecolor = "#444444";

@@ -6,7 +6,7 @@ import { showType } from "../lib/types.js";
 
 export default function DaySchedule({ shows , day}){
   const showList = shows.filter((s) => getDayString(s.time.day) === day)
-  const showListSorted = showList.sort(function(a, b){return a.time.hour - b.time.hour});
+  const showListSorted = showList.sort((a, b)=> {return a.time.hour - b.time.hour});
 
   //this is stupid code: but its the only solution I can come up with...
   let showsDisplayedRow1 = []

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import WeeklyShow from "../components/WeeklyShow.js";
+import DayShow from "../components/WeeklyShow.js";
 import { sampleShow } from "../lib/test-utils.js";
 
 const color = "#F50046";

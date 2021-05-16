@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import WeeklySchedule from "./WeeklySchedule";
 import DaySchedule from "./DaySchedule";
-import ScheduleNavBar from "./NavBar";
 import ScheduleFilter from "./ScheduleFilter"
 import { showType } from "../lib/types.js";
 import { useState } from "react";
