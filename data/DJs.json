@@ -1,22 +1,22 @@
 [
   {
     "name": "Lucy Rinzler-Day",
-    "email": "lrinzler@middlebury.edu",
-    "id": 0
+    "email": "lrinzler@middlebury.edu"
   },
   {
     "name": "Sophie Clark",
-    "email": "sclark@middlebury.edu", 
-    "id": 1
+    "email": "sclark@middlebury.edu"
   },
   {
     "name": "Abigail Nix",
-    "email": "anix@middlebury.edu", 
-    "id": 3
+    "email": "anix@middlebury.edu"
   },
   {
     "name": "Liza Obel-Omia",
-    "email": "lobel@middlebury.edu", 
-    "id": 4
+    "email": "lobel@middlebury.edu"
+  },
+  {
+    "name": "Alexandra Burns",
+    "email": "lobel@middlebury.edu"
   }
 ]
