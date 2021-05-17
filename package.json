@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "color-name": "^1.1.4",
-    "knex": "^0.95.4",
+    "knex": "^0.95.6",
     "moment": "^2.29.1",
     "nanoid": "^3.1.22",
     "next": "10.0.8",
