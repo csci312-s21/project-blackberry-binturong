@@ -15,4 +15,5 @@ exports.seed = function (knex, Promise) {
   const djs = JSON.parse(contentsDJs);
   knex("DJs").del();
   knex.batchInsert("DJs", djs, 100);
+  
 };
