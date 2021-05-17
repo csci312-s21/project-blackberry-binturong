@@ -14,6 +14,7 @@ import PlayButton from "../components/PlayButton.js";
 import NavBar from "../components/NavBar.js";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 export default function Layout({ title, children }) {

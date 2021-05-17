@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-
+import { sampleSongs } from "../../lib/test-utils.js";
 import shows from "../../../data/shows.json";
 import playlists from "../../../data/playlists.json";
 
@@ -15,8 +15,8 @@ export default function PlaylistDisplay() {
   const selectedShow = shows.find((show) => show.id === selectedPlaylist.showID);
 
   return (
-    <Layout title={`${show.title} | WRMC 91.1 FM`}>
-      <main>{selectedPlaylist && <PlaylistDetails playlist={selectedPlaylist} songs={allSongs} currShow={selectedShow} />}</main>
+    <Layout title={selectedShow ? `${ selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>
+      <main>{selectedPlaylist && <PlaylistDetails playlist={selectedPlaylist} songs={sampleSongs} currShow={selectedShow} />}</main>
     </Layout>
   );
 };
