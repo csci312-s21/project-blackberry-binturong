@@ -1,0 +1,23 @@
+.DayShow {
+  width: 125px;
+  height: 125px;
+  font-size: 10px;
+  color: white;
+  text-align: center;
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+  
+}
+
+.time, .title, .djs {
+  display: inline-block;
+  padding: 5px;
+  margin: 0;
+}
+
+.ShowTitle {
+  font-size: 15px;
+  line-height: 1.2;
+  margin-top: 0px;
+}
