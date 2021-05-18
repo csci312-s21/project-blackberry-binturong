@@ -11,7 +11,7 @@ module.exports = {
     connection: ":memory:",
     useNullAsDefault: true,
     seeds: {
-      directory: './seeds/test',
+      directory: './seeds',
     },
   },
   production: {

@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import { verifyEmail } from "../../../lib/backend-utils.js";
 
 const options = {
   providers: [
@@ -9,10 +10,11 @@ const options = {
       domain: process.env.AUTH0_DOMAIN,
     }),
   ],
+  database: process.env.DATABASE_URL,
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async signIn(user) {
-      return user.email.endsWith("@middlebury.edu");
+      return await verifyEmail(user.email);
     }
   }
 };
