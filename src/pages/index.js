@@ -12,8 +12,7 @@ import DisplayCurrentPlaylist from "../components/DisplayCurrentPlaylist.js";
 import PlaylistDetails from "../components/PlaylistDetails.js";
 import Head from "next/head";
 
-import moment from "moment";
-import { tz } from "moment-timezone";
+import moment from "moment-timezone";
 import shows from "../../data/shows.json";
 import {sampleSongs} from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
