@@ -28,7 +28,7 @@ export const compareTwoShows = (a, b) => {
 
 // this function takes a show and return a string of the time in a pretty format, e.g. "9:00 - 10:00 am"
 export const getTimeString = (hour, duration) => {
-  const start = (hour == 0) ? moment(hour, "H") : moment(hour, "Hmm");
+  const start = (hour === 0) ? moment(hour, "H") : moment(hour, "Hmm");
   return `${start.format("h:mm")} - ${start.add(duration, "hour").format("h:mm a")}`;
 }
 

@@ -19,7 +19,7 @@ export default function WeeklySchedule({ shows, setFilter}){
 
   const getHour = (i) => {
     let hour = i<=12 ? i : i-12;
-    if (hour == 0) {
+    if (hour === 0) {
       hour = 12
     }
     return `${hour}:00${i<=11?" am":" pm"}`;
