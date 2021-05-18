@@ -10,13 +10,13 @@ const options = {
       domain: process.env.AUTH0_DOMAIN,
     }),
   ],
-  database: process.env.DATABASE_URL,
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async signIn(user) {
       return await verifyEmail(user.email);
     }
-  }
+  },
+  database: process.env.DATABASE_URL
 };
 
 export default (req, res) => NextAuth(req, res, options);

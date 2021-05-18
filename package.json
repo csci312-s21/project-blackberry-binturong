@@ -15,7 +15,8 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "test": "jest",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "heroku:start": "next start -p $PORT"
   },
   "dependencies": {
     "color-name": "^1.1.4",
