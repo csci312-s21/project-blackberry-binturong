@@ -13,6 +13,7 @@ import PlaylistDetails from "../components/PlaylistDetails.js";
 import Head from "next/head";
 
 import moment from "moment";
+import { tz } from "moment-timezone";
 import shows from "../../data/shows.json";
 import {sampleSongs} from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
@@ -22,6 +23,8 @@ import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/client";
+
+moment.tz.setDefault("America/New_York");
 
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);
