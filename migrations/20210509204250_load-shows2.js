@@ -26,6 +26,7 @@ exports.up = function (knex, Promise) {
     table.string('name');
     table.string('email');
     table.integer('id');
+    //table.integer('accntId').references("user.id").onDelete("CASCADE");
   })
   .createTable('ShowDJs', (table) => {
     table.integer("show_id");

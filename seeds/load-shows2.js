@@ -10,7 +10,6 @@ exports.seed = function (knex, Promise) {
   const playlists = JSON.parse(contentsPlaylist);
   knex("Playlists").del();
   knex.batchInsert("Playlists", playlists, 100);
-  
 
   let djMap = [];
   let djRecord= [];
