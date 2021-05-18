@@ -24,13 +24,13 @@ export default function WRMCWebsite() {
   const [allSongs, setAllSongs] = useState(sampleSongs);
   const [loggedIn, setLoggedIn] = useState(false);
   const [sotw] = useState(allShows[6]); //placeholder, eventually we will want a callback: "setSotw"
-  const [page, setCurrentPage] = useState("Home");
+  const [loggingPlaylist, setLoggingPlaylist] = useState(false);
   const [currentPlaylist, setCurrentPlaylist] = useState();
   const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
   const [selectedPlaylist, setSelectedPlaylist] = useState();  // state for displaying PlaylistDetails
 
   const endShow = () => {
-    setCurrentPage("Home");
+    setLoggingPlaylist(false);
     setCurrentPlaylist();
   }
 
@@ -53,7 +53,7 @@ export default function WRMCWebsite() {
   };
 
   const startShow = (showId) => {
-    setCurrentPage("Log Playlist");
+    setCurrentloggingPlaylist(true);
     const newPlaylist = { date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID() };
     setCurrentPlaylist(newPlaylist);
     setAllPlaylists([...allPlaylists, newPlaylist]);
@@ -67,15 +67,14 @@ export default function WRMCWebsite() {
     isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
   }
 
-  // this if statement determines which page to display - add more else ifs as we add more specialized pages.
-  // let displayPage;
-  // if (page === "Log Playlist" && loggedIn) {
-  //   displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs} />
-  // } 
-
-  return (
-    <Layout title="WRMC 91.1 FM Middlebury College">
+  // this if statement determines whether we show the regular homeloggingPlaylist or the playlist logger
+  let displayPage;
+  if (loggingPlaylist && loggedIn) {
+    displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs} />
+  } else {
+    displayPage = 
       <div>
+        {loggedIn && <StartShowButton userShows={allShows} startShow={startShow}/>}
         <ShowOTW show={sotw}/>
         <p>{""}</p>
         <DisplayCurrentShow
@@ -88,6 +87,11 @@ export default function WRMCWebsite() {
         <NextThreeShows
           shows={isOnAir ? upcomingShows.slice(1, 4) : upcomingShows.slice(0, 3)}/>
       </div>
+  }
+
+  return (
+    <Layout title="WRMC 91.1 FM Middlebury College">
+      {displayPage}
     </Layout>
   );
 }
