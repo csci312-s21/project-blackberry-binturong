@@ -10,6 +10,7 @@
   width: fit-content;
 }
 .inline {
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   padding-left: 10px;

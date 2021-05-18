@@ -10,7 +10,7 @@ export default function WeeklySchedule({ shows, setFilter}){
 
   const firstRow = days.map((d, i) => {
     const currKey = `firstrow${  i}`;
-    return (<div key={currKey} className={styles.scheduleDay}
+    return (<div key={currKey} className={styles.Header}
     onClick={() => {setFilter(d)}}>
               {d}
             </div>)
