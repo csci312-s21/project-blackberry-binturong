@@ -25,7 +25,7 @@ export default function WeeklySchedule({ shows, setFilter}){
       if (l===0){
         showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{`${i<=12?i:i-12}:00${i<=11?" am":" pm"}`}</div>);
       }
-      else {showsArr[showsArr.length-1].push(<WeeklyShow show = {{}}/>)}
+      else {showsArr[showsArr.length-1].push(undefined)}
     }
   }
 
@@ -50,7 +50,7 @@ export default function WeeklySchedule({ shows, setFilter}){
   console.log(showsArrSorted);
 */
 
-   const table = showsArr.map((item, key1) => {
+  const table = showsArr.map((item, key1) => {
     const rowKey = `row${key1}`;
     let count = 0;
     item.forEach((unit) => {

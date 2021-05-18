@@ -122,7 +122,7 @@ export const sampleSongs = [
     "album": "sample album 1",
     "playlistID": 12,
     "id": 1,
-    "timeAdded": "2021-05-02T20:00:24-04:00"
+    "timeAdded": "8:00 pm"
   },
   {
     "title": "sample title 2",
@@ -130,7 +130,7 @@ export const sampleSongs = [
     "album": "sample album 2",
     "playlistID": 12,
     "id": 2,
-    "timeAdded": "2021-05-02T20:03:24-04:00"
+    "timeAdded": "8:03 pm"
   },
   {
     "title": "sample title 3",
@@ -138,7 +138,7 @@ export const sampleSongs = [
     "album": "sample album 3",
     "playlistID": 12,
     "id": 3,
-    "timeAdded": "2021-05-02T20:22:24-04:00"
+    "timeAdded": "8:22 pm"
   },
   {
     "title": "sample title 4",
@@ -146,6 +146,6 @@ export const sampleSongs = [
     "album": "sample album 4",
     "playlistID": 12,
     "id": 42,
-    "timeAdded": "2021-05-02T20:10:24-04:00"
+    "timeAdded": "8:10 pm"
   },
 ]
