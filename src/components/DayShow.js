@@ -7,8 +7,9 @@ import { useState } from "react";
 
 export default function DayShow({ show }){
   const [displayDescription, setDisplayDescription] = useState(false);
+
   const time = getTimeString(show.time.hour, show.time.duration);
-  const genrecolor = colors[show.genres[0].toLowerCase()]
+  const genrecolor = colors[show.genres[0].toLowerCase()];
 
   return (
    <div onMouseLeave={() => setDisplayDescription(false)} onMouseEnter={() => setDisplayDescription(true)}>
@@ -21,7 +22,7 @@ export default function DayShow({ show }){
           <p className={styles.ShowTitle}>{show.title}</p>
           <div className={styles.djs}>{show.DJs.join(", ")}</div>
         </div>}
-  </div>
+    </div>
   );
 }
 
