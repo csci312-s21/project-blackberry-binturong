@@ -8,7 +8,7 @@ export default function DaySchedule({ shows , day}){
   const showList = shows.filter((s) => getDayString(s.time.day) === day)
   const showListSorted = showList.sort((a, b)=> {return a.time.hour - b.time.hour});
 
-  const showsDisplayed = showListSorted.map((show, index) => {
+  const showsDisplayed = showListSorted.map((show) => {
       return <li className={styles.showList} key={show.id} data-testid="day  show">
         <DayShow show={show}/>
       </li>
