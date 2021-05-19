@@ -2,7 +2,7 @@ import djData from "../../data/djs.json";
 import {
   knex,
   verifyEmail
-} from "./backend-utils";
+} from "./backend-utils.js";
 
 describe("Tests of the database utility functions", () => {
  

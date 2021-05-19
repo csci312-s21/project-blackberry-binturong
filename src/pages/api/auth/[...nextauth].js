@@ -13,7 +13,7 @@ const options = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async signIn(user) {
-      return await verifyEmail(user.email);
+      await verifyEmail(user.email);
     }
   },
   database: process.env.DATABASE_URL
