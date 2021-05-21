@@ -35,6 +35,3 @@ yarn-error.log*
 
 # database files
 *.sqlite3
-
-# DJ names and emails
-data/djs.json
