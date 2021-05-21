@@ -1,32 +1,31 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('Show', (table) => {
-    table.integer('id');
-    table.string('title');
-    table.string('DJs');
+    table.increments('id');
+    table.string('title').notNullable();
     table.text('description');
     table.specificType('genres', 'text ARRAY').notNullable();
     table.string('day').notNullable();
-    table.decimal('hour').notNullable(); 
+    table.integer('hour').notNullable(); 
     table.decimal('duration').notNullable();
   })
   .createTable('Playlist', (table) => {
-    table.integer('id');
-    table.string('date');
+    table.increments('id');
+    table.string('date').notNullable();
     table.integer('showId').references("Show.id").onDelete("CASCADE");
   })
   .createTable('Song', (table) => {
-    table.integer('id');
+    table.increments('id');
     table.string('time');
-    table.string('title');
-    table.string('album_art');
-    table.string('album');
+    table.string('title').notNullable();
+    table.string('album_art').notNullable();
+    table.string('album').notNullable();
     table.integer('playlistId').references("Playlist.id").onDelete("CASCADE");
   })
   .createTable('DJs', (table) => {
+    table.increments('id');
     table.string('name');
-    table.string('email');
-    table.integer('id');
-    //table.integer('accntId').references("user.id").onDelete("CASCADE");
+    table.string('email').unique().notNullable();
+    table.boolean('exec').notNullable();
   })
   .createTable('ShowDJs', (table) => {
     table.integer("show_id");
