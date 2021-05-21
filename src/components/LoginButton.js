@@ -8,19 +8,28 @@
     handleClick - a function that logs the user in or out when the button is clicked
 */
 import styles from "../styles/LoginButton.module.css";
-import PropTypes from "prop-types";
+import { signIn, signOut, useSession } from "next-auth/client";
 
-export default function LoginButton({ loggedIn, handleClick }){
+export default function LoginButton(){
+  const [session] = useSession();
+
   return (
     <div className={styles.loginContainer}>
-      {(loggedIn)
-        ? <input className={styles.loginButton} type="button" value="Out" onClick = {() => handleClick(false)}/>
-        : <input className={styles.loginButton} type="button" value="In" onClick = {() => handleClick(true)}/>
+      {(session)
+        ? <input 
+            className={styles.loginButton} 
+            type="button" 
+            aria-label="logout" 
+            value="Out" 
+            onClick = {() => signOut()}
+          />
+        : <input 
+            className={styles.loginButton} 
+            type="button" 
+            aria-label="login"
+            value="In" 
+            onClick = {() => signIn()}
+          />
       }
     </div>);
-}
-
-LoginButton.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
-  handleClick: PropTypes.func.isRequired,
 }

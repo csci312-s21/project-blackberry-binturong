@@ -62,12 +62,14 @@ export const upcomingShowsArray = (shows, now) => {
 
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoPlaylists = (a, b) => {
-  return moment(a.date, "M-DD-YYYY").isBefore(b.date, "M-DD-YYYY") ? -1 : 1;
+  const aDate = moment(a.date, "M-DD-YYYY");
+  const bDate = moment(b.date, "M-DD-YYYY");
+  return aDate.isBefore(bDate) ? -1 : 1;
 }
 
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoSongs = (a, b) => {
-  return moment(a.timeAdded, "YYYY-MM-DDTHH:mm:ssZ").isBefore(b.timeAdded, "YYYY-MM-DDTHH:mm:ssZ") ? -1 : 1;
+  return moment(a.timeAdded, "h:mm a").isBefore(moment(b.timeAdded, "h:mm a")) ? -1 : 1;
 }
 
 
@@ -81,3 +83,35 @@ export const getDayInt = (d) => {
   else if (d==="S"){return 5}
   else if (d==="Su"){return 6}
 }
+
+//Colors for displaying genres in the schedule.
+export const colors = {
+    "blues": "#2994A3",
+    "eclectic": "#00B1DA",
+    "folk": "#14CD96",
+    "indie": "#0033CC",
+    "metal": "#D3D3D3",
+    "punk": "#190707",
+    "rock": "#F50046",
+    "classical": "#FF918B",
+    "electronic": "#00FF43",
+    "fruit": "#005DD0",
+    "jazz": "#6C29A3",
+    "news": "#9B9B9B",
+    "r&b / soul": "#D0A9F5",
+    "sports": "#2E3B0B",
+    "comedy": "#FFD700",
+    "exec": "#228B22",
+    "funk": "#FF9840",
+    "kpop": "#89CFF0",
+    "pop": "#FF00FF",
+    "radio theatre": "#00FFFF",
+    "talk": "#FA3F74",
+    "dream pop": "#E987F2",
+    "experimental": "#EB42F4",
+    "hip hop": "#FA7198",
+    "latin": "#2A52BE",
+    "pop punk": "#190707",
+    "reggae": "#0AC02B",
+    "world": "#FFB700"
+  }

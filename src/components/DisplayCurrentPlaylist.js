@@ -29,8 +29,8 @@ if(playlist !== undefined){
       <div className={styles.header}>
         Current Playlist
       </div>
-      <div className = {styles.playlist}>
-        <ul>
+      <div>
+        <ul className = {styles.playlist}>
           {playlist ? currentPlaylist : noShowMessage} 
         </ul>
       </div>
