@@ -1,7 +1,7 @@
 [
   {
     "title": "We are playing awesome music",
-    "DJs" : ["WRMC Radio"],
+    "DJs" : [],
     "description" : "Theres not always a show going on, but there's always something to listen to. This only appears when no show is currently going on and lasts until the next show begins.",
     "day": "X",
     "hour": 0,
@@ -11,7 +11,7 @@
   },
   {
     "title": "Insta-Gram",
-    "DJs": ["Lucy Rinzler-Day","Sophie Clark"],
+    "DJs": [59,64],
     "description": "Love grandmas? So do we! Each week, we celebrate America’s unsung heroes: grandmas from our families, friends, towns and beyond!",
     "day": "M",
     "hour": 1900,
@@ -21,7 +21,7 @@
   },
   {
     "title": "What’s a Genre?",
-    "DJs": ["Abigail Nix","Liza Obel-Omia"],
+    "DJs": [987,47],
     "description": "Join us, Abby and Liza, as we break down our favorite songs from a new genre each week! From country to pop to musical theater, we love it all. Come listen for your favorite genre or tune in every week!! 🙂",
     "day": "M",
     "hour": 2000,
@@ -31,7 +31,7 @@
   },
   {
     "title": "v-talk",
-    "DJs": ["Rayn Bumstead","Catherine La Roche"],
+    "DJs": [65,66],
     "description": "very sincere",
     "day": "M",
     "hour": 2100,
@@ -41,7 +41,7 @@
   },
   {
     "title": "Chuck and Margs",
-    "DJs": ["Charles Pratt"],
+    "DJs": [19],
     "description": "Long-distance relationships can be hard. Does distance make the heart grow fonder? On “Chuck and Margs” I’ll be playing music that means a lot to me and my relationship. Looking for tips on how to reignite the long-distance spark? Tune in to C&M. Looking for good restaurant recommendations across Vermont…",
     "day": "M",
     "hour": 2200,
@@ -51,7 +51,7 @@
   },
   {
     "title": "Policy Path",
-    "DJs": ["Claire Shannon-Vermillion","Audrey Peiker"],
+    "DJs": [61,22],
     "description": "Need a break from old white men discussion politics? This show is lively discussion of current events and politics from the perspective of two young college students.",
     "day": "M",
     "hour": 700,
@@ -61,7 +61,7 @@
   },
   {
     "title": "Democracy Now!",
-    "DJs": ["Amy Goodman","Juan Gonzalez"],
+    "DJs": [67],
     "description": "Democracy Now! is a national, daily, independent, award-winning news program hosted by journalists Amy Goodman and Juan Gonzalez",
     "day": "M",
     "hour": 800,
@@ -71,7 +71,7 @@
   },
   {
     "title": "For a Scooby Snack?",
-    "DJs": ["Catherine Goodrich"],
+    "DJs": [31],
     "description": "Music to capture the spirit of your favorite Scooby Doo characters ! What kind of music does Shaggy groove to in the shower? Is Velma a Phoebe Bridgers fan? Answer these questions and more on For a Scooby Snack?",
     "day": "M",
     "hour": 1000,
@@ -81,7 +81,7 @@
   },
   {
     "title": "Honey Roast",
-    "DJs": ["Gibson Grimm","Celeste Levy"],
+    "DJs": [988,990],
     "description": "On Honey Roast, we invite a guest each week to join us and submit some of their favorite songs. We listen to these, and then gently and lovingly roast them. Now comes the Honey: next we discuss all the things we love about our guest. Little honey, little roast, little…",
     "day": "M",
     "hour": 1100,
@@ -91,7 +91,7 @@
   },
   {
     "title": "auf’m DACH",
-    "DJs": ["Christina Badalamenti"],
+    "DJs": [14],
     "description": "auf’m DACH is Midd’s only German-language music and talk show featuring music, news, anecdotes, and German-language tidbits from Germany (D), Austria (A), and Switzerland (CH). Songs will range from current chart-toppers to Indie releases to classic tunes, so expect to find something you’ll love! Although its acronymic name literally translates…",
     "day": "M",
     "hour": 1200,
@@ -101,7 +101,7 @@
   },
   {
     "title": "Sam Kann Learns Music",
-    "DJs": ["Samantha Kann"],
+    "DJs": [68],
     "description": "I don't know anything about music! Learn with me!",
     "day": "M",
     "hour": 1300,
@@ -111,7 +111,7 @@
   },
   {
     "title": "Sawt Al-Tulaab",
-    "DJs": ["Jacob Adams"],
+    "DJs": [7],
     "description": "This is a program officially associated with the Arabic Department on campus. We’ll play Arab music, interview students and faculty connected with the Arabic language (both those who work and study in Vermont and those who work and study at the schools abroad). We’ll also have student-contributed recordings of Arabic…",
     "day": "M",
     "hour": 1500,
@@ -121,7 +121,7 @@
   },
   {
     "title": "short giraffes",
-    "DJs": ["Roya Touran","Jenny Gould"],
+    "DJs": [58,69],
     "description": "Join us, two besties, for a lively hour of debate and contradiction as we navigate our trivial and significant disagreements.",
     "day": "M",
     "hour": 1600,
@@ -131,7 +131,7 @@
   },
   {
     "title": "Speechless",
-    "DJs": ["Madison Middleton"],
+    "DJs": [13],
     "description": "“Speechless” is just that. Tune in for entirely instrumental music that go beyond the realm of classical and into the worlds of funk, jazz, folk, electronic, rock, and the genre-less. This show is for the groovy listener looking to broaden their aural repertoire and experience the transcendent power of instrumental composition.",
     "day": "M",
     "hour": 1700,
@@ -141,7 +141,7 @@
   },
   {
     "title": "Tiny Desk by a Sunny Window",
-    "DJs": ["Emma Waugh"],
+    "DJs": [34],
     "description": "Each week, a new playlist that fits around a featured Tiny Desk Concert–just for you, the listener, who is probably sitting at a tiny desk somewhere too.",
     "day": "T",
     "hour": 1900,
@@ -151,7 +151,7 @@
   },
   {
     "title": "Poor Boy A Long Way From Home",
-    "DJs": ["George Werner"],
+    "DJs": [982],
     "description": "I’ll be playing music from the gritty underbelly of the blues rock genre, featuring artists both new and old. Interspersed will be strange local legends of the Southern United States, as well as occasional spotlights on lesser-known Blues artists. After all, you “gotta pay your dues if you wanna sing…",
     "day": "T",
     "hour": 2000,
@@ -161,7 +161,7 @@
   },
   {
     "title": "Reality as we perceive it",
-    "DJs": ["Shelby Wilson","Alyssa Pacheco"],
+    "DJs": [52,70],
     "description": "Have you ever wanted to hear two college girls discuss the meaning of life? Probably not, but we’re going to give it to you. We’re finally ditching exploiting our personal lives for entertainment, and turning our focus to the universe. Of course, we’ll also have some pretty cool tunes to…",
     "day": "T",
     "hour": 2100,
@@ -171,7 +171,7 @@
   },
   {
     "title": "wrench’d",
-    "DJs": ["Chad Kim"],
+    "DJs": [980],
     "description": "Musings of self dissolution paired like trout n’ eggs with themes of the apocalypse, sacrifice, and the art of the humor. If this thang had a mouth, it’d make them funky psychedelic-jazz-rock-ethereal-type beats.",
     "day": "T",
     "hour": 2200,
@@ -181,7 +181,7 @@
   },
   {
     "title": "Choreo Muses",
-    "DJs": ["Aliana Thomas-Adams"],
+    "DJs": [71],
     "description": "Music that I want to make choreography to or see someone else do so. I’ll tell you how I can picture dance moves to these songs, come see if you agree with me-",
     "day": "T",
     "hour": 2300,
@@ -191,7 +191,7 @@
   },
   {
     "title": "Retail Rumbles",
-    "DJs": ["Bel"],
+    "DJs": [989],
     "description": "60 hour retail weeks? Tough to bear. The same thirty songs on a loop? Far tougher. Music for all your shelf-stocking, burger flipping, register punching struggles with Retail Rambles.",
     "day": "T",
     "hour": 200,
@@ -201,7 +201,7 @@
   },
   {
     "title": "Democracy Now!",
-    "DJs": ["Amy Goodman","Juan Gonzalez"],
+    "DJs": [67],
     "description": "Democracy Now! is a national, daily, independent, award-winning news program hosted by journalists Amy Goodman and Juan Gonzalez",
     "day": "T",
     "hour": 800,
@@ -211,7 +211,7 @@
   },
   {
     "title": "Asa’s Kafkaesque Neo-Brutalist Dub Factory",
-    "DJs": ["Asa Skinder"],
+    "DJs": [8],
     "description": "YOU’VE ENTERED THE DUB FACTORY: PUT ON YOUR DANCING SHOES, TAKE A DEEP BREATH, AND SIT DOWN.",
     "day": "T",
     "hour": 900,
@@ -221,7 +221,7 @@
   },
   {
     "title": "You Might Hate This",
-    "DJs": ["Katherine Kenny","Bridget Ulian"],
+    "DJs": [27,38],
     "description": "Two friends with sometimes similar but very often different music tastes play each other songs and predict each other’s first impressions. There will inevitably be disagreements, and hopefully some new favorite tunes!",
     "day": "T",
     "hour": 1100,
@@ -231,7 +231,7 @@
   },
   {
     "title": "Chicken Flicks",
-    "DJs": ["Shure, Sylvie M"],
+    "DJs": [24],
     "description": "Do you like cheesy rom-coms? Do you get overly invested in every movie you watch? Do you think that our society consistently undervalues conventionally feminine media? If you answered “yes” to any of the above, then tune in to talk about some dumb, fun movies!",
     "day": "T",
     "hour": 1400,
@@ -241,7 +241,7 @@
   },
   {
     "title": "Tunes on the Move",
-    "DJs": ["Taegen Kopfler"],
+    "DJs": [60],
     "description": "Looking for some tunes for your daily stroll? Looking for a suggested walking route around Middlebury? Look no further! Here you will find an hour long playlist of music that will get that pep in your step and motivate you to get out the door. I’ll also give listeners some…",
     "day": "T",
     "hour": 1600,
@@ -251,7 +251,7 @@
   },
   {
     "title": "come chill!",
-    "DJs": ["Anna Glovin"],
+    "DJs": [51],
     "description": "tune in for an hour and hang out with a friend over the air waves. good music and good energy to get you through your day. come chill!",
     "day": "T",
     "hour": 1700,
@@ -261,7 +261,7 @@
   },
   {
     "title": "dairy free milk",
-    "DJs": ["Madeleine Van Beek"],
+    "DJs": [10],
     "description": "Join your favorite lactose intolerant DJ for an hour of music and conversation that will never disappoint.",
     "day": "T",
     "hour": 1800,
@@ -271,7 +271,7 @@
   },
   {
     "title": "The Battell Bathtub",
-    "DJs": ["Sutter, Tate"],
+    "DJs": [15],
     "description": "The show will feature a story of the Battell Bathtubs each week. These will be primarily anecdotal stories with potentially some deep dives into the history of the tubs. The rest of the hour will be focused on mid-twentieth century folk music, and if joined by a guest, the guest’s…",
     "day": "W",
     "hour": 1900,
@@ -281,7 +281,7 @@
   },
   {
     "title": "PSYC 91.1",
-    "DJs": ["Maeve Callahan","Pia Contreras"],
+    "DJs": [9,72],
     "description": "Wanna hear a couple of gals talk about their attachments to jams and places and people and mems? Tune into PSYC 91.1 to hear some warm fuzzies, deep dives, and psychological analyses of our lives and bond with us a little. We love a little of everything so come along…",
     "day": "W",
     "hour": 2000,
@@ -291,7 +291,7 @@
   },
   {
     "title": "Vibe of the Times",
-    "DJs": ["Dan Frazo","Pelham Hardie"],
+    "DJs": [6,55],
     "description": "Vibe of the Times with Dan and Pelham is an auditory deep dive into all things revolutionary. Exploring pioneer artists in new genres, as well as the political context that surrounded their rise to prominence, we toil with the ideas of genre formation — what it means to forge your…",
     "day": "W",
     "hour": 2100,
@@ -301,7 +301,7 @@
   },
   {
     "title": "my own personal hell",
-    "DJs": ["Lucy Rinzler-Day"],
+    "DJs": [59],
     "description": "sweetest little last semester hell(s), new circle each week",
     "day": "W",
     "hour": 2200,
@@ -311,7 +311,7 @@
   },
   {
     "title": "pink nissan march",
-    "DJs": ["Pim Singhatiraj"],
+    "DJs": [983],
     "description": "i drive a pink nissan march in bangkok. her name is pinkie. pinkie is the perfect city car — small enough to navigate the tiny alleyways of bangkok, easy enough to parallel park, and pink enough to locate in a sea of black and grey cars. here in the champlain…",
     "day": "W",
     "hour": 2300,
@@ -321,7 +321,7 @@
   },
   {
     "title": "44 Acre Woods",
-    "DJs": ["Erica Swirsky"],
+    "DJs": [4],
     "description": "When I was 5 years old, my family vacated suburban wasteland and moved to a 44 acres of land in the middle of nowhere. As much as I complained about this, long walks in the woods with my older brother cultivated a “green” and placid music taste, which I can…",
     "day": "T",
     "hour": 0,
@@ -331,7 +331,7 @@
   },
   {
     "title": "Democracy Now!",
-    "DJs": ["Amy Goodman","Juan Gonzalez"],
+    "DJs": [67],
     "description": "Democracy Now! is a national, daily, independent, award-winning news program hosted by journalists Amy Goodman and Juan Gonzalez",
     "day": "W",
     "hour": 800,
@@ -341,7 +341,7 @@
   },
   {
     "title": "Who Wants a Pancake?",
-    "DJs": ["Alexandra Burns"],
+    "DJs": [36],
     "description": "Who wants a pancake fresh and piping hot? As a child, i liked to memorize poems. Each week we will take a poem, read it, talk about it and the poet and listen to some tunes that match the mood.",
     "day": "W",
     "hour": 1200,
@@ -351,7 +351,7 @@
   },
   {
     "title": "Dissociation Station",
-    "DJs": ["Henry Terry","Chase Winstead"],
+    "DJs": [42,976],
     "description": "See you on the other side",
     "day": "W",
     "hour": 1600,
@@ -361,7 +361,7 @@
   },
   {
     "title": "A Safe Shuffle",
-    "DJs": ["Maya Schwartz","Mira Irfan"],
+    "DJs": [16,11],
     "description": "Finally realizing our dreams of uninterrupted aux for an hour <3",
     "day": "W",
     "hour": 1700,
@@ -371,7 +371,7 @@
   },
   {
     "title": "Hot Rain",
-    "DJs": ["Jacob Raymond","Yardena Carmi"],
+    "DJs": [2,986],
     "description": "Don’t forget your umbrella. Tune in and take it easy with your co-hosts Yardena and Jacob as we spin you an hour of curated, low-key tunes peppered with light conversation. We’ve got steamy funk, lo-fi rock, slow electronica, and a little bit of everything in between. The forecast for tonight…",
     "day": "W",
     "hour": 1800,
@@ -381,7 +381,7 @@
   },
   {
     "title": "(Untitled)",
-    "DJs": ["Jenny Tan","Leila Markosian"],
+    "DJs": [73,74],
     "description": "(No description)",
     "day": "Th",
     "hour": 2000,
@@ -391,7 +391,7 @@
   },
   {
     "title": "Collecting",
-    "DJs": ["Reid Macfarlane"],
+    "DJs": [45],
     "description": "A space to listen to music with my pals for one last time and stitch together these scraps of my life!",
     "day": "Th",
     "hour": 2100,
@@ -401,7 +401,7 @@
   },
   {
     "title": "Songs I Hate",
-    "DJs": ["Eric Kapner"],
+    "DJs": [3],
     "description": "This show is about playing the songs I love, and what I love is punk: that’s where the hate comes in. Tune in for everything from sad bangers to angry jams.",
     "day": "Th",
     "hour": 2200,
@@ -411,7 +411,7 @@
   },
   {
     "title": "After Hours",
-    "DJs": ["Rahul Desmet","Stephen Lovett"],
+    "DJs": [992,993],
     "description": "After Hours is the soundtrack to your late night drives as you wind down for the day. We want to capture that atmosphere and create a chill soundscape that people can vibe to with us. You can expect a diverse range of music, but mostly hip hop, R&B, and Indie.…",
     "day": "Th",
     "hour": 2300,
@@ -421,7 +421,7 @@
   },
   {
     "title": "Democracy Now!",
-    "DJs": ["Amy Goodman","Juan Gonzalez"],
+    "DJs": [63],
     "description": "Democracy Now! is a national, daily, independent, award-winning news program hosted by journalists Amy Goodman and Juan Gonzalez",
     "day": "Th",
     "hour": 800,
@@ -431,7 +431,7 @@
   },
   {
     "title": "Whatever ‘It’ Is",
-    "DJs": ["Ben Knudsen"],
+    "DJs": [63],
     "description": "Certain songs seem to take on an ineffable quality; they have that ‘it’ factor. We may detect this inner soul of a track on our first listen, or ‘it’ may develop and take shape as we develop a relationship of sorts with a song. ‘It’ is about how a song…",
     "day": "Th",
     "hour": 1000,
@@ -441,7 +441,7 @@
   },
   {
     "title": "tinkerbell’s playlist",
-    "DJs": ["Genevieve Herron"],
+    "DJs": [75],
     "description": "“Tink was not all bad: or, rather, she was all bad just now, but, on the other hand, sometimes she was all good. Fairies have to be one thing or the other, because being so small they unfortunately have room for one feeling only at a time.” – JM Barrie…",
     "day": "Th",
     "hour": 1100,
@@ -451,7 +451,7 @@
   },
   {
     "title": "Perpetual Novelty",
-    "DJs": ["Halsey Smith"],
+    "DJs": [26],
     "description": "Perpetual Novelty explores a chaotic (yes, as in the physics theory!) mix of music stretching across genres. It may seem as if my eclectic collection of music acts as apparent randomness but there are underlying patterns and interconnection! Listen to me play music that is ideal for car rides with…",
     "day": "Th",
     "hour": 1300,
@@ -461,7 +461,7 @@
   },
   {
     "title": "Hard Switch",
-    "DJs": ["Phoebe Brown","James Lamb"],
+    "DJs": [994,995],
     "description": "Strive for variety, reject cohesion. Hard switches only.",
     "day": "Th",
     "hour": 1500,
@@ -471,7 +471,7 @@
   },
   {
     "title": "In Other News…",
-    "DJs": ["Jenny Tan","Olivia O'Brien"],
+    "DJs": [73,25],
     "description": "Friends and Peers, We will Play Good Music. Pls Listen.",
     "day": "Th",
     "hour": 1700,
@@ -481,7 +481,7 @@
   },
   {
     "title": "Lost",
-    "DJs": ["Demetra Evangelidis"],
+    "DJs": [41],
     "description": "sometimes, i feel lost in life! literally and figuratively i have no sense of direction. join me to listen to songs about traveling, songs to travel to, songs about being lost, and songs to get lost in!",
     "day": "F",
     "hour": 1900,
@@ -491,7 +491,7 @@
   },
   {
     "title": "friday i’m in love",
-    "DJs": ["Rebecca Amen"],
+    "DJs": [28],
     "description": "unwind at the end of a (hopefully, not too stressful) week by tuning in and listening to some calming, atmospheric tunes with me. i also play “friday i’m in love” by the cure – or a cover of it! – at the end of every show.",
     "day": "F",
     "hour": 2100,
@@ -501,7 +501,7 @@
   },
   {
     "title": "Whiplash",
-    "DJs": ["Natalie Penna"],
+    "DJs": [32],
     "description": "If you’re not sure what you want to listen to, you came to the right place. Sometimes, the energy will be at a 10. Then, it’ll be at a 1. No matter what, it’s going to slap",
     "day": "F",
     "hour": 2200,
@@ -511,7 +511,7 @@
   },
   {
     "title": "Underground Network",
-    "DJs": ["Eamonn Hunter"],
+    "DJs": [23],
     "description": "While we wait for shows to be a thing again, let’s mosh in our dorms and flats. Tune in for an hour of punk, from obscure demos to sell-out tracks. Be kind to one another other and if someone falls down, pick them up!",
     "day": "S",
     "hour": 0,
@@ -521,7 +521,7 @@
   },
   {
     "title": "Democracy Now!",
-    "DJs": ["Amy Goodman","Juan Gonzalez"],
+    "DJs": [67],
     "description": "Democracy Now! is a national, daily, independent, award-winning news program hosted by journalists Amy Goodman and Juan Gonzalez",
     "day": "F",
     "hour": 800,
@@ -531,7 +531,7 @@
 },
 {
     "title": "Tell Me What to Do!?",
-    "DJs": ["Niamh Carty","Abby Schneiderhan","Rachel Lu"],
+    "DJs": [981,20,979],
     "description": "You’ve got your crunchy proc febs, your pre-med bihall nerds, your athletes, and–the scariest category of all–the people who venture across Battell Beach in Chacos at all times of the year. But what if you’re literally just the most average Joe? You may feel like you have nowhere to go,…",
     "day": "F",
     "hour": 1200,
@@ -541,7 +541,7 @@
   },
   {
     "title": "what’s the sitch?",
-    "DJs": ["Olivia Sommers","Madeleine Joinnides"],
+    "DJs": [48,40],
     "description": "ur highnesses Olivia and Madeleine just want to know what the sitch is. Like, was there one dog at the beginning of time and then they ???? had a bunch of different babies on different continents? What is the sitch with dog breeds?? What about circular vs. angular living spaces?…",
     "day": "F",
     "hour": 1300,
@@ -551,7 +551,7 @@
   },
   {
     "title": "In Flux",
-    "DJs": ["Daleelah Saleh"],
+    "DJs": [76],
     "description": "To be in flux is to be in a state of constant change and transition. On this show, we’re not only embracing this state of being, but leaning into it. A mix of music and talk show, we’ll be exploring change in all the forms it takes.",
     "day": "F",
     "hour": 1500,
@@ -561,7 +561,7 @@
   },
   {
     "title": "Rewind with Kyle",
-    "DJs": ["Kyle Hooker"],
+    "DJs": [57],
     "description": "A mixture of oldies music up through the 80’s and 90’s, this show will feature a mixture of several genres: folk, R&B, Rock, Pop/Rock, and Punk. There will be a nice balance of classic hits in addition to many less well known, deeper tracks.",
     "day": "F",
     "hour": 1600,
@@ -571,7 +571,7 @@
   },
   {
     "title": "A Misfit’s Guide to Middlebury",
-    "DJs": ["Daniel Levesque","Lachlan Pinney"],
+    "DJs": [33,56],
     "description": "Did you know there used to be regular brawls in Old Chapel during the 1890s? Ever heard of Abortion Underground: a secret Middlebury club in the 60s and 70s that took women in Vermont to Canada so they could access safe and legal abortions? Join Lachlan and Dan as they…",
     "day": "F",
     "hour": 1700,
@@ -581,7 +581,7 @@
   },
   {
     "title": "Simps and Subpar Stanzas",
-    "DJs": ["Emma Tzotschew","Andrew Grossman"],
+    "DJs": [35,29],
     "description": "Have you ever wanted to suffer from second hand embarrassment so badly that you turned on the radio?! Tune in to Simps and Subpar Stanzas as we talk through past romantic failures, current romantic interests? prospects? Proc crushes (jk, no one goes to Proc), featuring simp-y songs, the occasional simp…",
     "day": "F",
     "hour": 1800,
@@ -591,7 +591,7 @@
   },
   {
     "title": "The Green Banana",
-    "DJs": ["Micah Raymond"],
+    "DJs": [77],
     "description": "Back for one last semester after a year’s hiatus, your favorite techno-head is here for your weekly catharsis. House, techno, vaporwave, garage, shoegaze, post-punk, and others. Until we can all party together again!",
     "day": "S",
     "hour": 2200,
@@ -601,7 +601,7 @@
   },
   {
     "title": "Zoo Without Bars",
-    "DJs": ["The Voodoo Man"],
+    "DJs": [82],
     "description": "species free",
     "day": "S",
     "hour": 800,
@@ -611,7 +611,7 @@
   },
   {
     "title": "Femi-noise",
-    "DJs": ["Clare Kemmer"],
+    "DJs": [985],
     "description": "Combining the words “feminize” and “noise,” Femi-noise serves up an entire hour of female-fronted music from across the sonic spectrum.",
     "day": "S",
     "hour": 1200,
@@ -621,7 +621,7 @@
   },
   {
     "title": "Rayn’s Show",
-    "DJs": ["Rayn Bumstead"],
+    "DJs": [65],
     "description": "This is my last show ever !",
     "day": "Su",
     "hour": 1900,
@@ -631,7 +631,7 @@
   },
   {
     "title": "Soft Sounds From The Clouds",
-    "DJs": ["Jose Morales"],
+    "DJs": [5],
     "description": "Songs I found on SoundCloud.",
     "day": "Su",
     "hour": 2000,
@@ -641,7 +641,7 @@
   },
   {
     "title": "Melt Banana and Other Bands I’m Cool for Liking",
-    "DJs": ["Samuel Van Cleve"],
+    "DJs": [21],
     "description": "Sammy and (sometimes) friends play whatever they want without fear of being mocked for their taste.",
     "day": "Su",
     "hour": 2100,
@@ -651,7 +651,7 @@
   },
   {
     "title": "The Dig",
-    "DJs": ["Joseph Levitan","Luke Robins"],
+    "DJs": [991,78],
     "description": "The Dig! Your place to go for newly unearthed archaeological and auditory finds.",
     "day": "Su",
     "hour": 2200,
@@ -661,7 +661,7 @@
   },
   {
     "title": "Level Crossing",
-    "DJs": ["Isaac Mays-Smith"],
+    "DJs": [46],
     "description": "Hi, I’m Isaac and this is my show: “Level Crossing”. I gave it this name as it used to be what I played through my headphones on the long train journeys I made after hours, back when I lived in the UK. The aim of this show is to be…",
     "day": "Su",
     "hour": 2300,
@@ -671,7 +671,7 @@
   },
   {
     "title": "MiddNight Break",
-    "DJs": ["Jake Lyons","Malachi Raymond"],
+    "DJs": [984,79],
     "description": "A chill show for those Saturday night lulls… Hosted by Stew 4’s very own Jake Lyons and Malachi Raymond",
     "day": "M",
     "hour": 0,
@@ -681,7 +681,7 @@
   },
   {
     "title": "anything but the kitchen sink",
-    "DJs": ["Adayliah Ley"],
+    "DJs": [977],
     "description": "Growing up, my biracial household hosted a diverse array of sounds, from my dad’s 90s hip/hop and rap, my mom’s smooth and slow R&B, and my journey through time as I discovered ABBA, the Beatles, Pink Floyd and, later, Still Woozy, Norah Jones, and Steve Lacey. Anything but the kitchen…",
     "day": "Su",
     "hour": 1000,
@@ -691,7 +691,7 @@
   },
   {
     "title": "SPUNK with Liam and Porter",
-    "DJs": ["Liam Hahn","Porter Bowman"],
+    "DJs": [975,80],
     "description": "Join us weekly for an outlandishly witty take on this week’s hot topics. Politics expert Porter Bowman and general buffoon Liam Hahn delve into the hot topics being discussed at your dinner table this week providing you with both insight and hot-takes to bring home to mom.",
     "day": "Su",
     "hour": 1100,
@@ -701,7 +701,7 @@
   },
   {
     "title": "When You Wake",
-    "DJs": ["Maia Sauer"],
+    "DJs": [1],
     "description": "Dreamy tunes…",
     "day": "Su",
     "hour": 1400,
@@ -711,7 +711,7 @@
   },
   {
     "title": "Fuk-Mak Movies / Cherried away 🍒🍒🍒",
-    "DJs": ["Irith Fuks","Mariia Makutonina"],
+    "DJs": [43,81],
     "description": "Every week Masha and Irith have a guest to talk about the movie that influenced them the most. Through the fun, casual interviews our audience will get to know the guest and learn about the cultural and cinematic background of the film (and get inspired to watch it!). The guests…",
     "day": "Su",
     "hour": 1600,

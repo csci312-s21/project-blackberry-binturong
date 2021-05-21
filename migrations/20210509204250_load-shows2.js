@@ -1,4 +1,4 @@
-exports.up = function (knex, Promise) {
+exports.up = function (knex) {
   return knex.schema.createTable('Show', (table) => {
     table.increments('id');
     table.string('title').notNullable();
@@ -17,7 +17,7 @@ exports.up = function (knex, Promise) {
     table.increments('id');
     table.string('time');
     table.string('title').notNullable();
-    table.string('album_art').notNullable();
+    table.string('albumArt').notNullable();
     table.string('album').notNullable();
     table.integer('playlistId').references("Playlist.id").onDelete("CASCADE");
   })
@@ -28,13 +28,13 @@ exports.up = function (knex, Promise) {
     table.boolean('exec').notNullable();
   })
   .createTable('ShowDJs', (table) => {
-    table.integer("show_id");
-    table.integer("DJs_id");
-    table.foreign("show_id").references("Show.id");
-    table.foreign("DJs_id").references("DJs.id");
+    table.integer("showId");
+    table.integer("djId");
+    table.foreign("showId").references("Show.id");
+    table.foreign("djId").references("DJs.id");
   });
 };
 
-exports.down = function (knex, Promise) {
+exports.down = function (knex) {
   return knex.schema.dropTableIfExists('Show').dropTableIfExists('Playlist').dropTableIfExists('Song').dropTableIfExists('DJs').dropTableIfExists('ShowDJs');
 };
