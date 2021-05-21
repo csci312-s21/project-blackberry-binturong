@@ -14,7 +14,10 @@ exports.seed = async function (knex) {
   await knex("ShowDJs").del();
   await knex.batchInsert("ShowDJs", djMap, 100);
 
-  shows.forEach((show) => delete show.DJs);
+  shows.forEach((show) => {
+    delete show.DJs;
+    show.genres = show.genres.join();
+  });
   await knex("Show").del();
   await knex.batchInsert("Show", shows, 100);
 

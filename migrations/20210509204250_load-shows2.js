@@ -3,7 +3,7 @@ exports.up = function (knex) {
     table.increments('id');
     table.string('title').notNullable();
     table.text('description');
-    table.specificType('genres', 'text ARRAY').notNullable();
+    table.string('genres').notNullable();
     table.string('day').notNullable();
     table.integer('hour').notNullable(); 
     table.decimal('duration').notNullable();

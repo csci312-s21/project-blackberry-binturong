@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 // PropTypes for show object
 export const showType = PropTypes.shape({
   title: PropTypes.string.isRequired,
-  DJs: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+  DJs: PropTypes.arrayOf(PropTypes.string).isRequired,
   description: PropTypes.string.isRequired,
   day: PropTypes.string.isRequired,
   hour: PropTypes.number.isRequired,

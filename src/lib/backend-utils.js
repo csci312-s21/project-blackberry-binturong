@@ -1,30 +1,56 @@
-import knexConfig from '../../knexfile';
-import knexInitializer from 'knex';
+import knexConfig from "../../knexfile";
+import knexInitializer from "knex";
 
-const knex = knexInitializer(
-  knexConfig[process.env.NODE_ENV || 'development']
+
+export const knex = knexInitializer(
+  knexConfig[process.env.NODE_ENV || "development"]
 );
 
-export async function getShows() {
-  const rows = await knex("Show").select();
-return rows;
-}
 
-export async function getShow(id) {
-  const articles = await knex("Show").where({id:id}).select();
-  if (articles.length !== 1) {
-    return null;
-  }
-  else {
-    return articles[0]
-  }
-}
 
-export async function getDJs(id){
+/**
+ * Get the list of DJ names for a show.
+ * 
+ * @param {integer} showId 
+ * @returns an array of DJ names for show with id showId
+ */
+export async function getDJNames(showId) {
   const djs = await knex.select("name")
     .from("ShowDJs")
-    .join("DJs", "DJs.id", "ShowDJs.DJs_id")
-    .where({"show_id":id});
-  const genreArr = genre.map((g) => g.genre);
-  return genreArr;
+    .join("DJs", "DJs.id", "ShowDJs.djId")
+    .where({"showId": showId});
+  const djNames = djs.map((dj) => dj.name);
+  return djNames;
+}
+
+/**
+ * Gets all the shows from the database
+ * 
+ * @returns an array of all shows
+ */
+export async function getAllShows() {
+  const shows = await knex("Show").select();
+  await Promise.all(
+    shows.map(async (show) => {
+      show.DJs = await getDJNames(show.id);
+    })
+  );
+  shows.forEach((show) => show.genres = show.genres.split(","));
+  return shows;
+}
+
+/**
+ * Gets a single show from the database
+ * 
+ * @returns a show with DJ names
+ */
+export async function getShow(id) {
+  const [show] = await knex("Show").where({id: id}).select();
+  if (show) {
+    show.DJs = await getDJNames(show.id);
+    show.genres = show.genres.split(",");
+    return show;
+  } else {
+    return null;
+  }
 }
