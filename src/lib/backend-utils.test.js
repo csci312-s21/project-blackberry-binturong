@@ -1,6 +1,7 @@
 import djs from "../../data/djs.json";
 import shows from "../../data/shows.json";
 import playlists from "../../data/playlists.json";
+import songs from "../../data/songs.json";
 
 
 import {
@@ -9,7 +10,11 @@ import {
   getAllShows,
   getShow,
   getShowPlaylists,
-  addPlaylist
+  addPlaylist,
+  getPlaylistSongs,
+  addSong,
+  deleteSong,
+  updateSong,
 } from "./backend-utils.js";
 
 describe("Tests of the database utility functions", () => {
@@ -45,7 +50,7 @@ describe("Tests of the database utility functions", () => {
     expect(show.duration).toBe(sampleShow.duration);
   });
 
-  test("getShow fetches show with the correct DJs", async() =>{ 
+  test("getShow fetches show with the correct DJs", async () =>{ 
     const show = await getShow(sampleShow.id);
     expect(show.DJs.length).toBe(sampleShow.DJs.length);
     expect(show.DJs).toEqual(expect.arrayContaining(sampleShow.DJs));
@@ -57,7 +62,7 @@ describe("Tests of the database utility functions", () => {
     expect(show).toBeNull();
   });
 
-  test("getAllShows fetches all shows", async() => {
+  test("getAllShows fetches all shows", async () => {
     const fetchedShows = await getAllShows();
     expect(fetchedShows).toHaveLength(shows.length);
     const testShow = fetchedShows.find((show) => show.id === sampleShow.id);
@@ -66,7 +71,7 @@ describe("Tests of the database utility functions", () => {
     properties.forEach((prop) => {expect(fetchedShows[0]).toHaveProperty(prop)});
   });
 
-  test("getAllShows loads the correct DJs", async() => {
+  test("getAllShows loads the correct DJs", async () => {
     const fetchedShows = await getAllShows();
     const testShow = fetchedShows.find((show) => show.id === sampleShow.id);
 
@@ -76,9 +81,9 @@ describe("Tests of the database utility functions", () => {
 
   test("getShowPlaylists loads the correct playlists", async () => {
     const testShow = await getShow(55);
-    const expetedPlaylists = playlists.filter((playlist) => playlist.showId === 55);
+    const expectedPlaylists = playlists.filter((playlist) => playlist.showId === 55);
     const fetchedPlaylists = await getShowPlaylists(testShow.id);
-    expect(fetchedPlaylists).toHaveLength(expetedPlaylists.length);
+    expect(fetchedPlaylists).toHaveLength(expectedPlaylists.length);
     fetchedPlaylists.forEach((pl) => expect(pl.showId).toEqual(testShow.id));
   });
 
@@ -92,5 +97,69 @@ describe("Tests of the database utility functions", () => {
     expect(playlist.date).toBe(sample.date);
     expect(playlist.showId).toBe(sample.showId);
     expect(playlist.id).toBeGreaterThanOrEqual(0);
+  });
+
+  test("getPlaylistSongs loads the correct songs", async () => {
+    const testPlaylist = {
+      "date": "4-29-2021",
+      "id": 15,
+      "showId": 56
+    };
+    
+    const expectedSongs = songs.filter((song) => song.playlistId === testPlaylist.id);
+    const fetchedSongs = await getPlaylistSongs(testPlaylist.id);
+    expect(fetchedSongs).toHaveLength(expectedSongs.length);
+    fetchedSongs.forEach((song) => expect(song.playlistId).toEqual(testPlaylist.id));
+  });
+
+  test("addSong returns a song with new id", async () => {
+    const sample = {
+      "title": "Never Gonna Give You Up",
+      "artist": "Rick Astley",
+      "album": "Whenever You Need Somebody",
+      "albumArt": "",
+      "time": "4:00 pm",
+      "playlistId": 12
+    };
+    
+    const song = await addSong(sample);
+    expect(song.title).toBe(sample.title);
+    expect(song.artist).toBe(sample.artist);
+    expect(song.album).toBe(sample.album);
+    expect(song.albumArt).toBe(sample.albumArt);
+    expect(song.id).toBeGreaterThanOrEqual(0);
+    expect(song.time).toBe(sample.time);
+    expect(song.playlistId).toBe(sample.playlistId);
+  });
+
+  test("deleteSong deletes song", async () => {
+    const sample = songs[0];
+
+    const success = await deleteSong(sample.id);
+    expect(success).toBeTruthy();
+
+    const rows = await knex("Song").where({ id: sample.id }).select();
+    expect(rows).toHaveLength(0);
+  });
+
+  test("deleteSong on missing song returns 0", async () => {
+    const success = await deleteSong(-1);
+    expect(success).toBeFalsy();
+  });
+
+  test("updateSong updates the song", async () => {
+    const sample = { ...songs[0], title: "New Title" };
+    const success = await updateSong(sample);
+    expect(success).toBeTruthy();
+    const rows = await knex("Song").where({ id: sample.id }).select();
+
+    const song = rows[0];
+    expect(song.title).toBe(song.title);
+  });
+
+  test("updateSong returns 0 if the id doesn't exist", async () => {
+    const sample = { id: -1, title: "Bad Song" };
+    const success = await updateSong(sample);
+    expect(success).toBeFalsy();
   });
 });

@@ -17,6 +17,7 @@ exports.up = function (knex) {
     table.increments('id');
     table.string('time');
     table.string('title').notNullable();
+    table.string('artist').notNullable();
     table.string('albumArt').notNullable();
     table.string('album').notNullable();
     table.integer('playlistId').references("Playlist.id").onDelete("CASCADE");

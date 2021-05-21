@@ -6,8 +6,6 @@ export const knex = knexInitializer(
   knexConfig[process.env.NODE_ENV || "development"]
 );
 
-
-
 /**
  * Get the list of DJ names for a show.
  * 
@@ -80,4 +78,53 @@ export async function getShowPlaylists(showId) {
 export async function addPlaylist(playlist) {
   const inserted = await knex("Playlist").insert(playlist);
   return {...playlist, id: inserted[0]};
+}
+
+/**
+ * Gets all songs for a playlist from the database
+ * 
+ * @param {integer} playlistId 
+ * @returns an array of songs with playlistId playlistId
+ */
+export async function getPlaylistSongs(playlistId) {
+  const songs = await knex("Song").where({playlistId: playlistId}).select();
+  if (songs) {
+    return songs;
+  } else {
+    return null;
+  }
+}
+
+/**
+ * Add a new song to the database
+ *
+ * @param {object} song
+ * @returns the song with a new id attached
+ */
+export async function addSong(song) {
+  const inserted = await knex("Song").insert(song);
+  return {...song, id: inserted[0]};
+}
+
+
+/**
+ * Remove the song associated with the provided id from the database
+ *
+ * @param {number} id
+ * @returns a Boolean indicating success
+ */
+export async function deleteSong(id) {
+  const success = await knex("Song").where({id: id}).del();
+  return success;
+}
+
+/**
+ * Update a song in the database
+ *
+ * @param {object} song
+ * @returns a Boolean indicating success
+ */
+export async function updateSong(song) {
+  const success = await knex("Song").where({id: song.id}).update(song);
+  return success;
 }
