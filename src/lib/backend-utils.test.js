@@ -1,12 +1,15 @@
 import djs from "../../data/djs.json";
 import shows from "../../data/shows.json";
+import playlists from "../../data/playlists.json";
 
 
 import {
   knex,
   getDJNames,
   getAllShows,
-  getShow
+  getShow,
+  getShowPlaylists,
+  addPlaylist
 } from "./backend-utils.js";
 
 describe("Tests of the database utility functions", () => {
@@ -55,12 +58,12 @@ describe("Tests of the database utility functions", () => {
   });
 
   test("getAllShows fetches all shows", async() => {
-      const fetchedShows = await getAllShows();
-      expect(fetchedShows).toHaveLength(shows.length);
-      const testShow = fetchedShows.find((show) => show.id === sampleShow.id);
-      expect(testShow).toEqual(sampleShow);
-      const properties = ["id", "title", "description", "hour", "day", "duration", "DJs", "genres"];
-      properties.forEach((prop) => {expect(fetchedShows[0]).toHaveProperty(prop)});
+    const fetchedShows = await getAllShows();
+    expect(fetchedShows).toHaveLength(shows.length);
+    const testShow = fetchedShows.find((show) => show.id === sampleShow.id);
+    expect(testShow).toEqual(sampleShow);
+    const properties = ["id", "title", "description", "hour", "day", "duration", "DJs", "genres"];
+    properties.forEach((prop) => {expect(fetchedShows[0]).toHaveProperty(prop)});
   });
 
   test("getAllShows loads the correct DJs", async() => {
@@ -69,5 +72,25 @@ describe("Tests of the database utility functions", () => {
 
     expect(testShow.DJs.length).toBe(sampleShow.DJs.length);
     expect(testShow.DJs).toEqual(expect.arrayContaining(sampleShow.DJs));
+  });
+
+  test("getShowPlaylists loads the correct playlists", async () => {
+    const testShow = await getShow(55);
+    const expetedPlaylists = playlists.filter((playlist) => playlist.showId === 55);
+    const fetchedPlaylists = await getShowPlaylists(testShow.id);
+    expect(fetchedPlaylists).toHaveLength(expetedPlaylists.length);
+    fetchedPlaylists.forEach((pl) => expect(pl.showId).toEqual(testShow.id));
+  });
+
+  test("addPlaylist returns a playlist with new id", async () => {
+    const sample = {
+      "date": "4-30-2021",
+      "showId": 55
+    };
+    
+    const playlist = await addPlaylist(sample);
+    expect(playlist.date).toBe(sample.date);
+    expect(playlist.showId).toBe(sample.showId);
+    expect(playlist.id).toBeGreaterThanOrEqual(0);
   });
 });

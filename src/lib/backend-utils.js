@@ -42,10 +42,11 @@ export async function getAllShows() {
 /**
  * Gets a single show from the database
  * 
- * @returns a show with DJ names
+ * @param {integer} showId 
+ * @returns a show with id showId
  */
-export async function getShow(id) {
-  const [show] = await knex("Show").where({id: id}).select();
+export async function getShow(showId) {
+  const [show] = await knex("Show").where({id: showId}).select();
   if (show) {
     show.DJs = await getDJNames(show.id);
     show.genres = show.genres.split(",");
@@ -53,4 +54,30 @@ export async function getShow(id) {
   } else {
     return null;
   }
+}
+
+/**
+ * Gets all playlists for a show from the database
+ * 
+ * @param {integer} showId 
+ * @returns an array of playlists with showId showId
+ */
+export async function getShowPlaylists(showId) {
+  const playlists = await knex("Playlist").where({showId: showId}).select();
+  if (playlists) {
+    return playlists;
+  } else {
+    return null;
+  }
+}
+
+/**
+ * Add a new playlist to the database
+ *
+ * @param {object} playlist
+ * @returns the playlist with a new id attached
+ */
+export async function addPlaylist(playlist) {
+  const inserted = await knex("Playlist").insert(playlist);
+  return {...playlist, id: inserted[0]};
 }

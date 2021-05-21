@@ -12,13 +12,22 @@ module.exports = {
     connection: ":memory:",
     useNullAsDefault: true,
     seeds: {
-      directory: './seeds',
+      directory: './seeds/test',
     },
   },
 
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
-    ssl: true,
+    migrations: {
+      directory: "./migrations"
+    },
+    seeds: {
+      directory: "./seeds"
+    },
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
   },
 };
