@@ -1,0 +1,11 @@
+.main_background {
+  margin: 0;
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+}
+
+.index_column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
