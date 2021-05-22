@@ -12,7 +12,7 @@ export default function PlaylistDisplay() {
 
   const selectedPlaylist = playlists.find((playlist) => playlist.id === +playlist_id);
   
-  const selectedShow = shows.find((show) => show.id === selectedPlaylist.showID);
+  const selectedShow = selectedPlaylist && shows.find((show) => show.id === selectedPlaylist.showID);
 
   return (
     <Layout title={selectedShow ? `${ selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>
