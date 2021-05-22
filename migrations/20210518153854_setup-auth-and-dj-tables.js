@@ -1,5 +1,11 @@
 exports.up = function(knex) {
   return knex.schema
+    .createTable("DJs", table => {
+      table.increments("id").primary()
+      table.string("name", 255);
+      table.string("email", 255).unique().notNullable();
+      table.boolean("exec");
+    })
     .createTable("accounts", table => {
       table.increments("id").primary();
       table.string("compound_id", 255).notNullable();
@@ -48,12 +54,6 @@ exports.up = function(knex) {
       table.string("token", 255).notNullable();
       table.timestamp("expires").notNullable();
     })
-    .createTable("DJs", table => {
-      table.increments("id").primary()
-      table.string("name", 255);
-      table.string("email", 255).unique().notNullable();
-      table.boolean("exec");
-    })
 }
 
 exports.down = function(knex) {
@@ -62,5 +62,5 @@ exports.down = function(knex) {
     .dropTableIfExists('sessions')
     .dropTableIfExists('users')
     .dropTableIfExists('verification_requests')
-    .dropTableIfExists("djs");
+    .dropTableIfExists('DJs');
 }
