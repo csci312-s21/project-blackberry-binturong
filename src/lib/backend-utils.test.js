@@ -15,6 +15,7 @@ import {
   addSong,
   deleteSong,
   updateSong,
+  verifyEmail,
 } from "./backend-utils.js";
 
 describe("Tests of the database utility functions", () => {
@@ -32,7 +33,6 @@ describe("Tests of the database utility functions", () => {
     await knex.migrate.latest();
     await knex.seed.run();
   });
-
 
   test("getDJNames fetches the correct names for a show", async () => {
     const testDJNames = await getDJNames(sampleShow.id);
@@ -161,5 +161,16 @@ describe("Tests of the database utility functions", () => {
     const sample = { id: -1, title: "Bad Song" };
     const success = await updateSong(sample);
     expect(success).toBeFalsy();
+  });
+
+  test("Verifies correct email", async () => {
+    const sampleDJ = djs[Math.floor(djData.length / 2)];
+    const result = await verifyEmail(sampleDJ.email);
+    expect(result).toBeTruthy();
+  });
+
+  test("rejects incorrect email", async () => {
+    const result = await verifyEmail("sampleperson@middlebury.edu");
+    expect(result).toBeFalsy();
   });
 });

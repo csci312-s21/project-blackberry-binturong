@@ -9,7 +9,7 @@ export default function DaySchedule({ shows , day}){
   const showListSorted = showList.sort((a, b)=> {return a.time.hour - b.time.hour});
 
   const showsDisplayed = showListSorted.map((show) => {
-      return <li className={styles.showList} key={show.id} data-testid="day  show">
+      return <li className={styles.showList} key={show.id}>
         <DayShow show={show}/>
       </li>
     });

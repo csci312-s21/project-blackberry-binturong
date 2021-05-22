@@ -15,7 +15,8 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "test": "jest",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "heroku:start": "next start -p $PORT"
   },
   "dependencies": {
     "color-name": "^1.1.4",
@@ -26,6 +27,7 @@
     "next": "10.0.8",
     "pg": "^8.6.0",
     "next-auth": "^3.20.1",
+    "pg": "^8.6.0",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",

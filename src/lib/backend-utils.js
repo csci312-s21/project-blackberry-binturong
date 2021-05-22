@@ -128,3 +128,13 @@ export async function updateSong(song) {
   const success = await knex("Song").where({id: song.id}).update(song);
   return success;
 }
+/**
+ * Verify whether an email is in the database
+ * 
+ * @param {string} email
+ * @returns a boolean indicating whether email is in the database
+ */
+export async function verifyEmail(email) {
+  const emails = await knex.select("email").from("DJs").where({email: email});
+  return (emails.length > 0);
+}
