@@ -2,21 +2,25 @@
   {
     "date": "5-02-2021",
     "id": 12,
-    "showId": 55
+    "showId": 55,
+    "current": false
   },
   {
     "date": "5-01-2021",
     "id": 13,
-    "showId": 55
+    "showId": 55,
+    "current": false
   },
   {
     "date": "4-30-2021",
     "id": 14,
-    "showId": 55
+    "showId": 55,
+    "current": false
   },
   {
     "date": "4-29-2021",
     "id": 15,
-    "showId": 56
+    "showId": 56,
+    "current": false
   }
 ]

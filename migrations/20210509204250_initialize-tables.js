@@ -12,6 +12,7 @@ exports.up = function (knex) {
     table.increments('id');
     table.string('date').notNullable();
     table.integer('showId').references("Show.id").onDelete("CASCADE");
+    table.boolean('current').notNullable();
   })
   .createTable('Song', (table) => {
     table.increments('id');

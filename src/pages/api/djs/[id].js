@@ -1,5 +1,5 @@
 import nc from "next-connect";
-import { getShow } from "../../../lib/backend-utils";
+import { getDJNames } from "../../../lib/backend-utils";
 
 function onError(error, req, res) {
   console.error(error);
@@ -9,13 +9,12 @@ function onError(error, req, res) {
 const handler = nc({ onError })
   .get(async (req, res) => {
     const { id } = req.query;
-
-    const show = await getShow(id);
-    if (show) {
-      res.status(200).json(show);
+    const djs = await getDJNames(id);
+    if (djs) {
+      res.status(200).json(djs);
     } else {
-      res.status(404).end(`Show with id ${id} not found`);
+      res.status(404).end(`DJs with show id ${id} not found`);
     }
   })
 
-  export default handler;
+    export default handler;
