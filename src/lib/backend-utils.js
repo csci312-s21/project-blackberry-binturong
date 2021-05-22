@@ -7,7 +7,6 @@ export const knex = knexInitializer(
 );
 
 /**
-<<<<<<< HEAD
  * Get the list of DJ names for a show.
  * 
  * @param {integer} showId 
@@ -63,6 +62,9 @@ export async function getShow(showId) {
  */
 export async function getShowPlaylists(showId) {
   const playlists = await knex("Playlist").where({showId: showId}).select();
+  console.log(showId)
+  console.log(playlists)
+  console.log('test')
   if (playlists) {
     return playlists;
   } else {
@@ -79,6 +81,17 @@ export async function getShowPlaylists(showId) {
 export async function addPlaylist(playlist) {
   const inserted = await knex("Playlist").insert(playlist);
   return {...playlist, id: inserted[0]};
+}
+
+/**
+ * Update a playlist in the database
+ *
+ * @param {object} playlist
+ * @returns a Boolean indicating success
+ */
+export async function updatePlaylist(playlist) {
+  const success = await knex("Playlist").where({id: playlist.id}).update(playlist);
+  return success;
 }
 
 /**
@@ -129,9 +142,9 @@ export async function updateSong(song) {
   const success = await knex("Song").where({id: song.id}).update(song);
   return success;
 }
+
+
 /**
-=======
->>>>>>> bff7240a2229854e6405f4c2fd84fa9ea2d51fec
  * Verify whether an email is in the database
  * 
  * @param {string} email

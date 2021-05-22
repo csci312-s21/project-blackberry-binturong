@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import djs from "../../data/djs.json";
 import shows from "../../data/shows.json";
 import playlists from "../../data/playlists.json";
@@ -12,6 +11,7 @@ import {
   getShow,
   getShowPlaylists,
   addPlaylist,
+  updatePlaylist,
   getPlaylistSongs,
   addSong,
   deleteSong,
@@ -30,23 +30,11 @@ describe("Tests of the database utility functions", () => {
 
 
   beforeEach(async () => {
-=======
-import djData from "../../data/djs.json";
-import {
-  knex,
-  verifyEmail
-} from "./backend-utils.js";
-
-describe("Tests of the database utility functions", () => {
- 
- beforeEach(async () => {
->>>>>>> bff7240a2229854e6405f4c2fd84fa9ea2d51fec
     await knex.migrate.rollback();
     await knex.migrate.latest();
     await knex.seed.run();
   });
 
-<<<<<<< HEAD
   test("getDJNames fetches the correct names for a show", async () => {
     const testDJNames = await getDJNames(sampleShow.id);
     expect(testDJNames.length).toBe(sampleShow.DJs.length);
@@ -125,6 +113,22 @@ describe("Tests of the database utility functions", () => {
     fetchedSongs.forEach((song) => expect(song.playlistId).toEqual(testPlaylist.id));
   });
 
+  test("updatePlaylist updates the song", async () => {
+    const sample = {...playlists[0], date: "test-date"};
+    const success = await updatePlaylist(sample);
+    expect(success).toBeTruthy();
+    const rows = await knex("Playlist").where({ id: sample.id }).select();
+
+    const playlist = rows[0];
+    expect(playlist.date).toBe(sample.date);
+  });
+
+  test("updatePlaylist returns 0 if the id doesn't exist", async () => {
+    const sample = {...playlists[0], id: -1};
+    const success = await updatePlaylist(sample);
+    expect(success).toBeFalsy();
+  });
+
   test("addSong returns a song with new id", async () => {
     const sample = {
       "title": "Never Gonna Give You Up",
@@ -167,7 +171,7 @@ describe("Tests of the database utility functions", () => {
     const rows = await knex("Song").where({ id: sample.id }).select();
 
     const song = rows[0];
-    expect(song.title).toBe(song.title);
+    expect(song.title).toBe(sample.title);
   });
 
   test("updateSong returns 0 if the id doesn't exist", async () => {
@@ -178,10 +182,6 @@ describe("Tests of the database utility functions", () => {
 
   test("Verifies correct email", async () => {
     const sampleDJ = djs[Math.floor(djData.length / 2)];
-=======
-  test("Verifies correct email", async () => {
-    const sampleDJ = djData[Math.floor(djData.length / 2)];
->>>>>>> bff7240a2229854e6405f4c2fd84fa9ea2d51fec
     const result = await verifyEmail(sampleDJ.email);
     expect(result).toBeTruthy();
   });
@@ -190,8 +190,4 @@ describe("Tests of the database utility functions", () => {
     const result = await verifyEmail("sampleperson@middlebury.edu");
     expect(result).toBeFalsy();
   });
-<<<<<<< HEAD
-=======
-  
->>>>>>> bff7240a2229854e6405f4c2fd84fa9ea2d51fec
 });

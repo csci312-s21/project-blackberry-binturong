@@ -1,12 +1,40 @@
-exports.up = function(knex) {
-  return knex.schema
-    .createTable("DJs", table => {
-      table.increments("id").primary()
-      table.string("name", 255);
-      table.string("email", 255).unique().notNullable();
-      table.boolean("exec");
-    })
-    .createTable("accounts", table => {
+exports.up = function (knex) {
+  return knex.schema.createTable('Show', (table) => {
+    table.increments('id');
+    table.string('title').notNullable();
+    table.text('description');
+    table.string('genres').notNullable();
+    table.string('day').notNullable();
+    table.integer('hour').notNullable(); 
+    table.decimal('duration').notNullable();
+  })
+  .createTable('Playlist', (table) => {
+    table.increments('id');
+    table.string('date').notNullable();
+    table.integer('showId').references("Show.id").onDelete("CASCADE");
+  })
+  .createTable('Song', (table) => {
+    table.increments('id');
+    table.string('time');
+    table.string('title').notNullable();
+    table.string('artist').notNullable();
+    table.string('albumArt').notNullable();
+    table.string('album').notNullable();
+    table.integer('playlistId').references("Playlist.id").onDelete("CASCADE");
+  })
+  .createTable('DJs', (table) => {
+    table.increments('id');
+    table.string('name');
+    table.string('email').unique().notNullable();
+    table.boolean('exec').notNullable();
+  })
+  .createTable('ShowDJs', (table) => {
+    table.integer("showId");
+    table.integer("djId");
+    table.foreign("showId").references("Show.id");
+    table.foreign("djId").references("DJs.id");
+  })
+  .createTable("accounts", table => {
       table.increments("id").primary();
       table.string("compound_id", 255).notNullable();
       table.integer("user_id").notNullable();
@@ -53,14 +81,18 @@ exports.up = function(knex) {
       table.string("identifier", 255).notNullable();
       table.string("token", 255).notNullable();
       table.timestamp("expires").notNullable();
-    })
-}
+    });
+};
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema
+    .dropTableIfExists('Show')
+    .dropTableIfExists('Playlist')
+    .dropTableIfExists('Song')
+    .dropTableIfExists('DJs')
+    .dropTableIfExists('ShowDJs')
     .dropTableIfExists('accounts')
     .dropTableIfExists('sessions')
     .dropTableIfExists('users')
-    .dropTableIfExists('verification_requests')
-    .dropTableIfExists('DJs');
-}
+    .dropTableIfExists('verification_requests');
+};
