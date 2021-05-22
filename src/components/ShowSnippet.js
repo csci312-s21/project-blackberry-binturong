@@ -4,7 +4,7 @@
   A simple component that displays the time, title, and DJs of a show.
 
   props:
-    show - a show objects with title, list of DJs, hour, and duration attributes at minimum
+    show - a show objects with title, list of DJs
 */
 import { showType } from "../lib/types.js";
 import { getTimeString } from "../lib/component-utils.js";

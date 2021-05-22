@@ -15,9 +15,7 @@ export default function DaySchedule({ shows , day}){
     });
 
   return (
-    <div data-testid="day schedule">
-      <ul className={styles.inline} >{showsDisplayed}</ul>
-    </div>
+    <ul className={styles.inline}>{showsDisplayed}</ul>
   );
 }
 
