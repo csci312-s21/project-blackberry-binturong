@@ -1,3 +1,7 @@
+.container {
+  cursor: pointer;
+}
+
 .details {
   font-size: 15px;
   width: 150px;

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Link from "next/link";
 import styles from "../styles/DayShow.module.css";
 import { showType } from "../lib/types.js";
 import { getTimeString } from "../lib/component-utils.js";
@@ -12,17 +13,19 @@ export default function DayShow({ show }){
   const genrecolor = colors[show.genres[0].toLowerCase()];
 
   return (
-   <div onMouseLeave={() => setDisplayDescription(false)} onMouseEnter={() => setDisplayDescription(true)}>
-    {displayDescription 
-      ? <div className={styles.description}>
-          {show.description}
-        </div> 
-      : <div className={styles.details} style={{"backgroundColor": genrecolor}}>
-          <div className={styles.time}>{time}</div>
-          <p className={styles.ShowTitle}>{show.title}</p>
-          <div className={styles.djs}>{show.DJs.join(", ")}</div>
-        </div>}
-    </div>
+    <Link href={`/shows/${show.id}`}>
+      <div className={styles.container} onMouseLeave={() => setDisplayDescription(false)} onMouseEnter={() => setDisplayDescription(true)}>
+        {displayDescription 
+          ? <div className={styles.description}>
+              {show.description}
+            </div> 
+          : <div className={styles.details} style={{"backgroundColor": genrecolor}}>
+              <div className={styles.time}>{time}</div>
+              <p className={styles.ShowTitle}>{show.title}</p>
+              <div className={styles.djs}>{show.DJs.join(", ")}</div>
+            </div>}
+        </div>
+      </Link>
   );
 }
 
