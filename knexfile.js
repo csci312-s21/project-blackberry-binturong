@@ -6,12 +6,16 @@ module.exports = {
     },
     useNullAsDefault: true,
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> bff7240a2229854e6405f4c2fd84fa9ea2d51fec
   test: {
     client: 'sqlite3',
     connection: ":memory:",
     useNullAsDefault: true,
     seeds: {
+<<<<<<< HEAD
       directory: './seeds/test',
     },
   },
@@ -29,5 +33,14 @@ module.exports = {
       require: true,
       rejectUnauthorized: false
     }
+=======
+      directory: './seeds',
+    },
+  },
+  production: {
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    ssl: true,
+>>>>>>> bff7240a2229854e6405f4c2fd84fa9ea2d51fec
   },
 };
