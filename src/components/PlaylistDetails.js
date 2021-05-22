@@ -23,7 +23,7 @@ export default function PlaylistDetails({ playlist, songs, currShow }) {
 
   const songInfo = playlistSongs.map((song) => 
     <tr key={song.id}>
-      <td>{moment(song.timeAdded, "YYYY-MM-DDTHH:mm:ssZ").format("h:mm a")}</td>
+      <td>{song.timeAdded}</td>
       <td>{song.title}</td>
       <td>{song.artist}</td>
       <td>{song.album}</td>

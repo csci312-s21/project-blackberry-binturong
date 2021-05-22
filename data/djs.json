@@ -1,0 +1,437 @@
+[
+  {
+    "name": "Maia Sauer",
+    "email": "msauer@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Jacob Raymond",
+    "email": "jtraymond@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Eric Kapner",
+    "email": "ekapner@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Erica Swirsky",
+    "email": "eswirsky@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Jose Morales",
+    "email": "jlmorales@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Daniel Frazo",
+    "email": "dfrazo@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Jacob Adams",
+    "email": "jacoba@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Asa Skinder",
+    "email": "askinder@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Maeve Callahan",
+    "email": "mcallahan@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Madeleine Van Beek",
+    "email": "mvanbeek@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Mira Irfan",
+    "email": "mirfan@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Levi Hoffman",
+    "email": "lhoffman@middlbury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Madison Middleton",
+    "email": "madisonm@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Christina Badalamenti",
+    "email": "cbadalamenti@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Tate Sutter",
+    "email": "tsutter@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Maya Schwartz",
+    "email": "mschwartz@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Julia Ulsh",
+    "email": "julsh@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Joe Gehl",
+    "email": "jgehl@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Charles Pratt",
+    "email": "clpratt@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Abby Schneiderhan",
+    "email": "aschneiderhan@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Sammy Van Cleve",
+    "email": "svancleve@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Audrey Peiker",
+    "email": "apeiker@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Eamonn Hunter",
+    "email": "ephunter@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Sylvie Shure",
+    "email": "sshure@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Olivia O'Brien",
+    "email": "oobrien@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Halsey Smith",
+    "email": "jhsmith@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Kate Kenny",
+    "email": "kkenny@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Rebecca Amen",
+    "email": "ramen@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Andrew Grossman",
+    "email": "agrossman@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Michael Wasserstein",
+    "email": "mwasserstein@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Catherine Goodrich",
+    "email": "ccgoodrich@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Natalie Penna",
+    "email": "npenna@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Dan Levesque",
+    "email": "dlevesque@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Emma Waugh",
+    "email": "ewaugh@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Emma Tzotschew",
+    "email": "etzotschew@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Alexandra Katherine Jhamb Burns",
+    "email": "aburns@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Manon Le Bourgeois",
+    "email": "mlebourgeis@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Bridget Ulian",
+    "email": "bulian@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Sam Collins",
+    "email": "sacollins@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Madeleine Joinnides",
+    "email": "mjoinnides@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Alex Evangelidis",
+    "email": "devangelidis@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Henry Terry",
+    "email": "hterry@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Irith Fuks",
+    "email": "ifuks@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Per Alexander",
+    "email": "pnalexander@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Reid Macfarlane",
+    "email": "tmacfarlane@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Isaac Mays-Smith",
+    "email": "imayssmith@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Liza Obel-Omia",
+    "email": "eobelomia@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Olivia Sommers",
+    "email": "osommers@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Daphne Halley",
+    "email": "dhalley@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Samuel Bell",
+    "email": "sbell@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Anna Glovin",
+    "email": "aglovin@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Shelby Wilson",
+    "email": "sawilson@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Pelham C. Hardie",
+    "email": "phardie@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Lachlan Pinney",
+    "email": "lpinney@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Kyle Hooker",
+    "email": "khooker@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Roya Touran",
+    "email": "rtouran@middlebury.edu ",
+    "exec": false,
+  },
+  {
+    "name": "Lucy Rinzler-Day",
+    "email": "lrinzlerday@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Taegen Kopfler",
+    "email": "tkopfler@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Claire Vermillion",
+    "email": "cshannonvermillion@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Gage Schrier",
+    "email": "gschrier@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Ben Knudsen",
+    "email": "bknudsen@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Liam Hahn",
+    "email": "lhahn@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Lelon Worth Winstead III",
+    "email": "Lwinstead@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Adayliah Ley",
+    "email": "aley@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Sam Lipin",
+    "email": "slipin@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Rachel Lu",
+    "email": "Qlu@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Chad Kim",
+    "email": "chadk@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Niamh Carty",
+    "email": "ncarty@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "George Werner",
+    "email": "gfwerner@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Pim Singhatiraj",
+    "email": "psinghatiraj@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Jake Lyons",
+    "email": "jwlyons@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Clare Kemmer",
+    "email": "mkemmer@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Yardena Carmi",
+    "email": "ycarmi@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Abby Nix",
+    "email": "anix@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Gibson Grimm",
+    "email": "ggrimm@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Bel Spelman",
+    "email": "ispelman@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Celeste Levy",
+    "email": "clevy@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Joe Levitan",
+    "email": "jlevitan@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Rahul Desmet",
+    "email": "rdesmet@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Sean Lovett",
+    "email": "slovett@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Phoebe Brown",
+    "email": "pebrown@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Cooper Lamb",
+    "email": "jclamb@middlebury.edu",
+    "exec": false,
+  },
+  {
+    "name": "Cliff Yang",
+    "email": "yicheny@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Ethan Berner",
+    "email": "eberner@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Matthew Durst",
+    "email": "madurst@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Sam Chester",
+    "email": "chester@middlebury.edu",
+    "exec": true,
+  },
+  {
+    "name": "Ethan Saxenian",
+    "email": "esaxenian@middlebury.edu",
+    "exec": true,
+  }
+]

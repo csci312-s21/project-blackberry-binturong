@@ -18,7 +18,6 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 export default function Layout({ title, children }) {
-  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div>
@@ -28,7 +27,7 @@ export default function Layout({ title, children }) {
       </Head>
       
       <div>
-        <LoginButton loggedIn={loggedIn} handleClick={setLoggedIn}/>
+        <LoginButton />
         <Link href="/"><h1>WRMC 91.1 FM</h1></Link>
         <PlayButton/>
         <NavBar/>

@@ -32,9 +32,9 @@ export default function DisplayCurrentPlaylist({ playlist, allSongs }){
       <div className={styles.header}>
         Current Playlist
       </div>
-      <div className = {styles.playlist}>
-        <ul>
-          {playlist ? currentPlaylist : noShowMessage}
+      <div>
+        <ul className = {styles.playlist}>
+          {playlist ? currentPlaylist : noShowMessage} 
         </ul>
       </div>
     </div>

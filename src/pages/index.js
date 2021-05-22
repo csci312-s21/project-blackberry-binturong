@@ -5,10 +5,9 @@ import PlaylistLogger from "../components/PlaylistLogger.js";
 import StartShowButton from "../components/StartShowButton.js";
 import ShowDetails from "../components/ShowDetails.js";
 import DisplayCurrentPlaylist from "../components/DisplayCurrentPlaylist.js";
-import PlaylistDetails from "../components/PlaylistDetails.js";
 import Layout from "../components/Layout.js";
 
-import moment from "moment";
+import moment from "moment-timezone";
 import shows from "../../data/shows.json";
 import { sampleSongs } from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
@@ -17,17 +16,18 @@ import styles from "../styles/Home.module.css";
 import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/client";
+
+moment.tz.setDefault("America/New_York");
 
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);
   const [allPlaylists, setAllPlaylists] = useState(playlists);
   const [allSongs, setAllSongs] = useState(sampleSongs);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [sotw] = useState(allShows[6]); //placeholder, eventually we will want a callback: "setSotw"
   const [loggingPlaylist, setLoggingPlaylist] = useState(false);
   const [currentPlaylist, setCurrentPlaylist] = useState();
-  const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
-  const [selectedPlaylist, setSelectedPlaylist] = useState();  // state for displaying PlaylistDetails
+  const [session] = useSession();
 
   const endShow = () => {
     setLoggingPlaylist(false);
@@ -35,10 +35,10 @@ export default function WRMCWebsite() {
   }
 
   useEffect(() => {
-    if (!loggedIn) {
+    if(!session) {
       endShow();
     }
-  }, [loggedIn]);
+  }, [session]);
 
   const updateSongCollection = (action, newSong) => {
     if (action === "enter") {
@@ -69,12 +69,12 @@ export default function WRMCWebsite() {
 
   // this if statement determines whether we show the regular homeloggingPlaylist or the playlist logger
   let displayPage;
-  if (loggingPlaylist && loggedIn) {
+  if (loggingPlaylist && session) {
     displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs} />
   } else {
     displayPage = 
       <div>
-        {loggedIn && <StartShowButton userShows={allShows} startShow={startShow}/>}
+        {session && <StartShowButton userShows={allShows.slice(0, 4) /* this slice is temporary */} startShow={startShow}/>}
         <ShowOTW show={sotw}/>
         <p>{""}</p>
         <DisplayCurrentShow
