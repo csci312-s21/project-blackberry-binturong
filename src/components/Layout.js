@@ -31,6 +31,7 @@ export default function Layout({ title, children }) {
         <Link href="/"><h1>WRMC 91.1 FM</h1></Link>
         <PlayButton/>
         <NavBar/>
+        
         <main className={styles.main}>{children}</main>
       </div>
     </div>

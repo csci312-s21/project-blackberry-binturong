@@ -6,17 +6,17 @@ import { showType } from "../lib/types.js";
 import { useState } from "react";
 import styles from "../styles/Schedule.module.css";
 
-export default function Schedule({ shows }){
+export default function FullSchedule({ shows }){
   const [filter, setFilter] = useState("Week");
 
   const body = <div className={styles.body}>
-  { filter !== "Week" &&
-  <div>
-  <ScheduleFilter pageList = {["Week", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]} currentPage={filter}  setCurrentPage= {setFilter}/> 
-  </div>
-  }
+    { filter !== "Week" &&
+      <div>
+        <ScheduleFilter pageList = {["Week", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]} currentPage={filter}  setCurrentPage={setFilter}/>
+      </div>
+    }
 
-  {filter === "Week" ? <WeeklySchedule shows = {shows} setFilter={setFilter}/> : <DaySchedule shows = {shows} day= {filter} />}
+    {filter === "Week" ? <WeeklySchedule shows={shows} setFilter={setFilter}/> : <DaySchedule shows={shows} day={filter} />}
 
   </div>
 

@@ -5,33 +5,48 @@ Tests for NavBar.js
 */
 import { render, screen, fireEvent } from "@testing-library/react";
 import NavBar from "../components/NavBar";
+import Home from "../pages/index";
+import Schedule from "../pages/schedule";
+import About from "../pages/about";
 
-describe("NavBar tests", () => {
+describe("NavBar tests", ()=>{
   const handler = jest.fn();
 
   beforeEach(() => {
     handler.mockReset();
   });
 
-  const pages = ["Home", "Blog", "Schedule", "Community", "About"];
-  const startPage = "Home";
-  const newPage = "Blog";
+  test("About page is in place", ()=>{
+    render(<About />);
 
-  test("Clicking the NavBar updates the page", () => {
-    render(<NavBar pageList={pages} currentPage={startPage} setCurrentPage={handler}/>);
-
-    fireEvent.click(screen.getByText(newPage));
-
-    expect(handler).toHaveBeenCalled();
-    expect(handler).toHaveBeenCalledWith(newPage);
+    expect(screen.getByRole("heading", {name:"About"})).toBeInTheDocument();
+    const home = screen.getByRole("link", {name:"Home"});
+    expect(home).toBeInTheDocument();
+    expect(home).toHaveAttribute("href", "/");
   });
 
-  test("All possible page links are rendered", () => {
-    render(<NavBar pageList={pages} currentPage={startPage} setCurrentPage={handler}/>);
-    
-    pages.forEach(p => {
-      expect(screen.getByText(p)).toBeInTheDocument();
-    });
+  test("Home links to About", ()=>{
+    render(<Home />);
+
+    const about = screen.getByRole("link", {name:"About"});
+    expect(about).toBeInTheDocument();
+    expect(about).toHaveAttribute("href", "/about");
   });
 
+  test("Schedule page is in place", ()=>{
+    render(<Schedule />);
+
+    expect(screen.getByRole("row", {name:"Monday Tuesday Wednesday Thursday Friday Saturday Sunday"})).toBeInTheDocument();
+    const home = screen.getByRole("link", {name:"Home"});
+    expect(home).toBeInTheDocument();
+    expect(home).toHaveAttribute("href", "/");
+  });
+
+  test("Home links to Schedule", ()=>{
+    render(<Home />);
+
+    const schedule = screen.getByRole("link", {name:"Schedule"});
+    expect(schedule).toBeInTheDocument();
+    expect(schedule).toHaveAttribute("href", "/schedule");
+  });
 });

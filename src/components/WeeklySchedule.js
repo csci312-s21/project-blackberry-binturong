@@ -106,5 +106,6 @@ export default function WeeklySchedule({ shows, setFilter}){
 }
 
 WeeklySchedule.propTypes = {
-  shows: PropTypes.arrayOf(showType).isRequired
+  shows: PropTypes.arrayOf(showType).isRequired,
+  setFilter: PropTypes.func.isRequired
 };

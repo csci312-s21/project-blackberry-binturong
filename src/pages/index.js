@@ -67,16 +67,20 @@ export default function WRMCWebsite() {
     isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
   }
 
-  // this if statement determines whether we show the regular homeloggingPlaylist or the playlist logger
+  // this if statement determines whether we show the regular home or the playlist logger
   let displayPage;
   if (loggingPlaylist && session) {
     displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs} />
   } else {
     displayPage = 
       <div>
-        {session && <StartShowButton userShows={allShows.slice(0, 4) /* this slice is temporary */} startShow={startShow}/>}
-        <ShowOTW show={sotw}/>
+        {session && 
+          (currentPlaylist 
+          ? <input type="button" value="Go to Current Playlist" onClick={() => setLoggingPlaylist(true)}/>
+          : <StartShowButton userShows={allShows.slice(0, 4) /* this slice is temporary */} startShow={startShow}/>
+          )}
         <p>{""}</p>
+        <ShowOTW show={sotw}/>
         <DisplayCurrentShow
           show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} />
         <p>{""}</p>
