@@ -67,6 +67,7 @@ describe("Start show button integration tests", () => {
 
 describe("PlaylistLogger integration tests", () => {
 
+  /* commenting out for linter -- used in test for saving changes
   const sampleTitle = "Sample Title";
   const sampleArtist = "Sample Artist";
   const sampleAlbum = "Sample Album";
@@ -79,7 +80,7 @@ describe("PlaylistLogger integration tests", () => {
     fireEvent.change(titleInput, { target: { value: sampleTitle } });
     fireEvent.change(artistInput, { target: { value: sampleArtist } });
     fireEvent.change(albumInput, { target: { value: sampleAlbum } });
-  }
+  }*/
 
   beforeEach(() => {
     useSession.mockClear();
@@ -94,7 +95,7 @@ describe("PlaylistLogger integration tests", () => {
 
   /*
   This functionality is tricky now that we've implemented routing. For the sake of getting the PR in, I'm commenting it out for now and we can discuss it when we meet later today!
-  
+
   test("saved songs persist when navigating away from PlaylistLogger", () => {
     useSession.mockReturnValue([{user: {name: "username"}}, false]);
     render(<WRMCWebsite />);

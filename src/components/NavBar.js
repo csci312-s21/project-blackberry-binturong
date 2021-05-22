@@ -8,8 +8,6 @@
 */
 
 import styles from "../styles/NavBar.module.css";
-
-import PropTypes from "prop-types";
 import Link from "next/link";
 
 export default function NavBar() {

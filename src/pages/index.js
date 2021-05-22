@@ -3,7 +3,6 @@ import ShowOTW from "../components/ShowOTW.js";
 import DisplayCurrentShow from "../components/DisplayCurrentShow";
 import PlaylistLogger from "../components/PlaylistLogger.js";
 import StartShowButton from "../components/StartShowButton.js";
-import ShowDetails from "../components/ShowDetails.js";
 import DisplayCurrentPlaylist from "../components/DisplayCurrentPlaylist.js";
 import Layout from "../components/Layout.js";
 
@@ -11,7 +10,6 @@ import moment from "moment-timezone";
 import shows from "../../data/shows.json";
 import { sampleSongs } from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
-import styles from "../styles/Home.module.css";
 
 import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 

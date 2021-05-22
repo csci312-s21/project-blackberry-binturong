@@ -15,7 +15,6 @@ import NavBar from "../components/NavBar.js";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import PropTypes from "prop-types";
-import { useState } from "react";
 
 export default function Layout({ title, children }) {
 
@@ -36,7 +35,7 @@ export default function Layout({ title, children }) {
       </div>
     </div>
   );
-};
+}
 
 Layout.propTypes = {
   title: PropTypes.string.isRequired,

@@ -17,4 +17,4 @@ export default function ShowDisplay() {
       <main>{selectedShow && <ShowDetails show={selectedShow} playlists={playlists}/>}</main>
     </Layout>
   );
-};
+}

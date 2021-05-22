@@ -10,7 +10,6 @@ import Link from "next/link";
 
 import { showType } from "../lib/types.js";
 import styles from "../styles/DisplayCurrentShow.module.css";
-import PropTypes from "prop-types";
 
 export default function DisplayCurrentShow({ show }){
 

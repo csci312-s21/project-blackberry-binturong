@@ -19,4 +19,4 @@ export default function PlaylistDisplay() {
       <main>{selectedPlaylist && <PlaylistDetails playlist={selectedPlaylist} songs={sampleSongs} currShow={selectedShow} />}</main>
     </Layout>
   );
-};
+}

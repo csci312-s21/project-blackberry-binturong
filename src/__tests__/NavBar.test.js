@@ -3,8 +3,7 @@
 Tests for NavBar.js
 
 */
-import { render, screen, fireEvent } from "@testing-library/react";
-import NavBar from "../components/NavBar";
+import { render, screen } from "@testing-library/react";
 import Home from "../pages/index";
 import Schedule from "../pages/schedule";
 import About from "../pages/about";
