@@ -8,9 +8,9 @@ import ShowDetails from "../../components/ShowDetails.js";
 
 export default function ShowDisplay() {
   const router = useRouter();
-  const { show_id } = router.query;
+  const { showID } = router.query;
 
-  const selectedShow = shows.find((show) => show.id === +show_id);
+  const selectedShow = shows.find((show) => show.id === +showID);
 
   return (
     <Layout title={selectedShow ? `${ selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>

@@ -8,9 +8,9 @@ import PlaylistDetails from "../../components/PlaylistDetails.js";
 
 export default function PlaylistDisplay() {
   const router = useRouter();
-  const { playlist_id } = router.query;
+  const { playlistID } = router.query;
 
-  const selectedPlaylist = playlists.find((playlist) => playlist.id === +playlist_id);
+  const selectedPlaylist = playlists.find((playlist) => playlist.id === +playlistID);
   
   const selectedShow = selectedPlaylist && shows.find((show) => show.id === selectedPlaylist.showID);
 
