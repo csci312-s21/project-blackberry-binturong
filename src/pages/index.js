@@ -16,7 +16,11 @@ import moment from "moment-timezone";
 import shows from "../../data/shows.json";
 import {sampleSongs} from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Main.module.css";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
@@ -98,12 +102,9 @@ export default function WRMCWebsite() {
     // (and any other pages that end up having multiple components)
     "Home" : <div>
               <ShowOTW show={sotw} handleClick={clickShow}/>
-              <p>{""}</p>
               <DisplayCurrentShow show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} handleClick={clickShow}/>
-              <p>{""}</p>
               <DisplayCurrentPlaylist playlist = {currentPlaylist}
               allSongs = {allSongs}/>
-              <p>{""}</p>
               <NextThreeShows shows={isOnAir ? upcomingShows.slice(1,4) : upcomingShows.slice(0,3)} handleClick = {clickShow} setCurrentPage = {setCurrentPage}/>
              </div>,
     "Blog" : <h2>This is the blog</h2>,
@@ -124,8 +125,9 @@ export default function WRMCWebsite() {
     displayPage = placeholderPages[page]
   }
 
+/*
   return (
-    <div className={styles.container}>
+    <div className={styles.main_background}>
       <Head>
         <title>WRMC 91.1 FM Middlebury College Radio</title>
         <link rel="icon" href="/favicon.ico" />
@@ -136,7 +138,7 @@ export default function WRMCWebsite() {
         {session && 
           (currentPlaylist 
           ? <input type="button" value="Go to Current Playlist" onClick={() => setCurrentPage("Log Playlist")}/>
-          : <StartShowButton userShows={allShows.slice(0, 4) /* this slice is temporary */} startShow={startShow}/>
+          : <StartShowButton userShows={allShows.slice(0, 4)} startShow={startShow}/>
           )}
         <h1>WRMC 91.1 FM</h1>
         <PlayButton/>
@@ -146,6 +148,48 @@ export default function WRMCWebsite() {
           setCurrentPage={selectPage}
         />
         {displayPage}
+        
+      </main>
+
+      <footer>A CS 312 Project</footer>
+    </div>
+  );
+*/
+
+  return (
+    <div className={styles.main_background}>
+      <Head>
+        <title>WRMC 91.1 FM Middlebury College Radio</title>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossOrigin="anonymous"
+        />
+      </Head>
+
+      <main>
+        <h1>WRMC 91.1 FM</h1>
+        <NavBar 
+          pageList={pageList}
+          currentPage={page}
+          setCurrentPage={selectPage}
+        />
+        <Container>
+          <Row>
+            <Col className={styles.index_column}><PlayButton/></Col>
+          </Row>
+          <Row>
+            <Col xs={12} md={4} className={styles.index_column}>1 of 3</Col>
+            <Col xs={12} md={4} className={styles.index_column}>2 of 3</Col>
+            <Col xs={12} md={4} className={styles.index_column}>3 of 3</Col>
+          </Row>
+          <Row>
+            <Col className={styles.index_column}>4</Col>
+          </Row>
+
+        </Container>
+        {placeholderPages[page]}
         
       </main>
 
