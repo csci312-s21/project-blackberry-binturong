@@ -17,13 +17,19 @@ export default function WeeklySchedule({ shows, setFilter}){
   })
   showsArr.push(firstRow);
 
-  // Add useEffect when writing the onHover function
+  const getHour = (i) => {
+    let hour = i<=12 ? i : i-12;
+    if (hour === 0) {
+      hour = 12
+    }
+    return `${hour}:00${i<=11?" am":" pm"}`;
+  }
 
   for (let i = 0; i < 24; i++){
     showsArr.push([]);
     for (let l = 0; l < 8; l++){
       if (l===0){
-        showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{`${i<=12?i:i-12}:00${i<=11?" am":" pm"}`}</div>);
+        showsArr[showsArr.length-1].push(<div className={styles.scheduleTime}>{getHour(i)}</div>);
       }
       else {showsArr[showsArr.length-1].push(undefined)}
     }

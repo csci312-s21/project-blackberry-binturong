@@ -1,14 +1,23 @@
-.DayShow {
-  width: 125px;
-  height: 125px;
-  font-size: 10px;
+.details {
+  font-size: 15px;
+  width: 150px;
+  height: 150px;
   color: white;
   text-align: center;
-  padding-top: 8px;
-  padding-left: 6px;
-  padding-right: 6px;
-  
+  padding: 8px;
 }
+
+.description {
+  font-size: 10px;
+  background-color: black;
+  overflow: scroll;
+  width: 150px;
+  height: 150px;
+  color: white;
+  text-align: center;
+  padding: 8px;
+}
+
 
 .time, .title, .djs {
   display: inline-block;
