@@ -1,4 +1,14 @@
+/*
+  WeeklyShow.js
+
+  Shows a single show in the schedule
+
+  props:
+    show - the show to display
+*/
+
 import PropTypes from "prop-types";
+import Link from "next/link";
 import styles from "../styles/WeeklyShow.module.css";
 import { showType } from "../lib/types.js";
 import { colors } from "../lib/component-utils.js"
@@ -23,7 +33,7 @@ export default function WeeklyShow({ show }){
 
   return (
     <div className={styles.WeeklyShow} style={{"backgroundColor": genrecolor}}>
-      <p className={styles.ShowTitle}>{show.title}</p>
+      <p className={styles.ShowTitle}><Link href={`/shows/${show.id}`}><a>{show.title}</a></Link></p>
       <p>{djs}</p>
     </div>
   );

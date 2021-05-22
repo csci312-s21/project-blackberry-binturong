@@ -1,3 +1,12 @@
+/*
+  WeeklySchedule.js
+
+  Shows the whole schedule for the week.
+
+  props:
+    shows - show table
+*/
+
 import PropTypes from "prop-types";
 import WeeklyShow from "./WeeklyShow";
 import { getDayInt } from "../lib/component-utils.js";
@@ -97,5 +106,6 @@ export default function WeeklySchedule({ shows, setFilter}){
 }
 
 WeeklySchedule.propTypes = {
-  shows: PropTypes.arrayOf(showType).isRequired
+  shows: PropTypes.arrayOf(showType).isRequired,
+  setFilter: PropTypes.func.isRequired
 };

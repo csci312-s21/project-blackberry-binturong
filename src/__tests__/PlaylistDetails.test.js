@@ -3,12 +3,12 @@ import PlaylistDetails from "../components/PlaylistDetails.js";
 import { samplePlaylist, sampleSongs, sampleShows } from "../lib/test-utils.js";
 import moment from "moment";
 
-describe("ShowDetails tests", () => {
+describe("PlaylistDetails tests", () => {
   const handler = jest.fn();
   
   beforeEach(() => {
     handler.mockReset();
-    render(<PlaylistDetails playlist={samplePlaylist} songs={sampleSongs} shows={sampleShows} backToShow={handler}/>);
+    render(<PlaylistDetails playlist={samplePlaylist} songs={sampleSongs} currShow={sampleShows[1]} backToShow={handler}/>);
   });
 
   test("page displays show title and date", () => {

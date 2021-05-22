@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import ScheduleFilter from "../components/NavBar";
+import ScheduleFilter from "../components/ScheduleFilter";
 
 describe("ScheduleFilter tests", () => {
   const handler = jest.fn();
@@ -19,14 +19,6 @@ describe("ScheduleFilter tests", () => {
 
     expect(handler).toHaveBeenCalled();
     expect(handler).toHaveBeenCalledWith(newPage);
-  });
-
-  test("All possible page links are rendered", () => {
-    render(<ScheduleFilter pageList={pages} currentPage={startPage} setCurrentPage={handler}/>);
-    
-    pages.forEach(p => {
-      expect(screen.getByText(p)).toBeInTheDocument();
-    });
   });
 
 });

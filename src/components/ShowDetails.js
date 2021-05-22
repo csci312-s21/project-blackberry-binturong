@@ -6,13 +6,16 @@
 
   props:
     show - a show object
+    playlists - playlist table
 */
+import Link from "next/link";
+
 import PropTypes from "prop-types";
 import { getTimeString, getDayString, compareTwoPlaylists } from "../lib/component-utils.js";
 import styles from "../styles/ShowDetails.module.css";
 import { showType, playlistType } from "../lib/types.js";
 
-export default function ShowDetails({ show, playlists, clickPlaylist }) {
+export default function ShowDetails({ show, playlists }) {
   const time = getTimeString(show.time.hour, show.time.duration);
   const day = getDayString(show.time.day);
 
@@ -21,7 +24,7 @@ export default function ShowDetails({ show, playlists, clickPlaylist }) {
   playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b)).reverse();
 
   const playlistDates = playlistsForShow.map(
-    (playlist) => <li key={playlist.id} data-testid="playlist-date" onClick={() => clickPlaylist(playlist)}>{playlist.date}</li>);
+    (playlist) => <li key={playlist.id} data-testid="playlist-date"><Link href={`/playlists/${playlist.id}`}><a>{playlist.date}</a></Link></li>);
 
   return (
     <div data-testid="show details page">
@@ -42,6 +45,5 @@ export default function ShowDetails({ show, playlists, clickPlaylist }) {
 
 ShowDetails.propTypes = {
   show: showType.isRequired,
-  playlists: PropTypes.arrayOf(playlistType).isRequired,
-  clickPlaylist: PropTypes.func.isRequired
+  playlists: PropTypes.arrayOf(playlistType).isRequired
 };

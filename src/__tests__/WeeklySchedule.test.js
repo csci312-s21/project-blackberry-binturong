@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import WeeklySchedule from "../components/WeeklySchedule.js";
+import ScheduleContainer from "../components/ScheduleContainer.js";
 
 
 const sampleShows = [{
@@ -27,10 +27,10 @@ const sampleShows = [{
     "id": 56
   }];
 
-describe("WeeklySchedule tests", () => {
+describe("ScheduleContainer tests", () => {
 
   test("All shows are rendered", () => {
-    render(<WeeklySchedule shows={sampleShows}/>);
+    render(<ScheduleContainer shows={sampleShows}/>);
     expect(screen.queryByText("Sample Show 1")).toBeInTheDocument();
     expect(screen.queryByText("Kyle Hooker")).toBeInTheDocument();
     
