@@ -22,7 +22,7 @@ export const songType = PropTypes.shape({
   title: PropTypes.string.isRequired,
   artist: PropTypes.string.isRequired,
   album: PropTypes.string.isRequired,
-  timeAdded: PropTypes.string,
+  time: PropTypes.string,
   id: PropTypes.number.isRequired,
   playlistID: PropTypes.number.isRequired,
 });

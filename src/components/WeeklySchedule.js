@@ -9,7 +9,7 @@
 
 import PropTypes from "prop-types";
 import WeeklyShow from "./WeeklyShow";
-import { getDayInt } from "../lib/component-utils.js";
+import { dayToInt } from "../lib/component-utils.js";
 import styles from "../styles/WeeklyShow.module.css";
 import { showType } from "../lib/types.js";
 
@@ -45,7 +45,7 @@ export default function WeeklySchedule({ shows, setFilter}){
   }
 
   shows.forEach((s) => {
-    const day = getDayInt(s.day)+1;
+    const day = dayToInt[s.day]+1;
     const time = (s.hour / 100)+1;
     showsArr[time][day] = <WeeklyShow show = {s}/>
     if (s.duration === 2) {

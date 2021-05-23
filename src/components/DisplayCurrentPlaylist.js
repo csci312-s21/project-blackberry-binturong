@@ -23,7 +23,7 @@ export default function DisplayCurrentPlaylist({ playlist, allSongs }){
 
     currentPlaylist = currentSongs.map((song) => 
       <li key={song.id}>
-        {song.timeAdded} <strong>{song.title}</strong> <em>{song.artist}</em>
+        {song.time} <strong>{song.title}</strong> <em>{song.artist}</em>
       </li>
     );
   }

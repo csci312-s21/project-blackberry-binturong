@@ -7,10 +7,8 @@
     playlist - the playlist object
 
 */
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { playlistType, showType } from "../lib/types.js";
-import PropTypes from "prop-types";
 import styles from "../styles/PlaylistDetails.module.css";
 import moment from "moment";
 import { compareTwoSongs } from "../lib/component-utils.js";
@@ -44,26 +42,28 @@ export default function PlaylistDetails({ playlist, currShow }) {
     </tr>
   );
 
-  const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd MMMM Do YYYY");
+  const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd, MMMM Do, YYYY");
 
   let contents;
   if (currShow) {
     contents = 
       <div>
-        <h2 className={styles.header}>
-          {`Playlist for ${currShow && currShow.title} ${dateString}`}
-        </h2>
-        <table className={styles.songTable}>
-          <tbody>
-            <tr>
-              <th>Time</th>
-              <th>Title</th>
-              <th>Artist</th>
-              <th>Album</th>
-            </tr>
-            {songInfo}
-          </tbody>
-        </table>
+        <h2 className={styles.header}>Playlist for {currShow && currShow.title} {dateString}</h2>
+        {
+          (songInfo)
+          ? <p>No songs to display</p>
+          : <table className={styles.songTable}>
+              <tbody>
+                <tr>
+                  <th>Time</th>
+                  <th>Title</th>
+                  <th>Artist</th>
+                  <th>Album</th>
+                </tr>
+                {songInfo}
+              </tbody>
+            </table>
+        }
       </div>
 }
 

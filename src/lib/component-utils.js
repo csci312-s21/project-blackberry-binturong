@@ -50,11 +50,11 @@ export const getRandomIntID = () => {
   return +nanoid();
 }
 
-
 //This function returns the array of upcomingShows
 //This array should start at the current show and include all of the remaining shows for the day. In Index it is used to pass the current show to DisplayCurrentShow and the next three shows to NextThreeShows
 export const upcomingShowsArray = (shows, now) => {
-  const upcomingShows = shows.filter((show) => (dayToInt[show.day] === now.day()) && (show.hour >= (now.hour() * 100)));
+  const upcomingShows = shows.filter(
+    (show) => (dayToInt[show.day] === now.day()) && (show.hour >= (now.hour() * 100)));
 
   upcomingShows.sort((a, b) => compareTwoShows(a, b));
   return upcomingShows;
@@ -69,19 +69,7 @@ export const compareTwoPlaylists = (a, b) => {
 
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoSongs = (a, b) => {
-  return moment(a.timeAdded, "h:mm a").isBefore(moment(b.timeAdded, "h:mm a")) ? -1 : 1;
-}
-
-
-//Takes the char form show.day and returns a number M-Su ===1-7
-export const getDayInt = (d) => {
-  if (d==="M"){return 0}
-  else if (d==="T"){return 1}
-  else if (d==="W"){return 2}
-  else if (d==="Th"){return 3}
-  else if (d==="F"){return 4}
-  else if (d==="S"){return 5}
-  else if (d==="Su"){return 6}
+  return moment(a.time, "h:mm a").isBefore(moment(b.time, "h:mm a")) ? -1 : 1;
 }
 
 //Colors for displaying genres in the schedule.

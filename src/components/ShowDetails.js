@@ -8,8 +8,6 @@
     show - a show object
 */
 import Link from "next/link";
-
-import PropTypes from "prop-types";
 import { getTimeString, getDayString, compareTwoPlaylists } from "../lib/component-utils.js";
 import styles from "../styles/ShowDetails.module.css";
 import { showType } from "../lib/types.js";

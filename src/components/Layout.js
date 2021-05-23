@@ -7,7 +7,6 @@
     title - the page title
     children - the page contents
 */
-
 import Head from "next/head";
 import LoginButton from "../components/LoginButton.js";
 import PlayButton from "../components/PlayButton.js";
@@ -18,32 +17,19 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import { useSession } from "next-auth/client";
 import { useState, useEffect } from "react";
+import { getCurrentPlaylist } from "../lib/component-utils.js";
 
 export default function Layout({ title, children }) {
   const [session] = useSession();
   const [currentPlaylist, setCurrentPlaylist] = useState();
 
   useEffect(() => {
-    const getCurrentPlaylist = async () => {
-      const response = await fetch("/api/playlists");
-
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-
-      const allPlaylists = await response.json();
-      const currentPlaylists = allPlaylists.filter((playlist) => playlist.current);
-
-      
-      if (currentPlaylists.length === 0) {
-        return null;
-      }
-      console.assert(currentPlaylists.length === 1, "multiple playlists are current");
-
-      setCurrentPlaylist(currentPlaylists[0]);
+    const getPlaylist = async () => {
+      const playlist = await getCurrentPlaylist();
+      setCurrentPlaylist(playlist);
     }
     
-    getCurrentPlaylist();
+    getPlaylist();
   }, []);
 
   return (

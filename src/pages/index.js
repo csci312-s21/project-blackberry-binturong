@@ -4,7 +4,7 @@ import DisplayCurrentShow from "../components/DisplayCurrentShow";
 import DisplayCurrentPlaylist from "../components/DisplayCurrentPlaylist.js";
 import Layout from "../components/Layout.js";
 import moment from "moment-timezone";
-import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
+import { upcomingShowsArray } from "../lib/component-utils.js";
 import { useState, useEffect } from "react";
 
 moment.tz.setDefault("America/New_York"); 

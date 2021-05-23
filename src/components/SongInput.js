@@ -50,7 +50,7 @@ export default function SongInput({ complete, song, savedInit }) {
           title: title, 
           artist: artist, 
           album: album, 
-          timeAdded: (event.target.value === "Update") ? song.timeAdded : moment().format("LT")}
+          time: (event.target.value === "Update") ? song.time : moment().format("LT")}
           )}/>
       <input
         type="button"

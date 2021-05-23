@@ -11,15 +11,22 @@ import styles from "../styles/PlaylistLogger.module.css";
 import Link from "next/link";
 
 export default function PlaylistLogger() {
-  const [emptyRows, setEmptyRows] = useState();
-  const [allSongs, setAllSongs] = useState();
-  const [allShows, setAllShows] = useState();
+  const [emptyRows, setEmptyRows] = useState([]);
   const [currentPlaylist, setCurrentPlaylist] = useState();
   const [currentSongs, setCurrentSongs] = useState([]);
   const [currentShow, setCurrentShow] = useState([]);
 
   useEffect(() => {
-    const getAllSongs = async () => {
+    const getPlaylist = async () => {
+      const playlist = await getCurrentPlaylist();
+      setCurrentPlaylist(playlist);
+    }
+    
+    getPlaylist();
+  }, []);
+
+  useEffect(() => {
+    const getSongs = async () => {
       const response = await fetch("/api/songs");
 
       if (!response.ok) {
@@ -27,9 +34,9 @@ export default function PlaylistLogger() {
       }
 
       const songs = await response.json();
-      setAllSongs(songs);
+      setCurrentSongs(songs.filter((song) => song.playlistId === currentPlaylist.id));
     }
-    const getAllShows = async () => {
+    const getShow = async () => {
       const response = await fetch("/api/shows");
 
       if (!response.ok) {
@@ -37,28 +44,18 @@ export default function PlaylistLogger() {
       }
 
       const shows = await response.json();
-      setAllShows(shows);
+      setCurrentShow(shows.find((show) => show.id === currentPlaylist.showId));
     }
-    const getPlaylist = async () => {
-      const playlist = await getCurrentPlaylist();
-      setCurrentPlaylist(playlist);
+
+    if (currentPlaylist) {
+      getSongs();
+      getShow();
     }
     
-    getAllSongs();
-    getAllShows();
-    getPlaylist();
-  }, []);
-
-  useEffect(() => {
-    if (currentPlaylist) {
-      setCurrentSongs(allSongs.filter((song) => song.playlistId === currentPlaylist.id));
-      setCurrentShow(allShows.find((show) => show.id === currentPlaylist.showId));
-    }
-  }, [allSongs, allShows]);
+  }, [currentPlaylist]);
 
   const complete = async (action, newSong) => {
     if (action === "enter") {
-      console.log(newSong);
       const response = await fetch("/api/songs", {
         method: "POST",
         body: JSON.stringify(newSong),
@@ -91,7 +88,7 @@ export default function PlaylistLogger() {
   };
 
   const addRow = () => {
-    const emptySong = {title: "", artist: "", album: "", playlistID: currentPlaylist.id, id: getRandomIntID()}
+    const emptySong = {title: "", artist: "", album: "", playlistId: currentPlaylist.id, id: getRandomIntID()}
     const newEmptyRows = [...emptyRows, {...emptySong}];
     setEmptyRows(newEmptyRows);
   }
