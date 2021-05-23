@@ -14,7 +14,7 @@ import Head from "next/head";
 
 import moment from "moment-timezone";
 import shows from "../../data/shows.json";
-import {sampleSongs} from "../lib/test-utils.js";
+import { sampleSongs } from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
 import styles from "../styles/Main.module.css";
 
@@ -36,18 +36,18 @@ export default function WRMCWebsite() {
   const [sotw] = useState(allShows[6]); //placeholder, eventually we will want a callback: "setSotw"
   const [page, setCurrentPage] = useState("Home");
   const [currentPlaylist, setCurrentPlaylist] = useState();
-  const [selectedShow, setSelectedShow] = useState();  // state for displaying ShowDetails
-  const [selectedPlaylist, setSelectedPlaylist] = useState();  // state for displaying PlaylistDetails
+  const [selectedShow, setSelectedShow] = useState(); // state for displaying ShowDetails
+  const [selectedPlaylist, setSelectedPlaylist] = useState(); // state for displaying PlaylistDetails
   const pageList = ["Home", "Blog", "Schedule", "Community", "About"];
   const [session] = useSession();
 
   const endShow = () => {
     setCurrentPage("Home");
     setCurrentPlaylist();
-  }
+  };
 
   useEffect(() => {
-    if(!session) {
+    if (!session) {
       endShow();
     }
   }, [session]);
@@ -56,108 +56,142 @@ export default function WRMCWebsite() {
     if (action === "enter") {
       setAllSongs([...allSongs, newSong]);
     } else if (action === "update") {
-      const newSongs = allSongs.map((song) => ((song.id === newSong.id) ? newSong : song));
+      const newSongs = allSongs.map((song) =>
+        song.id === newSong.id ? newSong : song
+      );
       setAllSongs(newSongs);
     } else if (action === "delete") {
       const newSongs = allSongs.filter((song) => song.id !== newSong.id);
       setAllSongs(newSongs);
     }
   };
-  
+
   const startShow = (showId) => {
     setCurrentPage("Log Playlist");
-    const newPlaylist = {date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID()};
+    const newPlaylist = {
+      date: moment().format("M-DD-YYYY"),
+      showID: showId,
+      id: getRandomIntID(),
+    };
     setCurrentPlaylist(newPlaylist);
     setAllPlaylists([...allPlaylists, newPlaylist]);
-  }
+  };
 
   // callback function to select page in NavBar
   const selectPage = (newPage) => {
     setCurrentPage(newPage);
     setSelectedShow();
-  }
+  };
 
   // callback function to display ShowDetails page
   const clickShow = (show) => {
     setSelectedShow(show);
     setCurrentPage("Show Details");
-  }
-
+  };
 
   // determines the current and next three shows
   const now = moment();
   const upcomingShows = upcomingShowsArray(shows, now);
   let isOnAir = false;
-  if (upcomingShows.length>=1){
+  if (upcomingShows.length >= 1) {
     isOnAir = upcomingShows[0].time.hour === now.hour() * 100;
   }
   // callback function to display PlaylistDetails page
   const clickPlaylist = (playlist) => {
     setSelectedPlaylist(playlist);
     setCurrentPage("Playlist Details");
-  }
+  };
 
   const placeholderPages = {
     // TODO: we should create a container component for the Home page
     // (and any other pages that end up having multiple components)
-    "Home" : <div>
-              <ShowOTW show={sotw} handleClick={clickShow}/>
-              <DisplayCurrentShow show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} handleClick={clickShow}/>
-              <DisplayCurrentPlaylist playlist = {currentPlaylist}
-              allSongs = {allSongs}/>
-              <NextThreeShows shows={isOnAir ? upcomingShows.slice(1,4) : upcomingShows.slice(0,3)} handleClick = {clickShow} setCurrentPage = {setCurrentPage}/>
-             </div>,
-    "Blog" : <h2>This is the blog</h2>,
-    "Schedule" : <Schedule shows={allShows}/>,
-    "Community" : <h2>This is the community page</h2>,
-    "About" : <h2>This is the about page</h2>,
+    Home: (
+      <Container>
+        <Row className={styles.index_row_center}>
+          <Col xs={8} md={6} className={styles.index_column}>
+            <PlayButton />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col xs={12} md={4} className={styles.index_column}>
+            <DisplayCurrentShow
+              show={
+                isOnAir
+                  ? upcomingShows[0]
+                  : shows.find((show) => show.id === 12345)
+              }
+              handleClick={clickShow}
+            />
+          </Col>
+
+          <Col xs={12} md={4} className={styles.index_column}>
+            <DisplayCurrentPlaylist
+              playlist={currentPlaylist}
+              allSongs={allSongs}
+            />
+          </Col>
+
+          <Col xs={12} md={4} className={styles.index_column}>
+            {<ShowOTW show={sotw} handleClick={clickShow} />}
+          </Col>
+        </Row>
+
+        <Row className={styles.index_row_center}>
+          <Col xs={12} md={8} className={styles.index_column}>
+            <NextThreeShows
+              shows={
+                isOnAir ? upcomingShows.slice(1, 4) : upcomingShows.slice(0, 3)
+              }
+              handleClick={clickShow}
+              setCurrentPage={setCurrentPage}
+            />
+          </Col>
+        </Row>
+      </Container>
+    ),
+
+    Blog: <h2>This is the blog</h2>,
+    Schedule: <Schedule shows={allShows} />,
+    Community: <h2>This is the community page</h2>,
+    About: <h2>This is the about page</h2>,
   };
 
   // this if statement determines which page to display - add more else ifs as we add more specialized pages.
   let displayPage;
   if (page === "Log Playlist" && session) {
-    displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs}/>
+    displayPage = (
+      <PlaylistLogger
+        complete={updateSongCollection}
+        currentPlaylist={currentPlaylist}
+        endShow={endShow}
+        shows={allShows}
+        songs={allSongs}
+      />
+    );
   } else if (page === "Show Details") {
-    displayPage = <ShowDetails show={selectedShow} playlists={allPlaylists} clickPlaylist={clickPlaylist}/>
+    displayPage = (
+      <ShowDetails
+        show={selectedShow}
+        playlists={allPlaylists}
+        clickPlaylist={clickPlaylist}
+      />
+    );
   } else if (page === "Playlist Details") {
-    displayPage = <PlaylistDetails playlist={selectedPlaylist} songs={allSongs} shows={allShows} backToShow={clickShow}/>
+    displayPage = (
+      <PlaylistDetails
+        playlist={selectedPlaylist}
+        songs={allSongs}
+        shows={allShows}
+        backToShow={clickShow}
+      />
+    );
   } else {
-    displayPage = placeholderPages[page]
+    displayPage = placeholderPages[page];
   }
 
-/*
   return (
-    <div className={styles.main_background}>
-      <Head>
-        <title>WRMC 91.1 FM Middlebury College Radio</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <LoginButton/>
-        {session && 
-          (currentPlaylist 
-          ? <input type="button" value="Go to Current Playlist" onClick={() => setCurrentPage("Log Playlist")}/>
-          : <StartShowButton userShows={allShows.slice(0, 4)} startShow={startShow}/>
-          )}
-        <h1>WRMC 91.1 FM</h1>
-        <PlayButton/>
-        <NavBar 
-          pageList={pageList}
-          currentPage={page}
-          setCurrentPage={selectPage}
-        />
-        {displayPage}
-        
-      </main>
-
-      <footer>A CS 312 Project</footer>
-    </div>
-  );
-*/
-
-  return (
-    <div className={styles.main_background}>
+    <div className={styles.main_page}>
       <Head>
         <title>WRMC 91.1 FM Middlebury College Radio</title>
         <link
@@ -166,34 +200,42 @@ export default function WRMCWebsite() {
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
           crossOrigin="anonymous"
         />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
+        <div className={styles.icon_div}>
+          <img
+            src="https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/logo_large.png"
+            className={styles.wrmc_icon}
+          />
+        </div>
+        <LoginButton />
+        {session &&
+          (currentPlaylist ? (
+            <input
+              type="button"
+              value="Go to Current Playlist"
+              onClick={() => setCurrentPage("Log Playlist")}
+            />
+          ) : (
+            <StartShowButton
+              userShows={allShows.slice(0, 4)}
+              startShow={startShow}
+            />
+          ))}
         <h1>WRMC 91.1 FM</h1>
-        <NavBar 
+        <NavBar
           pageList={pageList}
           currentPage={page}
           setCurrentPage={selectPage}
         />
-        <Container>
-          <Row>
-            <Col className={styles.index_column}><PlayButton/></Col>
-          </Row>
-          <Row>
-            <Col xs={12} md={4} className={styles.index_column}>1 of 3</Col>
-            <Col xs={12} md={4} className={styles.index_column}>2 of 3</Col>
-            <Col xs={12} md={4} className={styles.index_column}>3 of 3</Col>
-          </Row>
-          <Row>
-            <Col className={styles.index_column}>4</Col>
-          </Row>
-
-        </Container>
-        {placeholderPages[page]}
-        
+        {displayPage}
       </main>
 
-      <footer>A CS 312 Project</footer>
+      <footer>
+        <p className={styles.footer_style}>A CS312 Project</p>
+      </footer>
     </div>
   );
 }

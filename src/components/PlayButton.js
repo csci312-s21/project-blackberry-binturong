@@ -6,15 +6,19 @@
   props:
     none
 */
-import styles from "../styles/PlayButton.module.css";
-const listenNow = "http://boombox.middlebury.edu:8000/"
+import styles from "../styles/Main.module.css";
+import Headphones from "./Headphones.js";
 
-export default function PlayButton(){
+const listenNow = "http://boombox.middlebury.edu:8000/";
+
+export default function PlayButton() {
   function click() {
     global.open(listenNow);
   }
   return (
-    <div className={styles.playContainer}>
-    <input className={styles.playButton} type="button" value="LISTEN NOW" onClick = {click}/>
-  </div>)
+    <div className={styles.playbutton_div} onClick={click}>
+      <Headphones />
+      <p className={styles.playbutton_text}>LISTEN NOW</p>
+    </div>
+  );
 }

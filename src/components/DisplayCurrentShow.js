@@ -6,24 +6,46 @@
 */
 
 import { showType } from "../lib/types.js";
-import styles from "../styles/DisplayCurrentShow.module.css";
+import styles from "../styles/Main.module.css";
 import PropTypes from "prop-types";
 
+export default function DisplayCurrentShow({ show, handleClick }) {
+  const showExists = typeof show !== "undefined";
+  let content = null;
 
-export default function DisplayCurrentShow({ show, handleClick }){
+  if (showExists) {
+    content = (
+      <div>
+        <div className={styles.currentshow_title}>ON AIR</div>
+        <span className={styles.currentshow_text}>Current Show: </span>
+        <span
+          className={styles.currentshow_link}
+          onClick={() => handleClick(show)}
+        >
+          {show.title}
+        </span>
+        <div className={styles.currentshow_djs}>
+          <em>DJs: {show.DJs.join(", ")}</em>
+        </div>
+        <div className={styles.currentshow_text}>
+          {" "}
+          Call the DJ: 802 443 6423{" "}
+        </div>
+        <div className={styles.currentshow_message}>
+          <strong>TUNE IN!</strong>
+        </div>
+      </div>
+    );
+  } else {
+    content = (
+      <div>
+        <div className={styles.header}>ON AIR</div>
+        <div className={styles.currentshow_text}> No current show :(( </div>
+      </div>
+    );
+  }
 
-  const showExists = (typeof show !== "undefined");
-
-  return (
-    <div className={styles.nextThreeShows}>
-      <div className={styles.header}>ON AIR</div>
-      {!showExists && <div className={styles.infoText}> No current show :(( </div>}
-      {showExists && <div onClick={() => handleClick(show)} className={styles.show}>Current Show: <strong>{show.title}</strong></div>}
-      {showExists && <div className={styles.infoText}><em>DJs: {show.DJs.join(", ")}</em></div>}
-      {showExists && <div className={styles.infoText}> Call the DJ: 802 443 6423 </div>}
-      <div className={styles.message}>TUNE IN!</div>
-    </div>
-  );
+  return <div className={styles.index_grid_div}>{content}</div>;
 }
 
 DisplayCurrentShow.propTypes = {

@@ -6,28 +6,37 @@
 */
 import PropTypes from "prop-types";
 import { showType } from "../lib/types.js";
-import styles from "../styles/NextThreeShows.module.css";
-import ShowSnippet from "../components/ShowSnippet.js"
+import styles from "../styles/Main.module.css";
+import ShowSnippet from "../components/ShowSnippet.js";
 
-export default function NextThreeShows({ shows, handleClick, setCurrentPage }){
-
-  const nextThree = shows.map((show) => 
-    <li className={styles.showListItem} key={show.id} onClick={() => handleClick(show)} data-testid="show snippet">
-      <ShowSnippet show={show}/>
+export default function NextThreeShows({ shows, handleClick, setCurrentPage }) {
+  const nextThree = shows.map((show) => (
+    <li
+      key={show.id}
+      onClick={() => handleClick(show)}
+      data-testid="show snippet"
+    >
+      <ShowSnippet show={show} />
     </li>
-  );
+  ));
 
   return (
-    <div className={styles.nextThreeShows}>
-      <div className={styles.header}>Today&apos;s next three shows:</div>
-      <ul className={styles.showList}>{nextThree}</ul>
-      {(nextThree.length < 3) && <div className={styles.message}>That&apos;s all for today!</div>}
-      <input className={styles.button} type="button" value="See Full Schedule" onClick={() => setCurrentPage("Schedule")}/>
+    <div className={styles.index_grid_div}>
+      <p className={styles.nextshows_title}>Today&apos;s next three shows:</p>
+      <ul>{nextThree}</ul>
+      {nextThree.length < 3 && (
+        <div className={styles.nextshows_text}>That&apos;s all for today!</div>
+      )}
+      <input
+        type="button"
+        value="See Full Schedule"
+        onClick={() => setCurrentPage("Schedule")}
+      />
     </div>
   );
 }
 
 NextThreeShows.propTypes = {
   shows: PropTypes.arrayOf(showType).isRequired,
-  setCurrentPage: PropTypes.func.isRequired
+  setCurrentPage: PropTypes.func.isRequired,
 };
