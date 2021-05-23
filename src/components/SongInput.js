@@ -47,9 +47,10 @@ export default function SongInput({ complete, song, savedInit }) {
         disabled={(title === "") || (artist === "") || (album === "")}
         onClick={() => saveSong({
           ...song, 
-          title: title, 
-          artist: artist, 
-          album: album, 
+          title: title,
+          artist: artist,
+          album: album,
+          albumArt: "",
           time: (event.target.value === "Update") ? song.time : moment().format("LT")}
           )}/>
       <input

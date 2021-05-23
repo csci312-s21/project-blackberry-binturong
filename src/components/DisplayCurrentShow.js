@@ -8,9 +8,10 @@
 */
 import Link from "next/link";
 import moment from "moment-timezone";
-moment.tz.setDefault("America/New_York");
 import { showType } from "../lib/types.js";
 import styles from "../styles/DisplayCurrentShow.module.css";
+
+moment.tz.setDefault("America/New_York");
 
 export default function DisplayCurrentShow({ show }){
 

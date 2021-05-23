@@ -48,7 +48,7 @@ export default function PlaylistDetails({ playlist, currShow }) {
   if (currShow) {
     contents = 
       <div>
-        <h2 className={styles.header}>Playlist for {currShow && currShow.title} {dateString}</h2>
+        <h2 className={styles.header}>Playlist for {currShow && currShow.title} - {dateString}</h2>
         {
           (songInfo)
           ? <p>No songs to display</p>
