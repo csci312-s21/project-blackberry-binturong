@@ -15,7 +15,7 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
   const [emptyRows, setEmptyRows] = useState([]);
 
   const addRow = () => {
-    const emptySong = {title: "", artist: "", album: "", playlistID: currentPlaylist.id, id: getRandomIntID()}
+    const emptySong = {title: "", artist: "", album: "", albumArt: "https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png", playlistID: currentPlaylist.id, id: getRandomIntID()}
     const newEmptyRows = [...emptyRows, {...emptySong}];
     setEmptyRows(newEmptyRows);
   }
@@ -35,28 +35,27 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
   
   const currentSongs = songs.filter((song) => song.playlistID === currentPlaylist.id);
 
-  const currentRows = currentSongs.map(
-    (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit/></li>);
-  
-  const currentEmptyRows = emptyRows.map(
-    (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit={false}/></li>);
+  const rows = [...currentSongs, ...emptyRows].map(
+    (song) => <li key={song.id}><SongInput complete={handleClick} song={song}/></li>);
 
   const currentShow = shows.find((show) => show.id === currentPlaylist.showID);
 
   return (
-    <div>
+    <div className={styles.playlist}>
       <h1 className={styles.title}>Playlist for {currentShow.title}</h1>
-      <ul className={styles.rows}>{[...currentRows, ...currentEmptyRows]}</ul>
-      <input
-        type="button"
-        value="Add Song"
-        onClick={() => addRow()}
-      />
-      <input
-        type="button"
-        value="End Show"
-        onClick={() => endShow()}
-      />
+      <ul className={styles.rows}>{rows}</ul>
+      <div>
+        <input
+          type="button"
+          value="Add Song"
+          onClick={() => addRow()}
+        />
+        <input
+          type="button"
+          value="End Show"
+          onClick={() => endShow()}
+        />
+      </div>
     </div>
   );
 }
