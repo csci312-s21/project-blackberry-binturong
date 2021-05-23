@@ -1,5 +1,5 @@
 import nc from "next-connect";
-import { addPlaylist, updatePlaylist } from "../../../lib/backend-utils";
+import { getPlaylist, updatePlaylist } from "../../../lib/backend-utils";
 
 function onError(error, req, res) {
   console.error(error);
@@ -7,15 +7,20 @@ function onError(error, req, res) {
 }
 
 const handler = nc({ onError })
-  .post(async (req, res) => {
-    const newPlaylist = req.body;
-    const playlist = await addPlaylist(newPlaylist);
-    res.status(200).json(playlist);
+  .get(async (req, res) => {
+    const { id } = req.query;
+    const playlist = await getPlaylist(id);
+
+    if (playlist) {
+      res.status(200).json(playlist);
+    } else {
+      res.status(404).end(`Playlist with id ${id} not found`);
+    }
   })
   .put(async (req, res) => {
     const { id } = req.query;
     const newPlaylist = req.body;
-    const success = await updatePlaylist(newSong);
+    const success = await updatePlaylist(newPlaylist);
 
     if (success) {
       res.status(200).end();

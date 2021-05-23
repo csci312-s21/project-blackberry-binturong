@@ -4,15 +4,47 @@
   Allows DJ to log a new playlist.
 
 */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SongInput from "./SongInput.js";
 import { getRandomIntID, endShow, getCurrentPlaylist } from "../lib/component-utils.js";
 import styles from "../styles/PlaylistLogger.module.css";
 
 export default function PlaylistLogger() {
   const [emptyRows, setEmptyRows] = useState([]);
+  const [allSongs, setAllSongs] = useState([]);
+  const [allShows, setAllShows] = useState([]);
+  const [currentPlaylist, setCurrentPlaylist] = useState();
 
-  const currentPlaylist = getCurrentPlaylist();
+  useEffect(() => {
+    const getAllSongs = async () => {
+      const response = await fetch("/api/songs");
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const songs = await response.json();
+      setAllSongs(songs);
+    }
+    const getAllShows = async () => {
+      const response = await fetch("/api/shows");
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const shows = await response.json();
+      setAllShows(shows);
+    }
+    const getPlaylist = async () => {
+      const playlist = await getCurrentPlaylist();
+      setCurrentPlaylist(playlist)
+    }
+    
+    getAllSongs();
+    getAllShows();
+    getPlaylist();
+  }, []);
 
   const complete = async (action, newSong) => {
     if (action === "enter") {
@@ -65,31 +97,8 @@ export default function PlaylistLogger() {
       complete(action, song);
     }
   }
-  
-  const getAllSongs = async () => {
-    const response = await fetch("/api/songs");
 
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const songs = await response.json();
-    return songs;
-  }
-
-  const getAllShows = async () => {
-    const response = await fetch("/api/shows");
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const shows = await response.json();
-    return shows;
-  }
-
-  const allSongs = getAllSongs();
-  const currentSongs = allSongs().filter((song) => song.playlistID === currentPlaylist.id);
+  const currentSongs = allSongs.filter((song) => song.playlistID === currentPlaylist.id);
 
   const currentRows = currentSongs.map(
     (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit/></li>);
@@ -97,12 +106,12 @@ export default function PlaylistLogger() {
   const currentEmptyRows = emptyRows.map(
     (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit={false}/></li>);
 
-  const allShows = getAllShows();
-  const currentShow = allShows.find((show) => show.id === currentPlaylist.showID);
+  const currentShow = allShows.find((show) => show.id === currentPlaylist.showId);
+  console.log(currentShow);
 
   return (
     <div>
-      <h1 className={styles.title}>Playlist for {currentShow.title}</h1>
+      <h1 className={styles.title}>Playlist for</h1>
       <ul className={styles.rows}>{[...currentRows, ...currentEmptyRows]}</ul>
       <input
         type="button"

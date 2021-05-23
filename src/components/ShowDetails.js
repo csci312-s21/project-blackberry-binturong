@@ -6,18 +6,35 @@
 
   props:
     show - a show object
-    playlists - playlist table
 */
 import Link from "next/link";
 
 import PropTypes from "prop-types";
 import { getTimeString, getDayString, compareTwoPlaylists } from "../lib/component-utils.js";
 import styles from "../styles/ShowDetails.module.css";
-import { showType, playlistType } from "../lib/types.js";
+import { showType } from "../lib/types.js";
+import { useState, useEffect } from "react";
 
-export default function ShowDetails({ show, playlists }) {
-  const time = getTimeString(show.time.hour, show.time.duration);
-  const day = getDayString(show.time.day);
+export default function ShowDetails({ show }) {
+  const [playlists, setPlaylists] = useState([]);
+
+  useEffect(() => {
+    const getPlaylists = async () => {
+      const response = await fetch("/api/playlists");
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const fetchedPlaylists = await response.json();
+
+      setPlaylists(fetchedPlaylists);
+    }
+    getPlaylists();
+  }, []);
+
+  const time = getTimeString(show.hour, show.duration);
+  const day = getDayString(show.day);
 
   const playlistsForShow = playlists.filter((playlist) => playlist.showID === show.id);
 
@@ -44,6 +61,5 @@ export default function ShowDetails({ show, playlists }) {
 }
 
 ShowDetails.propTypes = {
-  show: showType.isRequired,
-  playlists: PropTypes.arrayOf(playlistType).isRequired
+  show: showType.isRequired
 };

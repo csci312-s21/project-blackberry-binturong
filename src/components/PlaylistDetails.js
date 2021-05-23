@@ -4,21 +4,48 @@
   This component displays a list of all songs in a playlist
 
   props:
-    playlist - the playlist objecy
-    songs - song table
-    currShow - the show that the playlist belongs to
+    playlist - the playlist object
 
 */
 import Link from "next/link";
-
-import { playlistType, songType, showType } from "../lib/types.js";
+import { useState, useEffect } from "react";
+import { playlistType } from "../lib/types.js";
 import PropTypes from "prop-types";
 import styles from "../styles/PlaylistDetails.module.css";
 import moment from "moment";
 import { compareTwoSongs } from "../lib/component-utils.js";
 
-export default function PlaylistDetails({ playlist, songs, currShow }) {
-  const playlistSongs = songs.filter((song) => song.playlistID === playlist.id);
+export default function PlaylistDetails({ playlist }) {
+  const [currShow, setCurrShow] = useState();
+  const [playlistSongs, setPlaylistSongs] = useState([]);
+
+  useEffect(() => {
+    const getShow = async () => {
+      const response = await fetch("/api/shows");
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const allShows = await response.json();
+
+      setCurrShow(allShows.filter((show) => show.id === playlist.showId));
+    }
+    const getSongs = async () => {
+      const response = await fetch("/api/songs");
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const allSongs = await response.json();
+
+      setPlaylistSongs(allSongs.filter((song) => song.playlistId === playlist.id));
+    }
+    getShow();
+    getSongs();
+  }, []);
+
   playlistSongs.sort((a, b) => compareTwoSongs(a,b));
 
   const songInfo = playlistSongs.map((song) => 
@@ -56,7 +83,5 @@ export default function PlaylistDetails({ playlist, songs, currShow }) {
 }
 
 PlaylistDetails.propTypes = {
-  playlist: playlistType.isRequired,
-  songs: PropTypes.arrayOf(songType).isRequired,
-  currShow: showType.isRequired
+  playlist: playlistType.isRequired
 }

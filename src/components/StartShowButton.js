@@ -5,14 +5,16 @@
 
 */
 import { useState, useEffect } from "react";
-import moment from "moment";
-import shows from "../../data/shows.json";
 import { useSession } from "next-auth/client";
+import moment from "moment";
+import Link from "next/link";
+import shows from "../../data/shows.json";
 
 export default function StartShowButton() {
   const [session] = useSession();
   const [userShows, setUserShows] = useState([]);
   const [selectedShowID, setSelectedShowID] = useState();
+  const [newPlaylist, setNewPlaylist] = useState()
 
   useEffect(() => {
     const getUserShows = async () => {
@@ -44,21 +46,31 @@ export default function StartShowButton() {
     }
   }, []);
 
-  const startShow = async (showId) => {
-    const newPlaylist = { date: moment().format("M-DD-YYYY"), showID: showId, current: true };
+  useEffect(() => {
+    const addPlaylist = async () => {
     
-    const response = await fetch("/api/playlists", {
-      method: "POST",
-      body: JSON.stringify(newPlaylist),
-      headers: new Headers({ "Content-type": "application/json" })
-    });
-      
-    if (!response.ok) {
-      throw new Error(response.statusText);
+      const response = await fetch("/api/playlists", {
+        method: "POST",
+        body: JSON.stringify(newPlaylist),
+        headers: new Headers({ "Content-type": "application/json" })
+      });
+        
+      if (!response.ok) {
+        console.log(response)
+        throw new Error(response.statusText);
+      }
     }
+
+    if (newPlaylist) {
+      addPlaylist();
+    }
+  }, [newPlaylist]);
+
+  const startShow = (showId) => {
+    setNewPlaylist({ date: moment().format("M-DD-YYYY"), showID: showId, current: true });
   }
 
-  const options = userShows.map(
+  const options = shows.map(
     (show) => <option data-testid="show-option" value={show.id} key={show.id}>{show.title}</option>);
 
   return (
@@ -67,11 +79,13 @@ export default function StartShowButton() {
         <option disabled>Select a show:</option>
         {options}
       </select>
-      <input
-        type="button"
-        value="Start Show!"
-        disabled={!selectedShowID}
-        onClick={() => startShow(+selectedShowID)}/>
+      <Link href="/log-playlist">
+        <input
+          type="button"
+          value="Start Show!"
+          disabled={!selectedShowID}
+          onClick={() => startShow(+selectedShowID)}/>
+      </Link>
     </div>
   );
 }
