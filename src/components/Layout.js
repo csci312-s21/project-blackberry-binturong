@@ -17,12 +17,34 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { useSession } from "next-auth/client";
-import { getCurrentPlaylist } from "../lib/component-utils.js";
+import { useState, useEffect } from "react";
 
 export default function Layout({ title, children }) {
   const [session] = useSession();
+  const [currentPlaylist, setCurrentPlaylist] = useState();
 
-  const currentPlaylist = getCurrentPlaylist();
+  useEffect(() => {
+    const getCurrentPlaylist = async () => {
+      const response = await fetch("/api/playlists");
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const allPlaylists = await response.json();
+      const currentPlaylists = allPlaylists.filter((playlist) => playlist.current);
+
+      
+      if (currentPlaylists.length === 0) {
+        return null;
+      }
+      console.assert(currentPlaylists.length === 1, "multiple playlists are current");
+
+      setCurrentPlaylist(currentPlaylists[0]);
+    }
+    
+    getCurrentPlaylist();
+  }, []);
 
   return (
     <div>

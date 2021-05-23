@@ -9,7 +9,7 @@ import shows from "../../data/shows.json";
 import { sampleSongs } from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
 
-import { upcomingShowsArray, getRandomIntID, getCurrentPlaylist } from "../lib/component-utils.js";
+import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/client";
@@ -34,16 +34,18 @@ export default function WRMCWebsite() {
 
   return (
     <Layout title="WRMC 91.1 FM Middlebury College">
-      <ShowOTW show={sotw}/>
-      <DisplayCurrentShow
-        show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} />
-      <p>{""}</p>
-      <DisplayCurrentPlaylist
-        playlist={currentPlaylist}
-        allSongs={allSongs} />
-      <p>{""}</p>
-      <NextThreeShows
-        shows={isOnAir ? upcomingShows.slice(1, 4) : upcomingShows.slice(0, 3)}/>
+    {
+      // <ShowOTW show={sotw}/>
+      // <DisplayCurrentShow
+      //   show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} />
+      // <p>{""}</p>
+      // <DisplayCurrentPlaylist
+      //   playlist={currentPlaylist}
+      //   allSongs={allSongs} />
+      // <p>{""}</p>
+      // <NextThreeShows
+      //   shows={isOnAir ? upcomingShows.slice(1, 4) : upcomingShows.slice(0, 3)}/>
+    }
     </Layout>
   );
 }

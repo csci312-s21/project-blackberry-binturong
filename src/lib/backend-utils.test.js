@@ -14,6 +14,7 @@ import {
   addSong,
   deleteSong,
   updateSong,
+  getAllDJs,
   verifyEmail,
 } from "./backend-utils.js";
 
@@ -168,6 +169,13 @@ describe("Tests of the database utility functions", () => {
     const sample = { id: -1, title: "Bad Song" };
     const success = await updateSong(sample);
     expect(success).toBeFalsy();
+  });
+
+  test("getAllDJs fetches all djs", async () => {
+    const fetchedDJs = await getAllDJs();
+    expect(fetchedDJs).toHaveLength(djs.length);
+    const properties = ["id", "name", "email", "exec"];
+    properties.forEach((prop) => {expect(fetchedDJs[0]).toHaveProperty(prop)});
   });
 
   test("Verifies correct email", async () => {

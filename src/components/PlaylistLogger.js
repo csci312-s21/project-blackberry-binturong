@@ -12,7 +12,7 @@ import styles from "../styles/PlaylistLogger.module.css";
 export default function PlaylistLogger() {
   const [emptyRows, setEmptyRows] = useState([]);
 
-  const currentPlaylist = await getCurrentPlaylist();
+  const currentPlaylist = getCurrentPlaylist();
 
   const complete = async (action, newSong) => {
     if (action === "enter") {
@@ -88,7 +88,8 @@ export default function PlaylistLogger() {
     return shows;
   }
 
-  const currentSongs = getAllSongs().filter((song) => song.playlistID === currentPlaylist.id);
+  const allSongs = getAllSongs();
+  const currentSongs = allSongs().filter((song) => song.playlistID === currentPlaylist.id);
 
   const currentRows = currentSongs.map(
     (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit/></li>);
@@ -96,7 +97,8 @@ export default function PlaylistLogger() {
   const currentEmptyRows = emptyRows.map(
     (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit={false}/></li>);
 
-  const currentShow = getAllShows().find((show) => show.id === currentPlaylist.showID);
+  const allShows = getAllShows();
+  const currentShow = allShows.find((show) => show.id === currentPlaylist.showID);
 
   return (
     <div>

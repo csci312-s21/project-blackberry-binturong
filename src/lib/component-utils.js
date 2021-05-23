@@ -127,6 +127,7 @@ export const getCurrentPlaylist = async () => {
 
   const allPlaylists = await response.json();
   const currentPlaylists = allPlaylists.filter((playlist) => playlist.current);
+
   
   if (currentPlaylists.length === 0) {
     return null;

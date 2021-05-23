@@ -143,3 +143,14 @@ export async function verifyEmail(email) {
   const emails = await knex.select("email").from("DJs").where({email: email});
   return (emails.length > 0);
 }
+
+
+/**
+ * Gets all the DJs from the database
+ * 
+ * @returns an array of all DJs
+ */
+export async function getAllDJs() {
+  const djs = await knex("DJs").select();
+  return djs;
+}
