@@ -22,7 +22,7 @@ import { getCurrentPlaylist } from "../lib/component-utils.js";
 export default function Layout({ title, children }) {
   const [session] = useSession();
 
-  const currentPlaylist = await getCurrentPlaylist();
+  const currentPlaylist = getCurrentPlaylist();
 
   return (
     <div>

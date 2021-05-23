@@ -6,21 +6,44 @@
 */
 import { useState } from "react";
 import SongInput from "./SongInput.js";
-import { getRandomIntID, endShow } from "../lib/component-utils.js";
+import { getRandomIntID, endShow, getCurrentPlaylist } from "../lib/component-utils.js";
 import styles from "../styles/PlaylistLogger.module.css";
 
 export default function PlaylistLogger() {
   const [emptyRows, setEmptyRows] = useState([]);
 
-  const complete = (action, newSong) => {
+  const currentPlaylist = await getCurrentPlaylist();
+
+  const complete = async (action, newSong) => {
     if (action === "enter") {
-      setAllSongs([...allSongs, newSong]);
+      const response = await fetch("/api/songs", {
+        method: "POST",
+        body: JSON.stringify(newSong),
+        headers: new Headers({ "Content-type": "application/json" }),
+      });
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
     } else if (action === "update") {
-      const newSongs = allSongs.map((song) => ((song.id === newSong.id) ? newSong : song));
-      setAllSongs(newSongs);
+      const response = await fetch(`/api/songs/${newSong.id}`, {
+        method: "PUT",
+        body: JSON.stringify(newSong),
+        headers: new Headers({ "Content-type": "application/json" }),
+      });
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
     } else if (action === "delete") {
-      const newSongs = allSongs.filter((song) => song.id !== newSong.id);
-      setAllSongs(newSongs);
+      const response = await fetch(`/api/songs/${newSong.id}`, {
+        method: "DELETE",
+        headers: new Headers({ "Content-type": "application/json" }),
+      });
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
     }
   };
 
@@ -43,7 +66,29 @@ export default function PlaylistLogger() {
     }
   }
   
-  const currentSongs = songs.filter((song) => song.playlistID === currentPlaylist.id);
+  const getAllSongs = async () => {
+    const response = await fetch("/api/songs");
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    const songs = await response.json();
+    return songs;
+  }
+
+  const getAllShows = async () => {
+    const response = await fetch("/api/shows");
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    const shows = await response.json();
+    return shows;
+  }
+
+  const currentSongs = getAllSongs().filter((song) => song.playlistID === currentPlaylist.id);
 
   const currentRows = currentSongs.map(
     (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit/></li>);
@@ -51,7 +96,7 @@ export default function PlaylistLogger() {
   const currentEmptyRows = emptyRows.map(
     (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit={false}/></li>);
 
-  const currentShow = shows.find((show) => show.id === currentPlaylist.showID);
+  const currentShow = getAllShows().find((show) => show.id === currentPlaylist.showID);
 
   return (
     <div>
