@@ -11,12 +11,18 @@
 import Head from "next/head";
 import LoginButton from "../components/LoginButton.js";
 import PlayButton from "../components/PlayButton.js";
+import StartShowButton from "../components/StartShowButton.js";
 import NavBar from "../components/NavBar.js";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import PropTypes from "prop-types";
+import { useSession } from "next-auth/client";
+import { getCurrentPlaylist } from "../lib/component-utils.js";
 
 export default function Layout({ title, children }) {
+  const [session] = useSession();
+
+  const currentPlaylist = await getCurrentPlaylist();
 
   return (
     <div>
@@ -26,9 +32,16 @@ export default function Layout({ title, children }) {
       </Head>
       
       <div>
-        <LoginButton />
+        <LoginButton/>
         <Link href="/"><h1>WRMC 91.1 FM</h1></Link>
         <PlayButton/>
+        {session && 
+          (currentPlaylist 
+          ? <Link href="/log-playlist">
+              <input type="button" value="Go to Current Playlist"/>
+            </Link>
+          : <StartShowButton/>
+          )}
         <NavBar/>
         
         <main className={styles.main}>{children}</main>

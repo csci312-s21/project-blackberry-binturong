@@ -4,14 +4,29 @@
   Allows DJ to start their show so they can log a new playlist.
 
 */
-import PropTypes from "prop-types";
-import { showType } from "../lib/types.js";
 import { useState } from "react";
+import { getRandomIntID } from "../lib/component-utils.js";
+import shows from "../../data/shows.json";
 
-export default function StartShowButton({ userShows, startShow }) {
+export default function StartShowButton() {
   const [selectedShowID, setSelectedShowID] = useState();
+  const [allShows] = useState(shows);
 
-  const options = userShows.map(
+  const startShow = async (showId) => {
+    const newPlaylist = { date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID(), current: true };
+    
+    const response = await fetch("/api/playlists", {
+      method: "POST",
+      body: JSON.stringify(newPlaylist),
+      headers: new Headers({ "Content-type": "application/json" }),
+    });
+      
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+  }
+
+  const options = allShows.map(
     (show) => <option data-testid="show-option" value={show.id} key={show.id}>{show.title}</option>);
 
   return (
@@ -27,9 +42,4 @@ export default function StartShowButton({ userShows, startShow }) {
         onClick={() => startShow(+selectedShowID)}/>
     </div>
   );
-}
-
-StartShowButton.propTypes = {
-  userShows: PropTypes.arrayOf(showType).isRequired,
-  startShow: PropTypes.func.isRequired
 }

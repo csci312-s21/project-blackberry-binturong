@@ -4,15 +4,25 @@
   Allows DJ to log a new playlist.
 
 */
-import PropTypes from "prop-types";
-import { playlistType, showType, songType } from "../lib/types.js";
 import { useState } from "react";
 import SongInput from "./SongInput.js";
-import { getRandomIntID } from "../lib/component-utils.js";
+import { getRandomIntID, endShow } from "../lib/component-utils.js";
 import styles from "../styles/PlaylistLogger.module.css";
 
-export default function PlaylistLogger({ complete, currentPlaylist, endShow, shows, songs }) {
+export default function PlaylistLogger() {
   const [emptyRows, setEmptyRows] = useState([]);
+
+  const complete = (action, newSong) => {
+    if (action === "enter") {
+      setAllSongs([...allSongs, newSong]);
+    } else if (action === "update") {
+      const newSongs = allSongs.map((song) => ((song.id === newSong.id) ? newSong : song));
+      setAllSongs(newSongs);
+    } else if (action === "delete") {
+      const newSongs = allSongs.filter((song) => song.id !== newSong.id);
+      setAllSongs(newSongs);
+    }
+  };
 
   const addRow = () => {
     const emptySong = {title: "", artist: "", album: "", playlistID: currentPlaylist.id, id: getRandomIntID()}
@@ -60,11 +70,3 @@ export default function PlaylistLogger({ complete, currentPlaylist, endShow, sho
     </div>
   );
 }
-
-PlaylistLogger.propTypes = {
-  complete: PropTypes.func,
-  currentPlaylist: playlistType,
-  endShow: PropTypes.func,
-  shows: PropTypes.arrayOf(showType),
-  songs: PropTypes.arrayOf(songType)
-};

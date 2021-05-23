@@ -25,50 +25,6 @@ export default function WRMCWebsite() {
   const [sotw] = useState(allShows[6]);  // placeholder, eventually we will want a callback: "setSotw"
   const [session] = useSession();
 
-  const startShow = async (showId) => {
-    const newPlaylist = { date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID(), current: true };
-    
-    const response = await fetch("/api/playlists", {
-      method: "POST",
-      body: JSON.stringify(newPlaylist),
-      headers: new Headers({ "Content-type": "application/json" }),
-    });
-      
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-  }
-
-  const endShow = async () => {
-    const currentPlaylist = await getCurrentPlaylist();
-
-    if (currentPlaylist) {
-      const completedPlaylist = {...currentPlaylist, current:false};
-      
-      const response = await fetch(`/api/playlists/${completedPlaylist.id}`, {
-        method: "PUT",
-        body: JSON.stringify(completedPlaylist),
-        headers: new Headers({ "Content-type": "application/json" }),
-      });
-
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-    }
-  }
-
-  const updateSongCollection = (action, newSong) => {
-    if (action === "enter") {
-      setAllSongs([...allSongs, newSong]);
-    } else if (action === "update") {
-      const newSongs = allSongs.map((song) => ((song.id === newSong.id) ? newSong : song));
-      setAllSongs(newSongs);
-    } else if (action === "delete") {
-      const newSongs = allSongs.filter((song) => song.id !== newSong.id);
-      setAllSongs(newSongs);
-    }
-  };
-
   // determines the current and next three shows
   const now = moment();
   const upcomingShows = upcomingShowsArray(shows, now);

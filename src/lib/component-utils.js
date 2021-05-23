@@ -134,3 +134,22 @@ export const getCurrentPlaylist = async () => {
   console.assert(currentPlaylists.length === 1, "multiple playlists are current");
   return currentPlaylists[0];
 }
+
+// fetches the current playlist, sets the 'current' attribute to false, and then updates it in the database
+export const endShow = async () => {
+  const currentPlaylist = await getCurrentPlaylist();
+
+  if (currentPlaylist) {
+    const completedPlaylist = {...currentPlaylist, current: false};
+    
+    const response = await fetch(`/api/playlists/${completedPlaylist.id}`, {
+      method: "PUT",
+      body: JSON.stringify(completedPlaylist),
+      headers: new Headers({ "Content-type": "application/json" }),
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+  }
+}

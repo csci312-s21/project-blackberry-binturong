@@ -9,9 +9,15 @@
 */
 import styles from "../styles/LoginButton.module.css";
 import { signIn, signOut, useSession } from "next-auth/client";
+import { endShow } from "../lib/component-utils.js";
 
 export default function LoginButton(){
   const [session] = useSession();
+  
+  const logOut = () => {
+    endShow();
+    signOut({ redirect: false });
+  }
 
   return (
     <div className={styles.loginContainer}>
@@ -21,7 +27,7 @@ export default function LoginButton(){
             type="button" 
             aria-label="logout" 
             value="Out" 
-            onClick = {() => signOut()}
+            onClick = {() => logOut()}
           />
         : <input 
             className={styles.loginButton} 
