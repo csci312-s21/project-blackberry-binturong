@@ -42,6 +42,20 @@ export default function WRMCWebsite() {
     getData();
   }, []);
 
+/*
+  useEffect(() => {
+    const getShow = async () => {
+      const response = await fetch("/api/shows/67");
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const show = await response.json();
+      //setSelectedShow(show);
+    }
+    getShow();
+  }, []);
+*/
 
   let mainContents
   if (shows !== undefined && allPlaylists !== undefined){

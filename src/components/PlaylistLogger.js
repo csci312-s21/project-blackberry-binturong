@@ -10,9 +10,9 @@ import { getRandomIntID, endShow, getCurrentPlaylist } from "../lib/component-ut
 import styles from "../styles/PlaylistLogger.module.css";
 
 export default function PlaylistLogger() {
-  const [emptyRows, setEmptyRows] = useState([]);
-  const [allSongs, setAllSongs] = useState([]);
-  const [allShows, setAllShows] = useState([]);
+  const [emptyRows, setEmptyRows] = useState();
+  const [allSongs, setAllSongs] = useState();
+  const [allShows, setAllShows] = useState();
   const [currentPlaylist, setCurrentPlaylist] = useState();
 
   useEffect(() => {

@@ -22,13 +22,10 @@ export default function PlaylistDetails({ playlist }) {
   useEffect(() => {
     const getShow = async () => {
       const response = await fetch("/api/shows");
-
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-
       const allShows = await response.json();
-
       setCurrShow(allShows.filter((show) => show.id === playlist.showId));
     }
     const getSongs = async () => {
@@ -50,7 +47,7 @@ export default function PlaylistDetails({ playlist }) {
 
   const songInfo = playlistSongs.map((song) => 
     <tr key={song.id}>
-      <td>{song.timeAdded}</td>
+      <td>{song.time}</td>
       <td>{song.title}</td>
       <td>{song.artist}</td>
       <td>{song.album}</td>
@@ -59,8 +56,9 @@ export default function PlaylistDetails({ playlist }) {
 
   const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd MMMM Do YYYY");
 
-  return (
-    <div>
+  let contents
+  if (currShow !== undefined){
+    contents =  <div>
       <h2 className={styles.header}>
         {`Playlist for ${currShow.title} ${dateString}`}
       </h2>
@@ -75,9 +73,12 @@ export default function PlaylistDetails({ playlist }) {
           {songInfo}
         </tbody>
       </table>
-      <Link href={`/shows/${currShow.id}`}>
-        <input className={styles.returnButton} type="button" value="<< Back to show information"/>
-      </Link>
+    </div>
+  }
+
+  return (
+    <div>
+      {contents}
     </div>
   );
 }

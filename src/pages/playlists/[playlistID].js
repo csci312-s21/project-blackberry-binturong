@@ -10,24 +10,28 @@ export default function PlaylistDisplay() {
 
   useEffect(() => {
     const getPlaylist = async () => {
+      const { playlistID } = router.query;
       const response = await fetch(`/api/playlists/${playlistID}`);
-
       if (!response.ok) {
         throw new Error(response.statusText);
       }
 
       const playlist = await response.json();
-
       setSelectedPlaylist(playlist);
     }
-    getPlaylist();
-  }, []);
+    if (router.isReady ===true) {
+      getPlaylist();
+    }
+  }, [router.isReady]);
   
-  const selectedShow = selectedPlaylist && shows.find((show) => show.id === selectedPlaylist.showId);
+  //const selectedShow = selectedPlaylist && shows.find((show) => show.id === selectedPlaylist.showId);
 
   return (
-    <Layout title={selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>
+    <Layout >
       <main>{selectedPlaylist && <PlaylistDetails playlist={selectedPlaylist}/>}</main>
     </Layout>
   );
 }
+
+
+//title={selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}
