@@ -2,27 +2,25 @@ import djs from "../../data/djs.json";
 import shows from "../../data/shows.json";
 import playlists from "../../data/playlists.json";
 import songs from "../../data/songs.json";
-
-
 import {
   knex,
   getDJNames,
   getAllShows,
   getShow,
-  getShowPlaylists,
   addPlaylist,
   getAllPlaylists,
   updatePlaylist,
-  getPlaylistSongs,
+  getAllSongs,
   addSong,
   deleteSong,
   updateSong,
   verifyEmail,
 } from "./backend-utils.js";
 
+jest.setTimeout(1000 * 20);
+
 describe("Tests of the database utility functions", () => {
   let sampleShow;
-
 
   beforeAll(async () => {
     sampleShow = shows[Math.floor(shows.length/2)];
@@ -85,14 +83,6 @@ describe("Tests of the database utility functions", () => {
     properties.forEach((prop) => {expect(fetchedPlaylists[0]).toHaveProperty(prop)});
   });
 
-  test("getShowPlaylists loads the correct playlists", async () => {
-    const testShow = await getShow(55);
-    const expectedPlaylists = playlists.filter((playlist) => playlist.showId === 55);
-    const fetchedPlaylists = await getShowPlaylists(testShow.id);
-    expect(fetchedPlaylists).toHaveLength(expectedPlaylists.length);
-    fetchedPlaylists.forEach((pl) => expect(pl.showId).toEqual(testShow.id));
-  });
-
   test("addPlaylist returns a playlist with new id", async () => {
     const sample = {
       "date": "4-30-2021",
@@ -104,20 +94,6 @@ describe("Tests of the database utility functions", () => {
     expect(playlist.date).toBe(sample.date);
     expect(playlist.showId).toBe(sample.showId);
     expect(playlist.id).toBeGreaterThanOrEqual(0);
-  });
-
-  test("getPlaylistSongs loads the correct songs", async () => {
-    const testPlaylist = {
-      "date": "4-29-2021",
-      "id": 15,
-      "showId": 56,
-      "current": false
-    };
-    
-    const expectedSongs = songs.filter((song) => song.playlistId === testPlaylist.id);
-    const fetchedSongs = await getPlaylistSongs(testPlaylist.id);
-    expect(fetchedSongs).toHaveLength(expectedSongs.length);
-    fetchedSongs.forEach((song) => expect(song.playlistId).toEqual(testPlaylist.id));
   });
 
   test("updatePlaylist updates the song", async () => {
@@ -134,6 +110,13 @@ describe("Tests of the database utility functions", () => {
     const sample = {...playlists[0], id: -1};
     const success = await updatePlaylist(sample);
     expect(success).toBeFalsy();
+  });
+
+  test("getAllSongs fetches all songs", async () => {
+    const fetchedSongs = await getAllSongs();
+    expect(fetchedSongs).toHaveLength(songs.length);
+    const properties = ["id", "title", "artist", "album", "albumArt", "time", "playlistId"];
+    properties.forEach((prop) => {expect(fetchedSongs[0]).toHaveProperty(prop)});
   });
 
   test("addSong returns a song with new id", async () => {

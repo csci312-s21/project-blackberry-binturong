@@ -18,8 +18,6 @@ export async function getDJNames(showId) {
     .join("DJs", "DJs.id", "ShowDJs.djId")
     .where({"showId": showId});
   const djNames = djs.map((dj) => dj.name);
-  console.log(showId);
-  console.log(djNames);
   return djNames;
 }
 
@@ -66,20 +64,6 @@ export async function getAllPlaylists() {
   return playlists;
 }
 
-/**
- * Gets all playlists for a show from the database
- * 
- * @param {integer} showId 
- * @returns an array of playlists with showId showId
- */
-export async function getShowPlaylists(showId) {
-  const playlists = await knex("Playlist").where({showId: showId}).select();
-  if (playlists) {
-    return playlists;
-  } else {
-    return null;
-  }
-}
 
 /**
  * Add a new playlist to the database
@@ -104,19 +88,15 @@ export async function updatePlaylist(playlist) {
 }
 
 /**
- * Gets all songs for a playlist from the database
+ * Gets all the songs from the database
  * 
- * @param {integer} playlistId 
- * @returns an array of songs with playlistId playlistId
+ * @returns an array of all songs
  */
-export async function getPlaylistSongs(playlistId) {
-  const songs = await knex("Song").where({playlistId: playlistId}).select();
-  if (songs) {
-    return songs;
-  } else {
-    return null;
-  }
+export async function getAllSongs() {
+  const songs = await knex("Song").select();
+  return songs;
 }
+
 
 /**
  * Add a new song to the database

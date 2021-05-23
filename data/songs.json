@@ -3,7 +3,7 @@
     "title": "We are the Champions",
     "artist": "Queen",
     "album": "Live Killers",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/db7235a925a30ef5805c72050a29e76f.png",
     "id": 0,
     "time": "4:00 pm",
     "playlistId": 12
@@ -12,7 +12,7 @@
     "title": "We Will Rock You",
     "artist": "Queen",
     "album": "Live Killers",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/db7235a925a30ef5805c72050a29e76f.png",
     "id": 1,
     "time": "4:04 pm",
     "playlistId": 12
@@ -21,16 +21,16 @@
     "title": "Killer Queen",
     "artist": "Queen",
     "album": "Live Killers",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/db7235a925a30ef5805c72050a29e76f.png",
     "id": 2,
     "time": "4:15 pm",
     "playlistId": 12
   },
   {
     "title": "Sweet Home Alabama",
-    "artist": "Lynrd Skynrd",
+    "artist": "Lynyrd Skynyrd",
     "album": "Second Helping",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/24d012f364e445cec54a844c604ecfbb.png",
     "id": 3,
     "time": "4:02 pm",
     "playlistId": 13
@@ -39,7 +39,7 @@
     "title": "Baby",
     "artist": "Justin Bieber",
     "album": "My World 2.0",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/c6efcdc120634584b2f1b592960ecc26.png",
     "id": 4,
     "time": "4:01 pm",
     "playlistId": 14
@@ -48,7 +48,7 @@
     "title": "Somebody to Love",
     "artist": "Justin Bieber",
     "album": "My World 2.0",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/c6efcdc120634584b2f1b592960ecc26.png",
     "id": 5,
     "time": "4:05 pm",
     "playlistId": 14
@@ -57,7 +57,7 @@
     "title": "The First Time",
     "artist": "Blink-182",
     "album": "Nine",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/3496a05a2cf50aba0bce83f34a673798.png",
     "id": 6,
     "time": "5:00 pm",
     "playlistId": 15
@@ -66,7 +66,7 @@
     "title": "Happy Days",
     "artist": "Blink-182",
     "album": "Nine",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/3496a05a2cf50aba0bce83f34a673798.png",
     "id": 7,
     "time": "5:06 pm",
     "playlistId": 15
@@ -75,7 +75,7 @@
     "title": "Dogs Eating Dogs",
     "artist": "Blink-182",
     "album": "Dogs Eating Dogs",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/721c57249e624e4abab8a9da0a5b5818.png",
     "id": 8,
     "time": "5:18 pm",
     "playlistId": 15
@@ -84,7 +84,7 @@
     "title": "What's My Age Again?",
     "artist": "Blink-182",
     "album": "Enema of the State",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/9f84a1b9b2634750bdd014c2bb646d96.png",
     "id": 9,
     "time": "5:22 pm",
     "playlistId": 15
@@ -93,7 +93,7 @@
     "title": "Adam's Song",
     "artist": "Blink-182",
     "album": "Enema of the State",
-    "albumArt": "",
+    "albumArt": "https://lastfm.freetls.fastly.net/i/u/34s/9f84a1b9b2634750bdd014c2bb646d96.png",
     "id": 10,
     "time": "5:00 pm",
     "playlistId": 15
