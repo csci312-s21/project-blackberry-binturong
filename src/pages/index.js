@@ -10,8 +10,8 @@ import { useState, useEffect } from "react";
 moment.tz.setDefault("America/New_York"); 
 
 export default function WRMCWebsite() {
-  const [shows, setAllShows] = useState();
-  const [allPlaylists, setAllPlaylists] = useState();
+  const [shows, setAllShows] = useState([]);
+  const [allPlaylists, setAllPlaylists] = useState([]);
   const [allSongs, setAllSongs] = useState([]);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function WRMCWebsite() {
   }, []);
 
   let mainContents
-  if (shows !== undefined && allPlaylists !== undefined){
+  if (shows.length !== 0 && allPlaylists.length !== 0){
 
       const now = moment();
       const upcomingShows = upcomingShowsArray(shows, now);

@@ -11,9 +11,9 @@ import styles from "../styles/PlaylistLogger.module.css";
 import Link from "next/link";
 
 export default function PlaylistLogger() {
-  const [emptyRows, setEmptyRows] = useState([]);
-  const [allSongs, setAllSongs] = useState([]);
-  const [allShows, setAllShows] = useState([]);
+  const [emptyRows, setEmptyRows] = useState();
+  const [allSongs, setAllSongs] = useState();
+  const [allShows, setAllShows] = useState();
   const [currentPlaylist, setCurrentPlaylist] = useState();
   const [currentSongs, setCurrentSongs] = useState([]);
   const [currentShow, setCurrentShow] = useState([]);

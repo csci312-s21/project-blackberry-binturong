@@ -7,22 +7,23 @@ export default function PlaylistDisplay() {
   const [selectedPlaylist, setSelectedPlaylist] = useState();
   const [selectedShow, setSelectedShow] = useState();
   const router = useRouter();
-  const { playlistID } = router.query;
 
   useEffect(() => {
     const getPlaylist = async () => {
+      const { playlistID } = router.query;
       const response = await fetch(`/api/playlists/${playlistID}`);
-
       if (!response.ok) {
         throw new Error(response.statusText);
       }
 
       const playlist = await response.json();
-
       setSelectedPlaylist(playlist);
     }
-    getPlaylist();
-  }, []);
+
+    if (router.isReady ===true) {
+      getPlaylist();
+    }
+  }, [router.isReady]);
 
   useEffect(() => {
     const getShow = async () => {

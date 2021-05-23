@@ -37,7 +37,7 @@ export default function PlaylistDetails({ playlist, currShow }) {
 
   const songInfo = playlistSongs.map((song) => 
     <tr key={song.id}>
-      <td>{song.timeAdded}</td>
+      <td>{song.time}</td>
       <td>{song.title}</td>
       <td>{song.artist}</td>
       <td>{song.album}</td>
@@ -46,26 +46,29 @@ export default function PlaylistDetails({ playlist, currShow }) {
 
   const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd MMMM Do YYYY");
 
-  return (
-    <div>
+  let contents
+  if (currShow !== undefined){
+    contents =  <div>
       <h2 className={styles.header}>
         {`Playlist for ${currShow && currShow.title} ${dateString}`}
       </h2>
-      {
-        (songInfo.length === 0)
-        ? <p>No songs to display!</p>
-        : <table className={styles.songTable}>
-            <tbody>
-              <tr>
-                <th>Time</th>
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Album</th>
-              </tr>
-              {songInfo}
-            </tbody>
-          </table>
-      }
+      <table className={styles.songTable}>
+        <tbody>
+          <tr>
+            <th>Time</th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Album</th>
+          </tr>
+          {songInfo}
+        </tbody>
+      </table>
+    </div>
+  }
+
+  return (
+    <div>
+      {contents}
     </div>
   );
 }
