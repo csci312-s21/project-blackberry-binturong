@@ -5,6 +5,7 @@ import PlaylistDetails from "../../components/PlaylistDetails.js";
 
 export default function PlaylistDisplay() {
   const [selectedPlaylist, setSelectedPlaylist] = useState();
+  const [selectedShow, setSelectedShow] = useState();
   const router = useRouter();
   const { playlistID } = router.query;
 
@@ -22,12 +23,28 @@ export default function PlaylistDisplay() {
     }
     getPlaylist();
   }, []);
-  
-  const selectedShow = selectedPlaylist && shows.find((show) => show.id === selectedPlaylist.showId);
+
+  useEffect(() => {
+    const getShow = async () => {
+      const response = await fetch(`/api/shows/${selectedPlaylist.showId}`);
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const show = await response.json();
+
+      setSelectedShow(show);
+    }
+    
+    if (selectedPlaylist) {
+      getShow();
+    }
+  }, [selectedPlaylist]);
 
   return (
     <Layout title={selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>
-      <main>{selectedPlaylist && <PlaylistDetails playlist={selectedPlaylist}/>}</main>
+      <main>{selectedPlaylist && <PlaylistDetails playlist={selectedPlaylist} currShow={selectedShow}/>}</main>
     </Layout>
   );
 }

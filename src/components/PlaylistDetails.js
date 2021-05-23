@@ -9,28 +9,16 @@
 */
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { playlistType } from "../lib/types.js";
+import { playlistType, showType } from "../lib/types.js";
 import PropTypes from "prop-types";
 import styles from "../styles/PlaylistDetails.module.css";
 import moment from "moment";
 import { compareTwoSongs } from "../lib/component-utils.js";
 
-export default function PlaylistDetails({ playlist }) {
-  const [currShow, setCurrShow] = useState();
+export default function PlaylistDetails({ playlist, currShow }) {
   const [playlistSongs, setPlaylistSongs] = useState([]);
 
   useEffect(() => {
-    const getShow = async () => {
-      const response = await fetch("/api/shows");
-
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-
-      const allShows = await response.json();
-
-      setCurrShow(allShows.filter((show) => show.id === playlist.showId));
-    }
     const getSongs = async () => {
       const response = await fetch("/api/songs");
 
@@ -42,7 +30,6 @@ export default function PlaylistDetails({ playlist }) {
 
       setPlaylistSongs(allSongs.filter((song) => song.playlistId === playlist.id));
     }
-    getShow();
     getSongs();
   }, []);
 
@@ -62,26 +49,28 @@ export default function PlaylistDetails({ playlist }) {
   return (
     <div>
       <h2 className={styles.header}>
-        {`Playlist for ${currShow.title} ${dateString}`}
+        {`Playlist for ${currShow && currShow.title} ${dateString}`}
       </h2>
-      <table className={styles.songTable}>
-        <tbody>
-          <tr>
-            <th>Time</th>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Album</th>
-          </tr>
-          {songInfo}
-        </tbody>
-      </table>
-      <Link href={`/shows/${currShow.id}`}>
-        <input className={styles.returnButton} type="button" value="<< Back to show information"/>
-      </Link>
+      {
+        (songInfo.length === 0)
+        ? <p>No songs to display!</p>
+        : <table className={styles.songTable}>
+            <tbody>
+              <tr>
+                <th>Time</th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Album</th>
+              </tr>
+              {songInfo}
+            </tbody>
+          </table>
+      }
     </div>
   );
 }
 
 PlaylistDetails.propTypes = {
-  playlist: playlistType.isRequired
+  playlist: playlistType.isRequired,
+  currShow: showType.isRequired
 }

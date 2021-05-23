@@ -19,7 +19,7 @@ export default function ShowOTW({ show }){
   return (<div className={styles.showOTW}>
       <div className={styles.header}>Show Of The Week</div>
       <div className={styles.title} data-testid="SOTW title"><Link href={`/shows/${show.id}`}><a>{show.title}</a></Link></div>
-      <div className={styles.djs}>{show.DJs.length > 1 ? "DJ's: " : "DJ: "}{show.DJs.join(", ")}</div>
+      <div className={styles.djs}>{show.DJs.length > 1 ? "DJs: " : "DJ: "}{show.DJs.join(", ")}</div>
       <div className={styles.time}>{day}{", "}{time}</div>
       <div className={styles.description}>{show.description}</div>
     </div>)

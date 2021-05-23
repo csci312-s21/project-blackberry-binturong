@@ -4,18 +4,16 @@ import DisplayCurrentShow from "../components/DisplayCurrentShow";
 import DisplayCurrentPlaylist from "../components/DisplayCurrentPlaylist.js";
 import Layout from "../components/Layout.js";
 import moment from "moment-timezone";
-import shows from "../../data/shows.json";
-import { sampleSongs } from "../lib/test-utils.js";
-import playlists from "../../data/playlists.json";
 import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 import { useState, useEffect } from "react";
 
 moment.tz.setDefault("America/New_York"); 
 
 export default function WRMCWebsite() {
-  const [shows, allShows] = useState();
+  const [shows, setAllShows] = useState();
   const [allPlaylists, setAllPlaylists] = useState();
-  const [allSongs, setAllSongs] = useState();
+  const [allSongs, setAllSongs] = useState([]);
+
   useEffect(() => {
     const getData = async () => {
       const responseShow = await fetch( "/api/shows");
@@ -23,7 +21,7 @@ export default function WRMCWebsite() {
         throw new Error(responseShow.statusText);
       }
       const showData = await responseShow.json();
-      allShows(showData);
+      setAllShows(showData);
 
       const responseSong = await fetch( "/api/songs");
       if (!responseSong.ok) {
@@ -41,7 +39,6 @@ export default function WRMCWebsite() {
     };
     getData();
   }, []);
-
 
   let mainContents
   if (shows !== undefined && allPlaylists !== undefined){

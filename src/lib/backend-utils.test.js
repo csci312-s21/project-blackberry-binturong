@@ -7,6 +7,7 @@ import {
   getDJNames,
   getAllShows,
   getShow,
+  getPlaylist,
   addPlaylist,
   getAllPlaylists,
   updatePlaylist,
@@ -75,6 +76,14 @@ describe("Tests of the database utility functions", () => {
 
     expect(testShow.DJs.length).toBe(sampleShow.DJs.length);
     expect(testShow.DJs).toEqual(expect.arrayContaining(sampleShow.DJs));
+  });
+
+  test("getPlaylist fetches the correct playlist", async () => {
+    const samplePlaylist = playlists[0];
+    const playlist = await getPlaylist(samplePlaylist.id);
+    expect(playlist.id).toBe(samplePlaylist.id);
+    expect(playlist.date).toBe(samplePlaylist.date);
+    expect(playlist.showId).toBe(samplePlaylist.showId);
   });
 
   test("getAllPlaylists fetches all playlists", async () => {

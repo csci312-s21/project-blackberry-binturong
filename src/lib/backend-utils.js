@@ -54,6 +54,21 @@ export async function getShow(showId) {
 }
 
 /**
+ * Gets a single playlist from the database
+ * 
+ * @param {integer} playlistId 
+ * @returns a playlist with id playlistId
+ */
+export async function getPlaylist(playlistId) {
+  const [playlist] = await knex("Playlist").where({id: playlistId}).select();
+  if (playlist) {
+    return playlist;
+  } else {
+    return null;
+  }
+}
+
+/**
  * Gets all the playlists from the database
  * 
  * @returns an array of all playlists

@@ -8,12 +8,15 @@ import { useState, useEffect } from "react";
 import SongInput from "./SongInput.js";
 import { getRandomIntID, endShow, getCurrentPlaylist } from "../lib/component-utils.js";
 import styles from "../styles/PlaylistLogger.module.css";
+import Link from "next/link";
 
 export default function PlaylistLogger() {
   const [emptyRows, setEmptyRows] = useState([]);
   const [allSongs, setAllSongs] = useState([]);
   const [allShows, setAllShows] = useState([]);
   const [currentPlaylist, setCurrentPlaylist] = useState();
+  const [currentSongs, setCurrentSongs] = useState([]);
+  const [currentShow, setCurrentShow] = useState([]);
 
   useEffect(() => {
     const getAllSongs = async () => {
@@ -38,7 +41,7 @@ export default function PlaylistLogger() {
     }
     const getPlaylist = async () => {
       const playlist = await getCurrentPlaylist();
-      setCurrentPlaylist(playlist)
+      setCurrentPlaylist(playlist);
     }
     
     getAllSongs();
@@ -46,8 +49,16 @@ export default function PlaylistLogger() {
     getPlaylist();
   }, []);
 
+  useEffect(() => {
+    if (currentPlaylist) {
+      setCurrentSongs(allSongs.filter((song) => song.playlistID === currentPlaylist.id));
+      setCurrentShow(allShows.find((show) => show.id === currentPlaylist.showId));
+    }
+  }, [allSongs, allShows]);
+
   const complete = async (action, newSong) => {
     if (action === "enter") {
+      console.log(newSong);
       const response = await fetch("/api/songs", {
         method: "POST",
         body: JSON.stringify(newSong),
@@ -98,31 +109,28 @@ export default function PlaylistLogger() {
     }
   }
 
-  const currentSongs = allSongs.filter((song) => song.playlistID === currentPlaylist.id);
-
   const currentRows = currentSongs.map(
     (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit/></li>);
   
   const currentEmptyRows = emptyRows.map(
     (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit={false}/></li>);
 
-  const currentShow = allShows.find((show) => show.id === currentPlaylist.showId);
-  console.log(currentShow);
-
   return (
     <div>
-      <h1 className={styles.title}>Playlist for</h1>
+      {currentShow && <h1 className={styles.title}>Playlist for {currentShow.title}</h1>}
       <ul className={styles.rows}>{[...currentRows, ...currentEmptyRows]}</ul>
       <input
         type="button"
         value="Add Song"
         onClick={() => addRow()}
       />
-      <input
-        type="button"
-        value="End Show"
-        onClick={() => endShow()}
-      />
+      <Link href="/">
+        <input
+          type="button"
+          value="End Show"
+          onClick={() => endShow()}
+        />
+      </Link>
     </div>
   );
 }
