@@ -16,6 +16,6 @@ const handler = nc({ onError })
     } else {
       res.status(404).end(`Show with id ${id} not found`);
     }
-  })
+  });
 
-  export default handler;
+export default handler;

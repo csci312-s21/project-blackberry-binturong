@@ -86,32 +86,51 @@ export const getDayInt = (d) => {
 
 //Colors for displaying genres in the schedule.
 export const colors = {
-    "blues": "#2994A3",
-    "eclectic": "#00B1DA",
-    "folk": "#14CD96",
-    "indie": "#0033CC",
-    "metal": "#D3D3D3",
-    "punk": "#190707",
-    "rock": "#F50046",
-    "classical": "#FF918B",
-    "electronic": "#00FF43",
-    "fruit": "#005DD0",
-    "jazz": "#6C29A3",
-    "news": "#9B9B9B",
-    "r&b / soul": "#D0A9F5",
-    "sports": "#2E3B0B",
-    "comedy": "#FFD700",
-    "exec": "#228B22",
-    "funk": "#FF9840",
-    "kpop": "#89CFF0",
-    "pop": "#FF00FF",
-    "radio theatre": "#00FFFF",
-    "talk": "#FA3F74",
-    "dream pop": "#E987F2",
-    "experimental": "#EB42F4",
-    "hip hop": "#FA7198",
-    "latin": "#2A52BE",
-    "pop punk": "#190707",
-    "reggae": "#0AC02B",
-    "world": "#FFB700"
+  "blues": "#2994A3",
+  "eclectic": "#00B1DA",
+  "folk": "#14CD96",
+  "indie": "#0033CC",
+  "metal": "#D3D3D3",
+  "punk": "#190707",
+  "rock": "#F50046",
+  "classical": "#FF918B",
+  "electronic": "#00FF43",
+  "fruit": "#005DD0",
+  "jazz": "#6C29A3",
+  "news": "#9B9B9B",
+  "r&b / soul": "#D0A9F5",
+  "sports": "#2E3B0B",
+  "comedy": "#FFD700",
+  "exec": "#228B22",
+  "funk": "#FF9840",
+  "kpop": "#89CFF0",
+  "pop": "#FF00FF",
+  "radio theatre": "#00FFFF",
+  "talk": "#FA3F74",
+  "dream pop": "#E987F2",
+  "experimental": "#EB42F4",
+  "hip hop": "#FA7198",
+  "latin": "#2A52BE",
+  "pop punk": "#190707",
+  "reggae": "#0AC02B",
+  "world": "#FFB700"
+}
+
+
+// fetches the playlist that is currently being logged
+export const getCurrentPlaylist = async () => {
+  const response = await fetch("/api/playlists");
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
   }
+
+  const allPlaylists = await response.json();
+  const currentPlaylists = allPlaylists.filter((playlist) => playlist.current);
+  
+  if (currentPlaylists.length === 0) {
+    return null;
+  }
+  console.assert(currentPlaylists.length === 1, "multiple playlists are current");
+  return currentPlaylists[0];
+}

@@ -11,7 +11,7 @@ import shows from "../../data/shows.json";
 import { sampleSongs } from "../lib/test-utils.js";
 import playlists from "../../data/playlists.json";
 
-import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
+import { upcomingShowsArray, getRandomIntID, getCurrentPlaylist } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/client";
@@ -22,21 +22,40 @@ export default function WRMCWebsite() {
   const [allShows] = useState(shows);
   const [allPlaylists, setAllPlaylists] = useState(playlists);
   const [allSongs, setAllSongs] = useState(sampleSongs);
-  const [sotw] = useState(allShows[6]); //placeholder, eventually we will want a callback: "setSotw"
-  const [loggingPlaylist, setLoggingPlaylist] = useState(false);
-  const [currentPlaylist, setCurrentPlaylist] = useState();
+  const [sotw] = useState(allShows[6]);  // placeholder, eventually we will want a callback: "setSotw"
   const [session] = useSession();
 
-  const endShow = () => {
-    setLoggingPlaylist(false);
-    setCurrentPlaylist();
+  const startShow = async (showId) => {
+    const newPlaylist = { date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID(), current: true };
+    
+    const response = await fetch("/api/playlists", {
+      method: "POST",
+      body: JSON.stringify(newPlaylist),
+      headers: new Headers({ "Content-type": "application/json" }),
+    });
+      
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
   }
 
-  useEffect(() => {
-    if(!session) {
-      endShow();
+  const endShow = async () => {
+    const currentPlaylist = await getCurrentPlaylist();
+
+    if (currentPlaylist) {
+      const completedPlaylist = {...currentPlaylist, current:false};
+      
+      const response = await fetch(`/api/playlists/${completedPlaylist.id}`, {
+        method: "PUT",
+        body: JSON.stringify(completedPlaylist),
+        headers: new Headers({ "Content-type": "application/json" }),
+      });
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
     }
-  }, [session]);
+  }
 
   const updateSongCollection = (action, newSong) => {
     if (action === "enter") {
@@ -49,13 +68,6 @@ export default function WRMCWebsite() {
       setAllSongs(newSongs);
     }
   };
-
-  const startShow = (showId) => {
-    setLoggingPlaylist(true);
-    const newPlaylist = { date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID() };
-    setCurrentPlaylist(newPlaylist);
-    setAllPlaylists([...allPlaylists, newPlaylist]);
-  }
 
   // determines the current and next three shows
   const now = moment();

@@ -15,6 +15,6 @@ const handler = nc({ onError })
     } else {
       res.status(404).end(`DJs with show id ${id} not found`);
     }
-  })
+  });
 
-    export default handler;
+export default handler;

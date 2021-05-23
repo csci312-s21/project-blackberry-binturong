@@ -40,4 +40,4 @@ const handler = nc({ onError })
   });
   
 
-  export default handler;
+export default handler;
