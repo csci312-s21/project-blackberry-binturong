@@ -15,10 +15,11 @@ import styles from "../styles/DisplayCurrentPlaylist.module.css";
 export default function DisplayCurrentPlaylist({ playlist, allSongs }){
 
   let currentPlaylist;
+  let currentSongs;
   const noShowMessage = "There's not always a show, but there's always great music!";
 
   if(playlist !== undefined){
-    const currentSongs = allSongs.filter((song) => song.playlistID === playlist.id);
+    currentSongs = allSongs.filter((song) => song.playlistId === playlist.id);
 
     currentPlaylist = currentSongs.map((song) => 
       <li key={song.id}>
@@ -34,7 +35,7 @@ export default function DisplayCurrentPlaylist({ playlist, allSongs }){
       </div>
       <div>
         <ul className = {styles.playlist}>
-          {playlist ? currentPlaylist : noShowMessage} 
+          {playlist && currentSongs.length!==0 ? currentPlaylist : noShowMessage} 
         </ul>
       </div>
     </div>

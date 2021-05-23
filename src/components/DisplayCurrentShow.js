@@ -7,14 +7,15 @@
     show - current show
 */
 import Link from "next/link";
-
+import moment from "moment-timezone";
+moment.tz.setDefault("America/New_York");
 import { showType } from "../lib/types.js";
 import styles from "../styles/DisplayCurrentShow.module.css";
 
 export default function DisplayCurrentShow({ show }){
 
   const showExists = (typeof show !== "undefined");
-
+  
   return (
     <div className={styles.nextThreeShows}>
       <div className={styles.header}>ON AIR</div>

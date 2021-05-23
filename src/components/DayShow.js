@@ -9,7 +9,7 @@ import { useState } from "react";
 export default function DayShow({ show }){
   const [displayDescription, setDisplayDescription] = useState(false);
 
-  const time = getTimeString(show.time.hour, show.time.duration);
+  const time = getTimeString(show.hour, show.duration);
   const genrecolor = colors[show.genres[0].toLowerCase()];
 
   return (

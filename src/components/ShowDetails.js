@@ -36,7 +36,7 @@ export default function ShowDetails({ show }) {
   const time = getTimeString(show.hour, show.duration);
   const day = getDayString(show.day);
 
-  const playlistsForShow = playlists.filter((playlist) => playlist.showID === show.id);
+  const playlistsForShow = playlists.filter((playlist) => playlist.showId === show.id);
 
   playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b)).reverse();
 

@@ -13,8 +13,8 @@ import styles from "../styles/ShowOTW.module.css";
 import { getTimeString, getDayString } from "../lib/component-utils.js";
 
 export default function ShowOTW({ show }){
-  const time = getTimeString(show.time.hour, show.time.duration);
-  const day = getDayString(show.time.day);
+  const time = getTimeString(show.hour, show.duration);
+  const day = getDayString(show.day);
 
   return (<div className={styles.showOTW}>
       <div className={styles.header}>Show Of The Week</div>
