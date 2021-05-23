@@ -46,25 +46,26 @@ export default function PlaylistDetails({ playlist, currShow }) {
 
   const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd MMMM Do YYYY");
 
-  let contents
-  if (currShow !== undefined){
-    contents =  <div>
-      <h2 className={styles.header}>
-        {`Playlist for ${currShow && currShow.title} ${dateString}`}
-      </h2>
-      <table className={styles.songTable}>
-        <tbody>
-          <tr>
-            <th>Time</th>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Album</th>
-          </tr>
-          {songInfo}
-        </tbody>
-      </table>
-    </div>
-  }
+  let contents;
+  if (currShow) {
+    contents = 
+      <div>
+        <h2 className={styles.header}>
+          {`Playlist for ${currShow && currShow.title} ${dateString}`}
+        </h2>
+        <table className={styles.songTable}>
+          <tbody>
+            <tr>
+              <th>Time</th>
+              <th>Title</th>
+              <th>Artist</th>
+              <th>Album</th>
+            </tr>
+            {songInfo}
+          </tbody>
+        </table>
+      </div>
+}
 
   return (
     <div>

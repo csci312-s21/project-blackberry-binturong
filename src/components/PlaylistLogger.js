@@ -51,7 +51,7 @@ export default function PlaylistLogger() {
 
   useEffect(() => {
     if (currentPlaylist) {
-      setCurrentSongs(allSongs.filter((song) => song.playlistID === currentPlaylist.id));
+      setCurrentSongs(allSongs.filter((song) => song.playlistId === currentPlaylist.id));
       setCurrentShow(allShows.find((show) => show.id === currentPlaylist.showId));
     }
   }, [allSongs, allShows]);
