@@ -72,7 +72,7 @@ export default function WRMCWebsite() {
             </Col>
 
             <Col xs={12} md={4} className={styles.index_column}>
-              <ShowOTW show={shows[71]}/>
+              <ShowOTW show={shows.find((show) => show.title === "CS 312 Presentation Show")}/>
             </Col>
           </Row>
 

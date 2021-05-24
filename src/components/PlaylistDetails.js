@@ -32,7 +32,7 @@ export default function PlaylistDetails({ playlist, currShow }) {
   }, []);
 
   let contents;
-  if (playlistSongs !== undefined) {
+  if (playlistSongs) {
     playlistSongs.sort((a, b) => compareTwoSongs(a,b));
 
     const songInfo = playlistSongs.map((song) => 
@@ -47,9 +47,7 @@ export default function PlaylistDetails({ playlist, currShow }) {
     const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd, MMMM Do, YYYY");
     contents = 
       <div>
-        <h2 className={styles.header}>
-        {`Playlist for ${currShow.title} - ${dateString}`}
-      </h2>
+        <h2 className={styles.header}>Playlist for {currShow && currShow.title} - {dateString}</h2>
         {
           playlistSongs === undefined
           ? <p>No songs to display</p>
