@@ -10,7 +10,7 @@ import { sampleSongs } from "../lib/test-utils.js";
 describe("DisplayCurrentPlaylist tests", () => {
 
   // test("current playlist is displayed", () => {
-  //   render(<DisplayCurrentPlaylist playlist ={samplePlaylist} allSongs = {sampleSongs} />);
+  //   render(<DisplayCurrentPlaylist playlist={samplePlaylist} allSongs={sampleSongs} />);
 
   //   expect(screen.getByText("sample title 1")).toBeInTheDocument();
   //   expect(screen.queryByText("sample title 2")).toBeInTheDocument();
@@ -19,7 +19,7 @@ describe("DisplayCurrentPlaylist tests", () => {
   // });
 
   test("no songs when no playlist input, but shows component", () =>{
-    render(<DisplayCurrentPlaylist playlist={undefined} allSongs = {sampleSongs}/>);
+    render(<DisplayCurrentPlaylist playlist={undefined} allSongs={sampleSongs}/>);
 
     expect(screen.queryByText("Current Playlist")).toBeInTheDocument();
     expect(screen.queryByText("sample title 1")).not.toBeInTheDocument();

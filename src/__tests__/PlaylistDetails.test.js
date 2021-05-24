@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import PlaylistDetails from "../components/PlaylistDetails.js";
-import { samplePlaylist, sampleSongs, sampleShows } from "../lib/test-utils.js";
-//import moment from "moment";
+import { samplePlaylist, sampleShows } from "../lib/test-utils.js";
+// import moment from "moment";
 //import fetchMock from "fetch-mock-jest";
 //import { act } from "react-dom/test-utils";
 
@@ -10,18 +10,20 @@ describe("PlaylistDetails tests", () => {
   
   beforeEach(() => {
     handler.mockReset();
-    render(<PlaylistDetails playlist={samplePlaylist} songs={sampleSongs} currShow={sampleShows[1]} backToShow={handler}/>);
+    render(<PlaylistDetails playlist={samplePlaylist} currShow={sampleShows[1]}/>);
   });
   test("Sophisticated test", async () => {
     expect(true).toBeTruthy();
   });
-  /*
-  test("page displays show title and date", async () => {
-    const showTitle = await sampleShows.find((show) => show.id === samplePlaylist.showId).title;
-    const playlistDate = moment(samplePlaylist.date, "M-DD-YYYY").format("dddd MMMM Do YYYY");
-    expect(screen.getByText(`Playlist for ${showTitle} ${playlistDate}`)).toBeInTheDocument();
-  });
+  
+  // test("page displays show title and date", async () => {
+  //   const showTitle = await sampleShows.find((show) => show.id === samplePlaylist.showId).title;
+  //   const playlistDate = moment(samplePlaylist.date, "M-DD-YYYY").format("dddd, MMMM Do, YYYY");
+  //   expect(screen.getByText(showTitle)).toBeInTheDocument();
+  //   expect(screen.getByText(playlistDate)).toBeInTheDocument();
+  // });
 
+  /*
   test("songs are displayed", async () => {
     const expectedSongs = await sampleSongs.filter((song) => song.playlistId === samplePlaylist.id);
 

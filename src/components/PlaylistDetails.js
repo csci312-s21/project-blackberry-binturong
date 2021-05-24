@@ -48,7 +48,7 @@ export default function PlaylistDetails({ playlist, currShow }) {
     contents = 
       <div>
         <h2 className={styles.header}>
-        {`Playlist for ${currShow.title} ${dateString}`}
+        {`Playlist for ${currShow.title} - ${dateString}`}
       </h2>
         {
           playlistSongs === undefined
