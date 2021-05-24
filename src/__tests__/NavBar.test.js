@@ -43,7 +43,7 @@ describe("NavBar tests", ()=>{
   });
 
   test("Home links to Schedule", ()=>{
-    render(<Layout />);
+    render(<Layout title=""/>);
 
     const schedule = screen.getByRole("link", {name:"Schedule"});
     expect(schedule).toBeInTheDocument();

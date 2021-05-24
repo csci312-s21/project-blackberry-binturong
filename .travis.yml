@@ -4,6 +4,7 @@ node_js:
 before_script:
   - export TZ=America/New_York
 cache:
+  npm: false
   directories:
     - node_modules
 script:
