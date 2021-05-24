@@ -34,7 +34,6 @@ describe("Top level integration tests", () => {
     expect(schedule).toHaveAttribute("href", "/schedule");
   });
 });
-8?
 /*
 describe("Start show button integration tests", () => {
 
@@ -45,7 +44,9 @@ describe("Start show button integration tests", () => {
   test("Start show button not visible when logged out", () => {
     useSession.mockReturnValue([undefined, false]);
     render(<WRMCWebsite />);
-    expect(screen.queryByRole("button", { name: "Start Show!" })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: "Start Show!" })
+    ).not.toBeInTheDocument();
   });
   /*
   test("Start show button visible when logged in", async () => {
@@ -55,19 +56,24 @@ describe("Start show button integration tests", () => {
   });
   
   test("Start show button takes user to playlist logger", () => {
-    useSession.mockReturnValue([{user: {name: "username"}}, false]);
+    useSession.mockReturnValue([{ user: { name: "username" } }, false]);
     render(<WRMCWebsite />);
-    expect(screen.getByRole("button", { name: "Start Show!" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Start Show!" })
+    ).toBeInTheDocument();
     const options = screen.queryAllByTestId("show-option");
     const selector = screen.getByRole("combobox");
-    fireEvent.change(selector, { target: { value: options[0].value }});
+    fireEvent.change(selector, { target: { value: options[0].value } });
     const startShowButton = screen.getByRole("button", { name: "Start Show!" });
     expect(startShowButton).toBeEnabled();
     fireEvent.click(startShowButton);
-    expect(screen.getByRole("button", { name: "Add Song" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Add Song" })
+    ).toBeInTheDocument();
   });
 });
 */
+
 describe("PlaylistLogger integration tests", () => {
 
   /* commenting out for linter -- used in test for saving changes
@@ -88,12 +94,16 @@ describe("PlaylistLogger integration tests", () => {
   beforeEach(() => {
     useSession.mockClear();
   });
-  
+
   test("PlaylistLogger not visible when logged out", () => {
     useSession.mockReturnValue([undefined, false]);
     render(<WRMCWebsite />);
-    expect(screen.queryByRole("button", { name: "Add Song" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Go to Current Playlist" })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: "Add Song" })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: "Go to Current Playlist" })
+    ).not.toBeInTheDocument();
   });
 
   /*

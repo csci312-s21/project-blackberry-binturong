@@ -13,5 +13,4 @@ describe("DaySchedule tests", () => {
     expect(screen.getByText("Sample Show 2")).toBeInTheDocument();
     expect(screen.getByText("Daniel Levesque, Lachlan Pinney")).toBeInTheDocument();
   });
-
 });

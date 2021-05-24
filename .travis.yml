@@ -3,9 +3,7 @@ node_js:
   - "lts/erbium"
 before_script:
   - export TZ=America/New_York
-cache:
-  directories:
-    - node_modules
+cache: false
 script:
   - npm run build
   - npm test

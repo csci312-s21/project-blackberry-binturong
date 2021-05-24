@@ -20,5 +20,4 @@ describe("ScheduleFilter tests", () => {
     expect(handler).toHaveBeenCalled();
     expect(handler).toHaveBeenCalledWith(newPage);
   });
-
 });

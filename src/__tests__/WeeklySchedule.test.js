@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import ScheduleContainer from "../components/ScheduleContainer.js";
 
-
 const sampleShows = [{
     "title": "Sample Show 1",
     "DJs": ["Kyle Hooker"],
@@ -35,4 +34,3 @@ describe("ScheduleContainer tests", () => {
   });
 
 });
-

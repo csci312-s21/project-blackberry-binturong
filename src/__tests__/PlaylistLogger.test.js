@@ -7,8 +7,6 @@ import { render } from "@testing-library/react";
 import PlaylistLogger from "../components/PlaylistLogger.js";
 //import { sampleShow, samplePlaylist, sampleSong2 } from "../lib/test-utils.js";
 
-//complete={handler} showID={sampleShow.id} currentPlaylist={samplePlaylist} shows={[sampleShow]} songs={[sampleSong2]}
-
 describe("PlaylistLogger tests", () => {
   const handler = jest.fn();
 
@@ -48,4 +46,3 @@ describe("PlaylistLogger tests", () => {
   });
   */
 });
-

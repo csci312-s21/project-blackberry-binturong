@@ -32,7 +32,7 @@ export default function SongInput({ complete, song, savedInit }) {
         aria-label="Title"
         defaultValue={title}
         onChange={(event) => setTitle(event.target.value)}/>
-      <input 
+      <input
         type="text"
         className={styles.textinput}
         placeholder="Enter artist" 
