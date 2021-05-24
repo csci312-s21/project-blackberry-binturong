@@ -14,12 +14,19 @@ exports.seed = async function (knex) {
   await knex("ShowDJs").del();
   await knex.batchInsert("ShowDJs", djMap, 100);
 
-  shows.forEach((show) => {
-    delete show.DJs;
-    show.genres = show.genres.join();
-  });
+  const showData = shows.map(
+    (show) => ({
+      title: show.title, 
+      description: show.description, 
+      day: show.day,
+      hour: show.hour,
+      duration: show.duration,
+      genres: show.genres.join(),
+      id: show.id
+    })
+  );
   await knex("Show").del();
-  await knex.batchInsert("Show", shows, 100);
+  await knex.batchInsert("Show", showData, 100);
 
   const djContents = fs.readFileSync("./data/djs.json");
   const djData = JSON.parse(djContents);
