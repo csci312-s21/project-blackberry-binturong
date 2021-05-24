@@ -9,26 +9,45 @@
 import Link from "next/link";
 import moment from "moment-timezone";
 import { showType } from "../lib/types.js";
-import styles from "../styles/DisplayCurrentShow.module.css";
-
+import styles from "../styles/Main.module.css";
 moment.tz.setDefault("America/New_York");
 
-export default function DisplayCurrentShow({ show }){
+export default function DisplayCurrentShow({ show }) {
+  const showExists = typeof show !== "undefined";
+  let content = null;
 
-  const showExists = (typeof show !== "undefined");
-  
-  return (
-    <div className={styles.nextThreeShows}>
-      <div className={styles.header}>ON AIR</div>
-      {!showExists && <div className={styles.infoText}> No current show :(( </div>}
-      {showExists && <div className={styles.show}>Current Show: <strong><Link href={`/shows/${show.id}`}><a>{show.title}</a></Link></strong></div>}
-      {showExists && <div className={styles.infoText}><em>DJs: {show.DJs.join(", ")}</em></div>}
-      {showExists && <div className={styles.infoText}> Call the DJ: 802 443 6423 </div>}
-      <div className={styles.message}>TUNE IN!</div>
-    </div>
-  );
+  if (showExists) {
+    content = (
+      <div>
+        <div className={styles.currentshow_title}>ON AIR</div>
+        <span className={styles.currentshow_text}>Current Show: </span>
+        <Link href={`/shows/${show.id}`}>
+          <a className={styles.currentshow_link}>{show.title}</a>
+        </Link>
+        <div className={styles.currentshow_djs}>
+          <em>DJs: {show.DJs.join(", ")}</em>
+        </div>
+        <div className={styles.currentshow_text}>
+          {" "}
+          Call the DJ: 802 443 6423{" "}
+        </div>
+        <div className={styles.currentshow_message}>
+          <strong>TUNE IN!</strong>
+        </div>
+      </div>
+    );
+  } else {
+    content = (
+      <div>
+        <div className={styles.header}>ON AIR</div>
+        <div className={styles.currentshow_text}> No current show :(( </div>
+      </div>
+    );
+  }
+
+  return <div className={styles.index_grid_div}>{content}</div>;
 }
 
 DisplayCurrentShow.propTypes = {
-  show: showType
+  show: showType,
 };

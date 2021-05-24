@@ -4,38 +4,33 @@
   This component displays a button (using ../images/log.png) that allows a user to log into and out of their account.
 
   props:
-    loggedIn - a boolean representing whether the user is logged in
-    handleClick - a function that logs the user in or out when the button is clicked
+    none
 */
-import styles from "../styles/LoginButton.module.css";
+import styles from "../styles/Main.module.css";
 import { signIn, signOut, useSession } from "next-auth/client";
-import { endShow } from "../lib/component-utils.js";
 
-export default function LoginButton(){
+export default function LoginButton() {
   const [session] = useSession();
-  
-  const logOut = () => {
-    endShow();
-    signOut({ redirect: false });
-  }
 
   return (
-    <div className={styles.loginContainer}>
-      {(session)
-        ? <input 
-            className={styles.loginButton} 
-            type="button" 
-            aria-label="logout" 
-            value="Out" 
-            onClick = {() => logOut()}
-          />
-        : <input 
-            className={styles.loginButton} 
-            type="button" 
-            aria-label="login"
-            value="In" 
-            onClick = {() => signIn()}
-          />
-      }
-    </div>);
+    <div>
+      {session ? (
+        <input
+          className={styles.loginButton}
+          type="button"
+          aria-label="logout"
+          value="Out"
+          onClick={() => signOut()}
+        />
+      ) : (
+        <input
+          className={styles.loginButton}
+          type="button"
+          aria-label="login"
+          value="In"
+          onClick={() => signIn()}
+        />
+      )}
+    </div>
+  );
 }

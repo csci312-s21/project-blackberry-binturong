@@ -29,7 +29,6 @@ describe("Tests of the database utility functions", () => {
     sampleShow.DJs = sampleShow.DJs.map((id) => djs.find((dj) => dj.id === id).name);
   });
 
-
   beforeEach(async () => {
     await knex.migrate.rollback();
     await knex.migrate.latest();

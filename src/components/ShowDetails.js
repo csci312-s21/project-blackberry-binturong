@@ -9,9 +9,9 @@
 */
 import Link from "next/link";
 import { getTimeString, getDayString, compareTwoPlaylists } from "../lib/component-utils.js";
-import styles from "../styles/ShowDetails.module.css";
 import { showType } from "../lib/types.js";
 import { useState, useEffect } from "react";
+import styles from "../styles/Main.module.css";
 
 export default function ShowDetails({ show }) {
   const [playlists, setPlaylists] = useState([]);
@@ -38,24 +38,52 @@ export default function ShowDetails({ show }) {
 
   playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b)).reverse();
 
-  const playlistDates = playlistsForShow.map(
-    (playlist) => <li key={playlist.id} data-testid="playlist-date"><Link href={`/playlists/${playlist.id}`}><a>{playlist.date}</a></Link></li>);
+  const playlistDates = playlistsForShow.map((playlist) => (
+    <a
+      href={`/playlists/${playlist.id}`}
+      key={`${playlist.id}`}
+      className={styles.showdetails_time_item}
+    >
+      {playlist.date}
+    </a>
+  ));
 
   return (
     <div data-testid="show details page">
-      <h1 className={styles.showTitle}>{show.title}</h1><br/>
-      <div><span className={styles.showAttr}>Hosted By: </span>{show.DJs.join(", ")}</div><br/>
-      <div><span className={styles.showAttr}>Genre(s): </span>{show.genres.join(", ")}</div><br/>
-      <div><span className={styles.showAttr}>Time: </span>{day}, {time}</div><br/>
-      <div><span className={styles.showAttr}>Description: </span>{show.description}</div><br/>
-      <div>
-        <span className={styles.showAttr}>Playlists: </span>
-        {(playlistDates.length > 0)
-          ? <ul className={styles.playlistDates}>{playlistDates}</ul>
-          : "No playlists to display"}
+      <h1 className={styles.showdetails_title}>{show.title}</h1>
+      <br />
+      <div className={styles.showdetails_div}>
+        <div>
+          <span className={styles.showdetails_attr}>Hosted By: </span>
+          {show.DJs.join(", ")}
+        </div>
+        <br />
+        <div>
+          <span className={styles.showdetails_attr}>Genre(s): </span>
+          {show.genres.join(", ")}
+        </div>
+        <br />
+        <div>
+          <span className={styles.showdetails_attr}>Time: </span>
+          {day}, {time}
+        </div>
+        <br />
+        <div>
+          <span className={styles.showdetails_attr}>Description: </span>
+          {show.description}
+        </div>
+        <br />
+        <div>
+          <p className={styles.showdetails_attr}>Playlists: </p>
+          {playlistDates.length > 0 ? (
+            <ul className={styles.showdetails_time}>{playlistDates}</ul>
+          ) : (
+            "No playlists to display"
+          )}
+        </div>
       </div>
     </div>
-    );
+  );
 }
 
 ShowDetails.propTypes = {

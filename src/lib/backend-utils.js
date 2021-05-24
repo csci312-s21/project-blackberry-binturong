@@ -1,10 +1,8 @@
 import knexConfig from "../../knexfile";
 import knexInitializer from "knex";
-
 export const knex = knexInitializer(
   knexConfig[process.env.NODE_ENV || "development"]
 );
-
 /**
  * Get the list of DJ names for a show.
  * 
@@ -19,7 +17,6 @@ export async function getDJNames(showId) {
   const djNames = djs.map((dj) => dj.name);
   return djNames;
 }
-
 /**
  * Gets all the shows from the database
  * 
@@ -35,7 +32,6 @@ export async function getAllShows() {
   shows.forEach((show) => show.genres = show.genres.split(","));
   return shows;
 }
-
 /**
  * Gets a single show from the database
  * 
@@ -52,7 +48,6 @@ export async function getShow(showId) {
     return null;
   }
 }
-
 /**
  * Gets a single playlist from the database
  * 
@@ -67,7 +62,6 @@ export async function getPlaylist(playlistId) {
     return null;
   }
 }
-
 /**
  * Gets all the playlists from the database
  * 
@@ -77,8 +71,6 @@ export async function getAllPlaylists() {
   const playlists = await knex("Playlist").select();
   return playlists;
 }
-
-
 /**
  * Add a new playlist to the database
  *
@@ -89,7 +81,6 @@ export async function addPlaylist(playlist) {
   const inserted = await knex("Playlist").insert(playlist);
   return {...playlist, id: inserted[0]};
 }
-
 /**
  * Update a playlist in the database
  *
@@ -100,7 +91,6 @@ export async function updatePlaylist(playlist) {
   const success = await knex("Playlist").where({id: playlist.id}).update(playlist);
   return success;
 }
-
 /**
  * Gets all the songs from the database
  * 
@@ -110,7 +100,6 @@ export async function getAllSongs() {
   const songs = await knex("Song").select();
   return songs;
 }
-
 /**
  * Gets a single song from the database
  * 
@@ -125,7 +114,6 @@ export async function getSong(songId) {
     return null;
   }
 }
-
 /**
  * Add a new song to the database
  *
@@ -136,8 +124,6 @@ export async function addSong(song) {
   const inserted = await knex("Song").insert(song);
   return {...song, id: inserted[0]};
 }
-
-
 /**
  * Remove the song associated with the provided id from the database
  *
@@ -148,7 +134,6 @@ export async function deleteSong(id) {
   const success = await knex("Song").where({id: id}).del();
   return success;
 }
-
 /**
  * Update a song in the database
  *
@@ -159,8 +144,6 @@ export async function updateSong(song) {
   const success = await knex("Song").where({id: song.id}).update(song);
   return success;
 }
-
-
 /**
  * Verify whether an email is in the database
  * 
@@ -171,8 +154,6 @@ export async function verifyEmail(email) {
   const emails = await knex.select("email").from("DJs").where({email: email});
   return (emails.length > 0);
 }
-
-
 /**
  * Gets all the DJs from the database
  * 

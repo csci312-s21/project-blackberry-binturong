@@ -1,7 +1,6 @@
 import Layout from "../components/Layout.js";
 import ScheduleContainer from "../components/ScheduleContainer.js";
 import { useState, useEffect} from "react";
-//import shows from "../../data/shows.json";
 
 export default function Schedule() {
   const [shows, setShows] = useState();

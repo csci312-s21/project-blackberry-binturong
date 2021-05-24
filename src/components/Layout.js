@@ -12,9 +12,14 @@ import LoginButton from "../components/LoginButton.js";
 import PlayButton from "../components/PlayButton.js";
 import StartShowButton from "../components/StartShowButton.js";
 import NavBar from "../components/NavBar.js";
-import styles from "../styles/Home.module.css";
+import styles2 from "../styles/Home.module.css";
+import styles from "../styles/Main.module.css";
 import Link from "next/link";
 import PropTypes from "prop-types";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import { useSession } from "next-auth/client";
 import { useState, useEffect } from "react";
 import { getCurrentPlaylist } from "../lib/component-utils.js";
@@ -37,12 +42,17 @@ export default function Layout({ title, children }) {
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-      
-      <div>
+      </Head>      
+      <div className={styles.main_page}>
         <LoginButton/>
-        <Link href="/"><h1>WRMC 91.1 FM</h1></Link>
-        <PlayButton/>
+        <Link href="/">
+          <div className={styles.icon_div}>
+            <img
+              src="https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/logo_large.png"
+              className={styles.wrmc_icon}
+            />
+          </div>
+        </Link>
         {session && 
           (currentPlaylist 
           ? <Link href="/log-playlist">
@@ -51,8 +61,12 @@ export default function Layout({ title, children }) {
           : <StartShowButton/>
           )}
         <NavBar/>
-        
-        <main className={styles.main}>{children}</main>
+        <Row className={styles.index_row_center}>
+          <Col xs={8} md={5} className={styles.index_column}>
+            <PlayButton />
+          </Col>
+        </Row>
+        <main className={styles2.main}>{children}</main>
       </div>
     </div>
   );

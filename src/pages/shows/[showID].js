@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-
 import Layout from "../../components/Layout.js";
 import ShowDetails from "../../components/ShowDetails.js";
 

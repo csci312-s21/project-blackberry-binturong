@@ -1,5 +1,4 @@
 # WRMC 91.1 FM Website - Sprint 3
-Future: bring in the delete functionality
 
 [![Build Status](https://travis-ci.com/csci312-s21/project-blackberry-binturong.svg?branch=main)](https://travis-ci.com/csci312-s21/project-blackberry-binturong)
 
