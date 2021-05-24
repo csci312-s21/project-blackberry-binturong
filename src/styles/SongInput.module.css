@@ -1,0 +1,21 @@
+.row {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color:rgb(242, 255, 255);
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.textinput {
+  margin: 5px;
+}
+
+.buttoninput {
+  margin: 5px;
+}
+
+.image {
+  height: 30px;
+}

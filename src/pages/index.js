@@ -8,6 +8,12 @@ import { upcomingShowsArray } from "../lib/component-utils.js";
 import { useState, useEffect } from "react";
 const fetch = require("node-fetch");
 
+import styles from "../styles/Main.module.css";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 moment.tz.setDefault("America/New_York"); 
 
 export default function WRMCWebsite() {
@@ -50,21 +56,33 @@ export default function WRMCWebsite() {
       if (upcomingShows.length >= 1) {
         isOnAir = upcomingShows[0].hour === now.hour() * 100;
       }
-      const currentPlaylist = allPlaylists.filter((p) => {
-        p.current === true;
-      });
+      const currentPlaylist = allPlaylists.filter((p) => p.current);
 
       mainContents = 
         <Layout title="WRMC 91.1 FM Middlebury College">
-          <ShowOTW show={shows[0]}/>
-          <DisplayCurrentShow
+          <Row>
+            <Col xs={12} md={4} className={styles.index_column}>
+              <DisplayCurrentShow
             show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} />
-          <p>{""}</p>
-          <NextThreeShows
-            shows={isOnAir ? upcomingShows.slice(1, 4) : upcomingShows.slice(0, 3)}/>
-          <DisplayCurrentPlaylist
-            playlist={currentPlaylist}
+            </Col>
+
+            <Col xs={12} md={4} className={styles.index_column}>
+              <DisplayCurrentPlaylist
+            playlist={currentPlaylist.length === 0 ? [] : currentPlaylist[0]}
             allSongs={allSongs} />
+            </Col>
+
+            <Col xs={12} md={4} className={styles.index_column}>
+              <ShowOTW show={shows[71]}/>
+            </Col>
+          </Row>
+
+          <Row className={styles.index_row_center}>
+            <Col xs={12} md={8} className={styles.index_column}>
+              <NextThreeShows
+            shows={isOnAir ? upcomingShows.slice(1, 4) : upcomingShows.slice(0, 3)}/>
+            </Col>
+          </Row>
         </Layout>
   }
 

@@ -108,6 +108,10 @@
   margin-bottom: 12px;
 }
 
+.currentlist_item {
+  list-style-type: none;
+}
+
 /* ==== DisplayCurrentShow ==== */
 .currentshow_title {
   font-size: 22px;
@@ -361,6 +365,7 @@
   font-weight: 600;
   line-height: 1.1;
   margin-top: 0px;
+  text-decoration: none;
 }
 
 .weeklyshow_title:hover {

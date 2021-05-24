@@ -53,19 +53,21 @@ export default function Layout({ title, children }) {
             />
           </div>
         </Link>
-        {session && 
-          (currentPlaylist 
-          ? <Link href="/log-playlist">
-              <input type="button" value="Go to Current Playlist"/>
-            </Link>
-          : <StartShowButton/>
-          )}
         <NavBar/>
         <Row className={styles.index_row_center}>
           <Col xs={8} md={5} className={styles.index_column}>
             <PlayButton />
           </Col>
         </Row>
+        <div className={styles.startshow_div}>
+            {session && 
+            (currentPlaylist 
+            ? <Link href="/log-playlist">
+                <input type="button" value="Go to Current Playlist"/>
+              </Link>
+            : <StartShowButton/>
+            )}
+          </div>
         <main className={styles2.main}>{children}</main>
       </div>
     </div>
