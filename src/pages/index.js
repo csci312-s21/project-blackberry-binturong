@@ -92,24 +92,23 @@ export default function WRMCWebsite() {
     displayPage = (
       <div>
         <Container>
+          <div className={styles.startshow_div}>
+            {session &&
+              (currentPlaylist ? (
+                <input
+                  type="button"
+                  value="Go to Current Playlist"
+                  onClick={() => setLoggingPlaylist(true)}
+                />
+              ) : (
+                <StartShowButton
+                  userShows={allShows.slice(0, 4)}
+                  startShow={startShow}
+                />
+              ))}
+          </div>
+
           <Row>
-            <Col xs={12} md={4} className={styles.index_column}>
-              {session &&
-                (currentPlaylist ? (
-                  <input
-                    type="button"
-                    value="Go to Current Playlist"
-                    onClick={() => setLoggingPlaylist(true)}
-                  />
-                ) : (
-                  <StartShowButton
-                    userShows={
-                      allShows.slice(0, 4) /* this slice is temporary */
-                    }
-                    startShow={startShow}
-                  />
-                ))}
-            </Col>
             <Col xs={12} md={4} className={styles.index_column}>
               <DisplayCurrentShow
                 show={

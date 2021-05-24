@@ -22,6 +22,11 @@
   margin-bottom: 10px;
 }
 
+.startshow_div {
+  display: flex;
+  justify-content: center;
+}
+
 .footer_style {
   margin-top: 10px;
   display: flex;
@@ -278,8 +283,21 @@
 
 .showdetails_time li {
   font-style: italic;
-  padding: 0;
+  padding: 0px;
   cursor: pointer;
+}
+
+.showdetails_time_item {
+  padding-left: 8px;
+  padding-right: 8px;
+  color: black;
+  text-decoration: underline;
+}
+
+.showdetails_time_item:hover {
+  color: black;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 /* ==== DaySchedule ==== */

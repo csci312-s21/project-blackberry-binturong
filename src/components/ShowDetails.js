@@ -28,7 +28,11 @@ export default function ShowDetails({ show, playlists }) {
   playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b)).reverse();
 
   const playlistDates = playlistsForShow.map((playlist) => (
-    <a href={`/playlists/${playlist.id}`} key={`${playlist.id}`}>
+    <a
+      href={`/playlists/${playlist.id}`}
+      key={`${playlist.id}`}
+      className={styles.showdetails_time_item}
+    >
       {playlist.date}
     </a>
   ));
