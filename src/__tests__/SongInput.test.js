@@ -3,8 +3,7 @@
 Tests for SongInput.js
 
 */
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import fetchMock from "fetch-mock-jest";
+import { render, screen, fireEvent } from "@testing-library/react";
 import SongInput from "../components/SongInput";
 
 const sampleTitle = "Sample Title";

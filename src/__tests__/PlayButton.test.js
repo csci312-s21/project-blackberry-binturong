@@ -16,7 +16,7 @@ describe("PlayButton tests", () => {
    test("opens link to the boombox", () => {
     render(<PlayButton/>);
     global.open = jest.fn();
-    fireEvent.click(screen.queryByRole("button", { name: "LISTEN NOW" }));
+    fireEvent.click(screen.queryByText("LISTEN NOW"));
     expect(global.open).toHaveBeenCalled();
 
    })

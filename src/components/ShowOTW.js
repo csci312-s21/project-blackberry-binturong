@@ -11,8 +11,8 @@ import styles from "../styles/Main.module.css";
 import { getTimeString, getDayString } from "../lib/component-utils.js";
 
 export default function ShowOTW({ show }) {
-  const time = getTimeString(show.time.hour, show.time.duration);
-  const day = getDayString(show.time.day);
+  const time = getTimeString(show.hour, show.duration);
+  const day = getDayString(show.day);
   return (
     <div className={styles.index_grid_div}>
       <p className={styles.showotw_title}>Show Of The Week</p>

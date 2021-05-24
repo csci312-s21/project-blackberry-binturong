@@ -14,7 +14,7 @@ export default function SongInput({ complete, song, savedInit }) {
   const [title, setTitle] = useState(song ? song.title : "");
   const [artist, setArtist] = useState(song ? song.artist : "");
   const [album, setAlbum] = useState(song ? song.album : "");
-  const [albumArt, setAlbumArt] = useState(song ? song.albumArt : "https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png");
+  const [albumArt] = useState(song ? song.albumArt : "https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png");
   const [saved, setSaved] = useState(savedInit);
 
   const saveSong = async (newSong) => {
@@ -56,6 +56,7 @@ export default function SongInput({ complete, song, savedInit }) {
           title: title,
           artist: artist,
           album: album,
+          albumArt: albumArt,
           time: (event.target.value === "Update") ? song.time : moment().format("LT")}
           )}/>
       <input

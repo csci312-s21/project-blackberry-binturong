@@ -11,7 +11,7 @@ import { getTimeString } from "../lib/component-utils.js";
 import styles from "../styles/Main.module.css";
 
 export default function ShowSnippet({ show }) {
-  const time = getTimeString(show.time.hour, show.time.duration);
+  const time = getTimeString(show.hour, show.duration);
 
   return (
     <div className={styles.snippet_div}>

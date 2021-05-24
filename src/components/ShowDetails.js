@@ -7,7 +7,6 @@
   props:
     show - a show object
 */
-import Link from "next/link";
 import { getTimeString, getDayString, compareTwoPlaylists } from "../lib/component-utils.js";
 import { showType } from "../lib/types.js";
 import { useState, useEffect } from "react";

@@ -25,7 +25,7 @@ export const getTimeString = (hour, duration) => {
   const start = (hour === 0) ? moment(hour, "H") : moment(hour, "Hmm");
   return `${start.format("h:mm")} - ${start.add(duration, "hour").format("h:mm a")}`;
 }
-//Takes the char from show.time.day and returns string of the day (e.g. "M" ==> "Monday"). Right now, I'm only using it for showOTW, but I'd imagine it might come in handy later. 
+//Takes the char from show.day and returns string of the day (e.g. "M" ==> "Monday"). Right now, I'm only using it for showOTW, but I'd imagine it might come in handy later. 
 export const getDayString = (d) => {
   if (d==="M"){return "Monday"}
   else if (d==="T"){return "Tuesday"}

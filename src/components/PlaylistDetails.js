@@ -10,8 +10,6 @@
 */
 import { useState, useEffect } from "react";
 import { playlistType, showType } from "../lib/types.js";
-import Link from "next/link";
-import PropTypes from "prop-types";
 import styles from "../styles/PlaylistDetails.module.css";
 import moment from "moment";
 import { compareTwoSongs } from "../lib/component-utils.js";
