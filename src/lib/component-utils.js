@@ -36,7 +36,6 @@ export const getDayString = (d) => {
   else if (d==="S"){return "Saturday"}
   else if (d==="Su"){return "Sunday"}
 }
-
 // this function will generate a random 17-digit integer
 // according to the nano id collision calculator, "~256 years needed, in order to have a 1% probability of at least one collision."
 export const getRandomIntID = () => {
@@ -52,14 +51,12 @@ export const upcomingShowsArray = (shows, now) => {
   upcomingShows.sort((a, b) => compareTwoShows(a, b));
   return upcomingShows;
 }
-
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoPlaylists = (a, b) => {
   const aDate = moment(a.date, "M-DD-YYYY");
   const bDate = moment(b.date, "M-DD-YYYY");
   return aDate.isBefore(bDate) ? -1 : 1;
 }
-
 // this function returns the earlier of two playlists based on playlist.date
 export const compareTwoSongs = (a, b) => {
   return moment(a.time, "h:mm a").isBefore(moment(b.time, "h:mm a")) ? -1 : 1;

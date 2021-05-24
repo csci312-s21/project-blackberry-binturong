@@ -24,7 +24,6 @@ export default function SongInput({ complete, song, savedInit }) {
   }
 
   return (
-
     <div className={styles.row}>
       <input 
         type="text" 

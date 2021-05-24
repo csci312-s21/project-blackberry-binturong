@@ -32,7 +32,6 @@ describe("NavBar tests", ()=>{
 
   test("Home links to About", ()=>{
     render(<Layout title=""/>);
-
     const about = screen.getByRole("link", {name:"About"});
     expect(about).toBeInTheDocument();
     expect(about).toHaveAttribute("href", "/about");

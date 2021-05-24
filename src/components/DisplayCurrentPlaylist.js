@@ -27,6 +27,7 @@ export default function DisplayCurrentPlaylist({ playlist, allSongs }) {
   }
 
   const noShowMessage = "There's not always a show, but there's always great music!";
+
   return (
     <div className={styles.index_grid_div}>
       <p className={styles.currentplaylist_title}>Current Playlist</p>

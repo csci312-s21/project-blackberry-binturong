@@ -1,6 +1,5 @@
 /*
   WeeklyShow.js
-
   Shows a single show in the schedule
   props:
     show - the show to display
@@ -30,7 +29,6 @@ export default function WeeklyShow({ show }){
     </div>
   );
 }
-
 WeeklyShow.propTypes = {
   show: PropTypes.shape({showType}).isRequired
 };

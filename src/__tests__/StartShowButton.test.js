@@ -43,6 +43,5 @@ describe("StartShowButton tests", () => {
     fireEvent.click(startShowButton);
     expect(handler).toHaveBeenCalledWith(sampleShow.id);
   });
-
   */
 });
