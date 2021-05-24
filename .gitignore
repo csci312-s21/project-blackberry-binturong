@@ -32,12 +32,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-<<<<<<< HEAD
-yarn.lock
-
-
-=======
-# database files
-*.sqlite3
->>>>>>> 9efd8ec48077df2d5517af92c1febc8cde84387f
