@@ -79,7 +79,7 @@ export async function getAllPlaylists() {
  * @returns the playlist with a new id attached
  */
 export async function addPlaylist(playlist) {
-  const [result] = await knex("Playlist").insert(playlist, , ["id"]);
+  const [result] = await knex("Playlist").insert(playlist, ["id"]);
   const playlistId = result.id ? result.id : result;
   return {...playlist, id: playlistId};
 }
