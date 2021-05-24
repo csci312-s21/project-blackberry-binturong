@@ -5,8 +5,10 @@ Tests for NavBar.js
 */
 import { render, screen } from "@testing-library/react";
 import Home from "../pages/index";
-import Schedule from "../pages/schedule";
+import Layout from "../components/Layout";
+import Schedule from "../components/ScheduleContainer";
 import About from "../pages/about";
+import { sampleShows } from "../lib/test-utils.js";
 
 describe("NavBar tests", ()=>{
   const handler = jest.fn();
@@ -25,7 +27,7 @@ describe("NavBar tests", ()=>{
   });
 
   test("Home links to About", ()=>{
-    render(<Home />);
+    render(<Layout />);
 
     const about = screen.getByRole("link", {name:"About"});
     expect(about).toBeInTheDocument();
@@ -33,16 +35,12 @@ describe("NavBar tests", ()=>{
   });
 
   test("Schedule page is in place", ()=>{
-    render(<Schedule />);
-
-    expect(screen.getByRole("row", {name:"Monday Tuesday Wednesday Thursday Friday Saturday Sunday"})).toBeInTheDocument();
-    const home = screen.getByRole("link", {name:"Home"});
-    expect(home).toBeInTheDocument();
-    expect(home).toHaveAttribute("href", "/");
+    render(<Schedule shows = {sampleShows}/>);
+    expect(screen.getByText("Monday")).toBeInTheDocument();
   });
 
   test("Home links to Schedule", ()=>{
-    render(<Home />);
+    render(<Layout />);
 
     const schedule = screen.getByRole("link", {name:"Schedule"});
     expect(schedule).toBeInTheDocument();

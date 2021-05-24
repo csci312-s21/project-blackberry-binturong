@@ -12,7 +12,7 @@ describe("DisplayCurrentPlaylist tests", () => {
   test("current playlist is displayed", () => {
     render(<DisplayCurrentPlaylist playlist ={samplePlaylist} allSongs = {sampleSongs} />);
 
-    expect(screen.queryByText("sample title 1")).toBeInTheDocument();
+    expect(screen.getByText("sample title 1")).toBeInTheDocument();
     expect(screen.queryByText("sample title 2")).toBeInTheDocument();
     expect(screen.queryByText("sample title 3")).toBeInTheDocument();
     expect(screen.queryByText("sample title 4")).toBeInTheDocument();

@@ -24,12 +24,12 @@ export const songType = PropTypes.shape({
   album: PropTypes.string.isRequired,
   time: PropTypes.string,
   id: PropTypes.number.isRequired,
-  playlistID: PropTypes.number.isRequired,
+  playlistId: PropTypes.number.isRequired,
 });
 
 // PropTypes of playlist object
 export const playlistType = PropTypes.shape({
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  showID: PropTypes.number.isRequired,
+  showId: PropTypes.number.isRequired,
 });

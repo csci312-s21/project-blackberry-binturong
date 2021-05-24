@@ -16,22 +16,28 @@ import { compareTwoSongs } from "../lib/component-utils.js";
 export default function PlaylistDetails({ playlist, currShow }) {
   const [playlistSongs, setPlaylistSongs] = useState([]);
 
+  console.log('top')
+  console.log(playlist);
+  console.log(currShow);
+  console.log('buttom')
   useEffect(() => {
     const getSongs = async () => {
       const response = await fetch("/api/songs");
-
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-
       const allSongs = await response.json();
-
-      setPlaylistSongs(allSongs.filter((song) => song.playlistId === playlist.id));
+      const filteredSongs = allSongs.filter((song) => song.playlistId === playlist.id)
+      console.log('songs')
+      console.log(filteredSongs);
+      setPlaylistSongs(filteredSongs);
     }
     getSongs();
   }, []);
 
-  playlistSongs.sort((a, b) => compareTwoSongs(a,b));
+  let contents;
+  if (currShow) {
+    playlistSongs.sort((a, b) => compareTwoSongs(a,b));
 
   const songInfo = playlistSongs.map((song) => 
     <tr key={song.id}>
@@ -43,9 +49,6 @@ export default function PlaylistDetails({ playlist, currShow }) {
   );
 
   const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd, MMMM Do, YYYY");
-
-  let contents;
-  if (currShow) {
     contents = 
       <div>
         <h2 className={styles.header}>Playlist for {currShow && currShow.title} - {dateString}</h2>

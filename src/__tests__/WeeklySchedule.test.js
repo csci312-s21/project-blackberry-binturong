@@ -6,11 +6,9 @@ const sampleShows = [{
     "title": "Sample Show 1",
     "DJs": ["Kyle Hooker"],
     "description": "sample description 1",
-    "time": {
-      "day": "F",
-      "hour": 800,
-      "duration": 1
-    },
+    "day": "F",
+    "hour": 800,
+    "duration": 1,
     "genres": ["Rock"],
     "id": 55
   },
@@ -18,11 +16,9 @@ const sampleShows = [{
     "title": "Sample Show 2",
     "DJs": ["Sam", "Cliff"],
     "description": "sample description 2",
-    "time": {
-      "day": "M",
-      "hour": 900,
-      "duration": 1
-    },
+    "day": "M",
+    "hour": 900,
+    "duration": 1,
     "genres": ["Rock"],
     "id": 56
   }];

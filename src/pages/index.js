@@ -6,6 +6,7 @@ import Layout from "../components/Layout.js";
 import moment from "moment-timezone";
 import { upcomingShowsArray } from "../lib/component-utils.js";
 import { useState, useEffect } from "react";
+const fetch = require("node-fetch");
 
 moment.tz.setDefault("America/New_York"); 
 
@@ -16,7 +17,7 @@ export default function WRMCWebsite() {
 
   useEffect(() => {
     const getData = async () => {
-      const responseShow = await fetch( "/api/shows");
+      const responseShow = await fetch("/api/shows");
       if (!responseShow.ok) {
         throw new Error(responseShow.statusText);
       }

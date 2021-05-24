@@ -13,7 +13,6 @@ import PropTypes from "prop-types";
 import styles from "../styles/DisplayCurrentPlaylist.module.css";
 
 export default function DisplayCurrentPlaylist({ playlist, allSongs }){
-
   let currentPlaylist;
   let currentSongs;
   const noShowMessage = "There's not always a show, but there's always great music!";

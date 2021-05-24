@@ -88,6 +88,7 @@ export default function PlaylistLogger() {
   };
 
   const addRow = () => {
+    //console.log("ADD ROWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
     const emptySong = {title: "", artist: "", album: "", playlistId: currentPlaylist.id, id: getRandomIntID()}
     const newEmptyRows = [...emptyRows, {...emptySong}];
     setEmptyRows(newEmptyRows);
