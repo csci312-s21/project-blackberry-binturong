@@ -5,6 +5,7 @@ import { useState, useEffect} from "react";
 
 export default function Schedule() {
   const [shows, setShows] = useState();
+
   useEffect(() => {
     const getData = async () => {
       const response = await fetch( "/api/shows");
@@ -18,7 +19,7 @@ export default function Schedule() {
   }, []);
 
   let mainContents;
-  if (shows !== undefined){
+  if (shows){
     mainContents = <Layout title="Schedule | WRMC 91.1 FM">
       <ScheduleContainer shows={shows}/>
     </Layout>
@@ -26,7 +27,7 @@ export default function Schedule() {
 
   return (
     <div>
-    {mainContents}
+      {mainContents}
     </div>
   );
 }
