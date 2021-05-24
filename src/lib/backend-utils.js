@@ -79,8 +79,9 @@ export async function getAllPlaylists() {
  * @returns the playlist with a new id attached
  */
 export async function addPlaylist(playlist) {
-  const inserted = await knex("Playlist").insert(playlist);
-  return {...playlist, id: inserted[0]};
+  const [result] = await knex("Playlist").insert(playlist);
+  const playlistId = result.id ? result.id : result;
+  return {...playlist, id: playlistId};
 }
 /**
  * Update a playlist in the database
@@ -122,8 +123,9 @@ export async function getSong(songId) {
  * @returns the song with a new id attached
  */
 export async function addSong(song) {
-  const inserted = await knex("Song").insert(song);
-  return {...song, id: inserted[0]};
+  const [result] = await knex("Song").insert(song);
+  const songId = result.id ? result.id : result;
+  return {...song, id: songId};
 }
 /**
  * Remove the song associated with the provided id from the database
