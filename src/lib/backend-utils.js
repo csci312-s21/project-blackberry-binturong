@@ -79,7 +79,7 @@ export async function getAllPlaylists() {
  * @returns the playlist with a new id attached
  */
 export async function addPlaylist(playlist) {
-  const [result] = await knex("Playlist").insert(playlist);
+  const [result] = await knex("Playlist").insert(playlist, , ["id"]);
   const playlistId = result.id ? result.id : result;
   return {...playlist, id: playlistId};
 }
@@ -123,7 +123,7 @@ export async function getSong(songId) {
  * @returns the song with a new id attached
  */
 export async function addSong(song) {
-  const [result] = await knex("Song").insert(song);
+  const [result] = await knex("Song").insert(song, ["id"]);
   const songId = result.id ? result.id : result;
   return {...song, id: songId};
 }
