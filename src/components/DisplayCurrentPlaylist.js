@@ -14,7 +14,7 @@ import styles from "../styles/Main.module.css";
 
 export default function DisplayCurrentPlaylist({ playlist, allSongs }) {
 
-  let currentSongsList;
+  let currentSongsList = [];
 
   if (playlist) {
     const currentSongs = allSongs.filter((song) => song.playlistId === playlist.id);
@@ -33,7 +33,7 @@ export default function DisplayCurrentPlaylist({ playlist, allSongs }) {
       <p className={styles.currentplaylist_title}>Current Playlist</p>
       <div>
         <ul className={styles.currentplaylist_text}>
-          {(playlist) ? currentSongsList : noShowMessage} 
+          {(currentSongsList.length !== 0) ? currentSongsList : noShowMessage} 
         </ul>
       </div>
     </div>

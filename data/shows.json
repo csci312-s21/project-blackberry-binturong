@@ -421,7 +421,7 @@
   },
   {
     "title": "Democracy Now!",
-    "DJs": [63],
+    "DJs": [67],
     "description": "Democracy Now! is a national, daily, independent, award-winning news program hosted by journalists Amy Goodman and Juan Gonzalez",
     "day": "Th",
     "hour": 800,
@@ -726,7 +726,7 @@
     "description": "This is a show for demonstation purposes",
     "day": "T",
     "hour": 1900,
-    "duration": 2,
+    "duration": 1,
     "genres": ["Talk"],
     "id": 71
   }
