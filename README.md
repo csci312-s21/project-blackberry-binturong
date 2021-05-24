@@ -1,4 +1,4 @@
-## Sprint 2
+# WRMC 91.1 FM Website - Sprint 3
 
 [![Build Status](https://travis-ci.com/csci312-s21/project-blackberry-binturong.svg?branch=main)](https://travis-ci.com/csci312-s21/project-blackberry-binturong)
 

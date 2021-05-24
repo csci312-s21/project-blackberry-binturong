@@ -88,6 +88,7 @@ export default function PlaylistLogger() {
   };
 
   const addRow = () => {
+    //console.log("ADD ROWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
     const emptySong = {title: "", artist: "", album: "", playlistId: currentPlaylist.id, id: getRandomIntID()}
     const newEmptyRows = [...emptyRows, {...emptySong}];
     setEmptyRows(newEmptyRows);
@@ -113,7 +114,7 @@ export default function PlaylistLogger() {
     (song) => <li key={song.id}><SongInput complete={handleClick} song={song} savedInit={false}/></li>);
 
   return (
-    <div>
+    <div className={styles.playlist}>
       {currentShow && <h1 className={styles.title}>Playlist for {currentShow.title}</h1>}
       <ul className={styles.rows}>{[...currentRows, ...currentEmptyRows]}</ul>
       <input

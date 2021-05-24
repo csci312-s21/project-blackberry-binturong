@@ -43,6 +43,4 @@ const handler = nc({ onError })
       res.status(404).end(`Song with id ${id} not found`);
     }
   });
-  
-
 export default handler;
