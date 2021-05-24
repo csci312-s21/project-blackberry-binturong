@@ -111,6 +111,20 @@ export async function getAllSongs() {
   return songs;
 }
 
+/**
+ * Gets a single song from the database
+ * 
+ * @param {integer} songId 
+ * @returns a song with id songId
+ */
+export async function getSong(songId) {
+  const [song] = await knex("Song").where({id: songId}).select();
+  if (song) {
+    return song;
+  } else {
+    return null;
+  }
+}
 
 /**
  * Add a new song to the database
