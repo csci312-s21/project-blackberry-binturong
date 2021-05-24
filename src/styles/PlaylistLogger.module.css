@@ -1,12 +1,12 @@
 .playlist {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  background-color:hsl(183, 100%, 96%);
+  align-items: center;
+  justify-content: center;
+  background-color:lightcyan;
   width: 100%;
   margin: 5px;
   padding: 5px;
-  border: solid black;
   border-radius: 10px;
 }
 
