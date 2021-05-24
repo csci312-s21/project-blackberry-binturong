@@ -5,7 +5,6 @@
     show - the show to display
 */
 import PropTypes from "prop-types";
-import Link from "next/link";
 import styles from "../styles/Main.module.css";
 import { showType } from "../lib/types.js";
 import { colors } from "../lib/component-utils.js"
