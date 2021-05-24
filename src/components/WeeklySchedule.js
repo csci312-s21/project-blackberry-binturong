@@ -9,21 +9,13 @@
 
 import PropTypes from "prop-types";
 import WeeklyShow from "./WeeklyShow";
-//import { dayToInt } from "../lib/component-utils.js";
+import { dayToInt } from "../lib/component-utils.js";
 import styles from "../styles/WeeklyShow.module.css";
 import { showType } from "../lib/types.js";
-const dayToInt = {
-  "Su": 0,
-  "M": 1,
-  "T": 2,
-  "W": 3,
-  "Th": 4,
-  "F": 5,
-  "S": 6
-}
+
 
 export default function WeeklySchedule({ shows, setFilter}){
-  let showsArr = [];
+  const showsArr = [];
   const days = ["","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   const firstRow = days.map((d, i) => {

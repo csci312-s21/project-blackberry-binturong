@@ -19,29 +19,9 @@ export default function SongInput({ complete, song, savedInit }) {
 
   const saveSong = async (newSong) => {
     setSaved(true);
-
-    const image = await getAlbumArt(song);
-    setAlbumArt(image);
-
     const action = saved ? "update" : "enter";
-    complete(action, {...newSong, albumArt: albumArt});
+    complete(action, newSong);
   }
-
-  const getAlbumArt = async (song) => {
-    const response = await fetch(`${process.env.LASTFM_ROOT}?method=album.getinfo&api_key=${process.env.LASTFM_KEY}&artist=${song.artist}&album=${song.album}&format=json`);
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    };
-
-    const albumData = await response.json();
-
-    if ("album" in albumData && albumData.album.image[0]["#text"] !== "") {
-      return albumData.album.image[0]["#text"];
-    } else {
-      return "https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png";
-    }
-  };
 
   return (
     <div className={styles.row}>
@@ -78,6 +58,10 @@ export default function SongInput({ complete, song, savedInit }) {
           album: album,
           time: (event.target.value === "Update") ? song.time : moment().format("LT")}
           )}/>
+      <input
+        type="button"
+        value="Delete"
+        onClick={() => complete("delete", {...song})}/>
       <img src={albumArt} className={styles.image}/>
     </div>
   );

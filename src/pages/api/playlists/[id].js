@@ -9,7 +9,7 @@ function onError(error, req, res) {
 const handler = nc({ onError })
   .get(async (req, res) => {
     const { id } = req.query;
-    const playlist = await getPlaylist(id);
+    const playlist = await getPlaylist(+id);
 
     if (playlist) {
       res.status(200).json(playlist);

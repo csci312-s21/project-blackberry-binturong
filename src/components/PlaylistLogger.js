@@ -78,7 +78,6 @@ export default function PlaylistLogger() {
     } else if (action === "delete") {
       const response = await fetch(`/api/songs/${newSong.id}`, {
         method: "DELETE",
-        headers: new Headers({ "Content-type": "application/json" }),
       });
 
       if (!response.ok) {

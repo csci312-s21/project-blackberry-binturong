@@ -42,7 +42,6 @@ export default function PlaylistDisplay() {
       getShow();
     }
   }, [selectedPlaylist]);
-  console.log(selectedPlaylist);
   return (
     <Layout title={selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>
       <main>{selectedPlaylist && <PlaylistDetails playlist={selectedPlaylist} currShow={selectedShow}/>}</main>

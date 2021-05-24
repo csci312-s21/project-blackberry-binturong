@@ -10,7 +10,7 @@ const handler = nc({ onError })
   .get(async (req, res) => {
     const { id } = req.query;
 
-    const show = await getShow(id);
+    const show = await getShow(+id);
     if (show) {
       res.status(200).json(show);
     } else {

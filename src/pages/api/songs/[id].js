@@ -16,7 +16,7 @@ const handler = nc({ onError })
   .get(async (req, res) => {
     const { id } = req.query;
 
-    const song = await getSong(id);
+    const song = await getSong(+id);
     if (song) {
       res.status(200).json(song);
     } else {
@@ -25,7 +25,7 @@ const handler = nc({ onError })
   })
   .delete(async (req, res) => {
     const { id } = req.query;
-    const success = await deleteSong(id);
+    const success = await deleteSong(+id);
     if (success) {
       res.status(200).end();
     } else {

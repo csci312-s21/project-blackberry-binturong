@@ -9,7 +9,7 @@ function onError(error, req, res) {
 const handler = nc({ onError })
   .get(async (req, res) => {
     const { id } = req.query;
-    const djs = await getDJNames(id);
+    const djs = await getDJNames(+id);
     if (djs) {
       res.status(200).json(djs);
     } else {
