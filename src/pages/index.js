@@ -4,17 +4,19 @@ import DisplayCurrentShow from "../components/DisplayCurrentShow";
 import PlaylistLogger from "../components/PlaylistLogger.js";
 import DisplayCurrentPlaylist from "../components/DisplayCurrentPlaylist.js";
 import Layout from "../components/Layout.js";
+import StartShowButton from "../components/StartShowButton.js";
 
 import moment from "moment-timezone";
 import shows from "../../data/shows.json";
 import { sampleSongs } from "../lib/test-utils.js";
 import styles from "../styles/Main.module.css";
+import playlists from "../../data/playlists.json";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { upcomingShowsArray } from "../lib/component-utils.js";
+import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/client";
@@ -23,6 +25,7 @@ moment.tz.setDefault("America/New_York");
 
 export default function WRMCWebsite() {
   const [allShows] = useState(shows);
+  const [allPlaylists, setAllPlaylists] = useState(playlists);
   const [allSongs, setAllSongs] = useState(sampleSongs);
   const [sotw] = useState(allShows[6]); //placeholder, eventually we will want a callback: "setSotw"
   const [loggingPlaylist, setLoggingPlaylist] = useState(false);
@@ -45,13 +48,24 @@ export default function WRMCWebsite() {
       setAllSongs([...allSongs, newSong]);
     } else if (action === "update") {
       const newSongs = allSongs.map((song) =>
-        song.id === newSong.id ? newSong : song
+        (song.id === newSong.id ? newSong : song)
       );
       setAllSongs(newSongs);
     } else if (action === "delete") {
       const newSongs = allSongs.filter((song) => song.id !== newSong.id);
       setAllSongs(newSongs);
     }
+  };
+
+  const startShow = (showId) => {
+    setLoggingPlaylist(true);
+    const newPlaylist = {
+      date: moment().format("M-DD-YYYY"),
+      showID: showId,
+      id: getRandomIntID(),
+    };
+    setCurrentPlaylist(newPlaylist);
+    setAllPlaylists([...allPlaylists, newPlaylist]);
   };
 
   // determines the current and next three shows
@@ -79,6 +93,23 @@ export default function WRMCWebsite() {
       <div>
         <Container>
           <Row>
+            <Col xs={12} md={4} className={styles.index_column}>
+              {session &&
+                (currentPlaylist ? (
+                  <input
+                    type="button"
+                    value="Go to Current Playlist"
+                    onClick={() => setLoggingPlaylist(true)}
+                  />
+                ) : (
+                  <StartShowButton
+                    userShows={
+                      allShows.slice(0, 4) /* this slice is temporary */
+                    }
+                    startShow={startShow}
+                  />
+                ))}
+            </Col>
             <Col xs={12} md={4} className={styles.index_column}>
               <DisplayCurrentShow
                 show={

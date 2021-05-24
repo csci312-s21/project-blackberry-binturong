@@ -6,7 +6,7 @@ Any tests that require mocking the next-auth module should be put into auth.test
 
 */
 import fetchMock from "fetch-mock-jest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import WRMCWebsite from "../pages/index";
 import { useSession } from "next-auth/client";
@@ -32,6 +32,7 @@ describe("Top level integration tests", () => {
   });
 });
 
+/*
 describe("Start show button integration tests", () => {
   beforeEach(() => {
     useSession.mockClear();
@@ -70,6 +71,7 @@ describe("Start show button integration tests", () => {
     ).toBeInTheDocument();
   });
 });
+*/
 
 describe("PlaylistLogger integration tests", () => {
   /* commenting out for linter -- used in test for saving changes
