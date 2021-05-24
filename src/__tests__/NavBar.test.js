@@ -8,11 +8,16 @@ import Layout from "../components/Layout";
 import Schedule from "../components/ScheduleContainer";
 import About from "../pages/about";
 import { sampleShows } from "../lib/test-utils.js";
+import { useSession } from "next-auth/client";
+
+jest.mock("next-auth/client");
 
 describe("NavBar tests", ()=>{
   const handler = jest.fn();
 
   beforeEach(() => {
+    useSession.mockClear();
+    useSession.mockReturnValue([undefined, false]);
     handler.mockReset();
   });
 
@@ -26,7 +31,7 @@ describe("NavBar tests", ()=>{
   });
 
   test("Home links to About", ()=>{
-    render(<Layout />);
+    render(<Layout title=""/>);
 
     const about = screen.getByRole("link", {name:"About"});
     expect(about).toBeInTheDocument();

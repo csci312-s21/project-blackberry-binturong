@@ -6,12 +6,17 @@ Tests for StartShowButton.js
 import { render } from "@testing-library/react";
 import StartShowButton from "../components/StartShowButton.js";
 import { sampleShows } from "../lib/test-utils.js";
+import { useSession } from "next-auth/client";
+
+jest.mock("next-auth/client");
 
 describe("StartShowButton tests", () => {
   const handler = jest.fn();
 
   beforeEach(() => {
+    useSession.mockClear();
     handler.mockReset();
+    useSession.mockReturnValue([{ user: { name: "username" } }, false]);
     render(<StartShowButton userShows={sampleShows} startShow={handler}/>);
   });
   
