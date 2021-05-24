@@ -7,29 +7,31 @@
     loggedIn - a boolean representing whether the user is logged in
     handleClick - a function that logs the user in or out when the button is clicked
 */
-import styles from "../styles/LoginButton.module.css";
+import styles from "../styles/Main.module.css";
 import { signIn, signOut, useSession } from "next-auth/client";
 
-export default function LoginButton(){
+export default function LoginButton() {
   const [session] = useSession();
 
   return (
-    <div className={styles.loginContainer}>
-      {(session)
-        ? <input 
-            className={styles.loginButton} 
-            type="button" 
-            aria-label="logout" 
-            value="Out" 
-            onClick = {() => signOut()}
-          />
-        : <input 
-            className={styles.loginButton} 
-            type="button" 
-            aria-label="login"
-            value="In" 
-            onClick = {() => signIn()}
-          />
-      }
-    </div>);
+    <div>
+      {session ? (
+        <input
+          className={styles.loginButton}
+          type="button"
+          aria-label="logout"
+          value="Out"
+          onClick={() => signOut()}
+        />
+      ) : (
+        <input
+          className={styles.loginButton}
+          type="button"
+          aria-label="login"
+          value="In"
+          onClick={() => signIn()}
+        />
+      )}
+    </div>
+  );
 }

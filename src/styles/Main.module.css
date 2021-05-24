@@ -1,0 +1,412 @@
+.main_page {
+  margin: 0;
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+}
+
+.main_background {
+  background-color: rgb(255, 255, 255);
+}
+
+.wrmc_icon {
+  display: inline-block;
+  width: 500px;
+  margin: 0;
+}
+
+.icon_div {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.footer_style {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar_item {
+  font-size: 24px;
+  color: black;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 8px;
+}
+
+.navbar_item:hover {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.index_column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.index_column_2 {
+  display: flex;
+  justify-content: center;
+}
+
+.index_row_center {
+  justify-content: center;
+}
+
+.index_grid_div {
+  background-color: rgb(255, 196, 228);
+  text-align: center;
+  border-radius: 8px;
+  padding: 7px;
+  width: 100%;
+}
+
+.about_div {
+  width: 70%;
+  justify-content: center;
+  margin: auto;
+}
+
+/* ==== ShowOTW ==== */
+.showotw_title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.showotw_link {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+}
+
+.showotw_link:hover {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.showotw_djs {
+  font-size: 15px;
+  font-style: italic;
+  margin-top: 6px;
+  margin-bottom: 0px;
+}
+
+.showotw_text {
+  font-size: 15px;
+  margin-top: 0px;
+  margin-bottom: 12px;
+}
+
+/* ==== DisplayCurrentShow ==== */
+.currentshow_title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.currentshow_link {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+  line-height: 0.5;
+}
+
+.currentshow_link:hover {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.currentshow_djs {
+  font-size: 15px;
+  font-style: italic;
+  margin-top: 12px;
+  margin-bottom: 0px;
+}
+
+.currentshow_text {
+  font-size: 15px;
+  margin-top: 0px;
+  margin-bottom: 12px;
+}
+
+.currentshow_message {
+  font-size: 24px;
+  font-family: Courier New;
+  margin-top: 0px;
+  margin-bottom: 6px;
+}
+
+/* ==== DisplayCurrentPlaylist ==== */
+.currentplaylist_title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.currentplaylist_text {
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 12px;
+  padding: 5px;
+}
+
+/* ==== ShowSnippet ==== */
+.snippet_div {
+  text-align: left;
+  margin-top: 6px;
+}
+
+.snippet_div:hover {
+  color: black;
+  font-weight: bold;
+}
+
+.snippet_time {
+  font-size: 16px;
+  margin: 0;
+  padding-right: 10px;
+  text-decoration: underline;
+}
+
+.snippet_link {
+  font-size: 16px;
+  padding-right: 10px;
+  text-decoration: underline;
+}
+
+.snippet_djs {
+  font-size: 16px;
+  padding-bottom: 10px;
+  text-decoration: underline;
+}
+
+/* ==== NextThreeShows ==== */
+.nextshows_title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.nextshows_text {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 9px;
+}
+
+.nextshows_item {
+  font-size: 20px;
+  color: black;
+}
+
+/* ==== PlayButton ==== */
+.playbutton_div {
+  width: 100%;
+  height: 85px;
+  background-color: lightcyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playbutton_div:hover {
+  cursor: pointer;
+}
+
+.playbutton_icon {
+  width: 70px;
+  color: black;
+  margin-left: 20px;
+}
+
+.playbutton_text {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: Courier New;
+  margin: 0;
+  padding-left: 15px;
+  padding-right: 25px;
+}
+
+/* ==== LoginButton ==== */
+.loginButton {
+  width: 100px;
+  height: 30px;
+  background: url(../images/log.png) transparent no-repeat top left;
+  outline: none;
+  border: none;
+  padding-left: 60px;
+  margin-top: 10px;
+  margin-right: 0;
+  float: right;
+  cursor: pointer;
+}
+
+/* ==== ShowDetails ==== */
+.showdetails_div {
+  background-color: rgb(255, 196, 228);
+  text-align: center;
+  border-radius: 8px;
+  padding: 20px;
+  padding-bottom: 10px;
+  width: 80%;
+  margin: auto;
+}
+
+.showdetails_title {
+  margin-top: 25px;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+}
+
+.showdetails_attr {
+  font-weight: bold;
+}
+
+.showdetails_time {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.showdetails_time li {
+  font-style: italic;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* ==== DaySchedule ==== */
+.dayschedule_list {
+  flex-wrap: wrap;
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center;
+}
+
+.dayschedule_item {
+  list-style-type: none;
+  padding: 5px;
+}
+
+/* ==== ScheduleFilter ==== */
+.schedulefilter ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.schedulefilter li {
+  font-size: 19px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.schedulefilter_highlight {
+  font-weight: bold;
+  color: lightskyblue;
+}
+
+/* ==== Schedule ==== */
+.schedule {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==== WeeklyShow ==== */
+.weeklyshow {
+  width: 125px;
+  height: 125px;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.weeklyshow_title {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 0px;
+}
+
+.weeklyshow_title:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ==== WeeklySchedule ==== */
+.weeklyschedule_time {
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.weeklyschedule_header {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+/* ==== DayShow ==== */
+.dayshow_div {
+  font-size: 15px;
+  width: 150px;
+  height: 150px;
+  color: white;
+  text-align: center;
+  padding: 8px;
+}
+
+.dayshow_description {
+  font-size: 14px;
+  width: 150px;
+  height: 150px;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dayshow_description::-webkit-scrollbar {
+  display: none;
+}
+
+.dayshow_title {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.2;
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+.dayshow_time {
+  font-size: 15px;
+  margin: 0;
+  padding-bottom: 12px;
+}
+
+.dayshow_djs {
+  font-size: 15px;
+  margin: 0;
+}

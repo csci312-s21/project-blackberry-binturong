@@ -12,26 +12,39 @@ import Head from "next/head";
 import LoginButton from "../components/LoginButton.js";
 import PlayButton from "../components/PlayButton.js";
 import NavBar from "../components/NavBar.js";
-import styles from "../styles/Home.module.css";
+import styles2 from "../styles/Home.module.css";
+import styles from "../styles/Main.module.css";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-export default function Layout({ title, children }) {
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
+export default function Layout({ title, children }) {
   return (
     <div>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
-      <div>
+
+      <div className={styles.main_page}>
         <LoginButton />
-        <Link href="/"><h1>WRMC 91.1 FM</h1></Link>
-        <PlayButton/>
-        <NavBar/>
-        
-        <main className={styles.main}>{children}</main>
+        <Link href="/">
+          <div className={styles.icon_div}>
+            <img
+              src="https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/logo_large.png"
+              className={styles.wrmc_icon}
+            />
+          </div>
+        </Link>
+        <NavBar />
+        <Row className={styles.index_row_center}>
+          <Col xs={8} md={5} className={styles.index_column}>
+            <PlayButton />
+          </Col>
+        </Row>
+        <main className={styles2.main}>{children}</main>
       </div>
     </div>
   );
@@ -39,5 +52,5 @@ export default function Layout({ title, children }) {
 
 Layout.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 };

@@ -8,20 +8,20 @@
 */
 import { showType } from "../lib/types.js";
 import { getTimeString } from "../lib/component-utils.js";
-import styles from "../styles/ShowSnippet.module.css";
+import styles from "../styles/Main.module.css";
 
-export default function ShowSnippet({ show }){
+export default function ShowSnippet({ show }) {
   const time = getTimeString(show.time.hour, show.time.duration);
 
   return (
-    <div>
-      <div className={styles.time}>{time}</div>
-      <div className={styles.title}>{show.title}</div>
-      <div className={styles.djs}>{show.DJs.join(", ")}</div>
+    <div className={styles.snippet_div}>
+      <span className={styles.snippet_time}>{time}</span>
+      <span className={styles.snippet_link}>{show.title}</span>
+      <span className={styles.snippet_djs}>{show.DJs.join(", ")}</span>
     </div>
   );
 }
 
 ShowSnippet.propTypes = {
-  show: showType.isRequired
-}
+  show: showType.isRequired,
+};

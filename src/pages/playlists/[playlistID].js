@@ -10,13 +10,29 @@ export default function PlaylistDisplay() {
   const router = useRouter();
   const { playlistID } = router.query;
 
-  const selectedPlaylist = playlists.find((playlist) => playlist.id === +playlistID);
-  
-  const selectedShow = selectedPlaylist && shows.find((show) => show.id === selectedPlaylist.showID);
+  const selectedPlaylist = playlists.find(
+    (playlist) => playlist.id === +playlistID
+  );
+
+  const selectedShow =
+    selectedPlaylist &&
+    shows.find((show) => show.id === selectedPlaylist.showID);
 
   return (
-    <Layout title={selectedShow ? `${ selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>
-      <main>{selectedPlaylist && <PlaylistDetails playlist={selectedPlaylist} songs={sampleSongs} currShow={selectedShow} />}</main>
+    <Layout
+      title={
+        selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"
+      }
+    >
+      <main>
+        {selectedPlaylist && (
+          <PlaylistDetails
+            playlist={selectedPlaylist}
+            songs={sampleSongs}
+            currShow={selectedShow}
+          />
+        )}
+      </main>
     </Layout>
   );
 }

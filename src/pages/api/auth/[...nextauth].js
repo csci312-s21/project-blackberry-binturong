@@ -14,9 +14,9 @@ const options = {
   callbacks: {
     async signIn(user) {
       await verifyEmail(user.email);
-    }
+    },
   },
-  database: process.env.DATABASE_URL
+  database: process.env.DATABASE_URL,
 };
 
 export default (req, res) => NextAuth(req, res, options);

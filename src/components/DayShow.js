@@ -1,34 +1,48 @@
 import PropTypes from "prop-types";
+import styles from "../styles/Main.module.css";
 import Link from "next/link";
-import styles from "../styles/DayShow.module.css";
+
 import { showType } from "../lib/types.js";
 import { getTimeString } from "../lib/component-utils.js";
 import { colors } from "../lib/component-utils.js";
 import { useState } from "react";
 
-export default function DayShow({ show }){
+export default function DayShow({ show }) {
   const [displayDescription, setDisplayDescription] = useState(false);
 
   const time = getTimeString(show.time.hour, show.time.duration);
   const genrecolor = colors[show.genres[0].toLowerCase()];
 
   return (
-    <Link href={`/shows/${show.id}`}>
-      <div className={styles.container} onMouseLeave={() => setDisplayDescription(false)} onMouseEnter={() => setDisplayDescription(true)}>
-        {displayDescription 
-          ? <div className={styles.description}>
+    <div>
+      <Link href={`/shows/${show.id}`}>
+        <div
+          onMouseLeave={() => setDisplayDescription(false)}
+          onMouseEnter={() => setDisplayDescription(true)}
+        >
+          {displayDescription ? (
+            <div
+              className={styles.dayshow_description}
+              style={{ backgroundColor: genrecolor }}
+            >
               {show.description}
-            </div> 
-          : <div className={styles.details} style={{"backgroundColor": genrecolor}}>
-              <div className={styles.time}>{time}</div>
-              <p className={styles.ShowTitle}>{show.title}</p>
-              <div className={styles.djs}>{show.DJs.join(", ")}</div>
-            </div>}
+            </div>
+          ) : (
+            <div
+              className={styles.dayshow_div}
+              style={{ backgroundColor: genrecolor }}
+            >
+              <p className={styles.dayshow_title}>{show.title}</p>
+              <p className={styles.dayshow_time}>{time}</p>
+              <p className={styles.dayshow_djs}>{show.DJs.join(", ")}</p>
+            </div>
+          )}
         </div>
       </Link>
+    </div>
   );
 }
 
 DayShow.propTypes = {
-  show: PropTypes.shape({showType}).isRequired
+  show: PropTypes.shape({ showType }).isRequired,
 };

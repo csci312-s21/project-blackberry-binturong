@@ -7,7 +7,7 @@ export default function Schedule() {
   const [allShows] = useState(shows);
   return (
     <Layout title="Schedule | WRMC 91.1 FM">
-      <ScheduleContainer shows={allShows}/>
+      <ScheduleContainer shows={allShows} />
     </Layout>
   );
 }

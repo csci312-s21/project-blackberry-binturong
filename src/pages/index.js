@@ -2,14 +2,19 @@ import NextThreeShows from "../components/NextThreeShows.js";
 import ShowOTW from "../components/ShowOTW.js";
 import DisplayCurrentShow from "../components/DisplayCurrentShow";
 import PlaylistLogger from "../components/PlaylistLogger.js";
-import StartShowButton from "../components/StartShowButton.js";
 import DisplayCurrentPlaylist from "../components/DisplayCurrentPlaylist.js";
 import Layout from "../components/Layout.js";
+import StartShowButton from "../components/StartShowButton.js";
 
 import moment from "moment-timezone";
 import shows from "../../data/shows.json";
 import { sampleSongs } from "../lib/test-utils.js";
+import styles from "../styles/Main.module.css";
 import playlists from "../../data/playlists.json";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { upcomingShowsArray, getRandomIntID } from "../lib/component-utils.js";
 
@@ -30,10 +35,10 @@ export default function WRMCWebsite() {
   const endShow = () => {
     setLoggingPlaylist(false);
     setCurrentPlaylist();
-  }
+  };
 
   useEffect(() => {
-    if(!session) {
+    if (!session) {
       endShow();
     }
   }, [session]);
@@ -42,7 +47,9 @@ export default function WRMCWebsite() {
     if (action === "enter") {
       setAllSongs([...allSongs, newSong]);
     } else if (action === "update") {
-      const newSongs = allSongs.map((song) => ((song.id === newSong.id) ? newSong : song));
+      const newSongs = allSongs.map((song) =>
+        (song.id === newSong.id ? newSong : song)
+      );
       setAllSongs(newSongs);
     } else if (action === "delete") {
       const newSongs = allSongs.filter((song) => song.id !== newSong.id);
@@ -52,10 +59,14 @@ export default function WRMCWebsite() {
 
   const startShow = (showId) => {
     setLoggingPlaylist(true);
-    const newPlaylist = { date: moment().format("M-DD-YYYY"), showID: showId, id: getRandomIntID() };
+    const newPlaylist = {
+      date: moment().format("M-DD-YYYY"),
+      showID: showId,
+      id: getRandomIntID(),
+    };
     setCurrentPlaylist(newPlaylist);
     setAllPlaylists([...allPlaylists, newPlaylist]);
-  }
+  };
 
   // determines the current and next three shows
   const now = moment();
@@ -68,32 +79,74 @@ export default function WRMCWebsite() {
   // this if statement determines whether we show the regular home or the playlist logger
   let displayPage;
   if (loggingPlaylist && session) {
-    displayPage = <PlaylistLogger complete={updateSongCollection} currentPlaylist={currentPlaylist} endShow={endShow} shows={allShows} songs={allSongs} />
+    displayPage = (
+      <PlaylistLogger
+        complete={updateSongCollection}
+        currentPlaylist={currentPlaylist}
+        endShow={endShow}
+        shows={allShows}
+        songs={allSongs}
+      />
+    );
   } else {
-    displayPage = 
+    displayPage = (
       <div>
-        {session && 
-          (currentPlaylist 
-          ? <input type="button" value="Go to Current Playlist" onClick={() => setLoggingPlaylist(true)}/>
-          : <StartShowButton userShows={allShows.slice(0, 4) /* this slice is temporary */} startShow={startShow}/>
-          )}
-        <p>{""}</p>
-        <ShowOTW show={sotw}/>
-        <DisplayCurrentShow
-          show={isOnAir ? upcomingShows[0] : shows.find(show => show.id === 12345)} />
-        <p>{""}</p>
-        <DisplayCurrentPlaylist
-          playlist={currentPlaylist}
-          allSongs={allSongs} />
-        <p>{""}</p>
-        <NextThreeShows
-          shows={isOnAir ? upcomingShows.slice(1, 4) : upcomingShows.slice(0, 3)}/>
+        <Container>
+          <Row>
+            <Col xs={12} md={4} className={styles.index_column}>
+              {session &&
+                (currentPlaylist ? (
+                  <input
+                    type="button"
+                    value="Go to Current Playlist"
+                    onClick={() => setLoggingPlaylist(true)}
+                  />
+                ) : (
+                  <StartShowButton
+                    userShows={
+                      allShows.slice(0, 4) /* this slice is temporary */
+                    }
+                    startShow={startShow}
+                  />
+                ))}
+            </Col>
+            <Col xs={12} md={4} className={styles.index_column}>
+              <DisplayCurrentShow
+                show={
+                  isOnAir
+                    ? upcomingShows[0]
+                    : shows.find((show) => show.id === 12345)
+                }
+              />
+            </Col>
+
+            <Col xs={12} md={4} className={styles.index_column}>
+              <DisplayCurrentPlaylist
+                playlist={currentPlaylist}
+                allSongs={allSongs}
+              />
+            </Col>
+
+            <Col xs={12} md={4} className={styles.index_column}>
+              <ShowOTW show={sotw} />
+            </Col>
+          </Row>
+
+          <Row className={styles.index_row_center}>
+            <Col xs={12} md={8} className={styles.index_column}>
+              <NextThreeShows
+                shows={
+                  isOnAir
+                    ? upcomingShows.slice(1, 4)
+                    : upcomingShows.slice(0, 3)
+                }
+              />
+            </Col>
+          </Row>
+        </Container>
       </div>
+    );
   }
 
-  return (
-    <Layout title="WRMC 91.1 FM Middlebury College">
-      {displayPage}
-    </Layout>
-  );
+  return <Layout title="WRMC 91.1 FM Middlebury College">{displayPage}</Layout>;
 }

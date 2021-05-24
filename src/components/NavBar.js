@@ -7,23 +7,26 @@
     none
 */
 
-import styles from "../styles/NavBar.module.css";
-import Link from "next/link";
+import styles from "../styles/Main.module.css";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 export default function NavBar() {
   return (
-    <div className={styles.navBar}>
-      <ul>
-        <li key="Home">
-          <Link href={"/"}><a>Home</a></Link>
-        </li>
-        <li key="Schedule">
-          <Link href={"/schedule"}><a>Schedule</a></Link>
-        </li>
-        <li key="About">
-          <Link href={"/about"}><a>About</a></Link>
-        </li>
-      </ul>
-    </div>);
-  
+    <div>
+      <Navbar bg="light">
+        <Nav className="m-auto">
+          <a href={"/"} className={styles.navbar_item}>
+            Home
+          </a>
+          <a href={"/schedule"} className={styles.navbar_item}>
+            Schedule
+          </a>
+          <a href={"/about"} className={styles.navbar_item}>
+            About
+          </a>
+        </Nav>
+      </Navbar>
+    </div>
+  );
 }

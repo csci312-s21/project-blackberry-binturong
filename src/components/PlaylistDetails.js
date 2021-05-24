@@ -19,18 +19,20 @@ import { compareTwoSongs } from "../lib/component-utils.js";
 
 export default function PlaylistDetails({ playlist, songs, currShow }) {
   const playlistSongs = songs.filter((song) => song.playlistID === playlist.id);
-  playlistSongs.sort((a, b) => compareTwoSongs(a,b));
+  playlistSongs.sort((a, b) => compareTwoSongs(a, b));
 
-  const songInfo = playlistSongs.map((song) => 
+  const songInfo = playlistSongs.map((song) => (
     <tr key={song.id}>
       <td>{song.timeAdded}</td>
       <td>{song.title}</td>
       <td>{song.artist}</td>
       <td>{song.album}</td>
     </tr>
-  );
+  ));
 
-  const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd MMMM Do YYYY");
+  const dateString = moment(playlist.date, "M-DD-YYYY").format(
+    "dddd MMMM Do YYYY"
+  );
 
   return (
     <div>
@@ -49,7 +51,11 @@ export default function PlaylistDetails({ playlist, songs, currShow }) {
         </tbody>
       </table>
       <Link href={`/shows/${currShow.id}`}>
-        <input className={styles.returnButton} type="button" value="<< Back to show information"/>
+        <input
+          className={styles.returnButton}
+          type="button"
+          value="<< Back to show information"
+        />
       </Link>
     </div>
   );
@@ -58,5 +64,5 @@ export default function PlaylistDetails({ playlist, songs, currShow }) {
 PlaylistDetails.propTypes = {
   playlist: playlistType.isRequired,
   songs: PropTypes.arrayOf(songType).isRequired,
-  currShow: showType.isRequired
-}
+  currShow: showType.isRequired,
+};

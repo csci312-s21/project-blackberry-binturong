@@ -13,8 +13,16 @@ export default function ShowDisplay() {
   const selectedShow = shows.find((show) => show.id === +showID);
 
   return (
-    <Layout title={selectedShow ? `${ selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>
-      <main>{selectedShow && <ShowDetails show={selectedShow} playlists={playlists}/>}</main>
+    <Layout
+      title={
+        selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"
+      }
+    >
+      <main>
+        {selectedShow && (
+          <ShowDetails show={selectedShow} playlists={playlists} />
+        )}
+      </main>
     </Layout>
   );
 }

@@ -1,12 +1,8 @@
 import djData from "../../data/djs.json";
-import {
-  knex,
-  verifyEmail
-} from "./backend-utils.js";
+import { knex, verifyEmail } from "./backend-utils.js";
 
 describe("Tests of the database utility functions", () => {
- 
- beforeEach(async () => {
+  beforeEach(async () => {
     await knex.migrate.rollback();
     await knex.migrate.latest();
     await knex.seed.run();
@@ -22,5 +18,4 @@ describe("Tests of the database utility functions", () => {
     const result = await verifyEmail("sampleperson@middlebury.edu");
     expect(result).toBeFalsy();
   });
-  
 });

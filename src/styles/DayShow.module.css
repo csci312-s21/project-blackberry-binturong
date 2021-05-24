@@ -22,8 +22,9 @@
   padding: 8px;
 }
 
-
-.time, .title, .djs {
+.time,
+.title,
+.djs {
   display: inline-block;
   padding: 5px;
   margin: 0;

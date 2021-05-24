@@ -1,28 +1,33 @@
-import styles from "../styles/ScheduleFilter.module.css";
+import styles from "../styles/Main.module.css";
 
 import PropTypes from "prop-types";
 
-export default function ScheduleFilter({ pageList, currentPage, setCurrentPage }) {
-  const pages = pageList.map(p => {
-    return (p === currentPage ?
-    <li 
-      key={p} 
-      className={styles.navBar_highlight}
-      onClick={() => setCurrentPage(p)}
-    >{p}</li> : 
-    <li 
-      key={p} 
-      onClick={() => setCurrentPage(p)}
-    >{p}</li>)
+export default function ScheduleFilter({
+  pageList,
+  currentPage,
+  setCurrentPage,
+}) {
+  const pages = pageList.map((p) => {
+    return p === currentPage ? (
+      <li
+        key={p}
+        className={styles.schedulefilter_highlight}
+        onClick={() => setCurrentPage(p)}
+      >
+        {p}
+      </li>
+    ) : (
+      <li key={p} onClick={() => setCurrentPage(p)}>
+        {p}
+      </li>
+    );
   });
 
   return (
-    <div className={styles.navBar}>
-      <ul>
-        {pages}
-      </ul>
-    </div>);
-  
+    <div className={styles.schedulefilter}>
+      <ul>{pages}</ul>
+    </div>
+  );
 }
 
 ScheduleFilter.propTypes = {

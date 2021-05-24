@@ -1,12 +1,12 @@
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema
-    .createTable("DJs", table => {
-      table.increments("id").primary()
+    .createTable("DJs", (table) => {
+      table.increments("id").primary();
       table.string("name", 255);
       table.string("email", 255).unique().notNullable();
       table.boolean("exec");
     })
-    .createTable("accounts", table => {
+    .createTable("accounts", (table) => {
       table.increments("id").primary();
       table.string("compound_id", 255).notNullable();
       table.integer("user_id").notNullable();
@@ -24,7 +24,7 @@ exports.up = function(knex) {
       table.index("provider_id");
       table.index("user_id");
     })
-    .createTable("sessions", table => {
+    .createTable("sessions", (table) => {
       table.increments("id").primary();
       table.integer("user_id").notNullable();
       table.timestamp("expires").notNullable();
@@ -36,7 +36,7 @@ exports.up = function(knex) {
       table.unique("session_token");
       table.index("access_token");
     })
-    .createTable("users", table => {
+    .createTable("users", (table) => {
       table.increments("id").primary();
       table.string("name", 255);
       table.string("email", 255);
@@ -48,19 +48,19 @@ exports.up = function(knex) {
 
       table.unique("email");
     })
-    .createTable("verification_requests", table => {
+    .createTable("verification_requests", (table) => {
       table.increments("id").primary();
       table.string("identifier", 255).notNullable();
       table.string("token", 255).notNullable();
       table.timestamp("expires").notNullable();
-    })
-}
+    });
+};
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema
-    .dropTableIfExists('accounts')
-    .dropTableIfExists('sessions')
-    .dropTableIfExists('users')
-    .dropTableIfExists('verification_requests')
-    .dropTableIfExists('DJs');
-}
+    .dropTableIfExists("accounts")
+    .dropTableIfExists("sessions")
+    .dropTableIfExists("users")
+    .dropTableIfExists("verification_requests")
+    .dropTableIfExists("DJs");
+};

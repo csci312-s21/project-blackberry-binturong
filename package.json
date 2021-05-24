@@ -19,6 +19,7 @@
     "heroku:start": "next start -p $PORT"
   },
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "color-name": "^1.1.4",
     "knex": "^0.95.6",
     "moment": "^2.29.1",
@@ -26,9 +27,12 @@
     "nanoid": "^3.1.22",
     "next": "10.0.8",
     "next-auth": "^3.20.1",
+    "npm": "^6.14.12",
     "pg": "^8.6.0",
     "prop-types": "^15.7.2",
+    "ps": "^1.0.0",
     "react": "17.0.1",
+    "react-bootstrap": "^1.6.0",
     "react-dom": "17.0.1",
     "sqlite3": "^5.0.2"
   },
