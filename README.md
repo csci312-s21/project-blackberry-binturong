@@ -6,6 +6,19 @@ This application is the WRMC 91.1 FM Middlebury College Radio website. It will b
 
 Here is a link to our [app on Heroku](https://wrmc-website.herokuapp.com/)
 
+## Required Environment Variables
+
+```
+AUTH0_CLIENT_ID
+AUTH0_CLIENT_SECRET
+AUTH0_DOMAIN
+NEXTAUTH_SECRET
+NEXTAUTH_URL
+DATABASE_URL
+LASTFM_ROOT
+LASTFM_KEY
+```
+
 ## Setting up the Database
 
 Run `npx knex migrate:latest` to initialize the database.

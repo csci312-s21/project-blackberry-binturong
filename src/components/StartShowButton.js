@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/client";
 import moment from "moment";
 import Link from "next/link";
-import shows from "../../data/shows.json";
 
 export default function StartShowButton() {
   const [session] = useSession();
@@ -70,7 +69,7 @@ export default function StartShowButton() {
     setNewPlaylist({ date: moment().format("M-DD-YYYY"), showID: showId, current: true });
   }
 
-  const options = shows.map(
+  const options = userShows.map(
     (show) => <option data-testid="show-option" value={show.id} key={show.id}>{show.title}</option>);
 
   return (

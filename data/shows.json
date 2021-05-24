@@ -719,5 +719,15 @@
     "duration": 1,
     "genres": ["Fruit","Talk"],
     "id": 70
+  },
+  {
+    "title": "CS 312 Presentation Show",
+    "DJs": [10, 996, 997, 998, 999, 1000],
+    "description": "This is a show for demonstation purposes",
+    "day": "T",
+    "hour": 1900,
+    "duration": 2,
+    "genres": ["Talk"],
+    "id": 71
   }
 ]
