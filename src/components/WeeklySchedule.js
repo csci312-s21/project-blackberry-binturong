@@ -9,7 +9,7 @@
 
 import PropTypes from "prop-types";
 import WeeklyShow from "./WeeklyShow";
-import { getDayInt } from "../lib/component-utils.js";
+import { dayToInt } from "../lib/component-utils.js";
 import styles from "../styles/Main.module.css";
 import { showType } from "../lib/types.js";
 
@@ -64,10 +64,10 @@ export default function WeeklySchedule({ shows, setFilter }) {
   }
 
   shows.forEach((s) => {
-    const day = getDayInt(s.time.day) + 1;
-    const time = s.time.hour / 100 + 1;
+    const day = dayToInt[s.day] + 1;
+    const time = s.hour / 100 + 1;
     showsArr[time][day] = <WeeklyShow show={s} />;
-    if (s.time.duration === 2) {
+    if (s.duration === 2) {
       showsArr[time + 1][day] = <WeeklyShow show={s} />;
     }
   });
@@ -101,7 +101,9 @@ export default function WeeklySchedule({ shows, setFilter }) {
   return (
     <div data-testid="schedule">
       <table>
-        <tbody>{table}</tbody>
+        <tbody>
+          {table}
+        </tbody>
       </table>
     </div>
   );
@@ -109,5 +111,5 @@ export default function WeeklySchedule({ shows, setFilter }) {
 
 WeeklySchedule.propTypes = {
   shows: PropTypes.arrayOf(showType).isRequired,
-  setFilter: PropTypes.func.isRequired,
+  setFilter: PropTypes.func.isRequired
 };

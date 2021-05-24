@@ -25,7 +25,7 @@ describe("SongInput tests", () => {
 
   beforeEach(() => {
     handler.mockReset();
-    const sampleSong = {title: "", artist: "", album: "", id: 0, playlistID: 0};
+    const sampleSong = {title: "", artist: "", album: "", albumArt:"https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/music-med.png", id: 0, playlistID: 0};
     render(<SongInput complete={handler} song={sampleSong} savedInit={false}/>);
   });
 
@@ -102,5 +102,4 @@ describe("SongInput tests", () => {
     expect(enterButton).not.toBeInTheDocument();
 
   });
-
 });

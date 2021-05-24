@@ -7,9 +7,10 @@
     show - current show
 */
 import Link from "next/link";
-
+import moment from "moment-timezone";
 import { showType } from "../lib/types.js";
 import styles from "../styles/Main.module.css";
+moment.tz.setDefault("America/New_York");
 
 export default function DisplayCurrentShow({ show }) {
   const showExists = typeof show !== "undefined";

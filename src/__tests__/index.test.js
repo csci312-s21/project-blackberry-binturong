@@ -5,6 +5,8 @@ Top-level integration Tests
 Any tests that require mocking the next-auth module should be put into auth.test.js
 
 */
+
+//const fetch = require("node-fetch");
 import fetchMock from "fetch-mock-jest";
 import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
@@ -14,6 +16,7 @@ import { useSession } from "next-auth/client";
 jest.mock("next-auth/client");
 
 describe("Top level integration tests", () => {
+
   beforeEach(() => {
     useSession.mockReturnValue([undefined, false]);
   });
@@ -23,17 +26,20 @@ describe("Top level integration tests", () => {
       await fetchMock.flush(true);
     });
   });
-
+});
+  /*
   test("Tests that the see-full-schedule button correctly displays the schedule", () => {
     render(<WRMCWebsite />);
-    const schedule = screen.getByRole("link", { name: "Schedule" });
+    const schedule = screen.getByRole("link", {name:"Schedule"});
     expect(schedule).toBeInTheDocument();
     expect(schedule).toHaveAttribute("href", "/schedule");
   });
 });
 
-/*
+
+
 describe("Start show button integration tests", () => {
+
   beforeEach(() => {
     useSession.mockClear();
   });
@@ -74,6 +80,7 @@ describe("Start show button integration tests", () => {
 */
 
 describe("PlaylistLogger integration tests", () => {
+
   /* commenting out for linter -- used in test for saving changes
   const sampleTitle = "Sample Title";
   const sampleArtist = "Sample Artist";

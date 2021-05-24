@@ -5,9 +5,9 @@ import styles from "../styles/Main.module.css";
 import { showType } from "../lib/types.js";
 
 export default function DaySchedule({ shows, day }) {
-  const showList = shows.filter((s) => getDayString(s.time.day) === day);
+  const showList = shows.filter((s) => getDayString(s.day) === day);
   const showListSorted = showList.sort((a, b) => {
-    return a.time.hour - b.time.hour;
+    return a.hour - b.hour;
   });
 
   const showsDisplayed = showListSorted.map((show) => {

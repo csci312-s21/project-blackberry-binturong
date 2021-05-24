@@ -3,8 +3,9 @@ import ScheduleContainer from "../components/ScheduleContainer.js";
 import { sampleShows } from "../lib/test-utils.js";
 
 describe("Schedule tests", () => {
+
   test("Weekly Schedule is rendered initially", () => {
-    render(<ScheduleContainer shows={sampleShows} />);
+    render(<ScheduleContainer shows={sampleShows}/>);
     //expect(screen.getByTestId("schedule")).toBeInTheDocument();
     expect(screen.queryByText("Kyle Hooker")).toBeInTheDocument();
     expect(screen.queryByText("Sample Show 1")).toBeInTheDocument();

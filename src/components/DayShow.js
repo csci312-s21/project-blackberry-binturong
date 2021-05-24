@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "../styles/Main.module.css";
 import Link from "next/link";
-
 import { showType } from "../lib/types.js";
 import { getTimeString } from "../lib/component-utils.js";
 import { colors } from "../lib/component-utils.js";
@@ -10,7 +9,7 @@ import { useState } from "react";
 export default function DayShow({ show }) {
   const [displayDescription, setDisplayDescription] = useState(false);
 
-  const time = getTimeString(show.time.hour, show.time.duration);
+  const time = getTimeString(show.hour, show.duration);
   const genrecolor = colors[show.genres[0].toLowerCase()];
 
   return (
@@ -44,5 +43,5 @@ export default function DayShow({ show }) {
 }
 
 DayShow.propTypes = {
-  show: PropTypes.shape({ showType }).isRequired,
+  show: PropTypes.shape({showType}).isRequired
 };

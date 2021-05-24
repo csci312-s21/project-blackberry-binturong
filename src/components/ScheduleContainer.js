@@ -6,10 +6,10 @@ import { showType } from "../lib/types.js";
 import { useState } from "react";
 import styles from "../styles/Main.module.css";
 
-export default function Schedule({ shows }) {
+export default function FullSchedule({ shows }) {
   const [filter, setFilter] = useState("Week");
 
-  let content = null;
+  let content;
   if (filter !== "Week") {
     content = (
       <div>

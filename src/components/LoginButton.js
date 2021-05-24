@@ -4,8 +4,7 @@
   This component displays a button (using ../images/log.png) that allows a user to log into and out of their account.
 
   props:
-    loggedIn - a boolean representing whether the user is logged in
-    handleClick - a function that logs the user in or out when the button is clicked
+    none
 */
 import styles from "../styles/Main.module.css";
 import { signIn, signOut, useSession } from "next-auth/client";

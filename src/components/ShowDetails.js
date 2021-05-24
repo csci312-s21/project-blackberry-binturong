@@ -6,24 +6,34 @@
 
   props:
     show - a show object
-    playlists - playlist table
 */
-import PropTypes from "prop-types";
-import {
-  getTimeString,
-  getDayString,
-  compareTwoPlaylists,
-} from "../lib/component-utils.js";
+import { getTimeString, getDayString, compareTwoPlaylists } from "../lib/component-utils.js";
+import { showType } from "../lib/types.js";
+import { useState, useEffect } from "react";
 import styles from "../styles/Main.module.css";
-import { showType, playlistType } from "../lib/types.js";
 
-export default function ShowDetails({ show, playlists }) {
-  const time = getTimeString(show.time.hour, show.time.duration);
-  const day = getDayString(show.time.day);
+export default function ShowDetails({ show }) {
+  const [playlists, setPlaylists] = useState([]);
 
-  const playlistsForShow = playlists.filter(
-    (playlist) => playlist.showID === show.id
-  );
+  useEffect(() => {
+    const getPlaylists = async () => {
+      const response = await fetch("/api/playlists");
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const fetchedPlaylists = await response.json();
+
+      setPlaylists(fetchedPlaylists);
+    }
+    getPlaylists();
+  }, []);
+
+  const time = getTimeString(show.hour, show.duration);
+  const day = getDayString(show.day);
+
+  const playlistsForShow = playlists.filter((playlist) => playlist.showId === show.id);
 
   playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b)).reverse();
 
@@ -76,6 +86,5 @@ export default function ShowDetails({ show, playlists }) {
 }
 
 ShowDetails.propTypes = {
-  show: showType.isRequired,
-  playlists: PropTypes.arrayOf(playlistType).isRequired,
+  show: showType.isRequired
 };

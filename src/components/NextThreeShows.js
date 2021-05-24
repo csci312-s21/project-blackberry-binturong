@@ -42,5 +42,5 @@ export default function NextThreeShows({ shows }) {
 }
 
 NextThreeShows.propTypes = {
-  shows: PropTypes.arrayOf(showType).isRequired,
+  shows: PropTypes.arrayOf(showType).isRequired
 };
