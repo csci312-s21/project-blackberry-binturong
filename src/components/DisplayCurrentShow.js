@@ -1,15 +1,17 @@
 /*
+  DisplayCurrentShow.js
 
   This Component will display the current show title and DJs.
 
-  props - shows, an array of shows
+  props:
+    show - current show
 */
+import Link from "next/link";
 
 import { showType } from "../lib/types.js";
 import styles from "../styles/Main.module.css";
-import PropTypes from "prop-types";
 
-export default function DisplayCurrentShow({ show, handleClick }) {
+export default function DisplayCurrentShow({ show }) {
   const showExists = typeof show !== "undefined";
   let content = null;
 
@@ -18,12 +20,9 @@ export default function DisplayCurrentShow({ show, handleClick }) {
       <div>
         <div className={styles.currentshow_title}>ON AIR</div>
         <span className={styles.currentshow_text}>Current Show: </span>
-        <span
-          className={styles.currentshow_link}
-          onClick={() => handleClick(show)}
-        >
-          {show.title}
-        </span>
+        <Link href={`/shows/${show.id}`}>
+          <a className={styles.currentshow_link}>{show.title}</a>
+        </Link>
         <div className={styles.currentshow_djs}>
           <em>DJs: {show.DJs.join(", ")}</em>
         </div>
@@ -50,5 +49,4 @@ export default function DisplayCurrentShow({ show, handleClick }) {
 
 DisplayCurrentShow.propTypes = {
   show: showType,
-  handleClick: PropTypes.func.isRequired,
 };

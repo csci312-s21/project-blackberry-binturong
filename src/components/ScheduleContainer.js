@@ -10,7 +10,6 @@ export default function Schedule({ shows }) {
   const [filter, setFilter] = useState("Week");
 
   let content = null;
-
   if (filter !== "Week") {
     content = (
       <div>

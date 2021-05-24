@@ -1,32 +1,32 @@
-import styles from "../styles/NavBar.module.css";
+/*
+  NavBar.js
 
-import PropTypes from "prop-types";
+  This component holds the links to the other pages on the nav bar
 
-export default function NavBar({ pageList, currentPage, setCurrentPage }) {
-  const pages = pageList.map(p => {
-    return (p === currentPage ?
-    <li 
-      key={p} 
-      className={styles.navBar_highlight}
-      onClick={() => setCurrentPage(p)}
-    >{p}</li> : 
-    <li 
-      key={p} 
-      onClick={() => setCurrentPage(p)}
-    >{p}</li>)
-  });
+  props:
+    none
+*/
 
+import styles from "../styles/Main.module.css";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+
+export default function NavBar() {
   return (
-    <div className={styles.navBar}>
-      <ul>
-        {pages}
-      </ul>
-    </div>);
-  
+    <div>
+      <Navbar bg="light">
+        <Nav className="m-auto">
+          <a href={"/"} className={styles.navbar_item}>
+            Home
+          </a>
+          <a href={"/schedule"} className={styles.navbar_item}>
+            Schedule
+          </a>
+          <a href={"/about"} className={styles.navbar_item}>
+            About
+          </a>
+        </Nav>
+      </Navbar>
+    </div>
+  );
 }
-
-NavBar.propTypes = {
-  pageList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentPage: PropTypes.string.isRequired,
-  setCurrentPage: PropTypes.func.isRequired,
-};

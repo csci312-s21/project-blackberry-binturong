@@ -3,6 +3,8 @@
 Tests for StartShowButton.js
 
 */
+
+/*
 import { render, screen, fireEvent } from "@testing-library/react";
 import StartShowButton from "../components/StartShowButton.js";
 import { sampleShows } from "../lib/test-utils.js";
@@ -35,3 +37,5 @@ describe("StartShowButton tests", () => {
     expect(handler).toHaveBeenCalledWith(sampleShow.id);
   });
 });
+
+*/

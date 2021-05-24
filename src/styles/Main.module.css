@@ -28,6 +28,20 @@
   justify-content: center;
 }
 
+.navbar_item {
+  font-size: 24px;
+  color: black;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 8px;
+}
+
+.navbar_item:hover {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 .index_column {
   display: flex;
   align-items: center;
@@ -50,6 +64,12 @@
   border-radius: 8px;
   padding: 7px;
   width: 100%;
+}
+
+.about_div {
+  width: 70%;
+  justify-content: center;
+  margin: auto;
 }
 
 /* ==== ShowOTW ==== */
@@ -139,27 +159,31 @@
 /* ==== ShowSnippet ==== */
 .snippet_div {
   text-align: left;
+  margin-top: 6px;
+}
+
+.snippet_div:hover {
+  color: black;
+  font-weight: bold;
 }
 
 .snippet_time {
-  font-size: 15px;
+  font-size: 16px;
   margin: 0;
-  padding-right: 10px;
-}
-
-.snippet_link {
-  font-size: 15px;
   padding-right: 10px;
   text-decoration: underline;
 }
 
-.snippet_link:hover {
-  font-weight: bold;
+.snippet_link {
+  font-size: 16px;
+  padding-right: 10px;
+  text-decoration: underline;
 }
 
 .snippet_djs {
-  font-size: 15px;
+  font-size: 16px;
   padding-bottom: 10px;
+  text-decoration: underline;
 }
 
 /* ==== NextThreeShows ==== */
@@ -174,6 +198,11 @@
   font-weight: bold;
   margin-top: 0px;
   margin-bottom: 9px;
+}
+
+.nextshows_item {
+  font-size: 20px;
+  color: black;
 }
 
 /* ==== PlayButton ==== */
@@ -309,10 +338,16 @@
 }
 
 .weeklyshow_title {
+  color: white;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.1;
   margin-top: 0px;
+}
+
+.weeklyshow_title:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 /* ==== WeeklySchedule ==== */

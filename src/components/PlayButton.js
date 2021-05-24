@@ -1,11 +1,12 @@
 /*
-  Play.js
+  PlayButton.js
 
   This component uses a button (using ../images/headphones.png) that allows a user to open a new window with the boombox livestream.
 
   props:
     none
 */
+
 import styles from "../styles/Main.module.css";
 import Headphones from "./Headphones.js";
 

@@ -3,28 +3,36 @@
 
   This component displays a list of all songs in a playlist
 
+  props:
+    playlist - the playlist objecy
+    songs - song table
+    currShow - the show that the playlist belongs to
+
 */
+import Link from "next/link";
+
 import { playlistType, songType, showType } from "../lib/types.js";
 import PropTypes from "prop-types";
 import styles from "../styles/PlaylistDetails.module.css";
 import moment from "moment";
 import { compareTwoSongs } from "../lib/component-utils.js";
 
-export default function PlaylistDetails({ playlist, songs, shows, backToShow }) {
-  const currShow = shows.find((show) => show.id === playlist.showID);
+export default function PlaylistDetails({ playlist, songs, currShow }) {
   const playlistSongs = songs.filter((song) => song.playlistID === playlist.id);
-  playlistSongs.sort((a, b) => compareTwoSongs(a,b));
+  playlistSongs.sort((a, b) => compareTwoSongs(a, b));
 
-  const songInfo = playlistSongs.map((song) => 
+  const songInfo = playlistSongs.map((song) => (
     <tr key={song.id}>
       <td>{song.timeAdded}</td>
       <td>{song.title}</td>
       <td>{song.artist}</td>
       <td>{song.album}</td>
     </tr>
-  );
+  ));
 
-  const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd MMMM Do YYYY");
+  const dateString = moment(playlist.date, "M-DD-YYYY").format(
+    "dddd MMMM Do YYYY"
+  );
 
   return (
     <div>
@@ -42,7 +50,13 @@ export default function PlaylistDetails({ playlist, songs, shows, backToShow }) 
           {songInfo}
         </tbody>
       </table>
-      <input className={styles.returnButton} type="button" value="<< Back to show information" onClick={() => backToShow(currShow)}/>
+      <Link href={`/shows/${currShow.id}`}>
+        <input
+          className={styles.returnButton}
+          type="button"
+          value="<< Back to show information"
+        />
+      </Link>
     </div>
   );
 }
@@ -50,6 +64,5 @@ export default function PlaylistDetails({ playlist, songs, shows, backToShow }) 
 PlaylistDetails.propTypes = {
   playlist: playlistType.isRequired,
   songs: PropTypes.arrayOf(songType).isRequired,
-  shows: PropTypes.arrayOf(showType).isRequired,
-  backToShow: PropTypes.func.isRequired
-}
+  currShow: showType.isRequired,
+};
