@@ -14,12 +14,8 @@ import moment from "moment";
 import { compareTwoSongs } from "../lib/component-utils.js";
 
 export default function PlaylistDetails({ playlist, currShow }) {
-  const [playlistSongs, setPlaylistSongs] = useState([]);
+  const [playlistSongs, setPlaylistSongs] = useState();
 
-  console.log('top')
-  console.log(playlist);
-  console.log(currShow);
-  console.log('buttom')
   useEffect(() => {
     const getSongs = async () => {
       const response = await fetch("/api/songs");
@@ -28,16 +24,15 @@ export default function PlaylistDetails({ playlist, currShow }) {
       }
       const allSongs = await response.json();
       const filteredSongs = allSongs.filter((song) => song.playlistId === playlist.id)
-      console.log('songs')
-      console.log(playlistSongs);
       setPlaylistSongs(filteredSongs);
     }
     getSongs();
+    setPlaylistSongs();
   }, []);
 
   let contents;
-  //if (currShow) {
-    playlistSongs.sort((a, b) => compareTwoSongs(a,b));
+  if (playlistSongs !== undefined) {
+  playlistSongs.sort((a, b) => compareTwoSongs(a,b));
 
   const songInfo = playlistSongs.map((song) => 
     <tr key={song.id}>
@@ -51,9 +46,10 @@ export default function PlaylistDetails({ playlist, currShow }) {
   const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd, MMMM Do, YYYY");
     contents = 
       <div>
-        <h2 className={styles.header}>Playlist for {currShow && currShow.title} - {dateString}</h2>
+        <h2 className={styles.header}>Playlist for {currShow && currShow.title} - {dateString}
+        </h2>
         {
-          (songInfo)
+          playlistSongs === undefined
           ? <p>No songs to display</p>
           : <table className={styles.songTable}>
               <tbody>
@@ -68,7 +64,7 @@ export default function PlaylistDetails({ playlist, currShow }) {
             </table>
         }
       </div>
-//}
+}
 
   return (
     <div>

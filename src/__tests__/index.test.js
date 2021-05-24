@@ -5,9 +5,9 @@ Top-level integration Tests
 Any tests that require mocking the next-auth module should be put into auth.test.js
 
 */
-const fetch = require("node-fetch");
+//const fetch = require("node-fetch");
 import fetchMock from "fetch-mock-jest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import WRMCWebsite from "../pages/index";
 import { useSession } from "next-auth/client";
@@ -25,7 +25,8 @@ describe("Top level integration tests", () => {
       await fetchMock.flush(true);
     });
   });
-
+});
+  /*
   test("Tests that the see-full-schedule button correctly displays the schedule", () => {
     render(<WRMCWebsite />);
     const schedule = screen.getByRole("link", {name:"Schedule"});
@@ -33,8 +34,8 @@ describe("Top level integration tests", () => {
     expect(schedule).toHaveAttribute("href", "/schedule");
   });
 });
-
-
+8?
+/*
 describe("Start show button integration tests", () => {
 
   beforeEach(() => {
@@ -46,13 +47,13 @@ describe("Start show button integration tests", () => {
     render(<WRMCWebsite />);
     expect(screen.queryByRole("button", { name: "Start Show!" })).not.toBeInTheDocument();
   });
-
+  /*
   test("Start show button visible when logged in", async () => {
     useSession.mockReturnValue([{user: {name: "username"}}, false]);
     render(<WRMCWebsite />);
     expect(container.getByRole("button", { name: "Start Show!" })).toBeInTheDocument();
   });
-
+  
   test("Start show button takes user to playlist logger", () => {
     useSession.mockReturnValue([{user: {name: "username"}}, false]);
     render(<WRMCWebsite />);
@@ -66,7 +67,7 @@ describe("Start show button integration tests", () => {
     expect(screen.getByRole("button", { name: "Add Song" })).toBeInTheDocument();
   });
 });
-
+*/
 describe("PlaylistLogger integration tests", () => {
 
   /* commenting out for linter -- used in test for saving changes

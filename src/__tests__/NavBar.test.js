@@ -4,7 +4,6 @@ Tests for NavBar.js
 
 */
 import { render, screen } from "@testing-library/react";
-import Home from "../pages/index";
 import Layout from "../components/Layout";
 import Schedule from "../components/ScheduleContainer";
 import About from "../pages/about";
