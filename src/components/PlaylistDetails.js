@@ -29,14 +29,14 @@ export default function PlaylistDetails({ playlist, currShow }) {
       const allSongs = await response.json();
       const filteredSongs = allSongs.filter((song) => song.playlistId === playlist.id)
       console.log('songs')
-      console.log(filteredSongs);
+      console.log(playlistSongs);
       setPlaylistSongs(filteredSongs);
     }
     getSongs();
   }, []);
 
   let contents;
-  if (currShow) {
+  //if (currShow) {
     playlistSongs.sort((a, b) => compareTwoSongs(a,b));
 
   const songInfo = playlistSongs.map((song) => 
@@ -68,7 +68,7 @@ export default function PlaylistDetails({ playlist, currShow }) {
             </table>
         }
       </div>
-}
+//}
 
   return (
     <div>

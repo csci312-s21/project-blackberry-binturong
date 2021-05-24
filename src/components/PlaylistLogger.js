@@ -52,7 +52,7 @@ export default function PlaylistLogger() {
       getShow();
     }
     
-  }, [currentPlaylist]);
+  }, [currentPlaylist, emptyRows]);
 
   const complete = async (action, newSong) => {
     if (action === "enter") {
