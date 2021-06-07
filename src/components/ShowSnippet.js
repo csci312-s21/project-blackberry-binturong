@@ -9,19 +9,26 @@
 import { showType } from "../lib/types.js";
 import { getTimeString } from "../lib/component-utils.js";
 import styles from "../styles/Main.module.css";
+import Link from "next/link";
 
 export default function ShowSnippet({ show }) {
   const time = getTimeString(show.hour, show.duration);
 
   return (
-    <div className={styles.snippet_div}>
-      <span className={styles.snippet_time}>{time}</span>
-      <span className={styles.snippet_link}>{show.title}</span>
-      <span className={styles.snippet_djs}>{show.DJs.join(", ")}</span>
-    </div>
+    <Link href={`/shows/${show.id}`}>
+      <tr className={styles.snippet_div} data-testid="show snippet">
+        <td>{time}</td>
+        <td>
+          <strong>{show.title}</strong>
+        </td>
+        <td>
+          <em>{show.DJs.join(", ")}</em>
+        </td>
+      </tr>
+    </Link>
   );
 }
 
 ShowSnippet.propTypes = {
-  show: showType.isRequired
-}
+  show: showType.isRequired,
+};
