@@ -32,8 +32,8 @@ export default function Layout({ title, children }) {
     const getPlaylist = async () => {
       const playlist = await getCurrentPlaylist();
       setCurrentPlaylist(playlist);
-    }
-    
+    };
+
     getPlaylist();
   }, []);
 
@@ -42,32 +42,40 @@ export default function Layout({ title, children }) {
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>      
+      </Head>
       <div className={styles.main_page}>
-        <LoginButton/>
-        <Link href="/">
-          <div className={styles.icon_div}>
-            <img
-              src="https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/logo_large.png"
-              className={styles.wrmc_icon}
-            />
-          </div>
-        </Link>
-        <NavBar/>
+        <Row>
+          <Col>{session && `Logged in as ${session.user.name}`}</Col>
+          <Col xl={{ order: "last" }}>
+            <LoginButton />
+          </Col>
+          <Col>
+            <div className={styles.icon_div}>
+              <Link href="/">
+                <img
+                  src="https://wrmc.middlebury.edu/wp-content/themes/wrmc/images/logo_large.png"
+                  className={styles.wrmc_icon}
+                />
+              </Link>
+            </div>
+          </Col>
+        </Row>
+        <NavBar />
         <Row className={styles.index_row_center}>
           <Col xs={8} md={5} className={styles.index_column}>
             <PlayButton />
           </Col>
         </Row>
         <div className={styles.startshow_div}>
-            {session && 
-            (currentPlaylist 
-            ? <Link href="/log-playlist">
-                <input type="button" value="Go to Current Playlist"/>
+          {session &&
+            (currentPlaylist ? (
+              <Link href="/log-playlist">
+                <input type="button" value="Go to Current Playlist" />
               </Link>
-            : <StartShowButton/>
-            )}
-          </div>
+            ) : (
+              <StartShowButton />
+            ))}
+        </div>
         <main className={styles2.main}>{children}</main>
       </div>
     </div>
@@ -76,5 +84,5 @@ export default function Layout({ title, children }) {
 
 Layout.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.element
+  children: PropTypes.element,
 };
