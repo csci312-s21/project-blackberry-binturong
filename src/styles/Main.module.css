@@ -11,7 +11,7 @@
 .wrmc_icon {
   display: inline-block;
   width: 500px;
-  margin: 0;
+  cursor: pointer;
 }
 
 .icon_div {
@@ -35,16 +35,18 @@
 
 .navbar_item {
   font-size: 24px;
-  color: black;
+  color: rgb(100, 100, 100);
   margin-left: 40px;
   margin-right: 40px;
+  margin-bottom: 1px;
   padding: 8px;
+  text-decoration: none;
+  border-radius: 8px;
 }
 
 .navbar_item:hover {
   color: black;
-  font-weight: bold;
-  text-decoration: none;
+  background-color: lightgray;
 }
 
 .index_column {
@@ -167,32 +169,12 @@
 
 /* ==== ShowSnippet ==== */
 .snippet_div {
+  color: black;
   text-align: left;
   margin-top: 6px;
-}
-
-.snippet_div:hover {
-  color: black;
-  font-weight: bold;
-}
-
-.snippet_time {
-  font-size: 16px;
-  margin: 0;
-  padding-right: 10px;
-  text-decoration: underline;
-}
-
-.snippet_link {
+  cursor: pointer;
   font-size: 16px;
   padding-right: 10px;
-  text-decoration: underline;
-}
-
-.snippet_djs {
-  font-size: 16px;
-  padding-bottom: 10px;
-  text-decoration: underline;
 }
 
 /* ==== NextThreeShows ==== */
@@ -209,9 +191,27 @@
   margin-bottom: 9px;
 }
 
-.nextshows_item {
-  font-size: 20px;
-  color: black;
+.nextshows_table {
+  width: auto;
+  margin: 10px auto;
+}
+
+.nextshows_table td:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.nextshows_table td:last-child {
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.nextshows_button {
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.nextshows_button:hover {
+  background-color: lightgray;
 }
 
 /* ==== PlayButton ==== */
@@ -222,6 +222,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 8px;
 }
 
 .playbutton_div:hover {
@@ -232,6 +233,13 @@
   width: 70px;
   color: black;
   margin-left: 20px;
+  transition-duration: 0.4s;
+  border-radius: 50%;
+}
+
+.playbutton_icon:hover {
+  color: red;
+  box-shadow: 0 0 30px red inset, 0 0 25px red;
 }
 
 .playbutton_text {
@@ -245,16 +253,19 @@
 
 /* ==== LoginButton ==== */
 .loginButton {
-  width: 100px;
-  height: 30px;
+  width: 120px;
+  height: 100px;
   background: url(../images/log.png) transparent no-repeat top left;
   outline: none;
   border: none;
-  padding-left: 60px;
-  margin-top: 10px;
-  margin-right: 0;
+  padding-left: 100px;
+  margin-top: 50px;
   float: right;
   cursor: pointer;
+}
+
+.loginButton:hover {
+  background: url(../images/log.gif) transparent no-repeat top left;
 }
 
 /* ==== ShowDetails ==== */
@@ -349,14 +360,15 @@
 
 /* ==== WeeklyShow ==== */
 .weeklyshow {
-  width: 125px;
-  height: 125px;
+  width: 140px;
+  height: 140px;
   font-size: 12px;
   color: white;
   text-align: center;
   padding-top: 8px;
   padding-left: 6px;
   padding-right: 6px;
+  border-radius: 8px;
 }
 
 .weeklyshow_title {
@@ -374,10 +386,18 @@
 }
 
 /* ==== WeeklySchedule ==== */
+.weekly_table {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .weeklyschedule_time {
+  width: 100px;
   font-size: 18px;
   font-weight: 500;
   margin-right: 8px;
+  margin-top: -10px;
 }
 
 .weeklyschedule_header {
@@ -387,28 +407,35 @@
   text-align: center;
   margin-top: 12px;
   margin-bottom: 12px;
+  padding: 20px;
 }
 
 /* ==== DayShow ==== */
 .dayshow_div {
   font-size: 15px;
   width: 150px;
-  height: 150px;
+  height: 170px;
   color: white;
   text-align: center;
   padding: 8px;
+  border-radius: 8px;
 }
 
 .dayshow_description {
   font-size: 14px;
   width: 150px;
-  height: 150px;
+  height: 170px;
   color: white;
   text-align: center;
   padding: 8px;
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  border-radius: 8px;
+}
+
+.dayshow_description:hover {
+  cursor: pointer;
 }
 
 .dayshow_description::-webkit-scrollbar {
