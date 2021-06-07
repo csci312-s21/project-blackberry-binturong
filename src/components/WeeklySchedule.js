@@ -12,9 +12,10 @@ import WeeklyShow from "./WeeklyShow";
 import { dayToInt } from "../lib/component-utils.js";
 import styles from "../styles/Main.module.css";
 import { showType } from "../lib/types.js";
+import moment from "moment";
+import Table from "react-bootstrap/Table";
 
 export default function WeeklySchedule({ shows, setFilter }) {
-  const showsArr = [];
   const days = [
     "",
     "Monday",
@@ -26,90 +27,67 @@ export default function WeeklySchedule({ shows, setFilter }) {
     "Sunday",
   ];
 
-  const firstRow = days.map((d, i) => {
-    const currKey = `firstrow${i}`;
-    return (
-      <div
-        key={currKey}
-        className={styles.weeklyschedule_header}
-        onClick={() => {
-          setFilter(d);
-        }}
-      >
-        {d}
-      </div>
-    );
-  });
-  showsArr.push(firstRow);
+  const headers = days.map((day) => (
+    <th
+      key={day}
+      className={styles.weeklyschedule_header}
+      onClick={() => setFilter(day)}
+    >
+      {day}
+    </th>
+  ));
+
+  const showsArr = [];
 
   const getHour = (i) => {
-    let hour = i <= 12 ? i : i - 12;
-    if (hour === 0) {
-      hour = 12;
-    }
-    return `${hour}:00${i <= 11 ? " am" : " pm"}`;
+    return moment(i, "H").format("h:mm a");
   };
 
-  for (let i = 0; i < 24; i++) {
+  for (let hour = 0; hour < 24; hour++) {
     showsArr.push([]);
-    for (let l = 0; l < 8; l++) {
-      if (l === 0) {
-        showsArr[showsArr.length - 1].push(
-          <div className={styles.weeklyschedule_time}>{getHour(i)}</div>
-        );
-      } else {
-        showsArr[showsArr.length - 1].push(undefined);
-      }
+    for (let day = 0; day < 8; day++) {
+      showsArr[showsArr.length - 1].push(
+        day === 0 ? (
+          <div className={styles.weeklyschedule_time}>{getHour(hour)}</div>
+        ) : undefined
+      );
     }
   }
 
-  shows.forEach((s) => {
-    const day = dayToInt[s.day] + 1;
-    const time = s.hour / 100 + 1;
-    showsArr[time][day] = <WeeklyShow show={s} />;
-    if (s.duration === 2) {
-      showsArr[time + 1][day] = <WeeklyShow show={s} />;
+  shows.forEach((show) => {
+    const day = dayToInt[show.day] + 1;
+    const time = show.hour / 100;
+    for (let d = 0; d < show.duration; d++) {
+      showsArr[time + d][day] = <WeeklyShow show={show} />;
     }
   });
 
-  const table = showsArr.map((item, key1) => {
-    const rowKey = `row${key1}`;
-    let count = 0;
-    item.forEach((unit) => {
-      if (unit === undefined) {
-        count += 1;
-      }
-    });
-
-    if (count < 7) {
-      return (
-        <tr key={rowKey}>
-          {item.map((i, key2) => {
-            let result = i;
-            if (result === undefined) {
-              result = <WeeklyShow show={{}} />;
-            }
-            let cellKey = key1 * 1000 + key2;
-            cellKey = `cell${cellKey}`;
-            return <td key={cellKey}>{result}</td>;
-          })}
+  const table = showsArr.map(
+    (row, key1) =>
+      !row.slice(1).every((unit) => !unit) && (
+        <tr key={`row${key1}`}>
+          {row.map((show, key2) => (
+            <td key={`cell${key1 * 1000 + key2}`}>
+              {show ? show : <WeeklyShow />}
+            </td>
+          ))}
         </tr>
-      );
-    }
-  });
+      )
+  );
 
   return (
-    <div data-testid="schedule">
-      <table>
+    <div data-testid="schedule" className={styles.weekly_table}>
+      <Table responsive borderless size="sm">
         <tbody>
+          <tr>{headers}</tr>
           {table}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }
 
 WeeklySchedule.propTypes = {
   shows: PropTypes.arrayOf(showType).isRequired,
-  setFilter: PropTypes.func.isRequired
+  setFilter: PropTypes.func.isRequired,
 };
