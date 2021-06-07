@@ -1,27 +1,17 @@
 [
   {
-    "title": "We are playing awesome music",
-    "DJs" : [],
-    "description" : "Theres not always a show going on, but there's always something to listen to. This only appears when no show is currently going on and lasts until the next show begins.",
-    "day": "X",
-    "hour": 0,
-    "duration": 1,
-    "genres": ["music"],
-    "id": 12345
-  },
-  {
     "title": "Insta-Gram",
-    "DJs": [59,64],
+    "DJs": [59, 64],
     "description": "Love grandmas? So do we! Each week, we celebrate America’s unsung heroes: grandmas from our families, friends, towns and beyond!",
     "day": "M",
     "hour": 1900,
     "duration": 1,
-    "genres": ["exec","Talk"],
+    "genres": ["exec", "Talk"],
     "id": 0
   },
   {
     "title": "What’s a Genre?",
-    "DJs": [987,47],
+    "DJs": [987, 47],
     "description": "Join us, Abby and Liza, as we break down our favorite songs from a new genre each week! From country to pop to musical theater, we love it all. Come listen for your favorite genre or tune in every week!! 🙂",
     "day": "M",
     "hour": 2000,
@@ -31,7 +21,7 @@
   },
   {
     "title": "v-talk",
-    "DJs": [65,66],
+    "DJs": [65, 66],
     "description": "very sincere",
     "day": "M",
     "hour": 2100,
@@ -46,12 +36,12 @@
     "day": "M",
     "hour": 2200,
     "duration": 1,
-    "genres": ["Hip Hop","Pop","Talk"],
+    "genres": ["Hip Hop", "Pop", "Talk"],
     "id": 3
   },
   {
     "title": "Policy Path",
-    "DJs": [61,22],
+    "DJs": [61, 22],
     "description": "Need a break from old white men discussion politics? This show is lively discussion of current events and politics from the perspective of two young college students.",
     "day": "M",
     "hour": 700,
@@ -76,17 +66,17 @@
     "day": "M",
     "hour": 1000,
     "duration": 1,
-    "genres": ["Funk","Indie","R&B / Soul"],
+    "genres": ["Funk", "Indie", "R&B / Soul"],
     "id": 6
   },
   {
     "title": "Honey Roast",
-    "DJs": [988,990],
+    "DJs": [988, 990],
     "description": "On Honey Roast, we invite a guest each week to join us and submit some of their favorite songs. We listen to these, and then gently and lovingly roast them. Now comes the Honey: next we discuss all the things we love about our guest. Little honey, little roast, little…",
     "day": "M",
     "hour": 1100,
     "duration": 1,
-    "genres": ["Indie","Pop","Talk"],
+    "genres": ["Indie", "Pop", "Talk"],
     "id": 7
   },
   {
@@ -96,7 +86,7 @@
     "day": "M",
     "hour": 1200,
     "duration": 1,
-    "genres": ["Indie","Pop","World"],
+    "genres": ["Indie", "Pop", "World"],
     "id": 8
   },
   {
@@ -121,7 +111,7 @@
   },
   {
     "title": "short giraffes",
-    "DJs": [58,69],
+    "DJs": [58, 69],
     "description": "Join us, two besties, for a lively hour of debate and contradiction as we navigate our trivial and significant disagreements.",
     "day": "M",
     "hour": 1600,
@@ -146,7 +136,7 @@
     "day": "T",
     "hour": 1900,
     "duration": 1,
-    "genres": ["Folk","Indie","Pop"],
+    "genres": ["Folk", "Indie", "Pop"],
     "id": 13
   },
   {
@@ -161,12 +151,12 @@
   },
   {
     "title": "Reality as we perceive it",
-    "DJs": [52,70],
+    "DJs": [52, 70],
     "description": "Have you ever wanted to hear two college girls discuss the meaning of life? Probably not, but we’re going to give it to you. We’re finally ditching exploiting our personal lives for entertainment, and turning our focus to the universe. Of course, we’ll also have some pretty cool tunes to…",
     "day": "T",
     "hour": 2100,
     "duration": 1,
-    "genres": ["Pop","Talk"],
+    "genres": ["Pop", "Talk"],
     "id": 15
   },
   {
@@ -176,7 +166,7 @@
     "day": "T",
     "hour": 2200,
     "duration": 1,
-    "genres": ["exec","Jazz","Psychadelia","Talk"],
+    "genres": ["exec", "Jazz", "Psychadelia", "Talk"],
     "id": 16
   },
   {
@@ -186,7 +176,7 @@
     "day": "T",
     "hour": 2300,
     "duration": 1,
-    "genres": ["Hip Hop","Pop Punk","R&B / Soul"],
+    "genres": ["Hip Hop", "Pop Punk", "R&B / Soul"],
     "id": 17
   },
   {
@@ -196,7 +186,7 @@
     "day": "T",
     "hour": 200,
     "duration": 1,
-    "genres": ["Folk","Indie","Rock"],
+    "genres": ["Folk", "Indie", "Rock"],
     "id": 18
   },
   {
@@ -216,17 +206,17 @@
     "day": "T",
     "hour": 900,
     "duration": 1,
-    "genres": ["Folk","Reggae","Rock"],
+    "genres": ["Folk", "Reggae", "Rock"],
     "id": 20
   },
   {
     "title": "You Might Hate This",
-    "DJs": [27,38],
+    "DJs": [27, 38],
     "description": "Two friends with sometimes similar but very often different music tastes play each other songs and predict each other’s first impressions. There will inevitably be disagreements, and hopefully some new favorite tunes!",
     "day": "T",
     "hour": 1100,
     "duration": 1,
-    "genres": ["Folk","Indie","Pop"],
+    "genres": ["Folk", "Indie", "Pop"],
     "id": 21
   },
   {
@@ -246,7 +236,7 @@
     "day": "T",
     "hour": 1600,
     "duration": 1,
-    "genres": ["Indie","Pop","Rock"],
+    "genres": ["Indie", "Pop", "Rock"],
     "id": 23
   },
   {
@@ -256,7 +246,7 @@
     "day": "T",
     "hour": 1700,
     "duration": 1,
-    "genres": ["Funk","Indie","R&B / Soul"],
+    "genres": ["Funk", "Indie", "R&B / Soul"],
     "id": 24
   },
   {
@@ -266,7 +256,7 @@
     "day": "T",
     "hour": 1800,
     "duration": 1,
-    "genres": ["exec","Folk","Hip Hop","Indie"],
+    "genres": ["exec", "Folk", "Hip Hop", "Indie"],
     "id": 25
   },
   {
@@ -276,22 +266,22 @@
     "day": "W",
     "hour": 1900,
     "duration": 1,
-    "genres": ["Folk","Talk"],
+    "genres": ["Folk", "Talk"],
     "id": 26
   },
   {
     "title": "PSYC 91.1",
-    "DJs": [9,72],
+    "DJs": [9, 72],
     "description": "Wanna hear a couple of gals talk about their attachments to jams and places and people and mems? Tune into PSYC 91.1 to hear some warm fuzzies, deep dives, and psychological analyses of our lives and bond with us a little. We love a little of everything so come along…",
     "day": "W",
     "hour": 2000,
     "duration": 1,
-    "genres": ["Pop","Rock","Talk"],
+    "genres": ["Pop", "Rock", "Talk"],
     "id": 27
   },
   {
     "title": "Vibe of the Times",
-    "DJs": [6,55],
+    "DJs": [6, 55],
     "description": "Vibe of the Times with Dan and Pelham is an auditory deep dive into all things revolutionary. Exploring pioneer artists in new genres, as well as the political context that surrounded their rise to prominence, we toil with the ideas of genre formation — what it means to forge your…",
     "day": "W",
     "hour": 2100,
@@ -316,7 +306,7 @@
     "day": "W",
     "hour": 2300,
     "duration": 1,
-    "genres": ["Folk","Fruit","Hip Hop","Pop","R&B / Soul"],
+    "genres": ["Folk", "Fruit", "Hip Hop", "Pop", "R&B / Soul"],
     "id": 30
   },
   {
@@ -326,7 +316,7 @@
     "day": "T",
     "hour": 0,
     "duration": 1,
-    "genres": ["Folk","Indie"],
+    "genres": ["Folk", "Indie"],
     "id": 31
   },
   {
@@ -351,17 +341,17 @@
   },
   {
     "title": "Dissociation Station",
-    "DJs": [42,976],
+    "DJs": [42, 976],
     "description": "See you on the other side",
     "day": "W",
     "hour": 1600,
     "duration": 1,
-    "genres": ["Indie","Rap","Talk"],
+    "genres": ["Indie", "Rap", "Talk"],
     "id": 34
   },
   {
     "title": "A Safe Shuffle",
-    "DJs": [16,11],
+    "DJs": [16, 11],
     "description": "Finally realizing our dreams of uninterrupted aux for an hour <3",
     "day": "W",
     "hour": 1700,
@@ -371,17 +361,17 @@
   },
   {
     "title": "Hot Rain",
-    "DJs": [2,986],
+    "DJs": [2, 986],
     "description": "Don’t forget your umbrella. Tune in and take it easy with your co-hosts Yardena and Jacob as we spin you an hour of curated, low-key tunes peppered with light conversation. We’ve got steamy funk, lo-fi rock, slow electronica, and a little bit of everything in between. The forecast for tonight…",
     "day": "W",
     "hour": 1800,
     "duration": 1,
-    "genres": ["exec","Indie","Rock"],
+    "genres": ["exec", "Indie", "Rock"],
     "id": 36
   },
   {
     "title": "(Untitled)",
-    "DJs": [73,74],
+    "DJs": [73, 74],
     "description": "(No description)",
     "day": "Th",
     "hour": 2000,
@@ -396,7 +386,7 @@
     "day": "Th",
     "hour": 2100,
     "duration": 1,
-    "genres": ["Indie","Talk"],
+    "genres": ["Indie", "Talk"],
     "id": 38
   },
   {
@@ -406,17 +396,17 @@
     "day": "Th",
     "hour": 2200,
     "duration": 1,
-    "genres": ["exec","Punk"],
+    "genres": ["exec", "Punk"],
     "id": 39
   },
   {
     "title": "After Hours",
-    "DJs": [992,993],
+    "DJs": [992, 993],
     "description": "After Hours is the soundtrack to your late night drives as you wind down for the day. We want to capture that atmosphere and create a chill soundscape that people can vibe to with us. You can expect a diverse range of music, but mostly hip hop, R&B, and Indie.…",
     "day": "Th",
     "hour": 2300,
     "duration": 1,
-    "genres": ["Hip Hop","Indie","R&B / Soul"],
+    "genres": ["Hip Hop", "Indie", "R&B / Soul"],
     "id": 40
   },
   {
@@ -436,7 +426,7 @@
     "day": "Th",
     "hour": 1000,
     "duration": 1,
-    "genres": ["Indie","Pop","Rock"],
+    "genres": ["Indie", "Pop", "Rock"],
     "id": 42
   },
   {
@@ -446,7 +436,7 @@
     "day": "Th",
     "hour": 1100,
     "duration": 1,
-    "genres": ["exec","Folk","Indie"],
+    "genres": ["exec", "Folk", "Indie"],
     "id": 43
   },
   {
@@ -456,22 +446,22 @@
     "day": "Th",
     "hour": 1300,
     "duration": 1,
-    "genres": ["Indie","Pop","Talk"],
+    "genres": ["Indie", "Pop", "Talk"],
     "id": 44
   },
   {
     "title": "Hard Switch",
-    "DJs": [994,995],
+    "DJs": [994, 995],
     "description": "Strive for variety, reject cohesion. Hard switches only.",
     "day": "Th",
     "hour": 1500,
     "duration": 1,
-    "genres": ["Folk","Metal","Rock"],
+    "genres": ["Folk", "Metal", "Rock"],
     "id": 45
   },
   {
     "title": "In Other News…",
-    "DJs": [73,25],
+    "DJs": [73, 25],
     "description": "Friends and Peers, We will Play Good Music. Pls Listen.",
     "day": "Th",
     "hour": 1700,
@@ -486,7 +476,7 @@
     "day": "F",
     "hour": 1900,
     "duration": 1,
-    "genres": ["Folk","Indie","Pop"],
+    "genres": ["Folk", "Indie", "Pop"],
     "id": 47
   },
   {
@@ -496,7 +486,7 @@
     "day": "F",
     "hour": 2100,
     "duration": 1,
-    "genres": ["Indie","Pop"],
+    "genres": ["Indie", "Pop"],
     "id": 48
   },
   {
@@ -506,7 +496,7 @@
     "day": "F",
     "hour": 2200,
     "duration": 1,
-    "genres": ["Folk","Pop","Rock"],
+    "genres": ["Folk", "Pop", "Rock"],
     "id": 49
   },
   {
@@ -516,7 +506,7 @@
     "day": "S",
     "hour": 0,
     "duration": 1,
-    "genres": ["Punk","Rock"],
+    "genres": ["Punk", "Rock"],
     "id": 50
   },
   {
@@ -528,10 +518,10 @@
     "duration": 1,
     "genres": ["News"],
     "id": 51
-},
-{
+  },
+  {
     "title": "Tell Me What to Do!?",
-    "DJs": [981,20,979],
+    "DJs": [981, 20, 979],
     "description": "You’ve got your crunchy proc febs, your pre-med bihall nerds, your athletes, and–the scariest category of all–the people who venture across Battell Beach in Chacos at all times of the year. But what if you’re literally just the most average Joe? You may feel like you have nowhere to go,…",
     "day": "F",
     "hour": 1200,
@@ -541,12 +531,12 @@
   },
   {
     "title": "what’s the sitch?",
-    "DJs": [48,40],
+    "DJs": [48, 40],
     "description": "ur highnesses Olivia and Madeleine just want to know what the sitch is. Like, was there one dog at the beginning of time and then they ???? had a bunch of different babies on different continents? What is the sitch with dog breeds?? What about circular vs. angular living spaces?…",
     "day": "F",
     "hour": 1300,
     "duration": 1,
-    "genres": ["Indie","Punk","Rock","Talk"],
+    "genres": ["Indie", "Punk", "Rock", "Talk"],
     "id": 53
   },
   {
@@ -556,7 +546,7 @@
     "day": "F",
     "hour": 1500,
     "duration": 1,
-    "genres": ["Pop","Talk"],
+    "genres": ["Pop", "Talk"],
     "id": 54
   },
   {
@@ -571,7 +561,7 @@
   },
   {
     "title": "A Misfit’s Guide to Middlebury",
-    "DJs": [33,56],
+    "DJs": [33, 56],
     "description": "Did you know there used to be regular brawls in Old Chapel during the 1890s? Ever heard of Abortion Underground: a secret Middlebury club in the 60s and 70s that took women in Vermont to Canada so they could access safe and legal abortions? Join Lachlan and Dan as they…",
     "day": "F",
     "hour": 1700,
@@ -581,12 +571,12 @@
   },
   {
     "title": "Simps and Subpar Stanzas",
-    "DJs": [35,29],
+    "DJs": [35, 29],
     "description": "Have you ever wanted to suffer from second hand embarrassment so badly that you turned on the radio?! Tune in to Simps and Subpar Stanzas as we talk through past romantic failures, current romantic interests? prospects? Proc crushes (jk, no one goes to Proc), featuring simp-y songs, the occasional simp…",
     "day": "F",
     "hour": 1800,
     "duration": 1,
-    "genres": ["Folk","Indie","Talk"],
+    "genres": ["Folk", "Indie", "Talk"],
     "id": 57
   },
   {
@@ -596,7 +586,7 @@
     "day": "S",
     "hour": 2200,
     "duration": 2,
-    "genres": ["exec","Fruit"],
+    "genres": ["exec", "Fruit"],
     "id": 58
   },
   {
@@ -606,7 +596,7 @@
     "day": "S",
     "hour": 800,
     "duration": 2,
-    "genres": ["Blues","Rock"],
+    "genres": ["Blues", "Rock"],
     "id": 59
   },
   {
@@ -616,7 +606,7 @@
     "day": "S",
     "hour": 1200,
     "duration": 1,
-    "genres": ["Electronic","Indie","Pop"],
+    "genres": ["Electronic", "Indie", "Pop"],
     "id": 60
   },
   {
@@ -636,7 +626,7 @@
     "day": "Su",
     "hour": 2000,
     "duration": 1,
-    "genres": ["exec","Hip Hop","Pop","Rap"],
+    "genres": ["exec", "Hip Hop", "Pop", "Rap"],
     "id": 62
   },
   {
@@ -646,17 +636,17 @@
     "day": "Su",
     "hour": 2100,
     "duration": 1,
-    "genres": ["Experimental","Talk"],
+    "genres": ["Experimental", "Talk"],
     "id": 63
   },
   {
     "title": "The Dig",
-    "DJs": [991,78],
+    "DJs": [991, 78],
     "description": "The Dig! Your place to go for newly unearthed archaeological and auditory finds.",
     "day": "Su",
     "hour": 2200,
     "duration": 1,
-    "genres": ["Electronic","Hip Hop","Indie"],
+    "genres": ["Electronic", "Hip Hop", "Indie"],
     "id": 64
   },
   {
@@ -666,17 +656,17 @@
     "day": "Su",
     "hour": 2300,
     "duration": 1,
-    "genres": ["Funk","Hip Hop","Indie","R&B / Soul"],
+    "genres": ["Funk", "Hip Hop", "Indie", "R&B / Soul"],
     "id": 65
   },
   {
     "title": "MiddNight Break",
-    "DJs": [984,79],
+    "DJs": [984, 79],
     "description": "A chill show for those Saturday night lulls… Hosted by Stew 4’s very own Jake Lyons and Malachi Raymond",
     "day": "M",
     "hour": 0,
     "duration": 1,
-    "genres": ["Jazz","Rock","Talk"],
+    "genres": ["Jazz", "Rock", "Talk"],
     "id": 66
   },
   {
@@ -686,17 +676,17 @@
     "day": "Su",
     "hour": 1000,
     "duration": 1,
-    "genres": ["Indie","Pop","Rock"],
+    "genres": ["Indie", "Pop", "Rock"],
     "id": 67
   },
   {
     "title": "SPUNK with Liam and Porter",
-    "DJs": [975,80],
+    "DJs": [975, 80],
     "description": "Join us weekly for an outlandishly witty take on this week’s hot topics. Politics expert Porter Bowman and general buffoon Liam Hahn delve into the hot topics being discussed at your dinner table this week providing you with both insight and hot-takes to bring home to mom.",
     "day": "Su",
     "hour": 1100,
     "duration": 1,
-    "genres": ["Comedy","Eclectic"],
+    "genres": ["Comedy", "Eclectic"],
     "id": 68
   },
   {
@@ -711,13 +701,13 @@
   },
   {
     "title": "Fuk-Mak Movies / Cherried away 🍒🍒🍒",
-    "DJs": [43,81],
+    "DJs": [43, 81],
     "description": "Every week Masha and Irith have a guest to talk about the movie that influenced them the most. Through the fun, casual interviews our audience will get to know the guest and learn about the cultural and cinematic background of the film (and get inspired to watch it!). The guests…",
 
     "day": "Su",
     "hour": 1600,
     "duration": 1,
-    "genres": ["Fruit","Talk"],
+    "genres": ["Fruit", "Talk"],
     "id": 70
   },
   {
