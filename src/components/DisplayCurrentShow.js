@@ -7,16 +7,12 @@
     show - current show
 */
 import Link from "next/link";
-import moment from "moment-timezone";
 import { showType } from "../lib/types.js";
 import styles from "../styles/Main.module.css";
-moment.tz.setDefault("America/New_York");
 
 export default function DisplayCurrentShow({ show }) {
-  const showExists = typeof show !== "undefined";
-  let content = null;
-
-  if (showExists) {
+  let content;
+  if (show) {
     content = (
       <div>
         <div className={styles.currentshow_title}>ON AIR</div>
@@ -27,10 +23,7 @@ export default function DisplayCurrentShow({ show }) {
         <div className={styles.currentshow_djs}>
           <em>DJs: {show.DJs.join(", ")}</em>
         </div>
-        <div className={styles.currentshow_text}>
-          {" "}
-          Call the DJ: 802 443 6423{" "}
-        </div>
+        <div className={styles.currentshow_text}>Call the DJ: 802 443 6423</div>
         <div className={styles.currentshow_message}>
           <strong>TUNE IN!</strong>
         </div>
@@ -40,7 +33,7 @@ export default function DisplayCurrentShow({ show }) {
     content = (
       <div>
         <div className={styles.header}>ON AIR</div>
-        <div className={styles.currentshow_text}> No current show :(( </div>
+        <div className={styles.currentshow_text}> No current show :( </div>
       </div>
     );
   }

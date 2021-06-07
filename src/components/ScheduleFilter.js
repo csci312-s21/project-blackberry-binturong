@@ -7,21 +7,17 @@ export default function ScheduleFilter({
   currentPage,
   setCurrentPage,
 }) {
-  const pages = pageList.map((p) => {
-    return p === currentPage ? (
-      <li
-        key={p}
-        className={styles.schedulefilter_highlight}
-        onClick={() => setCurrentPage(p)}
-      >
-        {p}
-      </li>
-    ) : (
-      <li key={p} onClick={() => setCurrentPage(p)}>
-        {p}
-      </li>
-    );
-  });
+  const pages = pageList.map((p) => (
+    <li
+      key={p}
+      className={
+        p === currentPage ? styles.schedulefilter_highlight : undefined
+      }
+      onClick={() => setCurrentPage(p)}
+    >
+      {p}
+    </li>
+  ));
 
   return (
     <div className={styles.schedulefilter}>

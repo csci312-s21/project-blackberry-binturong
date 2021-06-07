@@ -13,35 +13,33 @@ export default function DayShow({ show }) {
   const genrecolor = colors[show.genres[0].toLowerCase()];
 
   return (
-    <div>
-      <Link href={`/shows/${show.id}`}>
-        <div
-          onMouseLeave={() => setDisplayDescription(false)}
-          onMouseEnter={() => setDisplayDescription(true)}
-        >
-          {displayDescription ? (
-            <div
-              className={styles.dayshow_description}
-              style={{ backgroundColor: genrecolor }}
-            >
-              {show.description}
-            </div>
-          ) : (
-            <div
-              className={styles.dayshow_div}
-              style={{ backgroundColor: genrecolor }}
-            >
-              <p className={styles.dayshow_title}>{show.title}</p>
-              <p className={styles.dayshow_time}>{time}</p>
-              <p className={styles.dayshow_djs}>{show.DJs.join(", ")}</p>
-            </div>
-          )}
-        </div>
-      </Link>
-    </div>
+    <Link href={`/shows/${show.id}`}>
+      <div
+        onMouseLeave={() => setDisplayDescription(false)}
+        onMouseEnter={() => setDisplayDescription(true)}
+      >
+        {displayDescription ? (
+          <div
+            className={styles.dayshow_description}
+            style={{ backgroundColor: genrecolor }}
+          >
+            {show.description}
+          </div>
+        ) : (
+          <div
+            className={styles.dayshow_div}
+            style={{ backgroundColor: genrecolor }}
+          >
+            <p className={styles.dayshow_title}>{show.title}</p>
+            <p className={styles.dayshow_time}>{time}</p>
+            <p className={styles.dayshow_djs}>{show.DJs.join(", ")}</p>
+          </div>
+        )}
+      </div>
+    </Link>
   );
 }
 
 DayShow.propTypes = {
-  show: PropTypes.shape({showType}).isRequired
+  show: PropTypes.shape({ showType }).isRequired,
 };

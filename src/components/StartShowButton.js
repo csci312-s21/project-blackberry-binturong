@@ -13,7 +13,7 @@ export default function StartShowButton() {
   const [session] = useSession();
   const [userShows, setUserShows] = useState([]);
   const [selectedShowID, setSelectedShowID] = useState();
-  const [newPlaylist, setNewPlaylist] = useState()
+  const [newPlaylist, setNewPlaylist] = useState();
 
   useEffect(() => {
     const getUserShows = async () => {
@@ -25,7 +25,9 @@ export default function StartShowButton() {
 
       const allDJs = await djResponse.json();
 
-      const [loggedInDJ] = allDJs.filter((dj) => dj.email === session.user.email);
+      const [loggedInDJ] = allDJs.filter(
+        (dj) => dj.email === session.user.email
+      );
 
       const showResponse = await fetch("/api/shows");
 
@@ -35,10 +37,12 @@ export default function StartShowButton() {
 
       const allShows = await showResponse.json();
 
-      const djShows = allShows.filter((show) => show.DJs.includes(loggedInDJ.name));
-    
+      const djShows = allShows.filter((show) =>
+        show.DJs.includes(loggedInDJ.name)
+      );
+
       setUserShows(djShows);
-    }
+    };
 
     if (session) {
       getUserShows();
@@ -47,18 +51,16 @@ export default function StartShowButton() {
 
   useEffect(() => {
     const addPlaylist = async () => {
-    
       const response = await fetch("/api/playlists", {
         method: "POST",
         body: JSON.stringify(newPlaylist),
-        headers: new Headers({ "Content-type": "application/json" })
+        headers: new Headers({ "Content-type": "application/json" }),
       });
-        
+
       if (!response.ok) {
-        console.log(response)
         throw new Error(response.statusText);
       }
-    }
+    };
 
     if (newPlaylist) {
       addPlaylist();
@@ -66,15 +68,25 @@ export default function StartShowButton() {
   }, [newPlaylist]);
 
   const startShow = (showId) => {
-    setNewPlaylist({ date: moment().format("M-DD-YYYY"), showID: showId, current: true });
-  }
+    setNewPlaylist({
+      date: moment().format("M-DD-YYYY"),
+      showID: showId,
+      current: true,
+    });
+  };
 
-  const options = userShows.map(
-    (show) => <option data-testid="show-option" value={show.id} key={show.id}>{show.title}</option>);
+  const options = userShows.map((show) => (
+    <option data-testid="show-option" value={show.id} key={show.id}>
+      {show.title}
+    </option>
+  ));
 
   return (
     <div>
-      <select defaultValue="Select a show:" onChange={() => setSelectedShowID(event.target.value)}>
+      <select
+        defaultValue="Select a show:"
+        onChange={() => setSelectedShowID(event.target.value)}
+      >
         <option disabled>Select a show:</option>
         {options}
       </select>
@@ -83,7 +95,8 @@ export default function StartShowButton() {
           type="button"
           value="Start Show!"
           disabled={!selectedShowID}
-          onClick={() => startShow(+selectedShowID)}/>
+          onClick={() => startShow(+selectedShowID)}
+        />
       </Link>
     </div>
   );

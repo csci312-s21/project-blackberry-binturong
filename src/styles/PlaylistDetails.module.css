@@ -9,6 +9,10 @@
   border: 1px solid #6d6d6d;
 }
 
+.songTable th {
+  text-align: center;
+}
+
 .songTable tr:nth-child(even) {
   background-color: #dddddd;
 }
@@ -19,4 +23,8 @@
 
 .returnButton {
   margin: 0 auto;
+}
+
+.noSongsMessage {
+  text-align: center;
 }

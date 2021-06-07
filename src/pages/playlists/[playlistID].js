@@ -18,9 +18,9 @@ export default function PlaylistDisplay() {
 
       const playlist = await response.json();
       setSelectedPlaylist(playlist);
-    }
+    };
 
-    if (router.isReady ===true) {
+    if (router.isReady) {
       getPlaylist();
     }
   }, [router.isReady]);
@@ -36,16 +36,27 @@ export default function PlaylistDisplay() {
       const show = await response.json();
 
       setSelectedShow(show);
-    }
-    
+    };
+
     if (selectedPlaylist) {
       getShow();
     }
   }, [selectedPlaylist]);
 
   return (
-    <Layout title={selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>
-      <main>{selectedPlaylist && <PlaylistDetails playlist={selectedPlaylist} currShow={selectedShow}/>}</main>
+    <Layout
+      title={
+        selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"
+      }
+    >
+      <main>
+        {selectedPlaylist && (
+          <PlaylistDetails
+            playlist={selectedPlaylist}
+            currShow={selectedShow}
+          />
+        )}
+      </main>
     </Layout>
   );
 }

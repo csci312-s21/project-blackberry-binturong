@@ -17,15 +17,19 @@ export default function ShowDisplay() {
 
       const show = await response.json();
       setSelectedShow(show);
-    }
-    if (router.isReady === true) {
+    };
+    if (router.isReady) {
       getShow();
     }
   }, [router.isReady]);
 
   return (
-    <Layout title={selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"}>
-      <main>{selectedShow && <ShowDetails show={selectedShow}/>}</main>
+    <Layout
+      title={
+        selectedShow ? `${selectedShow.title} | WRMC 91.1 FM` : "WRMC 91.1 FM"
+      }
+    >
+      <main>{selectedShow && <ShowDetails show={selectedShow} />}</main>
     </Layout>
   );
 }

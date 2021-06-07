@@ -10,11 +10,9 @@
 import styles from "../styles/Main.module.css";
 import Headphones from "./Headphones.js";
 
-const listenNow = "http://boombox.middlebury.edu:8000/";
-
 export default function PlayButton() {
   function click() {
-    global.open(listenNow);
+    global.open("http://boombox.middlebury.edu:8000/");
   }
   return (
     <div className={styles.playbutton_div} onClick={click}>

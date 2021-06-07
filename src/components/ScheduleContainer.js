@@ -6,39 +6,36 @@ import { showType } from "../lib/types.js";
 import { useState } from "react";
 import styles from "../styles/Main.module.css";
 
-export default function FullSchedule({ shows }) {
+export default function ScheduleContainer({ shows }) {
   const [filter, setFilter] = useState("Week");
 
-  let content;
-  if (filter !== "Week") {
-    content = (
-      <div>
-        <ScheduleFilter
-          pageList={[
-            "Week",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday",
-          ]}
-          currentPage={filter}
-          setCurrentPage={setFilter}
-        />
-        <DaySchedule shows={shows} day={filter} />
-      </div>
-    );
-  } else {
-    content = (
-      <div>
-        <WeeklySchedule shows={shows} setFilter={setFilter} />
-      </div>
-    );
-  }
+  const pages = [
+    "Week",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
-  return <div className={styles.schedule}>{content}</div>;
+  return (
+    <div className={styles.schedule}>
+      {filter === "Week" ? (
+        <WeeklySchedule shows={shows} setFilter={setFilter} />
+      ) : (
+        <div>
+          <ScheduleFilter
+            pageList={pages}
+            currentPage={filter}
+            setCurrentPage={setFilter}
+          />
+          <DaySchedule shows={shows} day={filter} />
+        </div>
+      )}
+    </div>
+  );
 }
 
 WeeklySchedule.propTypes = {

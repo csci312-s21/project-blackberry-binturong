@@ -19,15 +19,12 @@ export default function ShowOTW({ show }) {
       <a className={styles.showotw_link} href={`/shows/${show.id}`}>
         {show.title}
       </a>
-
       <p className={styles.showotw_djs}>
         {show.DJs.length > 1 ? "DJs: " : "DJ: "}
         {show.DJs.join(", ")}
       </p>
       <p className={styles.showotw_text}>
-        {day}
-        {", "}
-        {time}
+        {day}, {time}
       </p>
       <p className={styles.showotw_text}>{show.description}</p>
     </div>

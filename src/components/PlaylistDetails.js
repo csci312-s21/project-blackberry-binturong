@@ -15,7 +15,7 @@ import moment from "moment";
 import { compareTwoSongs } from "../lib/component-utils.js";
 
 export default function PlaylistDetails({ playlist, currShow }) {
-  const [playlistSongs, setPlaylistSongs] = useState();
+  const [playlistSongs, setPlaylistSongs] = useState([]);
 
   useEffect(() => {
     const getSongs = async () => {
@@ -24,56 +24,58 @@ export default function PlaylistDetails({ playlist, currShow }) {
         throw new Error(response.statusText);
       }
       const allSongs = await response.json();
-      const filteredSongs = allSongs.filter((song) => song.playlistId === playlist.id)
+      const filteredSongs = allSongs.filter(
+        (song) => song.playlistId === playlist.id
+      );
       setPlaylistSongs(filteredSongs);
-    }
+    };
     getSongs();
-    setPlaylistSongs();
   }, []);
 
-  let contents;
-  if (playlistSongs) {
-    playlistSongs.sort((a, b) => compareTwoSongs(a,b));
+  playlistSongs.sort((a, b) => compareTwoSongs(a, b));
 
-    const songInfo = playlistSongs.map((song) => 
-      <tr key={song.id}>
-        <td>{song.time}</td>
-        <td>{song.title}</td>
-        <td>{song.artist}</td>
-        <td>{song.album}</td>
-      </tr>
-    );
+  const songInfo = playlistSongs.map((song) => (
+    <tr key={song.id}>
+      <td>{song.time}</td>
+      <td>{song.title}</td>
+      <td>{song.artist}</td>
+      <td>
+        <img src={song.albumArt} /> {song.album}
+      </td>
+    </tr>
+  ));
 
-    const dateString = moment(playlist.date, "M-DD-YYYY").format("dddd, MMMM Do, YYYY");
-    contents = 
-      <div>
-        <h2 className={styles.header}>Playlist for {currShow && currShow.title} - {dateString}</h2>
-        {
-          playlistSongs === undefined
-          ? <p>No songs to display</p>
-          : <table className={styles.songTable}>
-              <tbody>
-                <tr>
-                  <th>Time</th>
-                  <th>Title</th>
-                  <th>Artist</th>
-                  <th>Album</th>
-                </tr>
-                {songInfo}
-              </tbody>
-            </table>
-        }
-      </div>
-  }
+  const dateString = moment(playlist.date, "M-DD-YYYY").format(
+    "dddd, MMMM Do, YYYY"
+  );
 
   return (
     <div>
-      {contents}
+      <div>
+        <h2 className={styles.header}>
+          Playlist for {currShow && currShow.title} - {dateString}
+        </h2>
+        {songInfo.length === 0 ? (
+          <p className={styles.noSongsMessage}>No songs to display</p>
+        ) : (
+          <table className={styles.songTable}>
+            <tbody>
+              <tr>
+                <th>Time</th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Album</th>
+              </tr>
+              {songInfo}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 }
 
 PlaylistDetails.propTypes = {
   playlist: playlistType.isRequired,
-  currShow: showType.isRequired
-}
+  currShow: showType,
+};

@@ -14,15 +14,15 @@ import Navbar from "react-bootstrap/Navbar";
 export default function NavBar() {
   return (
     <div>
-      <Navbar bg="light">
+      <Navbar bg="light" variant="light" expand="lg">
         <Nav className="m-auto">
-          <a href={"/"} className={styles.navbar_item}>
+          <a href="/" className={styles.navbar_item}>
             Home
           </a>
-          <a href={"/schedule"} className={styles.navbar_item}>
+          <a href="/schedule" className={styles.navbar_item}>
             Schedule
           </a>
-          <a href={"/about"} className={styles.navbar_item}>
+          <a href="/about" className={styles.navbar_item}>
             About
           </a>
         </Nav>

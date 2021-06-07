@@ -7,7 +7,11 @@
   props:
     show - a show object
 */
-import { getTimeString, getDayString, compareTwoPlaylists } from "../lib/component-utils.js";
+import {
+  getTimeString,
+  getDayString,
+  compareTwoPlaylists,
+} from "../lib/component-utils.js";
 import { showType } from "../lib/types.js";
 import { useState, useEffect } from "react";
 import styles from "../styles/Main.module.css";
@@ -26,21 +30,23 @@ export default function ShowDetails({ show }) {
       const fetchedPlaylists = await response.json();
 
       setPlaylists(fetchedPlaylists);
-    }
+    };
     getPlaylists();
   }, []);
 
   const time = getTimeString(show.hour, show.duration);
   const day = getDayString(show.day);
 
-  const playlistsForShow = playlists.filter((playlist) => playlist.showId === show.id);
+  const playlistsForShow = playlists.filter(
+    (playlist) => playlist.showId === show.id
+  );
 
   playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b)).reverse();
 
   const playlistDates = playlistsForShow.map((playlist) => (
     <a
       href={`/playlists/${playlist.id}`}
-      key={`${playlist.id}`}
+      key={playlist.id}
       className={styles.showdetails_time_item}
     >
       {playlist.date}
@@ -86,5 +92,5 @@ export default function ShowDetails({ show }) {
 }
 
 ShowDetails.propTypes = {
-  show: showType.isRequired
+  show: showType.isRequired,
 };

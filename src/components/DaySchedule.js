@@ -1,22 +1,18 @@
 import PropTypes from "prop-types";
 import DayShow from "./DayShow";
-import { getDayString } from "../lib/component-utils.js";
+import { compareTwoShows, getDayString } from "../lib/component-utils.js";
 import styles from "../styles/Main.module.css";
 import { showType } from "../lib/types.js";
 
 export default function DaySchedule({ shows, day }) {
   const showList = shows.filter((s) => getDayString(s.day) === day);
-  const showListSorted = showList.sort((a, b) => {
-    return a.hour - b.hour;
-  });
+  showList.sort((a, b) => compareTwoShows(a, b));
 
-  const showsDisplayed = showListSorted.map((show) => {
-    return (
-      <li className={styles.dayschedule_item} key={show.id}>
-        <DayShow show={show} />
-      </li>
-    );
-  });
+  const showsDisplayed = showList.map((show) => (
+    <li className={styles.dayschedule_item} key={show.id}>
+      <DayShow show={show} />
+    </li>
+  ));
 
   return (
     <div data-testid="day schedule">
@@ -27,4 +23,5 @@ export default function DaySchedule({ shows, day }) {
 
 DaySchedule.propTypes = {
   shows: PropTypes.arrayOf(showType).isRequired,
+  day: PropTypes.string.isRequired,
 };
