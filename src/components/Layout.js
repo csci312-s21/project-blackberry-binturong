@@ -22,11 +22,13 @@ import Col from "react-bootstrap/Col";
 
 import { useSession } from "next-auth/client";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { getCurrentPlaylist } from "../lib/component-utils.js";
 
 export default function Layout({ title, children }) {
   const [session] = useSession();
   const [currentPlaylist, setCurrentPlaylist] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     const getPlaylist = async () => {
@@ -69,9 +71,11 @@ export default function Layout({ title, children }) {
         <div className={styles.startshow_div}>
           {session &&
             (currentPlaylist ? (
-              <Link href="/log-playlist">
-                <input type="button" value="Go to Current Playlist" />
-              </Link>
+              router.pathname !== "/log-playlist" && (
+                <Link href="/log-playlist">
+                  <input type="button" value="Go to Current Playlist" />
+                </Link>
+              )
             ) : (
               <StartShowButton />
             ))}

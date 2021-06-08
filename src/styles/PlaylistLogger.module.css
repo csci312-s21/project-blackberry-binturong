@@ -1,6 +1,7 @@
-
 .rows {
   list-style-type: none;
+  width: fit-content;
+  margin: auto;
 }
 
 .title {

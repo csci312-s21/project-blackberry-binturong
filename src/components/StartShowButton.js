@@ -13,7 +13,6 @@ export default function StartShowButton() {
   const [session] = useSession();
   const [userShows, setUserShows] = useState([]);
   const [selectedShowID, setSelectedShowID] = useState();
-  const [newPlaylist, setNewPlaylist] = useState();
 
   useEffect(() => {
     const getUserShows = async () => {
@@ -49,30 +48,22 @@ export default function StartShowButton() {
     }
   }, []);
 
-  useEffect(() => {
-    const addPlaylist = async () => {
-      const response = await fetch("/api/playlists", {
-        method: "POST",
-        body: JSON.stringify(newPlaylist),
-        headers: new Headers({ "Content-type": "application/json" }),
-      });
-
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
+  const startShow = async (showId) => {
+    const newPlaylist = {
+      date: moment().format("M-DD-YYYY"),
+      showId: showId,
+      current: true,
     };
 
-    if (newPlaylist) {
-      addPlaylist();
-    }
-  }, [newPlaylist]);
-
-  const startShow = (showId) => {
-    setNewPlaylist({
-      date: moment().format("M-DD-YYYY"),
-      showID: showId,
-      current: true,
+    const response = await fetch("/api/playlists", {
+      method: "POST",
+      body: JSON.stringify(newPlaylist),
+      headers: new Headers({ "Content-type": "application/json" }),
     });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
   };
 
   const options = userShows.map((show) => (
