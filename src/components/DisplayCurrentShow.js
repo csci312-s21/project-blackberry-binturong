@@ -16,10 +16,12 @@ export default function DisplayCurrentShow({ show }) {
     content = (
       <div>
         <div className={styles.currentshow_title}>ON AIR</div>
-        <span className={styles.currentshow_text}>Current Show: </span>
-        <Link href={`/shows/${show.id}`}>
-          <a className={styles.currentshow_link}>{show.title}</a>
-        </Link>
+        <div>
+          <span className={styles.currentshow_text}>Current Show: </span>
+          <Link href={`/shows/${show.id}`}>
+            <span className={styles.currentshow_link}>{show.title}</span>
+          </Link>
+        </div>
         <div className={styles.currentshow_djs}>
           <em>DJs: {show.DJs.join(", ")}</em>
         </div>

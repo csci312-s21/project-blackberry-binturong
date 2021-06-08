@@ -10,6 +10,7 @@ import {
   getRandomIntID,
   endShow,
   getCurrentPlaylist,
+  compareTwoSongs,
 } from "../lib/component-utils.js";
 import styles from "../styles/PlaylistLogger.module.css";
 import Link from "next/link";
@@ -38,9 +39,11 @@ export default function PlaylistLogger() {
       }
 
       const songs = await response.json();
-      setCurrentSongs(
-        songs.filter((song) => song.playlistId === currentPlaylist.id)
+      const currSongs = songs.filter(
+        (song) => song.playlistId === currentPlaylist.id
       );
+      currSongs.sort((a, b) => compareTwoSongs(a, b));
+      setCurrentSongs(currSongs);
     };
     const getShow = async () => {
       const response = await fetch("/api/shows");

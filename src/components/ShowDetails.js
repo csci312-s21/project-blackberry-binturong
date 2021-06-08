@@ -1,7 +1,7 @@
 /*
   ShowDetails.js
 
-  This component displays all relevant information about a show, including the title, DJ(s), time, description, 
+  This component displays all relevant information about a show, including the title, DJ(s), time, description,
   genres, and past playlists. This page is accessed whenever the user clicks on a show anywhere on the website.
 
   props:
@@ -15,6 +15,7 @@ import {
 import { showType } from "../lib/types.js";
 import { useState, useEffect } from "react";
 import styles from "../styles/Main.module.css";
+import Link from "next/link";
 
 export default function ShowDetails({ show }) {
   const [playlists, setPlaylists] = useState([]);
@@ -44,13 +45,9 @@ export default function ShowDetails({ show }) {
   playlistsForShow.sort((a, b) => compareTwoPlaylists(a, b)).reverse();
 
   const playlistDates = playlistsForShow.map((playlist) => (
-    <a
-      href={`/playlists/${playlist.id}`}
-      key={playlist.id}
-      className={styles.showdetails_time_item}
-    >
-      {playlist.date}
-    </a>
+    <Link href={`/playlists/${playlist.id}`} key={playlist.id}>
+      <li className={styles.showdetails_time_item}>{playlist.date}</li>
+    </Link>
   ));
 
   return (

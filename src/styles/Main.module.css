@@ -91,6 +91,7 @@
   font-size: 20px;
   color: rgb(0, 0, 0);
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .showotw_link:hover {
@@ -127,6 +128,7 @@
   color: rgb(0, 0, 0);
   text-decoration: underline;
   line-height: 0.5;
+  cursor: pointer;
 }
 
 .currentshow_link:hover {
@@ -300,8 +302,9 @@
 
 .showdetails_time li {
   font-style: italic;
-  padding: 0px;
+  padding: auto;
   cursor: pointer;
+  display: inline-block;
 }
 
 .showdetails_time_item {
@@ -380,6 +383,7 @@
   line-height: 1.1;
   margin-top: 0px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .weeklyshow_title:hover {

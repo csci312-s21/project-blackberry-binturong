@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import styles from "../styles/Main.module.css";
 import { showType } from "../lib/types.js";
 import { colors } from "../lib/component-utils.js";
+import Link from "next/link";
 
 export default function WeeklyShow({ show }) {
   if (!show) {
@@ -24,9 +25,9 @@ export default function WeeklyShow({ show }) {
   return (
     <div className={styles.weeklyshow} style={{ backgroundColor: genrecolor }}>
       <p>
-        <a className={styles.weeklyshow_title} href={`/shows/${show.id}`}>
-          {show.title}
-        </a>
+        <Link href={`/shows/${show.id}`}>
+          <div className={styles.weeklyshow_title}>{show.title}</div>
+        </Link>
       </p>
       <p>{show.DJs.join(", ")}</p>
     </div>
