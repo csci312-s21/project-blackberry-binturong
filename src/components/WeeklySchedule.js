@@ -65,8 +65,8 @@ export default function WeeklySchedule({ shows, setFilter }) {
   const table = showsArr.map(
     (row, key1) =>
       !row.slice(1).every((unit) => !unit) && (
+        // eslint-disable-next-line
         <tr key={`row${key1}`}>
-          {/* eslint-disable-line */}
           {row.map((show, key2) => (
             <td key={`cell${key1 * 1000 + key2}`}>
               {show ? show : <WeeklyShow />}

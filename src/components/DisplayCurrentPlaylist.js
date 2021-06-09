@@ -22,7 +22,7 @@ export default function DisplayCurrentPlaylist({ playlist, allSongs }) {
 
     currentSongsList = currentSongs.map((song) => (
       <li key={song.id} className={styles.currentlist_item}>
-        {song.albumArt} {song.time} <strong>{song.title}</strong>{" "}
+        <img src={song.albumArt} /> {song.time} <strong>{song.title}</strong>{" "}
         <em>{song.artist}</em>
       </li>
     ));

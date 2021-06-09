@@ -18,13 +18,13 @@ export default function NavBar() {
       <Navbar bg="light" variant="light" expand="lg">
         <Nav className="m-auto">
           <Link href="/">
-            <div className={styles.navbar_item}>Home</div>
+            <a className={styles.navbar_item}>Home</a>
           </Link>
           <Link href="/schedule">
-            <div className={styles.navbar_item}>Schedule</div>
+            <a className={styles.navbar_item}>Schedule</a>
           </Link>
           <Link href="/about">
-            <div className={styles.navbar_item}>About</div>
+            <a className={styles.navbar_item}>About</a>
           </Link>
         </Nav>
       </Navbar>

@@ -24,11 +24,9 @@ export default function WeeklyShow({ show }) {
 
   return (
     <div className={styles.weeklyshow} style={{ backgroundColor: genrecolor }}>
-      <p>
-        <Link href={`/shows/${show.id}`}>
-          <div className={styles.weeklyshow_title}>{show.title}</div>
-        </Link>
-      </p>
+      <Link href={`/shows/${show.id}`}>
+        <p className={styles.weeklyshow_title}>{show.title}</p>
+      </Link>
       <p>{show.DJs.join(", ")}</p>
     </div>
   );
